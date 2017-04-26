@@ -1,10 +1,14 @@
 #!/usr/bin/env ruby
 
-compile '/**/*.html' do
+compile '/index.*' do
+  filter :erb
+  filter :kramdown
   layout '/default.*'
 end
 
-route '/**/*.{html,md}' do
+ignore '/*.md'
+
+route '/**/*.{html,md}*' do
   if item.identifier =~ '/index.*'
     '/index.html'
   else

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'nanoc', '~> 4.7'
+gem 'kramdown'
 
 group :development do
   # live view
