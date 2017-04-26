@@ -3,6 +3,14 @@ source 'https://rubygems.org'
 gem 'nanoc', '~> 4.7'
 gem 'kramdown'
 
+# references
+gem 'i18n'
+gem 'bibtex-ruby'
+gem 'latex-decode'
+gem 'citeproc-ruby', '>= 1.1.6'
+gem 'csl-styles'
+gem 'bibmarkdown'
+
 group :development do
   # live view
   gem 'guard-nanoc', '~> 2.1.2'

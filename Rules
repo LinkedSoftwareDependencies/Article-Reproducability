@@ -2,11 +2,14 @@
 
 compile '/index.*' do
   filter :erb
+  filter :bibmarkdown, bibfile: items['/references.bib'],
+                       style: 'springer-lecture-notes-in-computer-science'
   filter :kramdown
   layout '/default.*'
 end
 
 ignore '/*.md'
+ignore '/*.bib'
 
 route '/**/*.{html,md}*' do
   if item.identifier =~ '/index.*'

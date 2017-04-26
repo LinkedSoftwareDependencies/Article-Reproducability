@@ -6,6 +6,11 @@ body {
   max-width: 800px;
 }
 
+dl.references dt {
+  float: left;
+  clear: left;
+}
+
 .todo {
   color: red;
 }
