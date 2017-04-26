@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.2.5
+bundler_args: --without development
+script:
+  - bundle exec nanoc compile
+  - bundle exec nanoc check html external_links internal_links mixed_content stale
+cache:
+  - bundler

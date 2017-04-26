@@ -11,3 +11,8 @@ group :development do
   gem 'thin'
   gem 'rack-livereload'
 end
+
+group :test do
+  # validation
+  gem 'w3c_validators', '~> 1.3.1'
+end
