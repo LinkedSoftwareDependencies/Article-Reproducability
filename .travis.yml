@@ -7,3 +7,5 @@ script:
   - bundle exec nanoc check html external_links internal_links mixed_content stale
 cache:
   - bundler
+after_success:
+  - ./.travis_build_pages
