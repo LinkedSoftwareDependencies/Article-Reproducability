@@ -10,6 +10,9 @@ bundle install
 bundle exec guard
 ```
 
+## Live version
+https://linkeddatafragments.github.io/LinkedSoftwareDependencies-Article/
+
 ## Paper structure
 ```
 introduction
