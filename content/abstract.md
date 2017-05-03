@@ -1,36 +1,30 @@
 ## Abstract
 <!-- Context      -->
-Reproducibility is a core characteristic of solid research.
-In the domain of computer science engineering,
-reproducing experiments involves setting up the exact same software
-with the same benchmarks and test data.
+In the Semantic Web community,
+we focus on how to best interlink data so data relations can be discovered
+and various data sources can be combined such that the result is more than the sum of its parts.
+Unfortunately there are still many areas where the semantic interlinking of data is sorely lacking.
+Even not all data published by researchers is semantically annotated,
+which can limit the growth rate of the Semantic Web.
 <!-- Need         -->
-Unfortunately,
-many research articles ambiguously refer to software by name only,
-leaving out crucial details such as package and dependency version numbers
-or the configuration of the individual components—all of which
-are necessary to reproduce experiments.
+One of these areas is the publication of research experiment results.
+Quite often when publishing new research ideas,
+this is accompanied by an evaluation of this idea,
+proving how this new idea compares to the current state of the art in a multitude of dimensions.
+However, these results are rarely published in such a way
+that the actual results can easily be re-used for meta-research or further investigation.
 <!-- Task         -->
-Therefore,
-we designed JSON-LD-based software configurations
-which can be published as Linked Data alongside experimental results,
-and implemented a dependency injection framework
-that can instantiate such experimental setups faithfully.
+To this end we designed a way to semantically describe both research results
+and the configuration used to generate them,
+allowing other researchers to easily query those
+and combine them with other results.
 <!-- Object       -->
-This article discusses the approach,
-applies it to the npm ecosystem,
-and explains how to publish software configurations on the Web.
+More specifically,
+we provide a way to semantically describe the building blocks of an implementation in JSON-LD.
+Additionally, we provide a semantically annotated dataset of the entire npm package library,
+allowing for semantic interlinking between packages.
 <!-- Findings     -->
-In order to make configurations such fully dereferenceable,
-we published the metadata of all 470,000 JavaScript libraries on npm
-as 150,000,000 Linked Data triples.
 <!-- Conclusion   -->
-Through our work,
-research articles can precisely refer to experimental setups
-using the URL of an instantiatable configuration,
-completing the provenance chain from
-specifications to implementations, dependencies, and configurations
-all the way to experimental results.
-This ultimately brings faster and more accurate replications of experiments,
-and facilitates the evaluation of new research contributions.
+We believe that this will help future researchers wanting to compare research results
+or looking for solutions that best match their needs.
 <!-- Perspectives -->
