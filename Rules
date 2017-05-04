@@ -19,7 +19,7 @@ route '/**/*.{html,md}*' do
   end
 end
 
-compile '/styles/*.scss' do
+compile '/**/*.scss' do
   filter :sass, syntax: :scss, style: :compressed
   write item.identifier.without_ext + '.css'
 end
