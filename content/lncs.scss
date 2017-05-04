@@ -6,6 +6,35 @@ body {
   max-width: 800px;
 }
 
+main {
+  counter-reset: section;
+
+  // Sections
+  h2 {
+    counter-reset: subsection;
+
+    &::before {
+      counter-increment: section;
+      content: counter(section) ". ";
+    }
+  }
+
+  // Subsections
+  h3 {
+    &::before {
+      counter-increment: subsection;
+      content: counter(section) "." counter(subsection) ". ";
+    }
+  }
+
+  // Paragraphs
+  h4 {
+    margin: 0 1em 0 0;
+    float: left;
+    clear: left;
+  }
+}
+
 dl.references {
   dt {
     float: left;
@@ -15,7 +44,7 @@ dl.references {
 
 .todo {
   color: red;
-  &:before {
+  &::before {
     content: "TODO: ";
   }
 }
