@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 gem 'nanoc', '~> 4.7'
 gem 'kramdown'
 
+# stylesheets
+gem 'sass'
+
 # references
 gem 'i18n'
 gem 'bibtex-ruby'

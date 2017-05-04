@@ -6,14 +6,16 @@ body {
   max-width: 800px;
 }
 
-dl.references dt {
-  float: left;
-  clear: left;
+dl.references {
+  dt {
+    float: left;
+    clear: left;
+  }
 }
 
 .todo {
   color: red;
-}
-.todo:before {
-  content: "TODO: ";
+  &:before {
+    content: "TODO: ";
+  }
 }
