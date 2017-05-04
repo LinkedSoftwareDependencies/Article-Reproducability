@@ -59,7 +59,7 @@ header {
 }
 
 main {
-  counter-reset: section;
+  counter-reset: section figure;
   hyphens: auto;
 
   // Sections
@@ -85,6 +85,21 @@ main {
     margin: 0 1em 0 0;
     float: left;
     clear: left;
+  }
+
+  // Figures
+  figure {
+    font-style: italic;
+
+    figcaption {
+      &::before {
+        float: left;
+        counter-increment: figure;
+        content: "Fig. " counter(figure) ":";
+        font-weight: bold;
+        margin-right: .5em;
+      }
+    }
   }
 }
 

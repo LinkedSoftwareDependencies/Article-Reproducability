@@ -754,6 +754,7 @@ right:0;
 }
 figcaption:before {
 content:"Fig. " counter(figure) ". ";
+float: left;
 }
 figure.listing figcaption:before {
 content:"Listing " counter(listing) ". ";
