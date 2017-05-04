@@ -390,6 +390,18 @@ header {
   }
 }
 
+#abstract {
+  h2 {
+    float: left;
+    margin: 0;
+
+    &::after {
+      content: ".";
+      margin-right: .5em;
+    }
+  }
+}
+
 dl.references {
   dt {
     float: left;
@@ -493,7 +505,6 @@ content:counter(precode);
 counter-increment:precode;
 }
 
-#abstract h2, #abstract p,
 #document-status h2, #document-status p,
 #document-identifier dt, #document-identifier dd,
 #document-published dt, #document-published dd,
@@ -520,7 +531,6 @@ content:"\A";
 white-space:pre;
 }
 
-#abstract h2:before,
 #document-status h2:before,
 #categories-and-subject-descriptors h2:before,
 #keywords h2:before,
@@ -560,13 +570,10 @@ content:":";
 }
 
 
-#abstract h2:after,
 #document-status h2:after {
 content:".";
 }
 
-#abstract h2,
-#abstract div, #abstract div *:first-child,
 #document-status h2,
 #document-status div, #document-status div *:first-child,
 #categories-and-subject-descriptors h2,
@@ -812,7 +819,7 @@ right:0;
 
 
 
-#abstract, ol, ul, p, dd {
+ol, ul, p, dd {
 text-align:justify;
 }
 aside.note ol,
