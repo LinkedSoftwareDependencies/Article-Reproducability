@@ -7,34 +7,7 @@
 
 /*
 LNCS template styles: http://www.springer.com/computer/lncs?SGWID=0-164-6-793341-0
-
-Computer Modern Unicode fonts are from http://canopus.iacp.dvo.ru/~panov/cm-unicode/ with X11 License.
 */
-
-@font-face {
-font-family:"CMUSerif-Roman";
-src:local("CMUSerif-Roman"), url("../fonts/cmunrm.otf");
-}
-@font-face {
-font-family:"CMUSerif-Bold";
-src:local("CMUSerif-Bold"), url("../fonts/cmunbx.otf");
-font-weight:bold;
-}
-@font-face {
-font-family:"CMUSerif-Italic";
-src:local("CMUSerif-Italic"), url("../fonts/cmunti.otf");
-font-style:italic;
-}
-@font-face {
-font-family:"CMUSerif-BoldItalic";
-src:local("CMUSerif-BoldItalic"), url("../fonts/cmunbi.otf");
-font-weight:bold;
-font-style:italic;
-}
-@font-face {
-font-family:"CMUTypewriter-Regular";
-src:local("CMUTypewriter-Regular"), url("../fonts/cmuntt.otf");
-}
 
 @media print {
 /*
@@ -193,7 +166,7 @@ word-break:break-all;
 
 body {
 color:#000000;
-font-family:"CMUSerif-Roman", "GNU Unifont", "FreeSerif", "Segoe UI Symbol", serif;
+font-family:"Times New Roman", serif;
 /*font-size:1.689vw;*/
 font-size:125%;
 line-height:1.231;
@@ -214,26 +187,22 @@ hyphens:none;
 }
 
 h1,h2,h3,h4, strong, dt, figcaption:before, caption:before, #subtitle {
-font-family:"CMUSerif-Bold", serif;
+  font-weight: bold;
 }
 h5,h6, em, cite, dfn, address {
-font-family:"CMUSerif-Italic", serif;
+  font-style: italic;
 }
 h1 em, h2 em, h3 em, h4 em, dt dfn {
-font-family:"CMUSerif-BoldItalic", serif;
-}
-section article h1,
-section article h2,
-section article h3 {
-font-family:"CMUSerif-Roman", serif;
+  font-weight: bold;
+  font-style: italic;
 }
 code, code strong, samp, samp strong, pre, kbd, button {
-font-family:"CMUTypewriter-Regular", monospace;
+font-family:monospace;
 }
 code strong, samp strong {
 font-weight:bold;
 }
-h5, h5 {
+h5 {
 font-weight:normal;
 }
 
@@ -520,7 +489,7 @@ font-size:0.923em;
 
 #author-email,
 #author-uri {
-font-family:"CMUTypewriter-Regular", monospace;
+font-family:monospace;
 font-size:0.923em;
 }
 
@@ -732,7 +701,6 @@ display:inline;
 content:",\0020";
 }
 .pages dt {
-font-family:"CMUSerif-Roman";
 margin-right:0.5em;
 text-transform:lowercase;
 }
