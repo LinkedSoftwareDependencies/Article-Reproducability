@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title><%= h @item[:title] %></title>
-  <link rel="stylesheet" href="styles/screen.css">
+  <link rel="stylesheet" media="screen" href="styles/screen.css">
+  <link rel="stylesheet" media="print"  href="styles/print.css">
 </head>
 <body>
   <%= yield %>

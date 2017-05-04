@@ -64,9 +64,4 @@ dl.references {
   }
 }
 
-.todo {
-  color: red;
-  &::before {
-    content: "TODO: ";
-  }
-}
+@import "shared.scss";
