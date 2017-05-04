@@ -45,8 +45,6 @@ body > header nav,
 body > footer nav { display:none; }
 
 caption, td, th,
-#author-org,
-#author-uri,
 #abstract *,
 #document-identifier *,
 #document-published *,
@@ -179,7 +177,7 @@ width:35.475em;
 -ms-hyphens:auto;
 hyphens:auto;
 }
-#authors, .authors, #document-status, #keywords, #categories-and-subject-descriptors, #general-terms, #references, pre, code, samp, h1, table *, figcaption {
+#document-status, #keywords, #categories-and-subject-descriptors, #general-terms, #references, pre, code, samp, h1, table *, figcaption {
 -moz-hyphens:none;
 -webkit-hyphens:none;
 -ms-hyphens:none;
@@ -332,7 +330,6 @@ position:absolute;
 left:-1.75em;
 }
 
-
 main {
   counter-reset: section;
 
@@ -359,6 +356,37 @@ main {
     margin: 0 1em 0 0;
     float: left;
     clear: left;
+  }
+}
+
+header {
+  text-align: center;
+}
+
+#authors {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+
+  li {
+    display: inline;
+
+    &:not(:last-child) {
+      &::after {
+        content: ", ";
+      }
+    }
+  }
+}
+
+#affiliations {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+  letter-spacing: -.1px;
+
+  sup {
+    margin-right: .1em;
   }
 }
 
@@ -465,18 +493,6 @@ content:counter(precode);
 counter-increment:precode;
 }
 
-#authors {
-margin:0 auto 2.5em -3%;
-text-align:center;
-width:106%;
-}
-
-#authors dl {
-line-height:1;
-}
-
-#author-org,
-#author-uri,
 #abstract h2, #abstract p,
 #document-status h2, #document-status p,
 #document-identifier dt, #document-identifier dd,
@@ -496,52 +512,6 @@ line-height:1;
 #keywords h2, #keywords li,
 #categories-and-subject-descriptors h2, #categories-and-subject-descriptors li {
 font-size:0.923em;
-}
-
-#author-email,
-#author-uri {
-font-family:monospace;
-font-size:0.923em;
-}
-
-
-#authors dl,
-#authors ul {
-margin:0;
-text-align:center;
-}
-
-#authors dl,
-.authors {
-margin-bottom:1em;
-}
-
-#authors dd,
-#authors li,
-.authors dd {
-display:inline !important;
-margin-bottom:0;
-}
-
-#authors dd:not(:empty):after,
-#author-email li:not(:empty):after,
-#author-org li:not(:empty):after,
-#author-uri li:not(:empty):after,
-.authors dd:not(:empty):after {
-content:",\0020";
-}
-#authors dd:last-child:after,
-#author-email li:last-child:after,
-#author-org li:last-child:after,
-#author-uri li:last-child:after,
-.authors dd:last-child:after {
-content:"";
-}
-#authors sup {
-margin-left:1px;
-}
-#authors sup + sup:before {
-content:",";
 }
 
 #document-event dd:after,
@@ -994,16 +964,6 @@ padding:0 2.5em;
 margin:0 0 1em 0;
 }
 
-#authors dt,
-.authors dt {
-display:none;
-}
-
-#authors p {
-text-align:center;
-}
-
-#authors li,
 #general-terms,
 #categories-and-subject-descriptors li,
 #keywords li {
