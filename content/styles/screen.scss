@@ -8,30 +8,59 @@ body {
   max-width: 800px;
 }
 
-#authors {
-  list-style: none;
-  margin: 1em 0;
-  padding: 0;
+header {
+  h1 {
+    font-size: 2em;
+    margin: 1em 0 .5em;
+  }
 
-  li {
-    display: inline;
+  ul {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+  }
 
-    &:not(:last-child) {
-      &::after {
-        content: ", ";
+  #authors {
+    li {
+      display: inline;
+      margin-right: 1.5em;
+    }
+
+    a {
+      &:not(:hover) {
+        text-decoration: none;
       }
+      sup {
+        margin: 0 -.1em 0 .1em;
+      }
+    }
+  }
+
+  #affiliations {
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+
+    font-size: .9em;
+
+    sup {
+      margin-right: .15em;
+    }
+  }
+
+  #abstract {
+    font-weight: bold;
+    hyphens: auto;
+
+    h2 {
+      display: none;
     }
   }
 }
 
-#affiliations {
-  list-style: none;
-  margin: 1em 0;
-  padding: 0;
-}
-
 main {
   counter-reset: section;
+  hyphens: auto;
 
   // Sections
   h2 {
