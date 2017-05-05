@@ -18,7 +18,7 @@ rm -r * 2> /dev/null
 cp -r $REPO_PATH/output/* .
 
 # Commit and push latest version
-git add .
+git add --all
 git config user.name  "Travis"
 git config user.email "travis@travis-ci.org"
 git commit -m "Update to $TRAVIS_COMMIT."
