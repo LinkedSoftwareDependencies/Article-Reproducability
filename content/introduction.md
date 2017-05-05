@@ -36,6 +36,16 @@ from the research article to the data
 and the experiment that generates it,
 and all the aspects surrounding that experiment.
 
+<figure id="description-diagram">
+<img src="description-diagram.svg" alt="[description diagram]">
+<figcaption markdown="block">
+A _research article_ is based on _result data_,
+which are the outcomes of an _experiment_.
+The experiment in turn also has (multiple) provenance chains,
+and this article focuses on _software configurations_ and _software modules_.
+</figcaption>
+</figure>
+
 In this article,
 we focus on the description of _software configurations_ and _software modules_,
 such that an evaluated software setup
@@ -54,14 +64,3 @@ Our contributions are the following:
 - the **automated instantiation** of such a configuration;
 - a **use case** that explains the usage of the resulting Linked Data
   in a scientific article.
-
-
-<figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]">
-<figcaption markdown="block">
-A _research article_ is based on _result data_,
-which are the outcomes of an _experiment_.
-The experiment in turn also has (multiple) provenance chains,
-and this article focuses on _software configurations_ and _software modules_.
-</figcaption>
-</figure>
