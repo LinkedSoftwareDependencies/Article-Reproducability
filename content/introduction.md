@@ -23,16 +23,26 @@ and essentially mandates a detailed description
 of the executed experiment, the involved artefacts and actors,
 and the processing of the retrieved data.
 
-Write paragraph about how Linked Data is an excellent means
-of describing experimental conditions, pointing to the diagram.
-{:.todo}
+Using Linked Data to publish such descriptions provides two immediate benefits:
+the experimental setup and parts thereof can be _identified with IRIs_,
+and their details can be retrieved by _dereferencing those IRIs_.
+Therefore, if research articles complement their textual explanation of an experiment
+with the IRI of the full setup, reproducibility is guaranteed.
+Moreover, the IRIs of the entire experiment or its parts
+can be reused in other articles or experiment
+to unambiguously refer to the same conditions.
+[Fig. 1](#description-diagram) illustrates how this leads to a chain of provenance
+from the research article to the data
+and the experiment that generates it,
+and all the aspects surrounding that experiment.
 
 Explain that we will focus on describing software configurations
 used for an experiment.
 {:.todo}
 
 
-<figure>
+
+<figure id="description-diagram">
 <img src="description-diagram.svg" alt="[description diagram]">
 <figcaption markdown="block">
 A _research article_ is based on _result data_,
