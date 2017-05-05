@@ -13,8 +13,19 @@ Moreover, other researchers might fail
 in reproducing the same results
 because of differences in any of these aspects.
 
-Write
+Write paragraph about the importance of reproducibility,
+and that this is related to documenting and publishing all experimental conditions
+(zooming out from software to general conditions).
 {:.todo}
+
+Write paragraph about how Linked Data is an excellent means
+of describing experimental conditions, pointing to the diagram.
+{:.todo}
+
+Explain that we will focus on describing software configurations
+used for an experiment.
+{:.todo}
+
 
 <figure>
 <img src="description-diagram.svg" alt="[description diagram]">
