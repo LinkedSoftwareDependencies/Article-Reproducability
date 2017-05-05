@@ -1,5 +1,6 @@
 ## Overview of software experiment descriptions
-This section will shortly introduce each of the blocks in the diagram
+This section will shortly introduce each of the blocks in the diagram.
+Ruben V. will write the basis.
 {:.todo}
 
 #### Specification

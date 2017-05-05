@@ -3,13 +3,13 @@ Introduce section structure
 {:.todo}
 
 ### Scholarly publishing and reproducibility
-Write
+Sarven will start this
 {:.todo}
 
 ### Ontologies and vocabularies for describing experiments
-Write
+Sarven will start this
 {:.todo}
 
 ### Dependency injection
-Write
+Ruben T. writes this, asks Ruben V. for references
 {:.todo}

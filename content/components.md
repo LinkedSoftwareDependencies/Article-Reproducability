@@ -1,3 +1,3 @@
 ## Describing components and their configuration
-Write
+Ruben T. writes this
 {:.todo}

@@ -1,3 +1,3 @@
 ## Instantiating component configurations
-Write
+Ruben T. writes this.
 {:.todo}
