@@ -36,10 +36,24 @@ from the research article to the data
 and the experiment that generates it,
 and all the aspects surrounding that experiment.
 
-Explain that we will focus on describing software configurations
-used for an experiment.
-{:.todo}
+In this article,
+we focus on the description of _software configurations_ and _software modules_,
+such that an evaluated software setup
+can be referred to unambiguously by an IRI.
+We thereby avoid the inherent vagueness
+of referring to software by name only.
+We further facilitate the reproduction of experiments
+through a mechanisms that automatically _instantiates_ the software configuration
+based on its Linked Data description.
+Our contributions are the following:
 
+- the RDF-based description of **software modules**,
+  applied to the 470,000+ bundles of the npm ecosystem for Node.js;
+- the RDF-based description of **available components** within software modules;
+- the RDF-based description of a **precise configuration** of software modules;
+- the **automated instantiation** of such a configuration;
+- a **use case** that explains the usage of the resulting Linked Data
+  in a scientific article.
 
 
 <figure id="description-diagram">
