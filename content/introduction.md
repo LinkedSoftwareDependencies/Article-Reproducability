@@ -13,10 +13,15 @@ Moreover, other researchers might fail
 in reproducing the same results
 because of differences in any of these aspects.
 
-Write paragraph about the importance of reproducibility,
-and that this is related to documenting and publishing all experimental conditions
-(zooming out from software to general conditions).
-{:.todo}
+As [Claerbout's Principle](cite:providesQuotationFor WaveLab) explains,
+<q>an article about computational science in a scientific publication
+is not the scholarship itself, it is merely **advertising** of the scholarship.
+The actual scholarship is the complete software development environment
+and the complete set of instructions which generated the figures.</q>
+This stresses the importance of reproducibility,
+and essentially mandates a detailed description
+of the executed experiment, the involved artefacts and actors,
+and the processing of the retrieved data.
 
 Write paragraph about how Linked Data is an excellent means
 of describing experimental conditions, pointing to the diagram.
