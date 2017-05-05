@@ -11,4 +11,4 @@ bundle exec guard
 ```
 
 ## Live version
-https://linkeddatafragments.github.io/LinkedSoftwareDependencies-Article/
+https://linkedsoftwaredependencies.github.io/Article-Reproducability/
