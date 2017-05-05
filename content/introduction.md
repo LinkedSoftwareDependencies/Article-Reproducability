@@ -58,7 +58,7 @@ based on its Linked Data description.
 Our contributions are the following:
 
 - the RDF-based description of **software modules**,
-  applied to the 470,000+ bundles of the npm ecosystem for Node.js;
+  applied to the 475,000+ bundles of the npm ecosystem for Node.js;
 - the RDF-based description of **available components** within software modules;
 - the RDF-based description of a **precise configuration** of software modules;
 - the **automated instantiation** of such a configuration;

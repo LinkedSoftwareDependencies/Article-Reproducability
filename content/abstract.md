@@ -1,38 +1,40 @@
 ## Abstract
 <!-- Context      -->
-The scientific process requires reproducible or replicable experiments and
-findings in order to foster trust and accountability. In the domain of computer
-science engineering, reproducing experiments involves setting up the exact same
-software with the same benchmarks and test data.
+The scientific process requires reproducible experiments and findings
+to foster trust and accountability.
+Within computer science engineering,
+reproducing experiments involves setting up
+the exact same software with the same benchmarks and test data,
+which often requires non-trivial manual work.
 <!-- Need         -->
 Unfortunately,
 many research articles ambiguously refer to software by name only,
-leaving out crucial details such as package and dependency version numbers
-or the configuration of the individual components—all of which are necessary to
-reproduce experiments. Moreover, the granularity and richness of the
-accompanying data makes it feasible to conduct tractable evaluations and
-benchmarking.
+leaving out crucial details such as module and dependency version numbers
+or the configuration of the individual components.
 <!-- Task         -->
-Therefore,
-we designed JSON-LD-based software configurations
-which can be published as Linked Data alongside experimental results,
-and implemented a dependency injection framework
-that can instantiate such experimental setups faithfully.
+To this end, we created vocabularies
+for the semantic description of software components and their configuration,
+which can be published as Linked Data alongside experimental results.
+We implemented a dependency injection framework
+to accurately instantiate these described experimental configurations.
 <!-- Object       -->
-This article discusses the approach,
-applies it to the npm ecosystem,
-and explains how to publish software configurations on the Web.
+This article discusses the approach and its application,
+and explains with a use case
+how to publish experiments and their software configurations on the Web.
 <!-- Findings     -->
-In order to make configurations such fully dereferenceable,
-we published the metadata of all 470,000 JavaScript libraries on npm
-as 150,000,000 RDF triples.
+In order to enable semantic interlinking between configurations and modules,
+we published the metadata of all 475,000+ JavaScript libraries on npm
+as 150,000,000+ RDF triples.
 <!-- Conclusion   -->
 Through our work,
-research articles can precisely refer to experimental setups
-using the URL of an instantiatable configuration,
+research articles can refer by URL
+to fine-grained, instantiatable descriptions of experimental setups,
 completing the provenance chain from
 specifications to implementations, dependencies, and configurations
 all the way to experimental results.
-This ultimately brings faster and more accurate replications of experiments,
+This ultimately brings faster and more accurate reproductions of experiments,
 and facilitates the evaluation of new research contributions.
 <!-- Perspectives -->
+Moreover, this work can serve other use cases,
+such as general software instantiation outside of experiments,
+and query execution over software configuration metadata.
