@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i');
+@import 'reset.scss';
 
 body {
   margin: 0 auto;
-  padding: 0;
+  padding: 1em;
 
   font: 13pt/1.4 "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   max-width: 800px;
 }
 
 header {
+  margin-bottom: 2em;
+
   h1 {
     font-size: 2em;
+    font-weight: bold;
     margin: 1em 0 .5em;
   }
 
@@ -24,6 +28,7 @@ header {
     li {
       display: inline;
       margin-right: 1.5em;
+      white-space: nowrap;
     }
 
     a {
@@ -67,6 +72,10 @@ main {
 
   // Sections
   h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1em 0 .5em;
+
     counter-reset: subsection;
 
     &::before {
@@ -77,22 +86,46 @@ main {
 
   // Subsections
   h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+
     &::before {
       counter-increment: subsection;
       content: counter(section) "." counter(subsection) ". ";
     }
   }
 
-  // Paragraphs
+  // Titled paragraphs
   h4 {
+    font-weight: bold;
     margin: 0 1em 0 0;
     float: left;
     clear: left;
   }
 
+  // Paragraphs
+  p {
+    margin-bottom: 1em;
+  }
+
+  // Lists
+  ul {
+    li {
+      margin-left: 1em;
+      &::before {
+        position: absolute;
+        margin: -.1em 0 0 -.9em;
+        content: "▪";
+        font-size: 1.2em;
+      }
+    }
+  }
+
   // Figures
   figure {
     figcaption {
+      margin: 0 2em;
+
       &::before {
         float: left;
         counter-increment: figure;
@@ -104,20 +137,52 @@ main {
   }
 }
 
-q {
+em {
   font-style: italic;
 }
 
-dl.references {
-  font-size: .9em;
+strong {
+  font-weight: bold;
+}
 
-  dt {
-    float: left;
-    clear: left;
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+q {
+  font-style: italic;
+
+  &::before {
+    content: "“";
+  }
+  &::after {
+    content: "”";
+  }
+}
+
+#references {
+  h2 {
+    &::before {
+      content: "";
+    }
   }
 
-  dd {
-    margin: 0 0 .5em 2em;
+  dl {
+    font-size: .9em;
+
+    dt {
+      float: left;
+      clear: left;
+    }
+
+    dd {
+      margin: 0 0 .5em 2em;
+    }
   }
 }
 
