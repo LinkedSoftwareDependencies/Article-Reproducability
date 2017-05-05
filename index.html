@@ -96,13 +96,41 @@ and essentially mandates a detailed description
 of the executed experiment, the involved artefacts and actors,
 and the processing of the retrieved data.</p>
 
-    <p class="todo">Write paragraph about how Linked Data is an excellent means
-of describing experimental conditions, pointing to the diagram.</p>
+    <p>Using Linked Data to publish such descriptions provides two immediate benefits:
+the experimental setup and parts thereof can be <em>identified with IRIs</em>,
+and their details can be retrieved by <em>dereferencing those IRIs</em>.
+Therefore, if research articles complement their textual explanation of an experiment
+with the IRI of the full setup, reproducibility is guaranteed.
+Moreover, the IRIs of the entire experiment or its parts
+can be reused in other articles or experiment
+to unambiguously refer to the same conditions.
+<a href="#description-diagram">Fig. 1</a> illustrates how this leads to a chain of provenance
+from the research article to the data
+and the experiment that generates it,
+and all the aspects surrounding that experiment.</p>
 
-    <p class="todo">Explain that we will focus on describing software configurations
-used for an experiment.</p>
+    <p>In this article,
+we focus on the description of <em>software configurations</em> and <em>software modules</em>,
+such that an evaluated software setup
+can be referred to unambiguously by an IRI.
+We thereby avoid the inherent vagueness
+of referring to software by name only.
+We further facilitate the reproduction of experiments
+through a mechanisms that automatically <em>instantiates</em> the software configuration
+based on its Linked Data description.
+Our contributions are the following:</p>
 
-    <figure>
+    <ul>
+      <li>the RDF-based description of <strong>software modules</strong>,
+applied to the 470,000+ bundles of the npm ecosystem for Node.js;</li>
+      <li>the RDF-based description of <strong>available components</strong> within software modules;</li>
+      <li>the RDF-based description of a <strong>precise configuration</strong> of software modules;</li>
+      <li>the <strong>automated instantiation</strong> of such a configuration;</li>
+      <li>a <strong>use case</strong> that explains the usage of the resulting Linked Data
+in a scientific article.</li>
+    </ul>
+
+    <figure id="description-diagram">
 <img src="description-diagram.svg" alt="[description diagram]" />
 <figcaption>
         <p>A <em>research article</em> is based on <em>result data</em>,
