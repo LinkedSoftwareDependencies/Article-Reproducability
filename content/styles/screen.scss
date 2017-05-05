@@ -60,7 +60,10 @@ header {
 
 main {
   counter-reset: section figure;
-  hyphens: auto;
+
+  section > p, ul, ol, dl {
+    hyphens: auto;
+  }
 
   // Sections
   h2 {
