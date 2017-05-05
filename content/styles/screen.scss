@@ -109,9 +109,15 @@ q {
 }
 
 dl.references {
+  font-size: .9em;
+
   dt {
     float: left;
     clear: left;
+  }
+
+  dd {
+    margin: 0 0 .5em 2em;
   }
 }
 

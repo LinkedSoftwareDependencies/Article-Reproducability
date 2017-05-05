@@ -63,7 +63,6 @@ caption, td, th,
 #keywords *,
 #general-terms *,
 #categories-and-subject-descriptors *,
-#references li,
 aside.note {
 font-size:9pt !important;
 }
@@ -134,28 +133,6 @@ iframe { display:block; margin:0 auto; }
 object.slides { display:none; }
 .block { display:block; }
 
-#references {
-clear:both;
-}
-
-#references ol {
-counter-reset:list-order;
-text-align:left;
-}
-#references ol li {
-counter-increment:list-order;
-list-style-position:outside;
-list-style-type:none;
-margin-left:1.1em;
-font-size:0.923em;
-}
-#references ol li:before {
-content:counter(list-order) ". ";
-margin-left:-1.1em;
-}
-
-
-#references a,
 table code, table samp {
 word-wrap:break-word;
 word-break:break-all;
@@ -177,36 +154,38 @@ width:35.475em;
 -ms-hyphens:auto;
 hyphens:auto;
 }
-#document-status, #keywords, #categories-and-subject-descriptors, #general-terms, #references, pre, code, samp, h1, table *, figcaption {
+#document-status, #keywords, #categories-and-subject-descriptors, #general-terms, pre, code, samp, h1, table *, figcaption {
 -moz-hyphens:none;
 -webkit-hyphens:none;
 -ms-hyphens:none;
 hyphens:none;
 }
 
-h1,h2,h3,h4, strong, dt, figcaption:before, caption:before, #subtitle {
-  font-weight: bold;
-}
-h5,h6, em, cite, dfn, address {
-  font-style: italic;
-}
-h1 em, h2 em, h3 em, h4 em, dt dfn {
-  font-weight: bold;
-  font-style: italic;
-}
-code, code strong, samp, samp strong, pre, kbd, button {
-font-family:monospace;
-}
-code strong, samp strong {
-font-weight:bold;
-}
-h5 {
-font-weight:normal;
+main {
+  h1,h2,h3,h4, strong, dt, figcaption:before, caption:before, #subtitle {
+    font-weight: bold;
+  }
+  h5,h6, em, cite, dfn, address {
+    font-style: italic;
+  }
+  h1 em, h2 em, h3 em, h4 em, dt dfn {
+    font-weight: bold;
+    font-style: italic;
+  }
+  code, code strong, samp, samp strong, pre, kbd, button {
+  font-family:monospace;
+  }
+  code strong, samp strong {
+  font-weight:bold;
+  }
+  h5 {
+  font-weight:normal;
+  }
+  p {
+  text-indent:1em;
+  }
 }
 
-p {
-text-indent:1em;
-}
 
 h1,h2,h3,h4,h5,h6 {
 overflow:hidden;
@@ -406,6 +385,10 @@ dl.references {
   dt {
     float: left;
     clear: left;
+  }
+
+  dd {
+    margin: 0 0 0 1.75em;
   }
 }
 
