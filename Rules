@@ -5,6 +5,7 @@ compile '/index.*' do
   filter :bibmarkdown, bibfile: items['/references.bib'],
                        style: 'springer-lecture-notes-in-computer-science'
   filter :kramdown
+  filter :rubypants
   filter :markupfilter
   layout '/default.*'
 end
