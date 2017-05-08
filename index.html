@@ -245,7 +245,37 @@ Each of these components can take several different parameters.
 <a href="#config-n3">Fig. 3</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3">
-<iframe src="code/module-n3.ttl" style="width:100%; height:500px"></iframe>
+<pre><code>ex:n3 a lsdc:Module;
+    lsdc:hasComponents
+        n3:Parser,
+        n3:Lexer.
+
+n3:Parser a lsdc:ComponentConstructable
+    lsdc:hasParameter n3:format,
+        n3:blankNodePrefix,
+        n3:lexer,
+        n3:explicitQuantifiers.
+
+n3:format a lsdc:Parameter;
+    rdfs:range xsd:string.
+n3:blankNodePrefix a lsdc:Parameter;
+    rdfs:range xsd:string.
+n3:lexer a lsdc:Parameter;
+    rdfs:range n3:Lexer.
+n3:explicitQuantifiers a lsdc:Parameter;
+    rdfs:range xsd:boolean.
+
+n3:Lexer a lsdc:ComponentConstructable
+    lsdc:hasParameter n3:lineMode,
+        n3:n3,
+        n3:comments;
+
+n3:lineMode a lsdc:Parameter;
+    rdfs:range xsd:boolean.
+n3:n3 a lsdc:Parameter;
+    rdfs:range xsd:boolean.
+n3:comments a lsdc:Parameter;
+    rdfs:range xsd:boolean.</code></pre>
 <figcaption>
         <p>The N3.js module contains a parser, lexer and util component.
 The parser and lexer are a constructable components.
@@ -255,14 +285,17 @@ The util component already is an instance, for which it needs no parameters.</p>
 </figure>
 
     <figure id="config-n3">
-<iframe src="code/config-n3.ttl" style="width:100%; height:120px"></iframe>
+<pre><code>ex:myLexer a n3:Lexer;
+    n3:comments &quot;true&quot;^^xsd:boolean.
+
+ex:myParser a n3:Parser;
+    n3:format &quot;application/trig&quot;;
+    n3:lexer ex:myLexer.</code></pre>
 <figcaption>
         <p><code>ex:myLexer</code> is a lexer that accepts comments.
 <code>ex:myParser</code> is a parser that accepts the TriG format and uses <code>ex:myLexer</code> for lexing.</p>
       </figcaption>
 </figure>
-
-    <p class="todo">Don’t use iframes</p>
 
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
@@ -291,13 +324,46 @@ This description enchances the component definitions from <a href="#module-n3">F
 as it provides a lower level (implementation) view on the component constructors.</p>
 
     <figure id="module-n3-mapped">
-<iframe src="code/module-n3-mapped.ttl" style="width:100%; height:520px"></iframe>
+<pre><code>n3:Parser lsdc:constructorMapping ([
+    om:hasField [
+        om:fieldName &quot;format&quot;;
+        om:fieldValue: n3:format.
+    ],
+    [
+        om:fieldName &quot;blankNodePrefix&quot;;
+        om:fieldValue: n3:blankNodePrefix.
+    ],
+    [
+        om:fieldName &quot;lexer&quot;;
+        om:fieldValue: n3:lexer.
+    ],
+    [
+        om:fieldName &quot;explicitQuantifiers&quot;;
+        om:fieldValue: n3:explicitQuantifiers.
+    ].
+]).
+
+n3:Lexer lsdc:constructorMapping ([
+    om:hasField [
+        om:fieldName &quot;lineMode&quot;;
+        om:fieldValue: n3:lineMode.
+    ],
+    [
+        om:fieldName &quot;n3&quot;;
+        om:fieldValue: n3:n3.
+    ],
+    [
+        om:fieldName &quot;comments&quot;;
+        om:fieldValue: n3:comments.
+    ].
+]).</code></pre>
 <figcaption>
         <p>Both the parameters of the parser and lexer component are respectively mapped to an object.
 These objects are the single arguments of respectively the parser and lexer constructor.
 The field value in this case is always a parameter.</p>
       </figcaption>
 </figure>
+
   </section>
 
   <section id="instantiating-component-configurations">
