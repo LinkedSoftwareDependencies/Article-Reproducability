@@ -64,7 +64,7 @@ header {
 }
 
 main {
-  counter-reset: section figure;
+  counter-reset: section;
 
   section > p, ul, ol, dl {
     hyphens: auto;
@@ -126,10 +126,8 @@ main {
     figcaption {
       margin: 0 2em;
 
-      &::before {
+      .label {
         float: left;
-        counter-increment: figure;
-        content: "Fig. " counter(figure) ":";
         font-weight: bold;
         margin-right: .5em;
       }

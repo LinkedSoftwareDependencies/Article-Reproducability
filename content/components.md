@@ -44,7 +44,7 @@ It exposes several components such as _Parser_ and _Lexer_.
 Each of these components can take several different parameters.
 [](#config-n3) illustrates how instances can be created of these component types.
 
-<figure id="module-n3">
+<figure id="module-n3" class="listing">
 ````/code/module-n3.ttl````
 <figcaption markdown="block">
 The N3.js module contains a parser, lexer and util component.
@@ -54,7 +54,7 @@ The util component already is an instance, for which it needs no parameters.
 </figcaption>
 </figure>
 
-<figure id="config-n3">
+<figure id="config-n3" class="listing">
 ````/code/config-n3.ttl````
 <figcaption markdown="block">
 `ex:myLexer` is a lexer that accepts comments.
@@ -89,7 +89,7 @@ An object map can be dynamic, where the object field names and values can be map
 This description enchances the component definitions from [](#module-n3)
 as it provides a lower level (implementation) view on the component constructors.
 
-<figure id="module-n3-mapped">
+<figure id="module-n3-mapped" class="listing">
 ````/code/module-n3-mapped.ttl````
 <figcaption markdown="block">
 Both the parameters of the parser and lexer component are respectively mapped to an object.
