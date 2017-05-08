@@ -39,10 +39,10 @@ Conforming to the RDF semantics, components can have multiple ancestors, and are
 Say some things about parameters once the vocabulary on this has been fixed.
 {:.todo}
 
-[Fig. 2](#module-n3) shows an example of the N3.js npm module using the components vocabulary.
+[](#module-n3) shows an example of the N3.js npm module using the components vocabulary.
 It exposes several components such as _Parser_ and _Lexer_.
 Each of these components can take several different parameters.
-[Fig. 3](#config-n3) illustrates how instances can be created of these component types.
+[](#config-n3) illustrates how instances can be created of these component types.
 
 <figure id="module-n3">
 ````/code/module-n3.ttl````
@@ -85,8 +85,8 @@ If the value of `fieldName` or `fieldValue` is a literal, the literal value will
 A `fieldValue` can also refer to another object map, which will be mapped to the resulting object.
 An object map can be dynamic, where the object field names and values can be mapped dynamically based on predicates.
 
-[Fig. 4](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
-This description enchances the component definitions from [Fig. 2](#module-n3)
+[](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
+This description enchances the component definitions from [](#module-n3)
 as it provides a lower level (implementation) view on the component constructors.
 
 <figure id="module-n3-mapped">

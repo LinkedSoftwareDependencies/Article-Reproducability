@@ -34,7 +34,7 @@ with the IRI of the full setup, reproducibility is guaranteed
 Moreover, the IRIs of the entire experiment or its parts
 can be reused in other articles or experiment
 to unambiguously refer to the same conditions.
-[Fig. 1](#description-diagram) illustrates how this leads to a chain of provenance
+[](#description-diagram) illustrates how this leads to a chain of provenance
 from the research article to the data
 and the experiment that generates it,
 and all the aspects surrounding that experiment.
