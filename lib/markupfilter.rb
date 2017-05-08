@@ -4,14 +4,14 @@ class MarkupFilter < Nanoc::Filter
   def run(content, params = {})
     content = content.dup
 
-    move_references_to_main content
-    move_heading_ids_to_section content
-
     include_code_blocks content
 
     labels = create_labels content
     add_labels_to_figures content, labels
     set_reference_labels content, labels
+
+    move_references_to_main content
+    move_heading_ids_to_section content
 
     content
   end
@@ -54,6 +54,8 @@ class MarkupFilter < Nanoc::Filter
   # Determines the label type of a given element
   def label_type_for tag, attribute_list
     case tag
+    when :h2
+      'Section'
     when :figure
       case parse_attributes(attribute_list)[:class]
       when 'listing'

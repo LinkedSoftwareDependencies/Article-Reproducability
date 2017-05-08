@@ -1,4 +1,6 @@
 ## Describing components and their configuration
+{:#describing-components}
+
 Ruben T. writes this
 {:.todo}
 

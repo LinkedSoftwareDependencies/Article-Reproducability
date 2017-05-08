@@ -1,4 +1,6 @@
 ## Introduction
+{:#introduction}
+
 Too many computer science articles
 that contain experimental software evaluations
 identify that software only by name and, sometimes, version number.
@@ -68,4 +70,8 @@ Our contributions are the following:
 - a **use case** explaining the usage of the resulting Linked Data
   in scientific articles.
 
-{:.todo} Would a figure explaining the relation between module, component, configuration and instance be useful here?
+Would a figure explaining the relation between module, component, configuration and instance be useful here?
+{:.todo}
+
+Add outline: [](#related-work), [](#overview), …
+{:todo}

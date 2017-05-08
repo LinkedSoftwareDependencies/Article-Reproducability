@@ -1,4 +1,6 @@
 ## Use case: a Linked Data Fragments experiment
+{:#use-case}
+
 Sarven, Joachim, Ruben V. write this
 {:.todo}
 
