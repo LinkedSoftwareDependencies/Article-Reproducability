@@ -165,6 +165,14 @@ q {
   }
 }
 
+pre {
+  margin: 1em 2em;
+
+  code {
+    font: 11pt/1.2 monospace;
+  }
+}
+
 #references {
   h2 {
     &::before {
