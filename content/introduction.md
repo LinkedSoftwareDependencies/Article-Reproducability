@@ -27,7 +27,10 @@ Using Linked Data to publish such descriptions provides two immediate benefits:
 the experimental setup and parts thereof can be _identified with IRIs_,
 and their details can be retrieved by _dereferencing those IRIs_.
 Therefore, if research articles complement their textual explanation of an experiment
-with the IRI of the full setup, reproducibility is guaranteed.
+with the IRI of the full setup, reproducibility is guaranteed
+
+"Guaranteed" may be too strong?
+{:.todo}
 Moreover, the IRIs of the entire experiment or its parts
 can be reused in other articles or experiment
 to unambiguously refer to the same conditions.
@@ -64,3 +67,5 @@ Our contributions are the following:
 - the **automated instantiation** of such a configuration;
 - a **use case** explaining the usage of the resulting Linked Data
   in scientific articles.
+
+{:.todo} Would a figure explaining the relation between module, component, configuration and instance be useful here?
