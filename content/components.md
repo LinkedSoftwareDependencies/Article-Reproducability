@@ -45,7 +45,7 @@ Each of these components can take several different parameters.
 [Fig. 3](#config-n3) illustrates how instances can be created of these component types.
 
 <figure id="module-n3">
-<iframe src="code/module-n3.ttl" style="width:100%; height:500px"></iframe>
+````/code/module-n3.ttl````
 <figcaption markdown="block">
 The N3.js module contains a parser, lexer and util component.
 The parser and lexer are a constructable components.
@@ -55,15 +55,12 @@ The util component already is an instance, for which it needs no parameters.
 </figure>
 
 <figure id="config-n3">
-<iframe src="code/config-n3.ttl" style="width:100%; height:120px"></iframe>
+````/code/config-n3.ttl````
 <figcaption markdown="block">
 `ex:myLexer` is a lexer that accepts comments.
 `ex:myParser` is a parser that accepts the TriG format and uses `ex:myLexer` for lexing.
 </figcaption>
 </figure>
-
-Don't use iframes
-{:.todo}
 
 ### Object-oriented components
 
@@ -93,7 +90,7 @@ This description enchances the component definitions from [Fig. 2](#module-n3)
 as it provides a lower level (implementation) view on the component constructors.
 
 <figure id="module-n3-mapped">
-<iframe src="code/module-n3-mapped.ttl" style="width:100%; height:520px"></iframe>
+````/code/module-n3-mapped.ttl````
 <figcaption markdown="block">
 Both the parameters of the parser and lexer component are respectively mapped to an object.
 These objects are the single arguments of respectively the parser and lexer constructor.
