@@ -1,0 +1,33 @@
+n3:Parser lsdc:constructorMapping ([
+    om:hasField [
+        om:fieldName "format";
+        om:fieldValue: n3:format.
+    ],
+    [
+        om:fieldName "blankNodePrefix";
+        om:fieldValue: n3:blankNodePrefix.
+    ],
+    [
+        om:fieldName "lexer";
+        om:fieldValue: n3:lexer.
+    ],
+    [
+        om:fieldName "explicitQuantifiers";
+        om:fieldValue: n3:explicitQuantifiers.
+    ].
+]).
+
+n3:Lexer lsdc:constructorMapping ([
+    om:hasField [
+        om:fieldName "lineMode";
+        om:fieldValue: n3:lineMode.
+    ],
+    [
+        om:fieldName "n3";
+        om:fieldValue: n3:n3.
+    ],
+    [
+        om:fieldName "comments";
+        om:fieldValue: n3:comments.
+    ].
+]).

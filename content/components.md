@@ -5,7 +5,7 @@ Ruben T. writes this
 In this section, we introduce a vocabulary for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
-### Components vocabulary
+### Components
 
 Within the components vocabulary, we define a software _component_ as _either a software class that can be instantiated or an instance_.
 The purpose of a component is to provide operations that can be used by other components.
@@ -67,13 +67,36 @@ Don't use iframes
 
 ### Object-oriented components
 
-constructor mapping (params have no order, in OOP they do)
-{:.todo}
+A consequence of using RDF to instantiate components is that the parameters have no fixed order.
+While this is sufficient to describe component instantiations on a semantic level,
+it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
+which is the case for most popular programming languages.
 
-{:.todo} object mapping voc
+We introduce a new vocabulary for describing the mapping between the pure semantic parameters
+to arguments in method calls in OOP languages like JavaScript, hence the name _object mapping vocabulary_.
 
 link to voc
 {:.todo}
 
-different types and simplified form for non-semantic devs
-{:.todo}
+Our vocabulary introduces the _object map_ and the _array map_, the latter is a subclass of the former.
+An object map can have several _object map entries_, where each entry has a field name and a field value.
+An array map can have several _array map entries_, each entry only has a value.
+
+Figure TODO shows an overview of all the classes and predicates in the components vocabulary.
+
+If the value of `fieldName` or `fieldValue` is a literal, the literal value will be mapped to the object field name or value.
+A `fieldValue` can also refer to another object map, which will be mapped to the resulting object.
+An object map can be dynamic, where the object field names and values can be mapped dynamically based on predicates.
+
+[Fig. 4](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
+This description enchances the component definitions from [Fig. 2](#module-n3)
+as it provides a lower level (implementation) view on the component constructors.
+
+<figure id="module-n3-mapped">
+<iframe src="code/module-n3-mapped.ttl" style="width:100%; height:520px"></iframe>
+<figcaption markdown="block">
+Both the parameters of the parser and lexer component are respectively mapped to an object.
+These objects are the single arguments of respectively the parser and lexer constructor.
+The field value in this case is always a parameter.
+</figcaption>
+</figure>
