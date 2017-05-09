@@ -336,6 +336,17 @@ main {
     float: left;
     clear: left;
   }
+
+  // Links
+  a {
+    // Display URL of external links that are not references
+    &:not([property])[href^=http] {
+      &:after {
+        content: ' (' attr(href) ')';
+        font-style: italic;
+      }
+    }
+  }
 }
 
 header {
