@@ -11,3 +11,5 @@ end
 guard :livereload do
   watch(%r{^output/}) { |m| m[0].sub(%r{^output/}, '') }
 end
+
+notification :notifu, :nosound => true
