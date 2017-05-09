@@ -18,6 +18,7 @@ Sarven will start this
 {:.todo}
 
 ### Dependency injection
+{:#related-work-dependency-injection}
 
 Software frameworks are often based on the concept of [Inversion of Control](cite:cites InversionOfControl,DesigningReusableClasses).
 Inversion of Control is, according to [Fowler](cite:providesQuotationFor InversionOfControl), <q>a key part of what makes a framework different to a library</q>.
