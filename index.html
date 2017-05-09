@@ -147,7 +147,7 @@ in scientific articles.</li>
 
     <p class="todo">Would a figure explaining the relation between module, component, configuration and instance be useful here?</p>
 
-    <p>Add outline: <a href="#related-work">Section 3</a>, <a href="#overview">Section 4</a>, …</p>
+    <p>Add outline: <a href="#related-work">Section 2</a>, <a href="#overview">Section 3</a>, …</p>
 
   </section>
 
@@ -408,13 +408,13 @@ we don’t only <em>describe</em> components, but also allow them to be <em>inst
 
     <p>We have implemented, <a href="https://github.com/LinkedSoftwareDependencies/Components.js">Components.js</a>,
 an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
-It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 6</a>.
+It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 5</a>.
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
     <p><a href="#components.js">Listing 4</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
-This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Unknown 8</a>
+This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Subsection 2.3</a>
 It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
 If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
 Additionally, <a href="https://github.com/LinkedSoftwareDependencies/Components.js#component-configuration-unnamed">simplified mechanisms</a>
