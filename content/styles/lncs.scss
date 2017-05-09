@@ -392,6 +392,26 @@ dl.references {
   }
 }
 
+#footnotes {
+  counter-reset: footnote;
+
+  ol {
+    list-style: none;
+    li {
+      &:before {
+        counter-increment: footnote;
+        content: counter(footnote);
+        font-size: smaller;
+        margin: -.3em .1em 0 0;
+        float: left;
+      }
+    }
+  }
+
+  .reversefootnote {
+    display: none;
+  }
+}
 
 h1 + p,
 h2 + p,
