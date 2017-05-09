@@ -9,20 +9,20 @@ We provide an example of the application of this vocabulary to object-oriented s
 
 ### Components
 
-Within the components vocabulary, we define a software _component_ as _either a software class that can be instantiated or an instance_.
+Within the components vocabulary, we reuse Fowler's definition of a [software component](cite:providesQuotationFor DependencyInjection).
 The purpose of a component is to provide operations that can be used by other components.
-In object-oriented programming (OOP), a component could therefore be either an _object_, _object factory_ or the _constructor of a class_.
-The instantiation of a component can require certain parameters, just like OOP languages allow constructors to have certain arguments.
+The instantiation of a component can require certain parameters,
+just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 
 link to voc
 {:.todo}
 
-A _module_ is a collection of components.
-Within OOP languages, this can correspond to a software library or an application,
+We define a _module_ as a collection of components.
+Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of functionalities, i.e., components.
 
 We define a component as a _subtype_ of `rdfs:Class`.
-The parameters of a component can therefore be defined as an `rdfs:Property` on a component.
+The parameters to construct a component can therefore be defined as an `rdfs:Property` on a component.
 This simple component structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.
 
