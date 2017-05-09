@@ -22,10 +22,9 @@ Sarven will start this
 Software frameworks are often based on the concept of [Inversion of Control](cite:cites InversionOfControl,DesigningReusableClasses).
 Inversion of Control is, according to [Fowler](cite:providesQuotationFor InversionOfControl), <q>a key part of what makes a framework different to a library</q>.
 While a library provides functions that can be called by you, a framework provides some form kind of workflow,
-where you can plug in certain functionality, and the framework will call you when needed.
-<aside>
-This concept is also know as the [Hollywood Principle](cite:cites HollywoodPrinciple): <q>Don't call us, we'll call you</q>
-</aside>
+where you can plug in certain functionality, and the framework will call you when needed[^HollywoodPrinciple].
+
+[^HollywoodPrinciple]: This concept is also know as the [Hollywood Principle](cite:cites HollywoodPrinciple): <q>Don't call us, we'll call you</q>
 
 [Dependency Injection](cite:cites DependencyInjection) is a form of Inversion of Control where components
 are injected into other components by an external component.
