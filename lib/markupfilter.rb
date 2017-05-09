@@ -55,12 +55,12 @@ class MarkupFilter < Nanoc::Filter
 
   # Creates labels for referenceable elements
   def create_labels content
-    reference_counts = {}
-    labels = content.scan(/<(\w+)([^>]*\s+id="([^"]+)"[^>]*)>/)
-                    .map do |tag, attribute_list, id|
+    @reference_counts = {}
+    main = content[%r{<main>.*</main>}m]
+    labels = main.scan(/<(\w+)([^>]*\s+id="([^"]+)"[^>]*)>/)
+                 .map do |tag, attribute_list, id|
       type = label_type_for tag.downcase.to_sym, attribute_list
-      number = (reference_counts[type] || 0) + 1
-      reference_counts[type] = number
+      number = number_for type
       [id, "#{type} #{number}"]
     end
     labels.to_h
@@ -71,6 +71,8 @@ class MarkupFilter < Nanoc::Filter
     case tag
     when :h2
       'Section'
+    when :h3
+      'Subsection'
     when :figure
       case parse_attributes(attribute_list)[:class]
       when 'listing'
@@ -81,6 +83,21 @@ class MarkupFilter < Nanoc::Filter
     else
       'Unknown'
     end
+  end
+
+  def number_for type
+    # Determine number of elements
+    @reference_counts[type] ||= 0
+    number = @reference_counts[type] += 1
+
+    # Perform hierarchical numbering when needed
+    case type
+    when 'Section'
+      @reference_counts['Subsection'] = 0
+    when 'Subsection'
+      number = "#{reference_counts['Section']}.#{number}"
+    end
+    number
   end
 
   # Adds labels to referenceable figures
