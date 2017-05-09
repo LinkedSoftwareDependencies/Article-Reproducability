@@ -10,23 +10,38 @@ class MarkupFilter < Nanoc::Filter
     add_labels_to_figures content, labels
     set_reference_labels content, labels
 
-    move_references_to_main content
+    move_footnotes_to_footer content
+    move_references_to_footer content
     move_heading_ids_to_section content
 
     content
-  end
-
-  # Moves the references section into <main>
-  def move_references_to_main content
-    references = content[%r{<h2 id="references">.*?</dl>}m]
-    content[references] = ''
-    content['</main>'] = "<section>\n" + references + "\n</section>\n</main>"
   end
 
   # Moves IDs on headings to their parent section
   def move_heading_ids_to_section content
     content.gsub! /<section>(\s*)(<h\d[^>]*)(\sid=[^\s>]+)/,
                   '<section\3>\1\2'
+  end
+
+  # Move the footnotes to the footer
+  def move_footnotes_to_footer content
+    container = content[%r{<div class="footnotes">\s*(.*?)\s*</div>}m]
+    footnotes = $1
+    content[container] = ''
+    content['</footer>'] =  <<-FOOTER
+      <section id="footnotes">
+        <h2>Footnotes</h2>
+        #{footnotes}
+      </section>
+    </footer>
+    FOOTER
+  end
+
+  # Moves the references section into <footer>>
+  def move_references_to_footer content
+    references = content[%r{<h2 id="references">.*?</dl>}m]
+    content[references] = ''
+    content['</footer>'] = "<section>\n" + references + "\n</section>\n</footer>"
   end
 
   # Includes code blocks from external files
