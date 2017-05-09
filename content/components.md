@@ -64,6 +64,8 @@ The util component already is an instance, for which it needs no parameters.
 </figcaption>
 </figure>
 
+{:.todo} mention reasoning for checking things like valid parameter range
+
 ### Object-oriented components
 
 A consequence of using RDF to instantiate components is that the parameters have no fixed order.
