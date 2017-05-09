@@ -19,8 +19,8 @@ Sarven will start this
 
 ### Dependency injection
 
-Software frameworks are often based on the concept of [Inversion of Control](cite:cites InversionOfControl)[TODO](cite:cites DesigningReusableClasses).
-[Inversion of Control](cite:providesQuotationFor InversionOfControl) is, according to Fowler, <q>a key part of what makes a framework different to a library</q>.
+Software frameworks are often based on the concept of [Inversion of Control](cite:cites InversionOfControl,DesigningReusableClasses).
+Inversion of Control is, according to [Fowler](cite:providesQuotationFor InversionOfControl), <q>a key part of what makes a framework different to a library</q>.
 While a library provides functions that can be called by you, a framework provides some form kind of workflow,
 where you can plug in certain functionality, and the framework will call you when needed.
 <sidenote>
