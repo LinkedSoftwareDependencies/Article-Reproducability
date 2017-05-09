@@ -166,7 +166,7 @@ Should also look at their argumentation.</p>
     <h3 id="ontologies-and-vocabularies-for-describing-experiments">Ontologies and vocabularies for describing experiments</h3>
     <p class="todo">Sarven will start this</p>
 
-    <h3 id="dependency-injection">Dependency injection</h3>
+    <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
     <p>Software frameworks are often based on the concept of <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-3">[3]</a><a class="reference" href="#ref-4">[4]</a>.
 Inversion of Control is, according to <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/bliki/InversionOfControl.html">Fowler</a> <a class="reference" href="#ref-3">[3]</a>, <q>a key part of what makes a framework different to a library</q>.
@@ -401,9 +401,42 @@ The field value in this case is always a parameter.</p>
   <section id="instantiating">
     <h2>Instantiating component configurations</h2>
 
-    <p class="todo">Ruben T. writes this.</p>
+    <p>In the previous section, we introduced a vocabulary for describing software components and how they can be instantiated.
+In this section, we introduce a dependency injection framework based on these component descriptions.
+With this, we take semantic software component descriptions to the next level,
+we don’t only <em>describe</em> components, but also allow them to be <em>instantiated</em>.</p>
 
-    <p class="todo">We use constructor injection with RDF-based configuration.</p>
+    <p>We have implemented, <a href="https://github.com/LinkedSoftwareDependencies/Components.js">Components.js</a>,
+an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
+It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 6</a>.
+It accepts raw triple streams or URL’s to RDF documents containing these declarations.
+At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
+
+    <p><a href="#components.js">Listing 4</a> illustrates how components can be instantiated using Components.js.
+It provides a <code>Loader</code> class that acts as an assembler when instantiated.
+This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Unknown 8</a>
+It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
+If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
+Additionally, <a href="https://github.com/LinkedSoftwareDependencies/Components.js#component-configuration-unnamed">simplified mechanisms</a>
+are in place for developers that want to use the dependency injector directly without having to semantically describe the component.</p>
+
+    <figure id="components.js" class="listing">
+<pre><code>const Loader = require(&#39;lsd-components&#39;).Loader;
+let loader = new Loader();
+loader.registerModuleResourcesUrl(
+    &#39;http://example.org/module-n3.ttl&#39;)
+    .then(() =&gt;loader.instantiateFromUrl(
+        &#39;http://example.org/config-n3.ttl#myParser&#39;,
+        &#39;http://example.org/config-n3.ttl&#39;))
+    .then((parser) =&gt; { ... });</code></pre>
+<figcaption>
+        <p><span class="label">Listing 4:</span> First, a new component loader is created
+after which module and component definitions are registered.
+Finally, a declarative component instantiation is supplied by providing the component URI
+and the location at which the resource can be found.</p>
+      </figcaption>
+</figure>
+
   </section>
 
   <section id="use-case">
