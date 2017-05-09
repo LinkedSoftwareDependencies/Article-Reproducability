@@ -25,6 +25,7 @@ group :development do
   gem 'serve'
   gem 'thin'
   gem 'rack-livereload'
+  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 end
 
 group :test do
