@@ -234,6 +234,44 @@ Ruben V. will write the basis.</p>
 
     <p class="todo">Joachim writes this</p>
 
+    <p>There are several levels of granularity on which software can be described,
+going from a high-level package overview to a low-level description of the actual code.
+In our descriptions we make use of several of these layers,
+depending on the context and the requirements.
+Drilling down from the top to the bottom, we have the following layers:</p>
+
+    <ul>
+      <li>a <em>bundle</em> is a container. It describes what the software is expected to do. 
+ An example of this would be the <em>N3.js</em> library.</li>
+      <li>a <em>module</em> is a software package implementing a specific bundle. 
+ This is also known as a version of a bundle.
+ <em>N3.js 0.10.0</em> is a module.</li>
+      <li>a <em>component</em> is a specific part of a module 
+ that can be called in a certain way with a certain set of parameters.
+ The <em>N3.js 0.10.0 Parser</em> is a component.</li>
+    </ul>
+
+    <p class="todo">I don’t like how this line sticks to the listing</p>
+
+    <p>Within this section we will focus on bundles and modules,
+while components are described more in-depth in the following sections.</p>
+
+    <h3 id="node-package-manager-npm">Node Package Manager (npm)</h3>
+    <p>An example of a large collection of bundles and modules is the npm library.
+It contains over 475,000 Node.js libraries,
+all with their own features and requirements.
+Using our terminology,
+an npm package would be a bundle,
+while a specific version of such a package would be a module.
+The package contains the description of the project together with all its versions,
+while a version contains the specific dependencies and a link to the actual implementation.</p>
+
+    <p>All this npm data is stored in <a href="http://couchdb.apache.org/">CouchDB</a> instance with one entry per bundle.</p>
+
+    <h3 id="bundles">Bundles</h3>
+
+    <h3 id="modules">Modules</h3>
+
   </section>
 
   <section id="describing-components">
