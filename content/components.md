@@ -9,7 +9,7 @@ We provide an example of the application of this vocabulary to object-oriented s
 
 ### Components
 
-Within the components vocabulary, we reuse Fowler's definition of a [software component](cite:providesQuotationFor DependencyInjection).
+Within the components vocabulary, we reuse Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection).
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
