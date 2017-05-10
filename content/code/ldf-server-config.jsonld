@@ -1,32 +1,30 @@
 {
-  "@context": {
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "npmd": "http://linkedsoftwaredependencies.org/bundles/npm/",
-    "ldfs": "npmd:ldf-server/",
-    "rdfa": "http://www.w3.org/ns/rdfa#"
-  },
+  "@context": "http://linkedsoftwaredependencies.org/contexts/ldf-server.jsonld",
   "@id": "urn:ldfserver:my",
   "@type": "ldfs:Server/Qpf",
 
-  "rdfs:label": "My Linked Data Fragments server",
+  "title": "My Linked Data Fragments server",
 
-  "ldfs:datasource": [
+  "datasources": [
+    {
+      "@id": "ldfs:defaultIndexDatasource"
+    },
     {
       "@id": "ex:myHdtDatasource",
-      "@type": "ldfs:Datasource/Hdt",
-      "rdfs:label": "DBpedia 2014",
-      "rdfs:comment": "DBpedia 2014 with an HDT back-end",
-      "ldfs:Datasource/path": "dbpedia",
-      "ldfs:Datasource/Hdt/file": "data/dbpedia2014.hdt"
+      "@type": "HdtDatasource",
+      "title": "DBpedia 2014",
+      "description": "DBpedia 2014 with an HDT back-end",
+      "path": "dbpedia",
+      "hdtFile": "data/dbpedia2014.hdt"
     },
     {
       "@id": "ex:mySparqlDatasource",
-      "@type": "ldfs:Datasource/Sparql",
-      "rdfs:label": "DBpedia 3.9 (Virtuoso)",
-      "rdfs:comment": "DBpedia 3.9 with a Virtuoso back-end",
-      "ldfs:Datasource/path": "dbpedia-sparql",
-      "ldfs:Datasource/Sparql/endpoint": "http://dbpedia.restdesc.org/",
-      "ldfs:Datasource/Sparql/defaultGraph": "http://dbpedia.org"
+      "@type": "SparqlDatasource",
+      "title": "DBpedia 3.9 (Virtuoso)",
+      "description": "DBpedia 3.9 with a Virtuoso back-end",
+      "path": "dbpedia-sparql",
+      "sparqlEndpoint": "http://dbpedia.restdesc.org/",
+      "sparqlDefaultGraph": "http://dbpedia.org"
     }
   ]
 }
