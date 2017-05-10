@@ -516,7 +516,7 @@ This new configuration format has two major advantages:</p>
 <pre><code>{
   &quot;@context&quot;: &quot;http://linkedsoftwaredependencies.org/contexts/ldf-server.jsonld&quot;,
   &quot;@id&quot;: &quot;urn:ldfserver:my&quot;,
-  &quot;@type&quot;: &quot;ldfs:Server/Qpf&quot;,
+  &quot;@type&quot;: &quot;QpfServer&quot;,
 
   &quot;title&quot;: &quot;My Linked Data Fragments server&quot;,
 
@@ -527,16 +527,16 @@ This new configuration format has two major advantages:</p>
     {
       &quot;@id&quot;: &quot;ex:myHdtDatasource&quot;,
       &quot;@type&quot;: &quot;HdtDatasource&quot;,
-      &quot;title&quot;: &quot;DBpedia 2014&quot;,
-      &quot;description&quot;: &quot;DBpedia 2014 with an HDT back-end&quot;,
+      &quot;datasourceTitle&quot;: &quot;DBpedia 2014&quot;,
+      &quot;datasourceDescription&quot;: &quot;DBpedia 2014 with an HDT back-end&quot;,
       &quot;path&quot;: &quot;dbpedia&quot;,
       &quot;hdtFile&quot;: &quot;data/dbpedia2014.hdt&quot;
     },
     {
       &quot;@id&quot;: &quot;ex:mySparqlDatasource&quot;,
       &quot;@type&quot;: &quot;SparqlDatasource&quot;,
-      &quot;title&quot;: &quot;DBpedia 3.9 (Virtuoso)&quot;,
-      &quot;description&quot;: &quot;DBpedia 3.9 with a Virtuoso back-end&quot;,
+      &quot;datasourceTitle&quot;: &quot;DBpedia 3.9 (Virtuoso)&quot;,
+      &quot;datasourceDescription&quot;: &quot;DBpedia 3.9 with a Virtuoso back-end&quot;,
       &quot;path&quot;: &quot;dbpedia-sparql&quot;,
       &quot;sparqlEndpoint&quot;: &quot;http://dbpedia.restdesc.org/&quot;,
       &quot;sparqlDefaultGraph&quot;: &quot;http://dbpedia.org&quot;
