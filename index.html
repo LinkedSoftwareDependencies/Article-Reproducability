@@ -172,17 +172,25 @@ Should also look at their argumentation.</p>
 
     <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
-    <p>Software frameworks are often based on the concept of <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-3">[3]</a><a class="reference" href="#ref-4">[4]</a>.
-Inversion of Control is, according to <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/bliki/InversionOfControl.html">Fowler</a> <a class="reference" href="#ref-3">[3]</a>, <q>a key part of what makes a framework different to a library</q>.
-While a library provides functions that can be called by you, a framework provides some form kind of workflow,
-where you can plug in certain functionality, and the framework will call you when needed<sup id="fnref:HollywoodPrinciple"><a href="#fn:HollywoodPrinciple" class="footnote">1</a></sup>.</p>
-
-    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-6">[6]</a> is a form of Inversion of Control where components
-are injected into other components by an external component.
-Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-6">[6]</a> as
+    <p>Separation of concerns <a class="reference" href="#ref-3">[3]</a> is a software design principle in which software is
+split up into separate components, each having their own separate task.
+Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a> as
 <q>a glob of software that’s intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
-Three types of dependency injection are typically distinguished,
-which always need an external <em>Assembler</em> component that is responsible for injecting the components.</p>
+This design principle is especially useful for experimental software,
+because it improves flexibility when for instance different implementations of an algorithm are be compared using different components.</p>
+
+    <p>One way of working with components is to call their functions yourself, which means that your define the flow of control.
+Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-5">[5]</a><a class="reference" href="#ref-6">[6]</a>,
+this flow can be defined by a software framework.
+In the latter case, the functions of the framework don’t have to be called by you, but the framework will call you for certain functionality when needed<sup id="fnref:HollywoodPrinciple"><a href="#fn:HollywoodPrinciple" class="footnote">1</a></sup>.</p>
+
+    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-4">[4]</a> is a form of Inversion of Control where components
+are injected into other components by an external component, i.e., an <em>Assembler</em>.
+Experimental software is a category of software that benefits from this paradigm,
+because it allows different components to be defined and injected independently
+into this software to observe its experimental effects.</p>
+
+    <p>Three types of dependency injection are typically distinguished:</p>
 
     <ul>
       <li>Interface injection: The assembler calls an <code>inject</code> method in the target component to inject its dependencies.</li>
@@ -190,7 +198,7 @@ which always need an external <em>Assembler</em> component that is responsible f
       <li>Constructor injection: The assember maps interfaces to implementation classes with their constructor parameters and allows dynamic construction.</li>
     </ul>
 
-    <p>Each of these types requires a configuration phase to wire the component instances or factories,
+    <p>Each of these types require a configuration phase to wire the component instances or factories,
 and an injection phase to plug in the actual dependencies inside components.
 This wiring can either be done in code, or through external configuration files.
 These configuration files are typically declarative, and can be defined in formats such as XML or JSON.
@@ -284,7 +292,7 @@ We provide an example of the application of this vocabulary to object-oriented s
 
     <h3 id="components">Components</h3>
 
-    <p>Within the components vocabulary, we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-6">[6]</a>.
+    <p>Within the components vocabulary, we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a>.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.</p>
@@ -488,7 +496,7 @@ and the location at which the resource can be found.</p>
 
     <p class="todo">Sarven, Joachim, Ruben V. write this</p>
 
-    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-7">[7]</a></p>
+    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-8">[8]</a></p>
 
     <p>We have implemented a new version of the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a>
 where all components are dynamically wired by Components.js.
@@ -506,37 +514,36 @@ This new configuration format has two major advantages:</p>
 
     <figure id="ldf-server-config" class="listing">
 <pre><code>{
-  &quot;@context&quot;: {
-    &quot;rdfs&quot;: &quot;http://www.w3.org/2000/01/rdf-schema#&quot;,
-    &quot;npmd&quot;: &quot;http://linkedsoftwaredependencies.org/bundles/npm/&quot;,
-    &quot;ldfs&quot;: &quot;npmd:ldf-server/&quot;,
-    &quot;rdfa&quot;: &quot;http://www.w3.org/ns/rdfa#&quot;
-  },
+  &quot;@context&quot;: &quot;http://linkedsoftwaredependencies.org/contexts/ldf-server.jsonld&quot;,
   &quot;@id&quot;: &quot;urn:ldfserver:my&quot;,
   &quot;@type&quot;: &quot;ldfs:Server/Qpf&quot;,
 
-  &quot;rdfs:label&quot;: &quot;My Linked Data Fragments server&quot;,
+  &quot;title&quot;: &quot;My Linked Data Fragments server&quot;,
 
-  &quot;ldfs:datasource&quot;: [
+  &quot;datasources&quot;: [
+    {
+      &quot;@id&quot;: &quot;ldfs:defaultIndexDatasource&quot;
+    },
     {
       &quot;@id&quot;: &quot;ex:myHdtDatasource&quot;,
-      &quot;@type&quot;: &quot;ldfs:Datasource/Hdt&quot;,
-      &quot;rdfs:label&quot;: &quot;DBpedia 2014&quot;,
-      &quot;rdfs:comment&quot;: &quot;DBpedia 2014 with an HDT back-end&quot;,
-      &quot;ldfs:Datasource/path&quot;: &quot;dbpedia&quot;,
-      &quot;ldfs:Datasource/Hdt/file&quot;: &quot;data/dbpedia2014.hdt&quot;
+      &quot;@type&quot;: &quot;HdtDatasource&quot;,
+      &quot;title&quot;: &quot;DBpedia 2014&quot;,
+      &quot;description&quot;: &quot;DBpedia 2014 with an HDT back-end&quot;,
+      &quot;path&quot;: &quot;dbpedia&quot;,
+      &quot;hdtFile&quot;: &quot;data/dbpedia2014.hdt&quot;
     },
     {
       &quot;@id&quot;: &quot;ex:mySparqlDatasource&quot;,
-      &quot;@type&quot;: &quot;ldfs:Datasource/Sparql&quot;,
-      &quot;rdfs:label&quot;: &quot;DBpedia 3.9 (Virtuoso)&quot;,
-      &quot;rdfs:comment&quot;: &quot;DBpedia 3.9 with a Virtuoso back-end&quot;,
-      &quot;ldfs:Datasource/path&quot;: &quot;dbpedia-sparql&quot;,
-      &quot;ldfs:Datasource/Sparql/endpoint&quot;: &quot;http://dbpedia.restdesc.org/&quot;,
-      &quot;ldfs:Datasource/Sparql/defaultGraph&quot;: &quot;http://dbpedia.org&quot;
+      &quot;@type&quot;: &quot;SparqlDatasource&quot;,
+      &quot;title&quot;: &quot;DBpedia 3.9 (Virtuoso)&quot;,
+      &quot;description&quot;: &quot;DBpedia 3.9 with a Virtuoso back-end&quot;,
+      &quot;path&quot;: &quot;dbpedia-sparql&quot;,
+      &quot;sparqlEndpoint&quot;: &quot;http://dbpedia.restdesc.org/&quot;,
+      &quot;sparqlDefaultGraph&quot;: &quot;http://dbpedia.org&quot;
     }
   ]
-}</code></pre>
+}
+</code></pre>
 <figcaption>
         <p><span class="label">Listing 5:</span> We define an LDF server component of type <code>ldfs:Server/Qpf</code> in JSON-LD.
 The two datasources are also components that are loaded into the LDF server.</p>
@@ -563,7 +570,7 @@ The two datasources are also components that are loaded into the LDF server.</p>
         <h2>Footnotes</h2>
         <ol>
     <li id="fn:HollywoodPrinciple">
-      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-5">[5]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
+      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-7">[7]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
       </section>
@@ -575,14 +582,16 @@ The two datasources are also components that are loaded into the LDF server.</p>
   <dt id="ref-2">[2]</dt>
   <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Arenas, M., Corcho, O., Simperl, E., Strohmaier, M., d’Aquin, M., Srinivas, K., Groth, P., Dumontier, M., Heflin, J., Thirunarayan, K., and Staab, S. (eds.) Proceedings of the 14th International Semantic Web Conference. pp. 339–355. Springer (2015).</dd>
   <dt id="ref-3">[3]</dt>
-  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
-  <dt id="ref-5">[5]</dt>
-  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
-  <dt id="ref-6">[6]</dt>
   <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
+  <dt id="ref-5">[5]</dt>
+  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dt id="ref-6">[6]</dt>
+  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
   <dt id="ref-7">[7]</dt>
+  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
+  <dt id="ref-8">[8]</dt>
   <dd>Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016).</dd>
 </dl>
 </section>
