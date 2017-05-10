@@ -274,7 +274,14 @@ while a specific version of such a package would be a module.
 The package contains the description of the project together with all its versions,
 while a version contains the specific dependencies and a link to the actual implementation.</p>
 
-    <p>All this npm data is stored in <a href="http://couchdb.apache.org/">CouchDB</a> instance with one entry per bundle.</p>
+    <p>All this npm data is stored in a <a href="http://couchdb.apache.org/">CouchDB</a> 
+<a href="https://registry.npmjs.org/">instance</a> with one entry per bundle.
+This corresponds to the <a href="https://docs.npmjs.com/files/package.json">metadata</a> added by the package developer,
+with additional metadata automatically added by the npm publishing process.</p>
+
+    <p>To be able to uniquely identify software components and,
+more importantly, interlink software components,
+we converted the JSON metadata provided by the npm registry to JSON-LD.</p>
 
     <h3 id="bundles">Bundles</h3>
 
