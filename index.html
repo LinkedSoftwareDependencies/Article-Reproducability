@@ -293,17 +293,17 @@ we converted the JSON metadata provided by the npm registry to JSON-LD.</p>
   <section id="describing-components">
     <h2>Describing components and their configuration</h2>
 
-    <p class="todo">Ruben T. writes this</p>
-
     <p>In this section, we introduce a vocabulary for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.</p>
 
-    <h3 id="components">Components</h3>
+    <h3 id="object-oriented-components">Object-oriented components</h3>
 
-    <p>Within the components vocabulary, we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a>.
+    <p>Within the <em>object-oriented components vocabulary</em>,
+we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
-just like object-oriented programming (OOP) languages allow constructors to have certain arguments.</p>
+just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
+In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.</p>
 
     <p class="todo">link to voc</p>
 
@@ -311,23 +311,25 @@ just like object-oriented programming (OOP) languages allow constructors to have
 Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of functionalities, i.e., components.</p>
 
-    <p>We define a component as a <em>subtype</em> of <code>rdfs:Class</code>.
+    <p>We define component as a <em>subclass</em> of <code>rdfs:Class</code>.
 The parameters to construct a component can therefore be defined as an <code>rdfs:Property</code> on a component.
-This simple component structure enables convenient semantic descriptions of components instantiations,
+This class structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.</p>
 
     <p>Figure TODO shows an overview of all the classes and predicates in the components vocabulary.</p>
 
     <p class="todo">figure</p>
 
-    <p>Several component subtypes are defined.
-A component can be constructable, which means that it requires some form of instantiation before it can be used elsewhere.
-It can also be a direct instance, meaning that it can directly be used within other components and needs no further instantiation.
-A component can also be abstract, which does not allow directly instantiating this component type.
+    <p>Several <code>oo:Component</code> subclasses are defined.
+An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
+All instantiations of <code>oo:Class</code> instances are an <code>oo:Instance</code>.
+It can also be an <code>oo:Instance</code>, meaning that it can directly be used within other components and needs no further instantiation.
+An <code>oo:Class</code> can also be <code>oo:ClassAbstract</code>, which does not allow directly instantiating this component type.
 Abstract components can be used to define a set of shared parameters in a common ancestor.
-Conforming to the RDF semantics, components can have multiple ancestors, and are indicating using the <code>rdfs:subClassOf</code> predicate.</p>
+Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the <code>rdfs:subClassOf</code> predicate.</p>
 
-    <p class="todo">Say some things about parameters once the vocabulary on this has been fixed.</p>
+    <p>The parameters that are used to instantiate an <code>oo:Class</code> to an <code>oo:Instance</code> are of type <code>oo:Parameter</code>.
+An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.</p>
 
     <p><a href="#module-n3">Listing 1</a> shows an example of the N3.js npm module using the components vocabulary.
 It exposes several components such as <em>Parser</em> and <em>Lexer</em>.
@@ -335,36 +337,36 @@ Each of these components can take several different parameters.
 <a href="#config-n3">Listing 2</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3" class="listing">
-<pre><code>ex:n3 a lsdc:Module;
-    lsdc:hasComponents
+<pre><code>ex:n3 a oo:Module;
+    oo:hasComponents
         n3:Parser,
         n3:Lexer.
 
-n3:Parser a lsdc:ComponentConstructable
-    lsdc:hasParameter n3:format,
+n3:Parser a oo:Class
+    oo:hasParameter n3:format,
         n3:blankNodePrefix,
         n3:lexer,
         n3:explicitQuantifiers.
 
-n3:format a lsdc:Parameter;
+n3:format a oo:Parameter;
     rdfs:range xsd:string.
-n3:blankNodePrefix a lsdc:Parameter;
+n3:blankNodePrefix a oo:Parameter;
     rdfs:range xsd:string.
-n3:lexer a lsdc:Parameter;
+n3:lexer a oo:Parameter;
     rdfs:range n3:Lexer.
-n3:explicitQuantifiers a lsdc:Parameter;
+n3:explicitQuantifiers a oo:Parameter;
     rdfs:range xsd:boolean.
 
-n3:Lexer a lsdc:ComponentConstructable
-    lsdc:hasParameter n3:lineMode,
+n3:Lexer a oo:Class
+    oo:hasParameter n3:lineMode,
         n3:n3,
         n3:comments;
 
-n3:lineMode a lsdc:Parameter;
+n3:lineMode a oo:Parameter;
     rdfs:range xsd:boolean.
-n3:n3 a lsdc:Parameter;
+n3:n3 a oo:Parameter;
     rdfs:range xsd:boolean.
-n3:comments a lsdc:Parameter;
+n3:comments a oo:Parameter;
     rdfs:range xsd:boolean.</code></pre>
 <figcaption>
         <p><span class="label">Listing 1:</span> The N3.js module contains a parser, lexer and util component.
@@ -389,12 +391,12 @@ ex:myParser a n3:Parser;
 
     <p>{:.todo} mention reasoning for checking things like valid parameter range</p>
 
-    <h3 id="object-oriented-components">Object-oriented components</h3>
+    <h3 id="object-mapping">Object mapping</h3>
 
     <p>A consequence of using RDF to instantiate components is that the parameters have no fixed order.
 While this is sufficient to describe component instantiations on a semantic level,
 it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
-which is the case for most popular programming languages.</p>
+which is the case for most popular OOP languages.</p>
 
     <p>We introduce a new vocabulary for describing the mapping between the pure semantic parameters
 to arguments in method calls in OOP languages like JavaScript, hence the name <em>object mapping vocabulary</em>.</p>
@@ -407,8 +409,10 @@ An array map can have several <em>array map entries</em>, each entry only has a 
 
     <p>Figure TODO shows an overview of all the classes and predicates in the components vocabulary.</p>
 
-    <p>If the value of <code>fieldName</code> or <code>fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
-A <code>fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
+    <p class="todo">figure</p>
+
+    <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
+An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
 An object map can be dynamic, where the object field names and values can be mapped dynamically based on predicates.</p>
 
     <p><a href="#module-n3-mapped">Listing 3</a> shows the mapping of the N3.js component parameters to the constructor implementations.
@@ -416,7 +420,7 @@ This description enchances the component definitions from <a href="#module-n3">L
 as it provides a lower level (implementation) view on the component constructors.</p>
 
     <figure id="module-n3-mapped" class="listing">
-<pre><code>n3:Parser lsdc:constructorMapping ([
+<pre><code>n3:Parser oo:constructorMapping ([
     om:hasField [
         om:fieldName &quot;format&quot;;
         om:fieldValue: n3:format.
@@ -435,7 +439,7 @@ as it provides a lower level (implementation) view on the component constructors
     ].
 ]).
 
-n3:Lexer lsdc:constructorMapping ([
+n3:Lexer oo:constructorMapping ([
     om:hasField [
         om:fieldName &quot;lineMode&quot;;
         om:fieldValue: n3:lineMode.
