@@ -1,0 +1,10 @@
+{
+    "@context": [
+        "https://linkedsoftwaredependencies.org/contexts/npm",
+        { "script": "https://linkedsoftwaredependencies.org/scripts/npm/"}
+    ],
+    "version": "0.10.0",
+    "engines": { "node": "https://linkedsoftwaredependencies.org/engines/node/%3E%3D0.10.0" },
+    "devDependencies": { "async": "https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1" },
+    "scripts": { "script:test": "https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0/scripts/test" }
+}

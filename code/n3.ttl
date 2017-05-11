@@ -1,0 +1,12 @@
+npm:n3 a doap:Project;
+    dcterms:abstract "Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.";
+    dcterms:subject "turtle", "rdf", "n3", "streaming", "asynchronous";
+    spdx:licenseDeclared <https://spdx.org/licenses/MIT.html>;
+    doap:release <http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>;
+    doap:bug-database <https://github.com/RubenVerborgh/N3.js/issues>;
+    doap:homepage <https://github.com/RubenVerborgh/N3.js#readme>;
+    doap:name "n3";
+    owl:sameAs "https://www.npmjs.com/package/n3";
+    foaf:maker users:rubenverborgh.
+users:rubenverborgh foaf:mbox "ruben.verborgh@gmail.com";
+    foaf:name "Ruben Verborgh".

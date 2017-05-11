@@ -284,15 +284,167 @@ while a version contains the specific dependencies and a link to the actual impl
     <p>All this npm data is stored in a <a href="http://couchdb.apache.org/">CouchDB</a> 
 <a href="https://registry.npmjs.org/">instance</a> with one entry per bundle.
 This corresponds to the <a href="https://docs.npmjs.com/files/package.json">metadata</a> added by the package developer,
-with additional metadata automatically added by the npm publishing process.</p>
-
-    <p>To be able to uniquely identify software components and,
+with additional metadata automatically added by the npm publishing process.
+To be able to uniquely identify software components and,
 more importantly, interlink software components,
-we converted the JSON metadata provided by the npm registry to JSON-LD.</p>
+we converted the JSON metadata provided by the npm registry to RDF.</p>
+
+    <h3 id="json-ld">JSON-LD</h3>
+    <p>Since our input data is JSON,
+it made sense to convert to <a href="http://json-ld.org/">JSON-LD</a>,
+a format specifically made for adding semantics to JSON.
+JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data.
+This context describes how the JSON tags should be interpreted.
+E.g., having <code>"name": "foaf:name"</code> in your context implies
+that all name tags should be interpreted as the predicate <code>foaf:name</code>.
+Other JSON-LD keywords can be used to identify if certain values are URIs,
+or if an entity has a specific type.
+For the data where we could not reach the format using just the JSON-LD context,
+such as concatenating values to create a URI,
+we modified some of the input JSON before exporting it to JSON-LD.</p>
+
+    <p class="todo">Decrease tags in examples for pages.
+Probably also drop either JSON-LD or turtle</p>
 
     <h3 id="bundles">Bundles</h3>
+    <p>A bundle represents the general npm package.
+<a href="#n3.json">Listing 1</a> shows a subset of what metadata can be found in the npm repository.
+Since this is a bundle this contains general descriptions,
+such as the name and homepage.
+<a href="#n3.jsonld">Listing 2</a> then shows the JSON-LD version of this same metadata.
+As can be seen, some tags were added to provide additional information,
+e.g., a link to the actual npm repository,
+but most of the tags stayed the same,
+getting their metadata information from the context.
+One of important changes that we made is minting URIs for the specific versions of a package,
+as can be seen with the versions tag,
+and providing that information when the URI for the specific version gets accessed.
+In <a href="#n3.ttl">Listing 3</a> a turtle representation of the same data is shown.
+These RDF examples can also be found by accessing 
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a>
+with the corresponding <em>Accept</em> headers.</p>
+
+    <figure id="n3.json" class="listing">
+<pre><code>{
+    &quot;name&quot;: &quot;n3&quot;,
+    &quot;description&quot;: &quot;Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.&quot;,
+    &quot;author&quot;: {
+        &quot;name&quot;: &quot;Ruben Verborgh&quot;,
+        &quot;email&quot;: &quot;ruben.verborgh@gmail.com&quot;
+    },
+    &quot;versions&quot;: { &quot;0.10.0&quot;: { &quot;name&quot;: &quot;n3&quot;, &quot;version&quot;: &quot;0.0.1&quot; } }
+    &quot;homepage&quot;: &quot;https://github.com/RubenVerborgh/N3.js#readme&quot;,
+    &quot;keywords&quot;: [ &quot;turtle&quot;, &quot;rdf&quot;, &quot;n3&quot;, &quot;streaming&quot;, &quot;asynchronous&quot; ],
+    &quot;bugs&quot;: { &quot;url&quot;: &quot;https://github.com/RubenVerborgh/N3.js/issues&quot; },
+    &quot;license&quot;: &quot;MIT&quot;
+}
+</code></pre>
+<figcaption>
+        <p><span class="label">Listing 1:</span> Subset of the JSON npm representation of the N3 package.</p>
+      </figcaption>
+</figure>
+
+    <figure id="n3.jsonld" class="listing">
+<pre><code>{
+    &quot;@context&quot;: &quot;https://linkedsoftwaredependencies.org/contexts/npm&quot;,
+    &quot;name&quot;: &quot;n3&quot;,
+    &quot;description&quot;: &quot;Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.&quot;,
+    &quot;author&quot;: {
+        &quot;@id&quot;: &quot;http://linkedsoftwaredependencies.org/users/npm/rubenverborgh&quot;,
+        &quot;foaf:name&quot;: &quot;Ruben Verborgh&quot;,
+        &quot;email&quot;: &quot;ruben.verborgh@gmail.com&quot;
+    },
+    &quot;versions&quot;: { &quot;0.10.0&quot;: &quot;http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&quot; },
+    &quot;homepage&quot;: &quot;https://github.com/RubenVerborgh/N3.js#readme&quot;,
+    &quot;keywords&quot;: [ &quot;turtle&quot;, &quot;rdf&quot;, &quot;n3&quot;, &quot;streaming&quot;, &quot;asynchronous&quot; ],
+    &quot;bugs&quot;: { &quot;url&quot;: &quot;https://github.com/RubenVerborgh/N3.js/issues&quot; },
+    &quot;license&quot;: {
+        &quot;@id&quot;: &quot;https://spdx.org/licenses/MIT.html&quot;,
+        &quot;spdx:name&quot;: &quot;MIT&quot;
+    },
+    &quot;@id&quot;: &quot;https://linkedsoftwaredependencies.org/bundles/npm/n3&quot;,
+    &quot;owl:sameAs&quot;: &quot;https://www.npmjs.com/package/n3&quot;,
+    &quot;@type&quot;: &quot;doap:Project&quot;
+}</code></pre>
+<figcaption>
+        <p><span class="label">Listing 2:</span> JSON-LD representation of <a href="#n3.json">Listing 1</a>.</p>
+      </figcaption>
+</figure>
+
+    <figure id="n3.ttl" class="listing">
+<pre><code>npm:n3 a doap:Project;
+    dcterms:abstract &quot;Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.&quot;;
+    dcterms:subject &quot;turtle&quot;, &quot;rdf&quot;, &quot;n3&quot;, &quot;streaming&quot;, &quot;asynchronous&quot;;
+    spdx:licenseDeclared &lt;https://spdx.org/licenses/MIT.html&gt;;
+    doap:release &lt;http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&gt;;
+    doap:bug-database &lt;https://github.com/RubenVerborgh/N3.js/issues&gt;;
+    doap:homepage &lt;https://github.com/RubenVerborgh/N3.js#readme&gt;;
+    doap:name &quot;n3&quot;;
+    owl:sameAs &quot;https://www.npmjs.com/package/n3&quot;;
+    foaf:maker users:rubenverborgh.
+users:rubenverborgh foaf:mbox &quot;ruben.verborgh@gmail.com&quot;;
+    foaf:name &quot;Ruben Verborgh&quot;.
+</code></pre>
+<figcaption>
+        <p><span class="label">Listing 3:</span> Turtle representation of <a href="#n3.ttl">Listing 3</a>.
+Prefix definitions omitted for brevity.</p>
+      </figcaption>
+</figure>
 
     <h3 id="modules">Modules</h3>
+    <p>A module is a specific version of a package.
+Continuing with the examples shown above,
+<a href="#n3-0.10.0.json">Listing 4</a> provides some tags present
+in the npm metadata of N3 version 0.10.0.
+Since the general case of tags has already been covered above,
+we focus on several more interesting tags in the metadata shown here.</p>
+
+    <p>As can be seen in the JSON-LD version in <a href="#n3-0.10.0.jsonld">Listing 5</a>,
+we minted several new URIs here.
+In the dependencies, we now link to the semantic version <code>^2.0.1</code> 
+of the async package in our own namespace.
+This version corresponds to any version number of that package
+that does not modify the left-most non-zero digit of the given version.
+When accessing this URI,
+the semantic version number will be interpreted
+and a redirect will be given to the highest matching actual number.
+In this case, a redirect will be given to 
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0">https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0</a>.</p>
+
+    <p>For the scripts we also generated new URIs.
+Several scripts are predefined by npm,
+meaning they get shared by many packages,
+so a shared URI for those makes sense.
+The actual content of the script can be accessed by accessing the new script URI,
+allowing for easier automation by services that can execute these scripts.</p>
+
+    <figure id="n3-0.10.0.json" class="listing">
+<pre><code>{
+    &quot;version&quot;: &quot;0.10.0&quot;,
+    &quot;engines&quot;: { &quot;node&quot;: &quot;&gt;=0.10.0&quot; },
+    &quot;devDependencies&quot;: { &quot;async&quot;: &quot;^2.0.1&quot; },
+    &quot;scripts&quot;: { &quot;test&quot;: &quot;mocha&quot; }
+}</code></pre>
+<figcaption>
+        <p><span class="label">Listing 4:</span> Subset of the JSON npm representation N3 version 0.10.0.</p>
+      </figcaption>
+</figure>
+
+    <figure id="n3-0.10.0.jsonld" class="listing">
+<pre><code>{
+    &quot;@context&quot;: [
+        &quot;https://linkedsoftwaredependencies.org/contexts/npm&quot;,
+        { &quot;script&quot;: &quot;https://linkedsoftwaredependencies.org/scripts/npm/&quot;}
+    ],
+    &quot;version&quot;: &quot;0.10.0&quot;,
+    &quot;engines&quot;: { &quot;node&quot;: &quot;https://linkedsoftwaredependencies.org/engines/node/%3E%3D0.10.0&quot; },
+    &quot;devDependencies&quot;: { &quot;async&quot;: &quot;https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1&quot; },
+    &quot;scripts&quot;: { &quot;script:test&quot;: &quot;https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0/scripts/test&quot; }
+}</code></pre>
+<figcaption>
+        <p><span class="label">Listing 5:</span> Subset of the JSON npm representation N3 version 0.10.0.</p>
+      </figcaption>
+</figure>
 
   </section>
 
@@ -341,10 +493,10 @@ An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code
 <code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
-    <p><a href="#module-n3">Listing 1</a> shows an example of the N3.js npm module using the components vocabulary.
+    <p><a href="#module-n3">Listing 6</a> shows an example of the N3.js npm module using the components vocabulary.
 It exposes several components such as <em>Parser</em> and <em>Lexer</em>.
 Each of these components can take several different parameters.
-<a href="#config-n3">Listing 2</a> illustrates how instances can be created of these component types.</p>
+<a href="#config-n3">Listing 7</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3" class="listing">
 <pre><code>ex:n3 a oo:Module;
@@ -379,7 +531,7 @@ n3:n3 a oo:Parameter;
 n3:comments a oo:Parameter;
     rdfs:range xsd:boolean.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 1:</span> The N3.js module contains a parser, lexer and util component.
+        <p><span class="label">Listing 6:</span> The N3.js module contains a parser, lexer and util component.
 The parser and lexer are a constructable components.
 The parser has a parameter that takes another component, a lexer, as input.
 The util component already is an instance, for which it needs no parameters.</p>
@@ -394,7 +546,7 @@ ex:myParser a n3:Parser;
     n3:format &quot;application/trig&quot;;
     n3:lexer ex:myLexer.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 2:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
+        <p><span class="label">Listing 7:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
 <code>ex:myParser</code> is a parser that accepts the TriG format and uses <code>ex:myLexer</code> for lexing.</p>
       </figcaption>
 </figure>
@@ -428,7 +580,7 @@ An <code>om:fieldValue</code> can also refer to another object map, which will b
 <code>om:collectsEntriesFrom</code> can refer to a predicate that points to entities with certain predicates.
 Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
 Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.
-<a href="#om-collects-module">Listing 3</a>, <a href="#om-collects-data">Listing 4</a> and <a href="#om-collects-result">Listing 5</a> show an example of this entry collection process.</p>
+<a href="#om-collects-module">Listing 8</a>, <a href="#om-collects-data">Listing 9</a> and <a href="#om-collects-result">Listing 10</a> show an example of this entry collection process.</p>
     <figure id="om-collects-module" class="listing">
 <pre><code>:myOm om:hasField [
     om:fieldName foaf:name;
@@ -443,7 +595,7 @@ Each entity predicate refered to by <code>om:fieldValue</code> will have its val
 <pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
   &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
 <figcaption>
-        <p><span class="label">Listing 3:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
+        <p><span class="label">Listing 8:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
 with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.</p>
       </figcaption>
 </figure>
@@ -454,20 +606,20 @@ with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.<
 :bob foaf:name &quot;Bob&quot;;
     foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 4:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
+        <p><span class="label">Listing 9:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
       </figcaption>
 </figure>
     <figure id="om-collects-result" class="listing">
 <pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
   &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
 <figcaption>
-        <p><span class="label">Listing 5:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 4</a>
-using the object mapping from <a href="#om-collects-module">Listing 3</a>.</p>
+        <p><span class="label">Listing 10:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 9</a>
+using the object mapping from <a href="#om-collects-module">Listing 8</a>.</p>
       </figcaption>
 </figure>
 
-    <p><a href="#module-n3-mapped">Listing 6</a> shows the mapping of the N3.js component parameters to the constructor implementations.
-This description enchances the component definitions from <a href="#module-n3">Listing 1</a>
+    <p><a href="#module-n3-mapped">Listing 11</a> shows the mapping of the N3.js component parameters to the constructor implementations.
+This description enchances the component definitions from <a href="#module-n3">Listing 6</a>
 as it provides a lower level (implementation) view on the component constructors.</p>
 
     <figure id="module-n3-mapped" class="listing">
@@ -505,7 +657,7 @@ n3:Lexer oo:constructorMapping ([
     ].
 ]).</code></pre>
 <figcaption>
-        <p><span class="label">Listing 6:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
+        <p><span class="label">Listing 11:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
 These objects are the single arguments of respectively the parser and lexer constructor.
 The field value in this case is always a parameter.</p>
       </figcaption>
@@ -529,7 +681,7 @@ It is able to construct component instances based on declarative component const
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
-    <p><a href="#components.js">Listing 7</a> illustrates how components can be instantiated using Components.js.
+    <p><a href="#components.js">Listing 12</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
 This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Subsection 2.3</a>
 It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
@@ -547,7 +699,7 @@ loader.registerModuleResourcesUrl(
         &#39;http://example.org/config-n3.ttl&#39;))
     .then((parser) =&gt; { ... });</code></pre>
 <figcaption>
-        <p><span class="label">Listing 7:</span> First, a new component loader is created
+        <p><span class="label">Listing 12:</span> First, a new component loader is created
 after which module and component definitions are registered.
 Finally, a declarative component instantiation is supplied by providing the component URI
 and the location at which the resource can be found.</p>
@@ -569,7 +721,7 @@ We semantically describe the LDF server module and its 32 components, which resu
 The configuration file used to be a <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON file</a>
 with a custom domain-specific language.
 Now, this configuration file is a declarative components file that can be understood by Components.js,
-as can be seen in <a href="#ldf-server-config">Listing 8</a>.
+as can be seen in <a href="#ldf-server-config">Listing 13</a>.
 This new configuration format has two major advantages:</p>
 
     <ul>
@@ -610,7 +762,7 @@ This new configuration format has two major advantages:</p>
 }
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 8:</span> We define an LDF server component of type <code>ldfs:Server/Qpf</code> in JSON-LD.
+        <p><span class="label">Listing 13:</span> We define an LDF server component of type <code>ldfs:Server/Qpf</code> in JSON-LD.
 The two datasources are also components that are loaded into the LDF server.</p>
       </figcaption>
 </figure>
