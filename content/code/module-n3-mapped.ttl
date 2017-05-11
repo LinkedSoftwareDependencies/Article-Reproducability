@@ -1,4 +1,4 @@
-n3:Parser lsdc:constructorMapping ([
+n3:Parser oo:constructorMapping ([
     om:hasField [
         om:fieldName "format";
         om:fieldValue: n3:format.
@@ -17,7 +17,7 @@ n3:Parser lsdc:constructorMapping ([
     ].
 ]).
 
-n3:Lexer lsdc:constructorMapping ([
+n3:Lexer oo:constructorMapping ([
     om:hasField [
         om:fieldName "lineMode";
         om:fieldValue: n3:lineMode.

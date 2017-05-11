@@ -1,31 +1,31 @@
-ex:n3 a lsdc:Module;
-    lsdc:hasComponents
+ex:n3 a oo:Module;
+    oo:hasComponents
         n3:Parser,
         n3:Lexer.
 
-n3:Parser a lsdc:ComponentConstructable
-    lsdc:hasParameter n3:format,
+n3:Parser a oo:Class
+    oo:hasParameter n3:format,
         n3:blankNodePrefix,
         n3:lexer,
         n3:explicitQuantifiers.
 
-n3:format a lsdc:Parameter;
+n3:format a oo:Parameter;
     rdfs:range xsd:string.
-n3:blankNodePrefix a lsdc:Parameter;
+n3:blankNodePrefix a oo:Parameter;
     rdfs:range xsd:string.
-n3:lexer a lsdc:Parameter;
+n3:lexer a oo:Parameter;
     rdfs:range n3:Lexer.
-n3:explicitQuantifiers a lsdc:Parameter;
+n3:explicitQuantifiers a oo:Parameter;
     rdfs:range xsd:boolean.
 
-n3:Lexer a lsdc:ComponentConstructable
-    lsdc:hasParameter n3:lineMode,
+n3:Lexer a oo:Class
+    oo:hasParameter n3:lineMode,
         n3:n3,
         n3:comments;
 
-n3:lineMode a lsdc:Parameter;
+n3:lineMode a oo:Parameter;
     rdfs:range xsd:boolean.
-n3:n3 a lsdc:Parameter;
+n3:n3 a oo:Parameter;
     rdfs:range xsd:boolean.
-n3:comments a lsdc:Parameter;
+n3:comments a oo:Parameter;
     rdfs:range xsd:boolean.
