@@ -21,7 +21,7 @@
 \begin{tikzpicture}[
     node distance = 3em, auto,
     font={\Large\itshape},
-    concept/.style={text=white,font={\Large\bfseries},inner sep=10pt,align=center,rectangle,fill=gray,text width=17em},
+    concept/.style={text=white,font={\Large\bfseries},inner sep=10pt,align=center,rectangle,fill=gray,text width=18em},
     relation/.style={text width=12em},
 ]
 
@@ -30,7 +30,7 @@
     \node[concept, below right=of om] (am) {om:ArrayMapping};
     
     \node[concept, below=of om] (ome) {om:ObjectMappingEntry};
-    \node[concept, below=of am] (ame) {om:ArrayMappingEntries};
+    \node[concept, below=of am] (ame) {om:ArrayMappingElements};
     
     \node[concept, above right=of ame] (list) {rdf:List};
     
