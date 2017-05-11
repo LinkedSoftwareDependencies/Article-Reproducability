@@ -73,5 +73,11 @@ Our contributions are the following:
 Would a figure explaining the relation between module, component, configuration and instance be useful here?
 {:.todo}
 
-Add outline: [](#related-work), [](#overview), …
-{:todo}
+This article is structure as follows.
+In [](#related-work), we will start by explaining the related work.
+Next, in [](#overview) we present an overview of the required steps for software experimentations that will be discussed in this paper.
+[](#describing-modules) introduces the semantic description of software modules.
+Next, [](#describing-components) discusses a semantic description of software components,
+followed by the introduction of a dependency injection framework that can instantiate these described components in [](#instantiating).
+In [](#use-case), we present a use case where we apply our proposed experiment workflow.
+Finally, we discuss our conclusions and future work in [](#conclusion)
