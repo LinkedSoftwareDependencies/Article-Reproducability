@@ -14,6 +14,13 @@ just like object-oriented programming (OOP) languages allow constructors to have
 In this section, we assume OOP in the broad sense of the word, which only requires _classes_, _objects_ and _constructor parameters_.
 [](#voc-oo-diagram) shows an overview of all the classes and predicates in the components vocabulary.
 
+<figure id="voc-oo-diagram">
+<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]">
+<figcaption markdown="block">
+Overview of the classes and properties in the _object-oriented components_ vocabulary.
+</figcaption>
+</figure>
+
 We define a _module_ as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of functionalities, i.e., components.
@@ -22,13 +29,6 @@ We define component as a _subclass_ of `rdfs:Class`.
 The parameters to construct a component can therefore be defined as an `rdfs:Property` on a component.
 This class structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.
-
-<figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]">
-<figcaption markdown="block">
-Overview of the classes and properties in the _object-oriented components_ vocabulary.
-</figcaption>
-</figure>
 
 Several `oo:Component` subclasses are defined.
 An `oo:Component` can be an `oo:Class`, which means that it can be instantiated based on parameters.
@@ -74,19 +74,19 @@ it is insufficient for mapping parameter values to arguments in method and const
 which is the case for most popular OOP languages.
 
 We introduce a new vocabulary for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name _object mapping vocabulary_.
+to arguments in method calls in OOP languages like JavaScript, hence the name [_object mapping vocabulary_](http://linkedsoftwaredependencies.org/vocabularies/object-mapping).
+[](#voc-om-diagram) shows an overview of all the classes and predicates in the components vocabulary.
 
-link to voc
-{:.todo}
+<figure id="voc-om-diagram">
+<img src="voc-om-diagram.svg" alt="[Object mapping vocabulary diagram]">
+<figcaption markdown="block">
+Overview of the classes and properties in the _object mapping_ vocabulary.
+</figcaption>
+</figure>
 
 Our vocabulary introduces the _object map_ and the _array map_, the latter is a subclass of the former.
 An object map can have several _object map entries_, where each entry has a field name and a field value.
 An array map can have several _array map entries_, each entry only has a value.
-
-Figure TODO shows an overview of all the classes and predicates in the components vocabulary.
-
-figure
-{:.todo}
 
 If the value of `om:fieldName` or `om:fieldValue` is a literal, the literal value will be mapped to the object field name or value.
 An `om:fieldValue` can also refer to another object map, which will be mapped to the resulting object.
