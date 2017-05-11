@@ -19,7 +19,6 @@ Tool specifications and their configurations in LODFlow workflows are described 
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
-{:.todo}
 
 ### Dependency injection
 {:#related-work-dependency-injection}
