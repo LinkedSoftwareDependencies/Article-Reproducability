@@ -175,23 +175,27 @@ as they brought a major new angle to reproducibility within the Semantic Web.
 Should also look at their argumentation.</p>
 
     <h3 id="ontologies-and-vocabularies-for-describing-experiments">Ontologies and vocabularies for describing experiments</h3>
-    <p class="todo">Sarven will start this</p>
+    <p><a property="http://purl.org/spar/cito/cites" href="http://doi.acm.org/10.1145/2814864.2814882">LODFlow</a> <a class="reference" href="#ref-3">[3]</a> proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
+Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
+Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
+In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
+Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.</p>
 
     <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
-    <p>Separation of concerns <a class="reference" href="#ref-3">[3]</a> is a software design principle in which software is
+    <p>Separation of concerns <a class="reference" href="#ref-4">[4]</a> is a software design principle in which software is
 split up into separate components, each having their own separate task.
-Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a> as
+Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-5">[5]</a> as
 <q>a glob of software that’s intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
 This design principle is especially useful for experimental software,
 because it improves flexibility when for instance different implementations of an algorithm are be compared using different components.</p>
 
     <p>One way of working with components is to call their functions yourself, which means that your define the flow of control.
-Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-5">[5]</a><a class="reference" href="#ref-6">[6]</a>,
+Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-6">[6]</a><a class="reference" href="#ref-7">[7]</a>,
 this flow can be defined by a software framework.
 In the latter case, the functions of the framework don’t have to be called by you, but the framework will call you for certain functionality when needed<sup id="fnref:HollywoodPrinciple"><a href="#fn:HollywoodPrinciple" class="footnote">1</a></sup>.</p>
 
-    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-4">[4]</a> is a form of Inversion of Control where components
+    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-5">[5]</a> is a form of Inversion of Control where components
 are injected into other components by an external component, i.e., an <em>Assembler</em>.
 Experimental software is a category of software that benefits from this paradigm,
 because it allows different components to be defined and injected independently
@@ -457,7 +461,7 @@ We provide an example of the application of this vocabulary to object-oriented s
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
     <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>object-oriented components vocabulary</em></a>,
-we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a> as a “glob” of software.
+we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-5">[5]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
@@ -713,7 +717,7 @@ and the location at which the resource can be found.</p>
 
     <p class="todo">Sarven, Joachim, Ruben V. write this</p>
 
-    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-8">[8]</a></p>
+    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-9">[9]</a></p>
 
     <p>We have implemented a new version of the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a>
 where all components are dynamically wired by Components.js.
@@ -787,7 +791,7 @@ The two datasources are also components that are loaded into the LDF server.</p>
         <h2>Footnotes</h2>
         <ol>
     <li id="fn:HollywoodPrinciple">
-      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-7">[7]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
+      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-8">[8]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
       </section>
@@ -799,16 +803,18 @@ The two datasources are also components that are loaded into the LDF server.</p>
   <dt id="ref-2">[2]</dt>
   <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Arenas, M., Corcho, O., Simperl, E., Strohmaier, M., d’Aquin, M., Srinivas, K., Groth, P., Dumontier, M., Heflin, J., Thirunarayan, K., and Staab, S. (eds.) Proceedings of the 14th International Semantic Web Conference. pp. 339–355. Springer (2015).</dd>
   <dt id="ref-3">[3]</dt>
-  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
+  <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngomo, A.-C.N.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
+  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
+  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
+  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
   <dt id="ref-8">[8]</dt>
+  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
+  <dt id="ref-9">[9]</dt>
   <dd>Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016).</dd>
 </dl>
 </section>
