@@ -30,13 +30,13 @@
     \node[concept, below=of module] (component) {oo:Component};
     
     \node[concept, below left=of component] (class) {oo:Class};
-    \node[concept, below left=of class] (classAbstract) {oo:ClassAbstract};
+    \node[concept, below left=of class] (classAbstract) {oo:AbstractClass};
     \node[concept, above=of class] (args) {rdf:List};
     
     \node[concept, below right=of component] (instance) {oo:Instance};
     
     \node[concept, below right=of class] (parameter)    {oo:Parameter};
-    \node[concept, below left=of parameter] (parameterUnique)    {oo:ParameterUnique};
+    \node[concept, below left=of parameter] (boolean)    {xsd:boolean};
     \node[concept, below right=of parameter] (blank)    {\ };
     
     % Concept relations
@@ -48,8 +48,8 @@
     \draw[->,thick,relation] (class) -- (parameter) node [right,midway,align=right] {oo:hasParameter};
     \draw[->,thick,relation,text width=17em] (class) -- (args) node [left,midway,align=left] {oo:constructorArguments};
     
-    \draw[->,thick,relation] (parameter) -- (parameterUnique) node [left,midway,align=left] {rdfs:subClassOf};
-    \draw[->,thick,relation,text width=15em] (parameter) -- (blank) node [right,midway,align=right] {oo:hasDefaultValue};
+    \draw[->,thick,relation,text width=15em] (parameter) -- (blank) node [right,midway,align=right] {oo:defaultValue};
+    \draw[->,thick,relation,text width=15em] (parameter) -- (boolean) node [left,midway,align=left] {oo:uniqueValue};
 
 \end{tikzpicture}
 \end{document}

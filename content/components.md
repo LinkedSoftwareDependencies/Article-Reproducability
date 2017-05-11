@@ -34,7 +34,7 @@ Several `oo:Component` subclasses are defined.
 An `oo:Component` can be an `oo:Class`, which means that it can be instantiated based on parameters.
 All instantiations of `oo:Class` instances are an `oo:Instance`.
 It can also be an `oo:Instance`, meaning that it can directly be used within other components and needs no further instantiation.
-An `oo:Class` can also be `oo:ClassAbstract`, which does not allow directly instantiating this component type.
+An `oo:Class` can also be `oo:AbstractClass`, which does not allow directly instantiating this component type.
 Abstract components can be used to define a set of shared parameters in a common ancestor.
 Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the `rdfs:subClassOf` predicate.
 
