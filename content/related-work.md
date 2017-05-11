@@ -14,7 +14,11 @@ Should also look at their argumentation.
 {:.todo}
 
 ### Ontologies and vocabularies for describing experiments
-Sarven will start this
+[LODFlow](cites:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
+Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
+Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
+In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
+Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
 {:.todo}
 
 ### Dependency injection
