@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+% Page setup
+\usepackage[a4paper,landscape,margin=2cm]{geometry}
+
+% Typography
+\usepackage[scaled]{helvet}
+\let\familydefault\sfdefault
+
+\usepackage[usenames,svgnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows}
+
+\definecolor{one}  {RGB}{142, 23,  4}
+\definecolor{two}  {RGB}{ 62,111,186}
+\definecolor{three}{RGB}{172,196, 75}
+
+\begin{document}
+\pagestyle{empty}
+\begin{tikzpicture}[
+    node distance = 3em, auto,
+    font={\Large\itshape},
+    concept/.style={text=white,font={\Large\bfseries},inner sep=10pt,align=center,rectangle,fill=gray,text width=15em},
+    relation/.style={text width=12em},
+]
+
+    % Concepts
+    \node[concept] (module)    {oo:Module};
+    \node[concept, below=of module] (component) {oo:Component};
+    
+    \node[concept, below left=of component] (class) {oo:Class};
+    \node[concept, below left=of class] (classAbstract) {oo:ClassAbstract};
+    \node[concept, above=of class] (args) {rdf:List};
+    
+    \node[concept, below right=of component] (instance) {oo:Instance};
+    
+    \node[concept, below right=of class] (parameter)    {oo:Parameter};
+    \node[concept, below left=of parameter] (parameterUnique)    {oo:ParameterUnique};
+    \node[concept, below right=of parameter] (blank)    {\ };
+    
+    % Concept relations
+    \draw[->,thick,relation] (module) -- (component) node [right,midway,align=center] {oo:hasComponent};
+    \draw[->,thick,relation] (component) -- (class) node [right,midway,align=right] {rdfs:subClassOf};
+    \draw[->,thick,relation] (component) -- (instance) node [right,midway,align=right] {rdfs:subClassOf};
+    
+    \draw[->,thick,relation] (class) -- (classAbstract) node [left,midway,align=left] {rdfs:subClassOf};
+    \draw[->,thick,relation] (class) -- (parameter) node [right,midway,align=right] {oo:hasParameter};
+    \draw[->,thick,relation,text width=17em] (class) -- (args) node [left,midway,align=left] {oo:constructorArguments};
+    
+    \draw[->,thick,relation] (parameter) -- (parameterUnique) node [left,midway,align=left] {rdfs:subClassOf};
+    \draw[->,thick,relation,text width=15em] (parameter) -- (blank) node [right,midway,align=right] {oo:hasDefaultValue};
+
+\end{tikzpicture}
+\end{document}

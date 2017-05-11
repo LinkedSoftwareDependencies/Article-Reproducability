@@ -6,15 +6,13 @@ We provide an example of the application of this vocabulary to object-oriented s
 
 ### Object-oriented components
 
-Within the _object-oriented components vocabulary_,
+Within the [_object-oriented components vocabulary_](http://linkedsoftwaredependencies.org/vocabularies/object-oriented),
 we reuse Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 In this section, we assume OOP in the broad sense of the word, which only requires _classes_, _objects_ and _constructor parameters_.
-
-link to voc
-{:.todo}
+[](#voc-oo-diagram) shows an overview of all the classes and predicates in the components vocabulary.
 
 We define a _module_ as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
@@ -25,10 +23,12 @@ The parameters to construct a component can therefore be defined as an `rdfs:Pro
 This class structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.
 
-Figure TODO shows an overview of all the classes and predicates in the components vocabulary.
-
-figure
-{:.todo}
+<figure id="voc-oo-diagram">
+<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]">
+<figcaption markdown="block">
+Overview of the classes and properties in the _object-oriented components_ vocabulary.
+</figcaption>
+</figure>
 
 Several `oo:Component` subclasses are defined.
 An `oo:Component` can be an `oo:Class`, which means that it can be instantiated based on parameters.
