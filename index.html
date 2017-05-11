@@ -306,6 +306,13 @@ just like object-oriented programming (OOP) languages allow constructors to have
 In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.
 <a href="#voc-oo-diagram">Fig. 2</a> shows an overview of all the classes and predicates in the components vocabulary.</p>
 
+    <figure id="voc-oo-diagram">
+<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]" />
+<figcaption>
+        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> vocabulary.</p>
+      </figcaption>
+</figure>
+
     <p>We define a <em>module</em> as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of functionalities, i.e., components.</p>
@@ -314,13 +321,6 @@ which can contain a multitude of functionalities, i.e., components.</p>
 The parameters to construct a component can therefore be defined as an <code>rdfs:Property</code> on a component.
 This class structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.</p>
-
-    <figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]" />
-<figcaption>
-        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> vocabulary.</p>
-      </figcaption>
-</figure>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
@@ -401,17 +401,19 @@ it is insufficient for mapping parameter values to arguments in method and const
 which is the case for most popular OOP languages.</p>
 
     <p>We introduce a new vocabulary for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name <em>object mapping vocabulary</em>.</p>
+to arguments in method calls in OOP languages like JavaScript, hence the name <a href="http://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>object mapping vocabulary</em></a>.
+<a href="#voc-om-diagram">Fig. 3</a> shows an overview of all the classes and predicates in the components vocabulary.</p>
 
-    <p class="todo">link to voc</p>
+    <figure id="voc-om-diagram">
+<img src="voc-om-diagram.svg" alt="[Object mapping vocabulary diagram]" />
+<figcaption>
+        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>object mapping</em> vocabulary.</p>
+      </figcaption>
+</figure>
 
     <p>Our vocabulary introduces the <em>object map</em> and the <em>array map</em>, the latter is a subclass of the former.
 An object map can have several <em>object map entries</em>, where each entry has a field name and a field value.
 An array map can have several <em>array map entries</em>, each entry only has a value.</p>
-
-    <p>Figure TODO shows an overview of all the classes and predicates in the components vocabulary.</p>
-
-    <p class="todo">figure</p>
 
     <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
 An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
