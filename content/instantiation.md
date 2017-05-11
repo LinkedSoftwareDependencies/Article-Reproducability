@@ -1,6 +1,9 @@
 ## Instantiating component configurations
 {:#instantiating}
 
+mention closing of the world
+{:.todo}
+
 In the previous section, we introduced a vocabulary for describing software components and how they can be instantiated.
 In this section, we introduce a dependency injection framework based on these component descriptions.
 With this, we take semantic software component descriptions to the next level,

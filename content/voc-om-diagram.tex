@@ -36,9 +36,10 @@
     
     \node[concept, below left=of ome] (name)    {\ };
     \node[concept, below=of ome] (value)    {\ };
+    \node[concept, above left=of ome] (value2)    {\ };
     
     % Concept relations
-    \draw[->,thick,relation] (om) -- (ome) node [left,midway,align=center] {om:field};
+    \draw[->,thick,relation] (om) -- (ome) node [right,midway,align=center] {om:field};
     \draw[->,thick,relation] (am) -- (om) node [right,midway,align=right] {rdfs:subClassOf};
     
     \draw[->,thick,relation] (am) -- (ame) node [left,midway,align=center] {om:elements};
@@ -46,6 +47,7 @@
     
     \draw[->,thick,relation] (ome) -- (name) node [left,midway,align=center] {om:fieldName};
     \draw[->,thick,relation] (ome) -- (value) node [right,midway,align=center] {om:fieldValue};
+    \draw[->,thick,relation,text width=16em] (ome) -- (value2) node [left,midway,align=left] {om:collectsEntriesFrom};
 
 \end{tikzpicture}
 \end{document}

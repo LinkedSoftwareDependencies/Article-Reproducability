@@ -1,0 +1,2 @@
+{ "alice": "alice@gmail.com",
+  "bob": "bob@ugent.be" }

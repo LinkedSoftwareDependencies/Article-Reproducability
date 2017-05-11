@@ -40,6 +40,8 @@ Conforming to the RDF semantics, components can have multiple ancestors, and are
 
 The parameters that are used to instantiate an `oo:Class` to an `oo:Instance` are of type `oo:Parameter`.
 An `oo:Parameter` is a _subclass_ of `rdfs:Property`, which simplifies its usage as an RDF property.
+`oo:defaultValue` allows parameters to have a default value when no other values have been provided.
+The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
 [](#module-n3) shows an example of the N3.js npm module using the components vocabulary.
 It exposes several components such as _Parser_ and _Lexer_.
@@ -90,7 +92,32 @@ An array map can have several _array map entries_, each entry only has a value.
 
 If the value of `om:fieldName` or `om:fieldValue` is a literal, the literal value will be mapped to the object field name or value.
 An `om:fieldValue` can also refer to another object map, which will be mapped to the resulting object.
-An object map can be dynamic, where the object field names and values can be mapped dynamically based on predicates.
+`om:collectsEntriesFrom` can refer to a predicate that points to entities with certain predicates.
+Each entity predicate that is refered to by `om:fieldName` will have its values mapped to keys of the object.
+Each entity predicate refered to by `om:fieldValue` will have its values mapped to values.
+[](#om-collects-module), [](#om-collects-data) and [](#om-collects-result) show an example of this entry collection process.
+<figure id="om-collects-module" class="listing">
+````/code/collects-module.ttl````
+````/code/collects-data.ttl````
+````/code/collects-result.txt````
+<figcaption markdown="block">
+An object mapping for mapping all `foaf:knows` resources to an object
+with as key the `foaf:name` and as value the `foaf:mbox`.
+</figcaption>
+</figure>
+<figure id="om-collects-data" class="listing">
+````/code/collects-data.ttl````
+<figcaption markdown="block">
+All the people `:me` knows using the [FOAF vocabulary](http://xmlns.com/foaf/spec/).
+</figcaption>
+</figure>
+<figure id="om-collects-result" class="listing">
+````/code/collects-result.txt````
+<figcaption markdown="block">
+The resulting object when mapping the people `:me` knows from [](#om-collects-data)
+using the object mapping from [](#om-collects-module).
+</figcaption>
+</figure>
 
 [](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
 This description enchances the component definitions from [](#module-n3)
