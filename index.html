@@ -298,14 +298,13 @@ We provide an example of the application of this vocabulary to object-oriented s
 
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
-    <p>Within the <em>object-oriented components vocabulary</em>,
+    <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>object-oriented components vocabulary</em></a>,
 we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-4">[4]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
-In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.</p>
-
-    <p class="todo">link to voc</p>
+In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.
+<a href="#voc-oo-diagram">Fig. 2</a> shows an overview of all the classes and predicates in the components vocabulary.</p>
 
     <p>We define a <em>module</em> as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
@@ -316,9 +315,12 @@ The parameters to construct a component can therefore be defined as an <code>rdf
 This class structure enables convenient semantic descriptions of components instantiations,
 requiring only the fundamental concepts of RDF classes and properties.</p>
 
-    <p>Figure TODO shows an overview of all the classes and predicates in the components vocabulary.</p>
-
-    <p class="todo">figure</p>
+    <figure id="voc-oo-diagram">
+<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]" />
+<figcaption>
+        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> vocabulary.</p>
+      </figcaption>
+</figure>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
