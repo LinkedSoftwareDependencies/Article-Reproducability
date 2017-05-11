@@ -39,11 +39,105 @@ All this npm data is stored in a [CouchDB](http://couchdb.apache.org/)
 [instance](https://registry.npmjs.org/) with one entry per bundle.
 This corresponds to the [metadata](https://docs.npmjs.com/files/package.json) added by the package developer,
 with additional metadata automatically added by the npm publishing process.
-
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
-we converted the JSON metadata provided by the npm registry to JSON-LD.
+we converted the JSON metadata provided by the npm registry to RDF.
+
+### JSON-LD
+Since our input data is JSON,
+it made sense to convert to [JSON-LD](http://json-ld.org/),
+a format specifically made for adding semantics to JSON.
+JSON-LD achieves this by adding a so-called *context* to the JSON data.
+This context describes how the JSON tags should be interpreted.
+E.g., having `"name": "foaf:name"` in your context implies
+that all name tags should be interpreted as the predicate `foaf:name`.
+Other JSON-LD keywords can be used to identify if certain values are URIs,
+or if an entity has a specific type.
+For the data where we could not reach the format using just the JSON-LD context,
+such as concatenating values to create a URI,
+we modified some of the input JSON before exporting it to JSON-LD.
+
+{:.todo}
+Decrease tags in examples for pages.
+Probably also drop either JSON-LD or turtle
 
 ### Bundles
+A bundle represents the general npm package.
+[](#n3.json) shows a subset of what metadata can be found in the npm repository.
+Since this is a bundle this contains general descriptions,
+such as the name and homepage.
+[](#n3.jsonld) then shows the JSON-LD version of this same metadata.
+As can be seen, some tags were added to provide additional information,
+e.g., a link to the actual npm repository,
+but most of the tags stayed the same,
+getting their metadata information from the context.
+One of important changes that we made is minting URIs for the specific versions of a package,
+as can be seen with the versions tag,
+and providing that information when the URI for the specific version gets accessed.
+In [](#n3.ttl) a turtle representation of the same data is shown.
+These RDF examples can also be found by accessing 
+[https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3)
+with the corresponding *Accept* headers.
+
+<figure id="n3.json" class="listing">
+````/code/n3.json````
+<figcaption markdown="block">
+Subset of the JSON npm representation of the N3 package.
+</figcaption>
+</figure>
+
+<figure id="n3.jsonld" class="listing">
+````/code/n3.jsonld````
+<figcaption markdown="block">
+JSON-LD representation of [](#n3.json).
+</figcaption>
+</figure>
+
+<figure id="n3.ttl" class="listing">
+````/code/n3.ttl````
+<figcaption markdown="block">
+Turtle representation of [](#n3.ttl).
+Prefix definitions omitted for brevity.
+</figcaption>
+</figure>
 
 ### Modules
+A module is a specific version of a package.
+Continuing with the examples shown above,
+[](#n3-0.10.0.json) provides some tags present
+in the npm metadata of N3 version 0.10.0.
+Since the general case of tags has already been covered above,
+we focus on several more interesting tags in the metadata shown here.
+
+As can be seen in the JSON-LD version in [](#n3-0.10.0.jsonld),
+we minted several new URIs here.
+In the dependencies, we now link to the semantic version `^2.0.1` 
+of the async package in our own namespace.
+This version corresponds to any version number of that package
+that does not modify the left-most non-zero digit of the given version.
+When accessing this URI,
+the semantic version number will be interpreted
+and a redirect will be given to the highest matching actual number.
+In this case, a redirect will be given to 
+[https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0](https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0).
+
+For the scripts we also generated new URIs.
+Several scripts are predefined by npm,
+meaning they get shared by many packages,
+so a shared URI for those makes sense.
+The actual content of the script can be accessed by accessing the new script URI,
+allowing for easier automation by services that can execute these scripts.
+
+<figure id="n3-0.10.0.json" class="listing">
+````/code/n3-0.10.0.json````
+<figcaption markdown="block">
+Subset of the JSON npm representation N3 version 0.10.0.
+</figcaption>
+</figure>
+
+<figure id="n3-0.10.0.jsonld" class="listing">
+````/code/n3-0.10.0.jsonld````
+<figcaption markdown="block">
+Subset of the JSON npm representation N3 version 0.10.0.
+</figcaption>
+</figure>

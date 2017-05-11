@@ -1,0 +1,21 @@
+{
+    "@context": "https://linkedsoftwaredependencies.org/contexts/npm",
+    "name": "n3",
+    "description": "Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.",
+    "author": {
+        "@id": "http://linkedsoftwaredependencies.org/users/npm/rubenverborgh",
+        "foaf:name": "Ruben Verborgh",
+        "email": "ruben.verborgh@gmail.com"
+    },
+    "versions": { "0.10.0": "http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" },
+    "homepage": "https://github.com/RubenVerborgh/N3.js#readme",
+    "keywords": [ "turtle", "rdf", "n3", "streaming", "asynchronous" ],
+    "bugs": { "url": "https://github.com/RubenVerborgh/N3.js/issues" },
+    "license": {
+        "@id": "https://spdx.org/licenses/MIT.html",
+        "spdx:name": "MIT"
+    },
+    "@id": "https://linkedsoftwaredependencies.org/bundles/npm/n3",
+    "owl:sameAs": "https://www.npmjs.com/package/n3",
+    "@type": "doap:Project"
+}
