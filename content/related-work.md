@@ -1,8 +1,8 @@
 ## Related Work
 {:#related-work}
 
-Introduce section structure
-{:.todo}
+In this section, we discuss the related work on the reproducibility of scientific experiments in scholarly articles,
+ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
 
 ### Scholarly publishing and reproducibility
 Sarven will start this
