@@ -337,7 +337,9 @@ Abstract components can be used to define a set of shared parameters in a common
 Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the <code>rdfs:subClassOf</code> predicate.</p>
 
     <p>The parameters that are used to instantiate an <code>oo:Class</code> to an <code>oo:Instance</code> are of type <code>oo:Parameter</code>.
-An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.</p>
+An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
+<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided.
+The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
     <p><a href="#module-n3">Listing 1</a> shows an example of the N3.js npm module using the components vocabulary.
 It exposes several components such as <em>Parser</em> and <em>Lexer</em>.
@@ -423,9 +425,48 @@ An array map can have several <em>array map entries</em>, each entry only has a 
 
     <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
 An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
-An object map can be dynamic, where the object field names and values can be mapped dynamically based on predicates.</p>
+<code>om:collectsEntriesFrom</code> can refer to a predicate that points to entities with certain predicates.
+Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
+Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.
+<a href="#om-collects-module">Listing 3</a>, <a href="#om-collects-data">Listing 4</a> and <a href="#om-collects-result">Listing 5</a> show an example of this entry collection process.</p>
+    <figure id="om-collects-module" class="listing">
+<pre><code>:myOm om:hasField [
+    om:fieldName foaf:name;
+    om:fieldValue: foaf:mbox.
+    om:collectsEntriesFrom foaf:knows.
+].</code></pre>
+<pre><code>:me foaf:knows :alice, :bob.
+:alice foaf:name &quot;Alice&quot;;
+    foaf:mbox &quot;alice@gmail.com&quot;.
+:bob foaf:name &quot;Bob&quot;;
+    foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
+<pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
+  &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
+<figcaption>
+        <p><span class="label">Listing 3:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
+with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.</p>
+      </figcaption>
+</figure>
+    <figure id="om-collects-data" class="listing">
+<pre><code>:me foaf:knows :alice, :bob.
+:alice foaf:name &quot;Alice&quot;;
+    foaf:mbox &quot;alice@gmail.com&quot;.
+:bob foaf:name &quot;Bob&quot;;
+    foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
+<figcaption>
+        <p><span class="label">Listing 4:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
+      </figcaption>
+</figure>
+    <figure id="om-collects-result" class="listing">
+<pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
+  &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
+<figcaption>
+        <p><span class="label">Listing 5:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 4</a>
+using the object mapping from <a href="#om-collects-module">Listing 3</a>.</p>
+      </figcaption>
+</figure>
 
-    <p><a href="#module-n3-mapped">Listing 3</a> shows the mapping of the N3.js component parameters to the constructor implementations.
+    <p><a href="#module-n3-mapped">Listing 6</a> shows the mapping of the N3.js component parameters to the constructor implementations.
 This description enchances the component definitions from <a href="#module-n3">Listing 1</a>
 as it provides a lower level (implementation) view on the component constructors.</p>
 
@@ -464,7 +505,7 @@ n3:Lexer oo:constructorMapping ([
     ].
 ]).</code></pre>
 <figcaption>
-        <p><span class="label">Listing 3:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
+        <p><span class="label">Listing 6:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
 These objects are the single arguments of respectively the parser and lexer constructor.
 The field value in this case is always a parameter.</p>
       </figcaption>
@@ -474,6 +515,8 @@ The field value in this case is always a parameter.</p>
 
   <section id="instantiating">
     <h2>Instantiating component configurations</h2>
+
+    <p class="todo">mention closing of the world</p>
 
     <p>In the previous section, we introduced a vocabulary for describing software components and how they can be instantiated.
 In this section, we introduce a dependency injection framework based on these component descriptions.
@@ -486,7 +529,7 @@ It is able to construct component instances based on declarative component const
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
-    <p><a href="#components.js">Listing 4</a> illustrates how components can be instantiated using Components.js.
+    <p><a href="#components.js">Listing 7</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
 This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Subsection 2.3</a>
 It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
@@ -504,7 +547,7 @@ loader.registerModuleResourcesUrl(
         &#39;http://example.org/config-n3.ttl&#39;))
     .then((parser) =&gt; { ... });</code></pre>
 <figcaption>
-        <p><span class="label">Listing 4:</span> First, a new component loader is created
+        <p><span class="label">Listing 7:</span> First, a new component loader is created
 after which module and component definitions are registered.
 Finally, a declarative component instantiation is supplied by providing the component URI
 and the location at which the resource can be found.</p>
@@ -526,7 +569,7 @@ We semantically describe the LDF server module and its 32 components, which resu
 The configuration file used to be a <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON file</a>
 with a custom domain-specific language.
 Now, this configuration file is a declarative components file that can be understood by Components.js,
-as can be seen in <a href="#ldf-server-config">Listing 5</a>.
+as can be seen in <a href="#ldf-server-config">Listing 8</a>.
 This new configuration format has two major advantages:</p>
 
     <ul>
@@ -567,7 +610,7 @@ This new configuration format has two major advantages:</p>
 }
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 5:</span> We define an LDF server component of type <code>ldfs:Server/Qpf</code> in JSON-LD.
+        <p><span class="label">Listing 8:</span> We define an LDF server component of type <code>ldfs:Server/Qpf</code> in JSON-LD.
 The two datasources are also components that are loaded into the LDF server.</p>
       </figcaption>
 </figure>

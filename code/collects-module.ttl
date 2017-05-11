@@ -1,0 +1,5 @@
+:myOm om:hasField [
+    om:fieldName foaf:name;
+    om:fieldValue: foaf:mbox.
+    om:collectsEntriesFrom foaf:knows.
+].

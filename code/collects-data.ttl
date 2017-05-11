@@ -1,0 +1,5 @@
+:me foaf:knows :alice, :bob.
+:alice foaf:name "Alice";
+    foaf:mbox "alice@gmail.com".
+:bob foaf:name "Bob";
+    foaf:mbox "bob@ugent.be".
