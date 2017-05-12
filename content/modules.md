@@ -107,8 +107,9 @@ E.g., N3 0.10.0 has a dependency on `async ^2.0.1`.
 `^2.0.1` is a semantic version and corresponds to any version number
 of async that starts with a 2.
 As can be seen in the JSON-LD,
-this async dependency gets converted to (the url-encoded version of)
-[https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1](https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1).
+this async dependency gets converted to 
+[https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1](https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1),
+with `%5E` being the url-encoded `^`.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
 Additionaly, the body of the redirect contains the relevant metadata describing this,
