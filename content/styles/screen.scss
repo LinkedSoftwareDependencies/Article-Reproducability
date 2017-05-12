@@ -109,7 +109,9 @@ main {
   }
 
   // Lists
-  ul {
+  ul, ol {
+    margin: 1em 0;
+
     li {
       margin-left: 1em;
       &::before {

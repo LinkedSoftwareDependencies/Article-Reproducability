@@ -19,9 +19,6 @@ Drilling down from the top to the bottom, we have the following layers:
  that can be called in a certain way with a certain set of parameters.
  The *N3.js 0.10.0 Parser* is a component.
 
-{:.todo}
-I don't like how this line sticks to the listing
-
 Within this section we will focus on bundles and modules,
 while components are described more in-depth in the following sections.
 
