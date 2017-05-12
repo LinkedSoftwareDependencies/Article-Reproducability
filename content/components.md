@@ -4,6 +4,9 @@
 In this section, we introduce a vocabulary for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
+{:.todo}
+Be mentally prepared for needing to these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)
+
 ### Object-oriented components
 
 Within the [_object-oriented components vocabulary_](http://linkedsoftwaredependencies.org/vocabularies/object-oriented),
