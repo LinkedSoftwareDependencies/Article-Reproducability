@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2.5
+  - 2.4.0
 bundler_args: --without development
 script:
   - bundle exec nanoc compile
