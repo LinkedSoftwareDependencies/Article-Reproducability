@@ -37,4 +37,4 @@ and facilitates the evaluation of new research contributions.
 <!-- Perspectives -->
 Moreover, this work can serve other use cases,
 such as general software instantiation outside of experiments,
-and query execution over software configuration metadata.
+and reasoning or querying over software configuration metadata.
