@@ -20,22 +20,22 @@ and can be instantiated automatically by Components.js.
 
 The ISWC2014 LDF experiment can be described by the following steps:
 
-0. 1 virtual machine for the server was created.
-0. 1 virtual machine for a cache was created.
-0. 60 virtual machines for clients were created.
-0. The generated [BSBM dataset](#) was copied to the server.
-0. [The server software configuration](#),
+0. Create 1 virtual machine for the server.
+0. Create 1 virtual machine for a cache.
+0. Create 60 virtual machines for clients.
+0. Copy generated [BSBM dataset](#) to the server.
+0. Install [The server software configuration](#),
    implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/),
-   was installed on the server.
-0. [The client software configuration](#),
+   on the server.
+0. Install [The client software configuration](#),
    implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol/),
-   was installed on each client.
-0. Each client machine executed four processes of the [BSBM benchmark](#)
-   with the client software.
-0. We recorded the CPU time, RAM usage of each client,
+   on each client.
+0. Execute four processes of the [BSBM benchmark](#)
+   with the client software for each client machine
+0. Record CPU time, RAM usage of each client,
    the CPU time and RAM usage of the server,
-   and we measured the ingoing and outgoing bandwidth of the cache.
-0. We published the [results](http://data.linkeddatafragments.org/benchmark) online.
+   and measure the ingoing and outgoing bandwidth of the cache.
+0. Publish [results](http://data.linkeddatafragments.org/benchmark) results online.
 
 {:.todo}
 Sarven and Ruben V.:
