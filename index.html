@@ -693,14 +693,14 @@ and the location at which the resource can be found.</p>
   </section>
 
   <section id="use-case">
-    <h2>Use case: a Linked Data Fragments experiment</h2>
+    <h2>Use case: describing a Linked Data Fragments experiment</h2>
 
     <p class="todo">Sarven, Joachim, Ruben V. write this</p>
 
     <p>In this section, we will provide a semantic description
 of the experiment performed in <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">a previous ISWC2014 article</a> <a class="reference" href="#ref-11">[11]</a>,
 which involves specific software configurations
-of a Linked Data Fragments client and server.
+of a Linked Data Fragments (LDF) client and server.
 This description serves as a guiding example
 on how to create such descriptions for other evaluations.</p>
 
@@ -711,6 +711,22 @@ We have semantically described the LDF server module and its 32 components.
 Instead of the former domain-specific <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON configuration file</a>,
 the <a href="https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json">semantic configuration</a> is Linked Data
 and can be instantiated automatically by Components.js.</p>
+
+    <p>The ISWC2014 LDF experiment can be described by the following steps:</p>
+
+    <ol>
+      <li>1 virtual machine for the server was created.</li>
+      <li>1 virtual machine for a cache was created.</li>
+      <li>60 virtual machines for clients were created.</li>
+      <li>The generated <a href="#">BSBM dataset</a> was copied to the server.</li>
+      <li><a href="#">The server software configuration</a> was installed on the server.</li>
+      <li><a href="#">The client software configuration</a> was installed on each client machine.</li>
+      <li>Each client machine executed four processes of the <a href="#">BSBM benchmark</a>
+with the client software.</li>
+      <li>We recorded the CPU time, RAM usage of each client,
+the CPU time and RAM usage of the server,
+and we measured the ingoing and outgoing bandwidth of the cache.</li>
+    </ol>
 
   </section>
 
