@@ -182,38 +182,55 @@ Consequently, this makes it possible to accurately describe and instantiate soft
 
     <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
-    <p>Separation of concerns <a class="reference" href="#ref-6">[6]</a> is a software design principle in which software is
-split up into separate components, each having their own separate task.
+    <p><a property="http://purl.org/spar/cito/cites" href="http://dx.doi.org/10.1002/smr.257"><em>Separation of concerns</em></a> <a class="reference" href="#ref-6">[6]</a> is a software design principle in which software is
+split into separate components, each having their own separate task.
 Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-7">[7]</a> as
 <q>a glob of software that’s intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
 This design principle is especially useful for experimental software,
-because it improves flexibility when for instance different implementations of an algorithm are be compared using different components.</p>
+because it improves the flexibility to, for instance,
+compare different implementations of an algorithm
+by plugging them into a larger piece of software.</p>
 
-    <p>One way of working with components is to call their functions yourself, which means that your define the flow of control.
-Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-8">[8]</a><a class="reference" href="#ref-9">[9]</a>,
-this flow can be defined by a software framework.
-In the latter case, the functions of the framework don’t have to be called by you, but the framework will call you for certain functionality when needed<sup id="fnref:HollywoodPrinciple"><a href="#fn:HollywoodPrinciple" class="footnote">1</a></sup>.</p>
+    <p>Programmers traditionally interact with a library of components
+by calling its functionality from within their own code.
+In that case, the developed software module defines the flow of control.
+In contrast, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html"><em>Inversion of Control</em></a> <a class="reference" href="#ref-8">[8]</a><a class="reference" href="#ref-9">[9]</a>,
+an external component framework defines this flow:
+programmers write code such that it can be called by the framework.
+This concept is also known as the <em>Hollywood Principle</em> <a class="reference" href="#ref-10">[10]</a>:
+<q>Don’t call us, we’ll call you</q>.
+<a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-7">[7]</a> is a form of Inversion of Control where components
+are injected into other components by an <em>Assembler</em>.
+Experimental software benefits from this paradigm,
+because it allows different components to be defined and injected independently.</p>
 
-    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-7">[7]</a> is a form of Inversion of Control where components
-are injected into other components by an external component, i.e., an <em>Assembler</em>.
-Experimental software is a category of software that benefits from this paradigm,
-because it allows different components to be defined and injected independently
-into this software to observe its experimental effects.</p>
+    <p>Dependency injection requires a <em>configuration phase</em>
+to describe how components need to be wired together,
+and an <em>injection phase</em> to perform the actual instantiation.
+Frameworks such as <a href="https://projects.spring.io/spring-framework/">Spring</a>
+facilitate configuration by specifying it declaratively in a configuration file.
+That way, a specific software configuration can be instantiated
+by merely describing it in XML or JSON.
+These configuration files, however,
+can not always be reused outside the scope of a particular project.
+Furthermore, different mechanisms are used
+to capture additional information needed for the instantiation,
+such as module dependencies and their version numbers.
+There is no interoperability between these configuration files,
+and they cannot easily be combined into a detailed description
+of the exact software used.</p>
 
-    <p>Three types of dependency injection are typically distinguished:</p>
-
-    <ul>
-      <li>Interface injection: The assembler calls an <code>inject</code> method in the target component to inject its dependencies.</li>
-      <li>Setter injection: The assembler maps interfaces to implementation instances.</li>
-      <li>Constructor injection: The assember maps interfaces to implementation classes with their constructor parameters and allows dynamic construction.</li>
-    </ul>
-
-    <p>Each of these types require a configuration phase to wire the component instances or factories,
-and an injection phase to plug in the actual dependencies inside components.
-This wiring can either be done in code, or through external configuration files.
-These configuration files are typically declarative, and can be defined in formats such as XML or JSON.
-Separating configuration from code is considered a good practise in software design,
-as it follows the principle of separating interfaces from implementation.</p>
+    <p>To that end, we introduce RDF-based software dependency configurations
+(<a href="#describing-components">Section 5</a>)
+that exactly capture the used modules and dependencies
+(<a href="#describing-modules">Section 4</a>).
+The resulting description can then be published on the Web as Linked Data,
+for instance, as part of the description of an experimental evaluation
+(<a href="#overview">Section 3</a>).
+Furthermore, we implemented a framework
+that can instantiate such software descriptions
+directly from the Web
+(<a href="#instantiating">Section 6</a>).</p>
 
   </section>
 
@@ -633,8 +650,8 @@ At the time of writing, the parser accepts RDF documents serialized in either JS
 
     <p><a href="#components.js">Listing 10</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
-This <code>Loader</code> is based on the principles of <em>Constructor injection</em>, as explained in <a href="#related-work-dependency-injection">Subsection 2.3</a>
-It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
+This <code>Loader</code> provides <em>constructor injection</em>:
+it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
 If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
 Additionally, <a href="https://github.com/LinkedSoftwareDependencies/Components.js#component-configuration-unnamed">simplified mechanisms</a>
 are in place for developers that want to use the dependency injector directly without having to semantically describe the component.</p>
@@ -707,15 +724,7 @@ This new configuration format has two major advantages:</p>
 </main>
 
 <footer>
-      <section id="footnotes">
-        <h2>Footnotes</h2>
-        <ol>
-    <li id="fn:HollywoodPrinciple">
-      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-10">[10]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-      </section>
-    <section id="references">
+<section id="references">
 <h2>References</h2>
 <dl class="references">
   <dt id="ref-1">[1]</dt>
@@ -729,11 +738,11 @@ This new configuration format has two major advantages:</p>
   <dt id="ref-5">[5]</dt>
   <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngomo, A.-C.N.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
+  <dd>Mens, T., Wermelinger, M.: Separation of Concerns for Software Evolution. Journal of Software Maintenance. 14, 311–315 (2002).</dd>
   <dt id="ref-7">[7]</dt>
   <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Fowler, M.: Inversion Of Control, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
   <dt id="ref-9">[9]</dt>
   <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
   <dt id="ref-10">[10]</dt>
@@ -743,8 +752,6 @@ This new configuration format has two major advantages:</p>
 </dl>
 </section>
 </footer>
-
-
 
 
 
