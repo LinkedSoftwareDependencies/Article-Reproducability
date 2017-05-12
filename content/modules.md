@@ -57,20 +57,20 @@ Probably also drop either JSON-LD or turtle
 
 ### Bundles
 A bundle represents the general npm package.
-An example of a JSON representation of an npm bundle can be found at [https://registry.npmjs.org/n3/](https://registry.npmjs.org/n3/).
+An example of a JSON representation of an npm bundle can be found at <https://registry.npmjs.org/n3/>.
 This contains all the general descriptions that apply to all bundles in this module,
 such as the name, homepage and description.
 
 To adapt this JSON to RDF,
 we start by adding our context,
-[https://linkedsoftwaredependencies.org/contexts/npm](https://linkedsoftwaredependencies.org/contexts/npm),
+<https://linkedsoftwaredependencies.org/contexts/npm>,
 which already maps many of the npm tags to corresponding RDF predicates.
 This allows these tags to stay the same in the JSON-LD representation,
 with changes required.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling [https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3) with the `"Accept: application/ld+json"` header..
+This can be seen by calling <https://linkedsoftwaredependencies.org/bundles/npm/n3> with the `"Accept: application/ld+json"` header..
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
@@ -87,7 +87,7 @@ Bit weird to link to the listing at the end, might have to change the story up a
 <figure id="n3.ttl" class="listing">
 ````/code/n3.ttl````
 <figcaption markdown="block">
-Turtle representation of [](#n3.ttl).
+Partial turtle representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3>.
 Prefix definitions omitted for brevity.
 </figcaption>
 </figure>
@@ -96,8 +96,8 @@ Prefix definitions omitted for brevity.
 A module is a specific version of a package.
 Continuing with the examples shown above,
 the JSON metadata of version 0.10.0 of the N3 bundle can be found at
-[https://registry.npmjs.org/n3/0.10.0](https://registry.npmjs.org/n3/0.10.0),
-while the URI in our namespace is [https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0](https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0).
+<https://registry.npmjs.org/n3/0.10.0>,
+while the URI in our namespace is <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>.
 Here also, many of the tags are mapped by the context,
 while other tags had to be modified to provide more interesting data.
 
@@ -108,7 +108,7 @@ E.g., N3 0.10.0 has a dependency on `async ^2.0.1`.
 of async that starts with a 2.
 As can be seen in the JSON-LD,
 this async dependency gets converted to 
-[https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1](https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1),
+<https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1>,
 with `%5E` being the url-encoded `^`.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
