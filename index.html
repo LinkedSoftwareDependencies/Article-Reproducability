@@ -680,11 +680,10 @@ Additionally, <a href="https://github.com/LinkedSoftwareDependencies/Components.
 are in place for developers that want to use the dependency injector directly without having to semantically describe the component.</p>
 
     <figure id="components.js" class="listing">
-<pre><code>new require(&#39;lsd-components&#39;).Loader()
-    .registerModuleResourcesUrl(&#39;http://example.org/module-n3.ttl&#39;)
-    .then(() =&gt;loader.instantiateFromUrl(
-        &#39;http://example.org/config-n3.ttl#myParser&#39;, &#39;http://example.org/config-n3.ttl&#39;))
-    .then((parser) =&gt; { ... });</code></pre>
+<pre><code>const loader = new require(&#39;lsd-components&#39;).Loader();
+loader.registerModuleResourcesUrl(&#39;http://example.org/module-n3.ttl&#39;)
+loader.registerConfigUrl(&#39;http://example.org/config-n3.ttl&#39;)
+var myParser = loader.instantiate(&#39;http://example.org/config-n3.ttl#myParser&#39;);</code></pre>
 <figcaption>
         <p><span class="label">Listing 12:</span> First, a new component loader is created
 after which module and component definitions are registered.
