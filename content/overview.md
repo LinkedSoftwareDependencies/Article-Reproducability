@@ -1,6 +1,8 @@
 ## Overview of software experiment descriptions
 {:#overview}
 
+### Aspects of software-based research
+
 This section will shortly introduce each of the blocks in the diagram.
 Ruben V. will write the basis.
 {:.todo}
@@ -34,3 +36,20 @@ Write
 #### Article
 Write
 {:.todo}
+
+### Workflow to describe experimental setups
+
+A possible workflow for describing experimental setups is as follows:
+
+1. Design experiment execution and workflow (DIO, OPMW, P-Plan)
+2. Environment setup
+3. Retrieve software module and RDFise
+4. RDFise software configuration
+5. ?
+6. Create dataset structure (RDF Data Cube, SKOS)
+7. ?
+8. Run experiment
+9. Catch and store results data (RDF Data Cube)
+10. Create visualisation and analysis
+
+Activities, entities and actors are defined and captured at each workflow step using PROV-O.

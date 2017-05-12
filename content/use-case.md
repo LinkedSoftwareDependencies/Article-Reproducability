@@ -4,33 +4,17 @@
 Sarven, Joachim, Ruben V. write this
 {:.todo}
 
-[Linked Data Fragments](cite:citesAsAuthority verborgh_jws_2016)
+In this section, we will provide a semantic description
+of the experiment performed in [a previous ISWC2014 article](cite:citesAsAuthority verborgh_iswc_2014),
+which involves specific software configurations
+of a Linked Data Fragments client and server.
+This description serves as a guiding example
+on how to create such descriptions for other evaluations.
 
-We have implemented a new version of the [LDF server](https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd)
-where all components are dynamically wired by Components.js.
-We semantically describe the LDF server module and its 32 components, which results in x triples.
-The configuration file used to be a [JSON file](https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json)
-with a custom domain-specific language.
-Now, this [configuration file](https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json) is a declarative components file that can be understood by Components.js,.
-This new configuration format has two major advantages:
-
-* The configuration file is RDF data with a semantic meaning.
-* External components can be injected by including declaratively into the config file.
-
-The workflow for the experiment setup is as follows:
-
-1. Design experiment execution and workflow (DIO, OPMW, P-Plan)
-2. Environment setup
-3. Retrieve software module and RDFise
-4. RDFise software configuration
-5. ?
-6. Create dataset structure (RDF Data Cube, SKOS)
-7. ?
-8. Run experiment
-9. Catch and store results data (RDF Data Cube)
-10. Create visualisation and analysis
-
-Activities, entities and actors are defined and captured at each workflow step using PROV-O.
-
-{:.todo}
-count triples
+To this end,
+we have modularized the [LDF server](https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd)
+for dependency injection.
+We have semantically described the LDF server module and its 32 components.
+Instead of the former domain-specific [JSON configuration file](https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json),
+the [semantic configuration](https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json) is Linked Data
+and can be instantiated automatically by Components.js.
