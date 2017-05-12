@@ -705,10 +705,10 @@ and can be instantiated automatically by Components.js.</p>
       <li>Copy generated <a href="#">BSBM dataset</a> to the server.</li>
       <li>Install <a href="#">The server software configuration</a>,
 implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">TPF specification</a>,
-on the server.</li>
+with its <a href="#">dependencies</a> on the server.</li>
       <li>Install <a href="#">The client software configuration</a>,
 implementing the <a href="https://www.w3.org/TR/sparql11-protocol/">SPARQL 1.1 protocol</a>,
-on each client.</li>
+with its <a href="#">dependencies</a> on each client.</li>
       <li>Execute four processes of the <a href="#">BSBM benchmark</a>
 with the client software for each client machine</li>
       <li>Record CPU time, RAM usage of each client,
@@ -725,7 +725,8 @@ and/or as a separate Turtle file.
 
     <p>Note how in the description of the experiment above,
 we refer to the exact software configurations by their IRI,
-as well as to the specifications they implement.
+their specific dependency versions,
+and the specifications they implement.
 Based on these IRIs,
 other researchers can immediately instantiate the same configuration,
 or derive their own similar configurations
