@@ -1,9 +1,6 @@
 ## Describing software modules
 {:#describing-modules}
 
-Joachim writes this
-{:.todo}
-
 There are several levels of granularity on which software can be described,
 going from a high-level package overview to a low-level description of the actual code.
 In our descriptions we make use of several of these layers,
@@ -73,7 +70,7 @@ with changes required.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling [https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3) with the `"Accept: application/ld+json"` header or by accessing the more human friendly [URL](https://linkedsoftwaredependencies.org/bundles/npm/n3.jsonld).
+This can be seen by calling [https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3) with the `"Accept: application/ld+json"` header..
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
@@ -98,40 +95,33 @@ Prefix definitions omitted for brevity.
 ### Modules
 A module is a specific version of a package.
 Continuing with the examples shown above,
-[](#n3-0.10.0.json) provides some tags present
-in the npm metadata of N3 version 0.10.0.
-Since the general case of tags has already been covered above,
-we focus on several more interesting tags in the metadata shown here.
+the JSON metadata of version 0.10.0 of the N3 bundle can be found at
+[https://registry.npmjs.org/n3/0.10.0](https://registry.npmjs.org/n3/0.10.0),
+while the URI in our namespace is [https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0](https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0).
+Here also, many of the tags are mapped by the context,
+while other tags had to be modified to provide more interesting data.
 
-As can be seen in the JSON-LD version in [](#n3-0.10.0.jsonld),
-we minted several new URIs here.
-In the dependencies, we now link to the semantic version `^2.0.1` 
-of the async package in our own namespace.
-This version corresponds to any version number of that package
-that does not modify the left-most non-zero digit of the given version.
-When accessing this URI,
-the semantic version number will be interpreted
-and a redirect will be given to the highest matching actual number.
-In this case, a redirect will be given to 
-[https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0](https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0).
+An important part of an npm package description are the dependencies
+and their semantic versions.
+E.g., N3 0.10.0 has a dependency on `async ^2.0.1`.
+`^2.0.1` is a semantic version and corresponds to any version number
+of async that starts with a 2.
+As can be seen in the JSON-LD,
+this async dependency gets converted to (the url-encoded version of)
+[https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1](https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1).
+If accessed, the server detects the highest matching version number
+and redirects to that module.
+Additionaly, the body of the redirect contains the relevant metadata describing this,
+which in this case results in the following triple:
 
-For the scripts we also generated new URIs.
-Several scripts are predefined by npm,
-meaning they get shared by many packages,
-so a shared URI for those makes sense.
-The actual content of the script can be accessed by accessing the new script URI,
-allowing for easier automation by services that can execute these scripts.
+```
+<https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1> <https://linkedsoftwaredependencies.org/vocabularies/npm#maxSatisfying> <https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0>.
+```
 
-<figure id="n3-0.10.0.json" class="listing">
-````/code/n3-0.10.0.json````
-<figcaption markdown="block">
-Subset of the JSON npm representation N3 version 0.10.0.
-</figcaption>
-</figure>
-
-<figure id="n3-0.10.0.jsonld" class="listing">
-````/code/n3-0.10.0.jsonld````
-<figcaption markdown="block">
-Subset of the JSON npm representation N3 version 0.10.0.
-</figcaption>
-</figure>
+Another tag where we changed the content is the *scripts* tag.
+Since there is a fixed set of scripts that [npm supports](https://docs.npmjs.com/misc/scripts),
+being able to easily query those can be helpful for automated systems.
+To that end we converted the actual script tags to specific predicates,
+such as `<https://linkedsoftwaredependencies.org/scripts/npm/test>` for the test script.
+These predicates have as object a new URI that links to actual content of that script,
+meaning the execution script is found by accessing that URI.
