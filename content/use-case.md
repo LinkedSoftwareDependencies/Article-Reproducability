@@ -28,7 +28,8 @@ The ISWC2014 LDF experiment can be described by the following steps:
   determinstic. More specific to the operation and independent to the article it
   was used in.
 
-  Move opmw prefix to <body> or whatever.
+  Move prefixes to <body> or whatever.
+  https://github.com/LinkedSoftwareDependencies/Article-Reproducability/issues/11
 -->
 
 <ol prefix="opmw: http://www.opmw.org/ontology/ rdfs: http://www.w3.org/2000/01/rdf-schema#" property="schema:hasPart" resource="#ldf-2014-qdwha-experiment-workflow" typeof="opmw:WorkflowTemplate">
