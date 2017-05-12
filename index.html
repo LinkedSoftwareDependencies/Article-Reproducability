@@ -79,19 +79,18 @@ and reasoning or querying over software configuration metadata.</p>
   <section id="introduction">
     <h2>Introduction</h2>
 
-    <p>Too many computer science articles
-that contain experimental software evaluations
-identify that software only by name and, sometimes, version number.
+    <p>A large number of computer science articles describe experimental software evaluations,
+but many of them refer to that software only by name or version number.
 This information is insufficient for readers
 to understand which <em>exact</em> version of the software,
 which exact versions of its <em>dependencies</em>,
 and which detailed <em>configuration</em> of the software’s components
-has in fact obtained the reported results.
+has obtained the reported results.
 Therefore, potential users cannot necessarily obtain the correct software installation
 that will behave according to the article’s conclusions.
 Moreover, other researchers might fail
 in reproducing the same results
-because of differences in any of these aspects.</p>
+because of differences in any such aspects.</p>
 
     <p>As <a property="http://purl.org/spar/cito/providesQuotationFor" href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">Claerbout’s Principle</a> <a class="reference" href="#ref-1">[1]</a> explains,
 <q>an article about computational science in a scientific publication
@@ -100,23 +99,23 @@ The actual scholarship is the complete software development environment
 and the complete set of instructions which generated the figures.</q>
 This stresses the importance of reproducibility,
 and essentially mandates a detailed description
-of the executed experiment, the involved artefacts and actors,
+of the executed experiment,
+all of the involved artefacts and actors,
 and the processing of the retrieved data.</p>
 
-    <p>Using Linked Data to publish such descriptions provides two immediate benefits:
-the experimental setup and parts thereof can be <em>identified with IRIs</em>,
+    <p>Using <a property="http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/DesignIssues/LinkedData.html">Linked Data</a> <a class="reference" href="#ref-2">[2]</a>
+to publish such descriptions provides two immediate benefits:
+the experimental setup and parts thereof can be <em>identified by IRIs</em>,
 and their details can be retrieved by <em>dereferencing those IRIs</em>.
 Therefore, if research articles complement their textual explanation of an experiment
-with the IRI of the full setup, reproducibility is guaranteed</p>
-
-    <p class="todo">“Guaranteed” may be too strong?</p>
-    <p>Moreover, the IRIs of the entire experiment or its parts
-can be reused in other articles or experiment
+with the IRI of the full setup, reproducibility is strongly facilitated.
+Moreover, the IRIs of the entire experiment or its parts
+can be reused in other articles or experiments
 to unambiguously refer to the same conditions.
 <a href="#description-diagram">Fig. 1</a> illustrates how this leads to a chain of provenance
 from the research article to the data
 and the experiment that generates it,
-and all the aspects surrounding that experiment.</p>
+as well as all aspects surrounding that experiment.</p>
 
     <figure id="description-diagram">
 <img src="description-diagram.svg" alt="[description diagram]" />
@@ -133,7 +132,7 @@ we focus on the description of <em>software configurations</em> and <em>software
 such that an evaluated software setup
 can be referred to unambiguously by an IRI.
 We thereby avoid the inherent vagueness
-of referring to software by name only.
+of referring to software by name or version only.
 We further facilitate the reproduction of experiments
 through a mechanisms that automatically <em>instantiates</em> the software configuration
 based on its Linked Data description.
@@ -141,7 +140,7 @@ Our contributions are the following:</p>
 
     <ul>
       <li>the RDF-based description of <strong>software modules</strong>,
-applied to the 475,000+ bundles of the npm ecosystem for Node.js;</li>
+applied to the 475,000+ bundles of <a href="https://www.npmjs.com/">npm</a> (Node.js);</li>
       <li>the RDF-based description of <strong>available components</strong> within software modules;</li>
       <li>the RDF-based description of a <strong>precise configuration</strong> of software modules;</li>
       <li>the <strong>automated instantiation</strong> of such a configuration;</li>
@@ -149,16 +148,16 @@ applied to the 475,000+ bundles of the npm ecosystem for Node.js;</li>
 in scientific articles.</li>
     </ul>
 
-    <p class="todo">Would a figure explaining the relation between module, component, configuration and instance be useful here?</p>
-
-    <p>This article is structure as follows.
-In <a href="#related-work">Section 2</a>, we will start by explaining the related work.
+    <p>This article is structured as follows.
+In <a href="#related-work">Section 2</a>, we discuss related work.
 Next, in <a href="#overview">Section 3</a> we present an overview of the required steps for software experimentations that will be discussed in this paper.
 <a href="#describing-modules">Section 4</a> introduces the semantic description of software modules.
 Next, <a href="#describing-components">Section 5</a> discusses a semantic description of software components,
 followed by the introduction of a dependency injection framework that can instantiate these described components in <a href="#instantiating">Section 6</a>.
-In <a href="#use-case">Section 7</a>, we present a use case where we apply our proposed experiment workflow.
-Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 8</a></p>
+In <a href="#use-case">Section 7</a>, we present a use case where we apply software descriptions
+to an experimental evaluation.
+Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 8</a>.</p>
+
   </section>
 
   <section id="related-work">
@@ -168,14 +167,14 @@ Finally, we discuss our conclusions and future work in <a href="#conclusion">Sec
 ontologies for describing these experiments, and dependency injection as a design principle in experimental software.</p>
 
     <h3 id="scholarly-publishing-and-reproducibility">Scholarly publishing and reproducibility</h3>
-    <p>In order to better keep track of experiments and minimise information loss at CERN, <a property="http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a> <a class="reference" href="#ref-2">[2]</a>, recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realised on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.</p>
+    <p>In order to better keep track of experiments and minimise information loss at CERN, <a property="http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">Information Management: A Proposal</a> <a class="reference" href="#ref-3">[3]</a>, recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realised on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.</p>
 
-    <p class="todo">We should cite <a property="http://purl.org/spar/cito/cites" href="http://laurensrietveld.nl/pdf/lodlab.pdf">LOD Lab</a> <a class="reference" href="#ref-3">[3]</a>,
+    <p class="todo">We should cite <a property="http://purl.org/spar/cito/cites" href="http://laurensrietveld.nl/pdf/lodlab.pdf">LOD Lab</a> <a class="reference" href="#ref-4">[4]</a>,
 as they brought a major new angle to reproducibility within the Semantic Web.
 Should also look at their argumentation.</p>
 
     <h3 id="ontologies-and-vocabularies-for-describing-experiments">Ontologies and vocabularies for describing experiments</h3>
-    <p><a property="http://purl.org/spar/cito/cites" href="http://doi.acm.org/10.1145/2814864.2814882">LODFlow</a> <a class="reference" href="#ref-4">[4]</a> proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
+    <p><a property="http://purl.org/spar/cito/cites" href="http://doi.acm.org/10.1145/2814864.2814882">LODFlow</a> <a class="reference" href="#ref-5">[5]</a> proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
 Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
@@ -183,19 +182,19 @@ Consequently, this makes it possible to accurately describe and instantiate soft
 
     <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
-    <p>Separation of concerns <a class="reference" href="#ref-5">[5]</a> is a software design principle in which software is
+    <p>Separation of concerns <a class="reference" href="#ref-6">[6]</a> is a software design principle in which software is
 split up into separate components, each having their own separate task.
-Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-6">[6]</a> as
+Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-7">[7]</a> as
 <q>a glob of software that’s intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
 This design principle is especially useful for experimental software,
 because it improves flexibility when for instance different implementations of an algorithm are be compared using different components.</p>
 
     <p>One way of working with components is to call their functions yourself, which means that your define the flow of control.
-Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-7">[7]</a><a class="reference" href="#ref-8">[8]</a>,
+Alternatively, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a> <a class="reference" href="#ref-8">[8]</a><a class="reference" href="#ref-9">[9]</a>,
 this flow can be defined by a software framework.
 In the latter case, the functions of the framework don’t have to be called by you, but the framework will call you for certain functionality when needed<sup id="fnref:HollywoodPrinciple"><a href="#fn:HollywoodPrinciple" class="footnote">1</a></sup>.</p>
 
-    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-6">[6]</a> is a form of Inversion of Control where components
+    <p><a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-7">[7]</a> is a form of Inversion of Control where components
 are injected into other components by an external component, i.e., an <em>Assembler</em>.
 Experimental software is a category of software that benefits from this paradigm,
 because it allows different components to be defined and injected independently
@@ -269,8 +268,6 @@ Drilling down from the top to the bottom, we have the following layers:</p>
  that can be called in a certain way with a certain set of parameters.
  The <em>N3.js 0.10.0 Parser</em> is a component.</li>
     </ul>
-
-    <p class="todo">I don’t like how this line sticks to the listing</p>
 
     <p>Within this section we will focus on bundles and modules,
 while components are described more in-depth in the following sections.</p>
@@ -426,7 +423,7 @@ We provide an example of the application of this vocabulary to object-oriented s
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
     <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>object-oriented components vocabulary</em></a>,
-we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-6">[6]</a> as a “glob” of software.
+we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-7">[7]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
@@ -662,7 +659,7 @@ and the location at which the resource can be found.</p>
 
     <p class="todo">Sarven, Joachim, Ruben V. write this</p>
 
-    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-10">[10]</a></p>
+    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-11">[11]</a></p>
 
     <p>We have implemented a new version of the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a>
 where all components are dynamically wired by Components.js.
@@ -697,7 +694,7 @@ This new configuration format has two major advantages:</p>
         <h2>Footnotes</h2>
         <ol>
     <li id="fn:HollywoodPrinciple">
-      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-9">[9]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
+      <p>This concept is also know as the Hollywood Principle <a class="reference" href="#ref-10">[10]</a>: <q>Don’t call us, we’ll call you</q>&nbsp;<a href="#fnref:HollywoodPrinciple" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
       </section>
@@ -707,22 +704,24 @@ This new configuration format has two major advantages:</p>
   <dt id="ref-1">[1]</dt>
   <dd>Buckheit, J.B., Donoho, D.L.: WaveLab and Reproducible Research. Stanford University (1995).</dd>
   <dt id="ref-2">[2]</dt>
-  <dd>Berners-Lee, T.: Information Management: A Proposal, <a href="https://www.w3.org/History/1989/proposal.html,">https://www.w3.org/History/1989/proposal.html,</a> (1989).</dd>
+  <dd>Berners-Lee, T.: Linked Data, <a href="https://www.w3.org/DesignIssues/LinkedData.html,">https://www.w3.org/DesignIssues/LinkedData.html,</a> (2009).</dd>
   <dt id="ref-3">[3]</dt>
-  <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Arenas, M., Corcho, O., Simperl, E., Strohmaier, M., d’Aquin, M., Srinivas, K., Groth, P., Dumontier, M., Heflin, J., Thirunarayan, K., and Staab, S. (eds.) Proceedings of the 14th International Semantic Web Conference. pp. 339–355. Springer (2015).</dd>
+  <dd>Berners-Lee, T.: Information Management: A Proposal, <a href="https://www.w3.org/History/1989/proposal.html,">https://www.w3.org/History/1989/proposal.html,</a> (1989).</dd>
   <dt id="ref-4">[4]</dt>
-  <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngomo, A.-C.N.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
+  <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Arenas, M., Corcho, O., Simperl, E., Strohmaier, M., d’Aquin, M., Srinivas, K., Groth, P., Dumontier, M., Heflin, J., Thirunarayan, K., and Staab, S. (eds.) Proceedings of the 14th International Semantic Web Conference. pp. 339–355. Springer (2015).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
+  <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngomo, A.-C.N.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
   <dt id="ref-6">[6]</dt>
-  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
+  <dd>Hürsch, W.L., Lopes, C.V.: Separation of concerns. (1995).</dd>
   <dt id="ref-7">[7]</dt>
-  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
+  <dd>Fowler, M.: InversionOfControl, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
   <dt id="ref-9">[9]</dt>
-  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
+  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
   <dt id="ref-10">[10]</dt>
+  <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
+  <dt id="ref-11">[11]</dt>
   <dd>Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016).</dd>
 </dl>
 </section>
