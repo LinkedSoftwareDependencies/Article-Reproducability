@@ -37,7 +37,7 @@ while a version contains the specific dependencies and a link to the actual impl
 
 All this npm data is stored in a [CouchDB](http://couchdb.apache.org/) 
 [instance](https://registry.npmjs.org/) with one entry per bundle.
-This corresponds to the [metadata](https://docs.npmjs.com/files/package.json) added by the package developer,
+This corresponds to the metadata, added by the package developer in a [`package.json`](https://docs.npmjs.com/files/package.json) file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
@@ -63,35 +63,32 @@ Probably also drop either JSON-LD or turtle
 
 ### Bundles
 A bundle represents the general npm package.
-[](#n3.json) shows a subset of what metadata can be found in the npm repository.
-Since this is a bundle this contains general descriptions,
-such as the name and homepage.
-[](#n3.jsonld) then shows the JSON-LD version of this same metadata.
-As can be seen, some tags were added to provide additional information,
-e.g., a link to the actual npm repository,
-but most of the tags stayed the same,
-getting their metadata information from the context.
-One of important changes that we made is minting URIs for the specific versions of a package,
-as can be seen with the versions tag,
-and providing that information when the URI for the specific version gets accessed.
-In [](#n3.ttl) a turtle representation of the same data is shown.
-These RDF examples can also be found by accessing 
-[https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3)
-with the corresponding *Accept* headers.
+An example of a JSON representation of an npm bundle can be found at [https://registry.npmjs.org/n3/](https://registry.npmjs.org/n3/).
+This contains all the general descriptions that apply to all bundles in this module,
+such as the name, homepage and description.
 
-<figure id="n3.json" class="listing">
-````/code/n3.json````
-<figcaption markdown="block">
-Subset of the JSON npm representation of the N3 package.
-</figcaption>
-</figure>
+To adapt this JSON to RDF,
+we start by adding our context,
+[https://linkedsoftwaredependencies.org/contexts/npm](https://linkedsoftwaredependencies.org/contexts/npm),
+which already maps many of the npm tags to corresponding RDF predicates.
+This allows these tags to stay the same in the JSON-LD representation,
+with changes required.
+Due to the limitations of context mapping,
+some other changes were needed,
+with the most important one relating to the specific versions of the bundle.
+This can be seen by calling [https://linkedsoftwaredependencies.org/bundles/npm/n3](https://linkedsoftwaredependencies.org/bundles/npm/n3) with the `"Accept: application/ld+json"` header or by accessing the more human friendly [URL](https://linkedsoftwaredependencies.org/bundles/npm/n3.jsonld).
+There the bundle now contains links to its corresponding modules,
+providing semantic links between them.
+Additionally, some tags were added to provide identifiers and link to the original repository.
 
-<figure id="n3.jsonld" class="listing">
-````/code/n3.jsonld````
-<figcaption markdown="block">
-JSON-LD representation of [](#n3.json).
-</figcaption>
-</figure>
+Since JSON-LD is an RDF representation it can easily be converted to other formats,
+of which several are supported by our server,
+such as turtle and n-triples.
+These can be retrieved by sending the corresponding Accept headers.
+An example of some of the data generated this way can be seen in [](#n3.ttl).
+
+{:.todo}
+Bit weird to link to the listing at the end, might have to change the story up a bit somehow.
 
 <figure id="n3.ttl" class="listing">
 ````/code/n3.ttl````

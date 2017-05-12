@@ -1,5 +1,5 @@
 npm:n3 a doap:Project;
-    dcterms:abstract "Lightning fast, asynchronous, streaming Turtle / N3 / RDF library.";
+    dcterms:abstract "Lightning fast, asynchronous, streaming...";
     dcterms:subject "turtle", "rdf", "n3", "streaming", "asynchronous";
     spdx:licenseDeclared <https://spdx.org/licenses/MIT.html>;
     doap:release <http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>;
