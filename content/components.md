@@ -1,7 +1,7 @@
 ## Describing components and their configuration
 {:#describing-components}
 
-In this section, we introduce a vocabulary for describing software components and how they can be instantiated.
+In this section, we introduce the _Object-Oriented Components_ ontology for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
 {:.todo}
@@ -9,18 +9,18 @@ Be mentally prepared for needing to remove these figures. Idea would be to inclu
 
 ### Object-oriented components
 
-Within the [_object-oriented components vocabulary_](http://linkedsoftwaredependencies.org/vocabularies/object-oriented),
+Within the [_Object-Oriented Components ontology_](http://linkedsoftwaredependencies.org/vocabularies/object-oriented),
 we reuse Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 In this section, we assume OOP in the broad sense of the word, which only requires _classes_, _objects_ and _constructor parameters_.
-[](#voc-oo-diagram) shows an overview of all the classes and predicates in the components vocabulary.
+[](#voc-oo-diagram) shows an overview of all the classes and predicates in the ontology.
 
 <figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]">
+<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _object-oriented components_ vocabulary.
+Overview of the classes and properties in the _object-oriented components_ ontology.
 </figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ An `oo:Parameter` is a _subclass_ of `rdfs:Property`, which simplifies its usage
 `oo:defaultValue` allows parameters to have a default value when no other values have been provided.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
-[](#module-n3) shows an example of the N3.js npm module using the components vocabulary.
+[](#module-n3) shows an example of the N3.js npm module using the components ontology.
 It exposes several components such as _Parser_ and _Lexer_.
 Each of these components can take several different parameters.
 [](#config-n3) illustrates how instances can be created of these component types.
@@ -79,18 +79,18 @@ While this is sufficient to describe component instantiations on a semantic leve
 it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
 which is the case for most popular OOP languages.
 
-We introduce a new vocabulary for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name [_object mapping vocabulary_](http://linkedsoftwaredependencies.org/vocabularies/object-mapping).
-[](#voc-om-diagram) shows an overview of all the classes and predicates in the components vocabulary.
+We introduce a new ontology for describing the mapping between the pure semantic parameters
+to arguments in method calls in OOP languages like JavaScript, hence the name [_Object Mapping ontology](http://linkedsoftwaredependencies.org/vocabularies/object-mapping).
+[](#voc-om-diagram) shows an overview of all the classes and predicates in the ontology.
 
 <figure id="voc-om-diagram">
-<img src="voc-om-diagram.svg" alt="[Object mapping vocabulary diagram]">
+<img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _object mapping_ vocabulary.
+Overview of the classes and properties in the _Object Mapping_ ontology.
 </figcaption>
 </figure>
 
-Our vocabulary introduces the _object map_ and the _array map_, the latter is a subclass of the former.
+The ontology introduces the _object map_ and the _array map_, the latter is a subclass of the former.
 An object map can have several _object map entries_, where each entry has a field name and a field value.
 An array map can have several _array map entries_, each entry only has a value.
 
