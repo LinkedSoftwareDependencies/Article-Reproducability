@@ -123,13 +123,20 @@ main {
 
   // Figures
   figure {
+    background: darken(white, 4%);
+    padding: 1em 2em;
+    margin: 1em 0;
+
     figcaption {
-      margin: 0 2em;
+      margin: 1em 0 .5em;
 
       .label {
         float: left;
         font-weight: bold;
         margin-right: .5em;
+      }
+      p {
+        margin: 0;
       }
     }
   }
@@ -172,10 +179,13 @@ q {
 }
 
 pre {
-  margin: 1em 2em;
+  line-height: 1.2;
+  overflow-x: scroll;
+  overflow-y: hidden;
 
   code {
-    font: 11pt/1.2 monospace;
+    font: 11pt monospace;
+    letter-spacing: -.1pt;
   }
 }
 
