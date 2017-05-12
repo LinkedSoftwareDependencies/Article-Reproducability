@@ -17,5 +17,20 @@ This new configuration format has two major advantages:
 * The configuration file is RDF data with a semantic meaning.
 * External components can be injected by including declaratively into the config file.
 
+The workflow for the experiment setup is as follows:
+
+1. Design experiment execution and workflow (DIO, OPMW, P-Plan)
+2. Environment setup
+3. Retrieve software module and RDFise
+4. RDFise software configuration
+5. ?
+6. Create dataset structure (RDF Data Cube, SKOS)
+7. ?
+8. Run experiment
+9. Catch and store results data (RDF Data Cube)
+10. Create visualisation and analysis
+
+Activities, entities and actors are defined and captured at each workflow step using PROV-O.
+
 {:.todo}
 count triples
