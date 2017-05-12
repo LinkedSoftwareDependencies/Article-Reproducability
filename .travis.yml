@@ -4,7 +4,7 @@ rvm:
 bundler_args: --without development
 script:
   - bundle exec nanoc compile
-  - bundle exec nanoc check html internal_links mixed_content stale
+  - bundle exec nanoc check internal_links mixed_content stale
 cache:
   - bundler
 after_success:
