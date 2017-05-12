@@ -17,8 +17,8 @@ At the time of writing, the parser accepts RDF documents serialized in either JS
 
 [](#components.js) illustrates how components can be instantiated using Components.js.
 It provides a `Loader` class that acts as an assembler when instantiated.
-This `Loader` is based on the principles of _Constructor injection_, as explained in [](#related-work-dependency-injection)
-It dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
+This `Loader` provides _constructor injection_:
+it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
 If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
 Additionally, [simplified mechanisms](https://github.com/LinkedSoftwareDependencies/Components.js#component-configuration-unnamed)
 are in place for developers that want to use the dependency injector directly without having to semantically describe the component.

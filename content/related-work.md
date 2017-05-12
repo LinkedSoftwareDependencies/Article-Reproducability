@@ -22,35 +22,52 @@ Consequently, this makes it possible to accurately describe and instantiate soft
 ### Dependency injection
 {:#related-work-dependency-injection}
 
-[Separation of concerns](cite:cites SeparationOfConcerns) is a software design principle in which software is
-split up into separate components, each having their own separate task.
+[_Separation of concerns_](cite:cites SeparationOfConcerns) is a software design principle in which software is
+split into separate components, each having their own separate task.
 Fowler defines a [software component](cite:providesQuotationFor DependencyInjection) as
 <q>a glob of software that's intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
 This design principle is especially useful for experimental software,
-because it improves flexibility when for instance different implementations of an algorithm are be compared using different components.
+because it improves the flexibility to, for instance,
+compare different implementations of an algorithm
+by plugging them into a larger piece of software.
 
-One way of working with components is to call their functions yourself, which means that your define the flow of control.
-Alternatively, with [Inversion of Control](cite:cites InversionOfControl,DesigningReusableClasses),
-this flow can be defined by a software framework.
-In the latter case, the functions of the framework don't have to be called by you, but the framework will call you for certain functionality when needed[^HollywoodPrinciple].
-
-[^HollywoodPrinciple]: This concept is also know as the [Hollywood Principle](cite:cites HollywoodPrinciple): <q>Don't call us, we'll call you</q>
-
+Programmers traditionally interact with a library of components
+by calling its functionality from within their own code.
+In that case, the developed software module defines the flow of control.
+In contrast, with [_Inversion of Control_](cite:cites InversionOfControl,DesigningReusableClasses),
+an external component framework defines this flow:
+programmers write code such that it can be called by the framework.
+This concept is also known as the [_Hollywood Principle_](cite:cites HollywoodPrinciple):
+<q>Don't call us, we'll call you</q>.
 [Dependency Injection](cite:cites DependencyInjection) is a form of Inversion of Control where components
-are injected into other components by an external component, i.e., an _Assembler_.
-Experimental software is a category of software that benefits from this paradigm,
-because it allows different components to be defined and injected independently
-into this software to observe its experimental effects.
+are injected into other components by an _Assembler_.
+Experimental software benefits from this paradigm,
+because it allows different components to be defined and injected independently.
 
-Three types of dependency injection are typically distinguished:
+Dependency injection requires a _configuration phase_
+to describe how components need to be wired together,
+and an _injection phase_ to perform the actual instantiation.
+Frameworks such as [Spring](https://projects.spring.io/spring-framework/)
+facilitate configuration by specifying it declaratively in a configuration file.
+That way, a specific software configuration can be instantiated
+by merely describing it in XML or JSON.
+These configuration files, however,
+can not always be reused outside the scope of a particular project.
+Furthermore, different mechanisms are used
+to capture additional information needed for the instantiation,
+such as module dependencies and their version numbers.
+There is no interoperability between these configuration files,
+and they cannot easily be combined into a detailed description
+of the exact software used.
 
-* Interface injection: The assembler calls an `inject` method in the target component to inject its dependencies.
-* Setter injection: The assembler maps interfaces to implementation instances.
-* Constructor injection: The assember maps interfaces to implementation classes with their constructor parameters and allows dynamic construction.
-
-Each of these types require a configuration phase to wire the component instances or factories,
-and an injection phase to plug in the actual dependencies inside components.
-This wiring can either be done in code, or through external configuration files.
-These configuration files are typically declarative, and can be defined in formats such as XML or JSON.
-Separating configuration from code is considered a good practise in software design,
-as it follows the principle of separating interfaces from implementation.
+To that end, we introduce RDF-based software dependency configurations
+([](#describing-components))
+that exactly capture the used modules and dependencies
+([](#describing-modules)).
+The resulting description can then be published on the Web as Linked Data,
+for instance, as part of the description of an experimental evaluation
+([](#overview)).
+Furthermore, we implemented a framework
+that can instantiate such software descriptions
+directly from the Web
+([](#instantiating)).
