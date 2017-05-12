@@ -93,6 +93,9 @@ Our vocabulary introduces the _object map_ and the _array map_, the latter is a 
 An object map can have several _object map entries_, where each entry has a field name and a field value.
 An array map can have several _array map entries_, each entry only has a value.
 
+{:.todo}
+Consider dropping all listings in this section, we’ll need to keep the explanation conceptual there. People will need to understand _why_ mappings are needed, understand high-level _what_ they do, but the _how_ might not be possible to explain.
+
 If the value of `om:fieldName` or `om:fieldValue` is a literal, the literal value will be mapped to the object field name or value.
 An `om:fieldValue` can also refer to another object map, which will be mapped to the resulting object.
 `om:collectsEntriesFrom` can refer to a predicate that points to entities with certain predicates.
