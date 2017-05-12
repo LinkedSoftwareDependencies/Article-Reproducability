@@ -5,7 +5,7 @@ In this section, we introduce a vocabulary for describing software components an
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
 {:.todo}
-Be mentally prepared for needing to these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)
+Be mentally prepared for needing to remove these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)
 
 ### Object-oriented components
 
@@ -69,7 +69,8 @@ The util component already is an instance, for which it needs no parameters.
 </figcaption>
 </figure>
 
-{:.todo} mention reasoning for checking things like valid parameter range
+{:.todo}
+mention reasoning for checking things like valid parameter range
 
 ### Object mapping
 

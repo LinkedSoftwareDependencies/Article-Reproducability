@@ -17,4 +17,5 @@ This new configuration format has two major advantages:
 * The configuration file is RDF data with a semantic meaning.
 * External components can be injected by including declaratively into the config file.
 
-{:.todo} count triples
+{:.todo}
+count triples
