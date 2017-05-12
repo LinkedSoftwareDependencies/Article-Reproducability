@@ -25,8 +25,12 @@ The ISWC2014 LDF experiment can be described by the following steps:
 0. 1 virtual machine for a cache was created.
 0. 60 virtual machines for clients were created.
 0. The generated [BSBM dataset](#) was copied to the server.
-0. [The server software configuration](#) was installed on the server.
-0. [The client software configuration](#) was installed on each client machine.
+0. [The server software configuration](#),
+   implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/),
+   was installed on the server.
+0. [The client software configuration](#),
+   implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol/),
+   was installed on each client.
 0. Each client machine executed four processes of the [BSBM benchmark](#)
    with the client software.
 0. We recorded the CPU time, RAM usage of each client,
