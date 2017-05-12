@@ -33,7 +33,7 @@ header {
 
     a {
       &:not(:hover) {
-        text-decoration: none;
+        background: none;
       }
       sup {
         margin: 0 -.1em 0 .1em;
@@ -168,6 +168,23 @@ footer {
     font-size: 1.5em;
     font-weight: bold;
     margin: 1em 0 .5em;
+  }
+}
+
+a {
+  $link-color: #45678e;
+  $hover-color: #0b99bc;
+
+  color: $link-color;
+  text-decoration: none;
+  background-image: linear-gradient($link-color 50%, $link-color 50%);
+  background-repeat: repeat-x;
+  background-position: 0 1.2em;
+  background-size: 50px 1px;
+
+  &:hover {
+    color: $hover-color;
+    background-image: linear-gradient($hover-color 50%, $hover-color 50%);
   }
 }
 
