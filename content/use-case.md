@@ -26,10 +26,10 @@ The ISWC2014 LDF experiment can be described by the following steps:
 0. Copy generated [BSBM dataset](#) to the server.
 0. Install [The server software configuration](#),
    implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/),
-   on the server.
+   with its [dependencies](#) on the server.
 0. Install [The client software configuration](#),
    implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol/),
-   on each client.
+   with its [dependencies](#) on each client.
 0. Execute four processes of the [BSBM benchmark](#)
    with the client software for each client machine
 0. Record CPU time, RAM usage of each client,
@@ -46,7 +46,8 @@ and/or as a separate Turtle file.
 
 Note how in the description of the experiment above,
 we refer to the exact software configurations by their IRI,
-as well as to the specifications they implement.
+their specific dependency versions,
+and the specifications they implement.
 Based on these IRIs,
 other researchers can immediately instantiate the same configuration,
 or derive their own similar configurations
