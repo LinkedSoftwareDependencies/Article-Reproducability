@@ -26,22 +26,26 @@ class MarkupFilter < Nanoc::Filter
   # Move the footnotes to the footer
   def move_footnotes_to_footer content
     container = content[%r{<div class="footnotes">\s*(.*?)\s*</div>}m]
-    footnotes = $1
-    content[container] = ''
-    content['</footer>'] =  <<-FOOTER
-      <section id="footnotes">
-        <h2>Footnotes</h2>
-        #{footnotes}
-      </section>
-    </footer>
-    FOOTER
+    if container
+      footnotes = $1
+      content[container] = ''
+      content['</footer>'] =  <<-FOOTER
+        <section id="footnotes">
+          <h2>Footnotes</h2>
+          #{footnotes}
+        </section>
+      </footer>
+      FOOTER
+    end
   end
 
   # Moves the references section into <footer>>
   def move_references_to_footer content
     references = content[%r{<h2 id="references">.*?</dl>}m]
-    content[references] = ''
-    content['</footer>'] = "<section>\n" + references + "\n</section>\n</footer>"
+    if references
+      content[references] = ''
+      content['</footer>'] = "<section>\n" + references + "\n</section>\n</footer>"
+    end
   end
 
   # Includes code blocks from external files
