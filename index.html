@@ -237,6 +237,8 @@ directly from the Web
   <section id="overview">
     <h2>Overview of software experiment descriptions</h2>
 
+    <h3 id="aspects-of-software-based-research">Aspects of software-based research</h3>
+
     <p class="todo">This section will shortly introduce each of the blocks in the diagram.
 Ruben V. will write the basis.</p>
 
@@ -261,6 +263,25 @@ Ruben V. will write the basis.</p>
 
     <h4 id="article">Article</h4>
     <p class="todo">Write</p>
+
+    <h3 id="workflow-to-describe-experimental-setups">Workflow to describe experimental setups</h3>
+
+    <p>A possible workflow for describing experimental setups is as follows:</p>
+
+    <ol>
+      <li>Design experiment execution and workflow (DIO, OPMW, P-Plan)</li>
+      <li>Environment setup</li>
+      <li>Retrieve software module and RDFise</li>
+      <li>RDFise software configuration</li>
+      <li>?</li>
+      <li>Create dataset structure (RDF Data Cube, SKOS)</li>
+      <li>?</li>
+      <li>Run experiment</li>
+      <li>Catch and store results data (RDF Data Cube)</li>
+      <li>Create visualisation and analysis</li>
+    </ol>
+
+    <p>Activities, entities and actors are defined and captured at each workflow step using PROV-O.</p>
 
   </section>
 
@@ -676,39 +697,20 @@ and the location at which the resource can be found.</p>
 
     <p class="todo">Sarven, Joachim, Ruben V. write this</p>
 
-    <p><a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/jws2016.pdf">Linked Data Fragments</a> <a class="reference" href="#ref-11">[11]</a></p>
+    <p>In this section, we will provide a semantic description
+of the experiment performed in <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">a previous ISWC2014 article</a> <a class="reference" href="#ref-11">[11]</a>,
+which involves specific software configurations
+of a Linked Data Fragments client and server.
+This description serves as a guiding example
+on how to create such descriptions for other evaluations.</p>
 
-    <p>We have implemented a new version of the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a>
-where all components are dynamically wired by Components.js.
-We semantically describe the LDF server module and its 32 components, which results in x triples.
-The configuration file used to be a <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON file</a>
-with a custom domain-specific language.
-Now, this <a href="https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json">configuration file</a> is a declarative components file that can be understood by Components.js,.
-This new configuration format has two major advantages:</p>
-
-    <ul>
-      <li>The configuration file is RDF data with a semantic meaning.</li>
-      <li>External components can be injected by including declaratively into the config file.</li>
-    </ul>
-
-    <p>The workflow for the experiment setup is as follows:</p>
-
-    <ol>
-      <li>Design experiment execution and workflow (DIO, OPMW, P-Plan)</li>
-      <li>Environment setup</li>
-      <li>Retrieve software module and RDFise</li>
-      <li>RDFise software configuration</li>
-      <li>?</li>
-      <li>Create dataset structure (RDF Data Cube, SKOS)</li>
-      <li>?</li>
-      <li>Run experiment</li>
-      <li>Catch and store results data (RDF Data Cube)</li>
-      <li>Create visualisation and analysis</li>
-    </ol>
-
-    <p>Activities, entities and actors are defined and captured at each workflow step using PROV-O.</p>
-
-    <p class="todo">count triples</p>
+    <p>To this end,
+we have modularized the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a>
+for dependency injection.
+We have semantically described the LDF server module and its 32 components.
+Instead of the former domain-specific <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON configuration file</a>,
+the <a href="https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json">semantic configuration</a> is Linked Data
+and can be instantiated automatically by Components.js.</p>
 
   </section>
 
@@ -748,7 +750,7 @@ This new configuration format has two major advantages:</p>
   <dt id="ref-10">[10]</dt>
   <dd>Sweet, R.E.: The Mesa programming environment. In: ACM SIGPLAN Notices. pp. 216–229. ACM (1985).</dd>
   <dt id="ref-11">[11]</dt>
-  <dd>Verborgh, R., Vander Sande, M., Hartig, O., Van Herwegen, J., De Vocht, L., De Meester, B., Haesendonck, G., Colpaert, P.: Triple Pattern Fragments: a Low-cost Knowledge Graph Interface for the Web. Journal of Web Semantics. 37–38, 184–206 (2016).</dd>
+  <dd>Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Walle, R. Van de: Querying Datasets on the Web with High Availability. In: Mika, P., Tudorache, T., Bernstein, A., Welty, C., Knoblock, C., Vrandečić, D., Groth, P., Noy, N., Janowicz, K., and Goble, C. (eds.) Proceedings of the 13th International Semantic Web Conference. pp. 180–196. Springer (2014).</dd>
 </dl>
 </section>
 </footer>
