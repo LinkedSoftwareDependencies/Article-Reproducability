@@ -1,7 +1,14 @@
 ## Overview of software experiment descriptions
 {:#overview}
 
+The correct description of experimental evaluations has many aspects.
+In this article, we focus on those aspects related to the description of software,
+of which we provide an overview in [](#software-aspects).
+We then describe in [](#workflow) how these aspects fit
+into a generic workflow of describing experimental setups.
+
 ### Aspects of software-based research
+{:#software-aspects}
 
 This section will shortly introduce each of the blocks in the diagram.
 Ruben V. will write the basis.
@@ -38,6 +45,7 @@ Write
 {:.todo}
 
 ### Workflow to describe experimental setups
+{:#workflow}
 
 A possible workflow for describing experimental setups is as follows:
 
