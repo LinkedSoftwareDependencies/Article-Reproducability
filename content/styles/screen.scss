@@ -113,12 +113,31 @@ main {
     margin: 1em 0;
 
     li {
-      margin-left: 1em;
-      &::before {
+      margin-left: 2em;
+      &:before {
         position: absolute;
-        margin: -.1em 0 0 -.9em;
+        display: block;
+      }
+    }
+  }
+  ul {
+    li {
+      &:before {
         content: "▪";
         font-size: 1.2em;
+        margin: -.1em 0 0 -.9em;
+      }
+    }
+  }
+  ol {
+    counter-reset: ol;
+    li {
+      &:before {
+        content: counter(ol) ".";
+        counter-increment: ol;
+        margin: 0 0 0 -2em;
+        text-align: right;
+        min-width: 1.5em;
       }
     }
   }
