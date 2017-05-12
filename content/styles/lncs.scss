@@ -339,8 +339,8 @@ main {
 
   // Links
   a {
-    // Display URL of external links that are not references
-    &:not([property])[href^=http] {
+    // Display URL of mandatory links
+    &.mandatory {
       &:after {
         content: ' (' attr(href) ')';
         font-style: italic;

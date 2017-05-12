@@ -9,7 +9,7 @@ In this section, we introduce a dependency injection framework based on these co
 With this, we take semantic software component descriptions to the next level,
 we don't only _describe_ components, but also allow them to be _instantiated_.
 
-We have implemented, [Components.js](https://github.com/LinkedSoftwareDependencies/Components.js),
+We have implemented [Components.js](https://github.com/LinkedSoftwareDependencies/Components.js){:.mandatory},
 an open-source dependency injection framework for JavaScript, and made it available on [npm](https://www.npmjs.com/package/lsd-components).
 It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in [](#describing-components).
 It accepts raw triple streams or URL's to RDF documents containing these declarations.
