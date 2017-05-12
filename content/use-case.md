@@ -20,22 +20,28 @@ and can be instantiated automatically by Components.js.
 
 The ISWC2014 LDF experiment can be described by the following steps:
 
-0. Create 1 virtual machine for the server.
-0. Create 1 virtual machine for a cache.
-0. Create 60 virtual machines for clients.
-0. Copy generated [BSBM dataset](#) to the server.
-0. Install [The server software configuration](#),
-   implementing the [TPF specification](https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/),
-   with its [dependencies](#) on the server.
-0. Install [The client software configuration](#),
-   implementing the [SPARQL 1.1 protocol](https://www.w3.org/TR/sparql11-protocol/),
-   with its [dependencies](#) on each client.
-0. Execute four processes of the [BSBM benchmark](#)
-   with the client software for each client machine
-0. Record CPU time, RAM usage of each client,
-   the CPU time and RAM usage of the server,
-   and measure the ingoing and outgoing bandwidth of the cache.
-0. Publish [results](http://data.linkeddatafragments.org/benchmark) results online.
+
+<!-- TODO:
+  Define (elsewhere) and reuse an actual URI Template for the workflow and steps
+  i.e., preferrably not relative to this document.
+  Change "#ldf-2014-qdwha-" to something else that is machine-generated and
+  determinstic. More specific to the operation and independent to the article it
+  was used in.
+
+  Move opmw prefix to <body> or whatever.
+-->
+
+<ol prefix="opmw: http://www.opmw.org/ontology/ rdfs: http://www.w3.org/2000/01/rdf-schema#" property="schema:hasPart" resource="#ldf-2014-qdwha-experiment-workflow" typeof="opmw:WorkflowTemplate">
+    <li id="ldf-2014-qdwha-experiment-create-vm-for-server" about="#ldf-2014-qdwha-experiment-create-vm-for-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for the server.</li>
+    <li id="ldf-2014-qdwha-experiment-create-vm-for-cache" about="#ldf-2014-qdwha-experiment-create-for-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for a cache.</li>
+    <li id="ldf-2014-qdwha-experiment-create-60-vm-for-clients" about="#ldf-2014-qdwha-experiment-create-60-vm-for-clients" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 60 virtual machines for clients.</li>
+    <li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy generated <a href="#">BSBM dataset</a> to the server.</li>
+    <li id="ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" about="#ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Install <a href="#">the server software configuration</a>, implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/">TPF specification</a>, with its <a href="#">dependencies</a> on the server.</li>
+    <li id="ldf-2014-qdwha-experiment-install-client-software-config-with-sparql" about="#ldf-2014-qdwha-experiment-client-software-config-with-sparql" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Install <a href="#">the client software configuration</a>, implementing the <a href="https://www.w3.org/TR/sparql11-protocol">SPARQL 1.1 protocol</a>, with its <a href="#">dependencies</a> on each client.</li>
+    <li id="ldf-2014-qdwha-experiment-execute-bsbm-per-client" about="#ldf-2014-qdwha-experiment-bsbm-per-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Execute four processes of the <a href="#">BSBM benchmark</a> with the client software for each client machine</li>
+    <li id="ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" about="#ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Record CPU time, RAM usage of each client, the CPU time and RAM usage of the server, and measure the ingoing and outgoing bandwidth of the cache.</li>
+    <li id="ldf-2014-qdwha-experiment-publish-results" about="#ldf-2014-qdwha-experiment-publish-results" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Publish <a href="http://data.linkeddatafragments.org/benchmark">results</a> online.</li>
+</ol>
 
 {:.todo}
 Sarven and Ruben V.:
