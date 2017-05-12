@@ -5,8 +5,7 @@ In this section, we discuss the related work on the reproducibility of scientifi
 ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
 
 ### Scholarly publishing and reproducibility
-Sarven will start this
-{:.todo}
+In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realised on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to <cite>node package manager</cite> on the Web.
 
 We should cite [LOD Lab](cite:cites LODLab),
 as they brought a major new angle to reproducibility within the Semantic Web.
