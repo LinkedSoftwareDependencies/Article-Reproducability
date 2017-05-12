@@ -13,14 +13,10 @@ end
 
 def person name, website, profile
   if not website
-    name
+    h name
   elsif not profile
-    <<-HTML
-<a href="#{website}">#{name}</a>
-    HTML
+    %{<a href="#{h website}">#{h name}</a>}
   else
-    <<-HTML
-<a href="#{website}" typeof="http://xmlns.com/foaf/0.1/Person" resource="#{profile}">#{name}</a>
-    HTML
-end
+    %{<a href="#{h website}" typeof="http://xmlns.com/foaf/0.1/Person" resource="#{profile}">#{h name}</a>}
+  end
 end
