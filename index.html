@@ -294,8 +294,6 @@ Ruben V. will write the basis.</p>
   <section id="describing-modules">
     <h2>Describing software modules</h2>
 
-    <p class="todo">Joachim writes this</p>
-
     <p>There are several levels of granularity on which software can be described,
 going from a high-level package overview to a low-level description of the actual code.
 In our descriptions we make use of several of these layers,
@@ -366,7 +364,7 @@ with changes required.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a> with the <code>"Accept: application/ld+json"</code> header or by accessing the more human friendly <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3.jsonld">URL</a>.
+This can be seen by calling <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a> with the <code>"Accept: application/ld+json"</code> header..
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.</p>
@@ -402,82 +400,62 @@ Prefix definitions omitted for brevity.</p>
     <h3 id="modules">Modules</h3>
     <p>A module is a specific version of a package.
 Continuing with the examples shown above,
-<a href="#n3-0.10.0.json">Listing 2</a> provides some tags present
-in the npm metadata of N3 version 0.10.0.
-Since the general case of tags has already been covered above,
-we focus on several more interesting tags in the metadata shown here.</p>
+the JSON metadata of version 0.10.0 of the N3 bundle can be found at
+<a href="https://registry.npmjs.org/n3/0.10.0">https://registry.npmjs.org/n3/0.10.0</a>,
+while the URI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0">https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
+Here also, many of the tags are mapped by the context,
+while other tags had to be modified to provide more interesting data.</p>
 
-    <p>As can be seen in the JSON-LD version in <a href="#n3-0.10.0.jsonld">Listing 3</a>,
-we minted several new URIs here.
-In the dependencies, we now link to the semantic version <code>^2.0.1</code> 
-of the async package in our own namespace.
-This version corresponds to any version number of that package
-that does not modify the left-most non-zero digit of the given version.
-When accessing this URI,
-the semantic version number will be interpreted
-and a redirect will be given to the highest matching actual number.
-In this case, a redirect will be given to 
-<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0">https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0</a>.</p>
+    <p>An important part of an npm package description are the dependencies
+and their semantic versions.
+E.g., N3 0.10.0 has a dependency on <code>async ^2.0.1</code>.
+<code>^2.0.1</code> is a semantic version and corresponds to any version number
+of async that starts with a 2.
+As can be seen in the JSON-LD,
+this async dependency gets converted to 
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1">https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1</a>,
+with <code>%5E</code> being the url-encoded <code>^</code>.
+If accessed, the server detects the highest matching version number
+and redirects to that module.
+Additionaly, the body of the redirect contains the relevant metadata describing this,
+which in this case results in the following triple:</p>
 
-    <p>For the scripts we also generated new URIs.
-Several scripts are predefined by npm,
-meaning they get shared by many packages,
-so a shared URI for those makes sense.
-The actual content of the script can be accessed by accessing the new script URI,
-allowing for easier automation by services that can execute these scripts.</p>
+    <p><code>
+&lt;https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1&gt; &lt;https://linkedsoftwaredependencies.org/vocabularies/npm#maxSatisfying&gt; &lt;https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0&gt;.
+</code></p>
 
-    <figure id="n3-0.10.0.json" class="listing">
-<pre><code>{
-    &quot;version&quot;: &quot;0.10.0&quot;,
-    &quot;engines&quot;: { &quot;node&quot;: &quot;&gt;=0.10.0&quot; },
-    &quot;devDependencies&quot;: { &quot;async&quot;: &quot;^2.0.1&quot; },
-    &quot;scripts&quot;: { &quot;test&quot;: &quot;mocha&quot; }
-}</code></pre>
-<figcaption>
-        <p><span class="label">Listing 2:</span> Subset of the JSON npm representation N3 version 0.10.0.</p>
-      </figcaption>
-</figure>
-
-    <figure id="n3-0.10.0.jsonld" class="listing">
-<pre><code>{
-    &quot;@context&quot;: [
-        &quot;https://linkedsoftwaredependencies.org/contexts/npm&quot;,
-        { &quot;script&quot;: &quot;https://linkedsoftwaredependencies.org/scripts/npm/&quot;}
-    ],
-    &quot;version&quot;: &quot;0.10.0&quot;,
-    &quot;engines&quot;: { &quot;node&quot;: &quot;https://linkedsoftwaredependencies.org/engines/node/%3E%3D0.10.0&quot; },
-    &quot;devDependencies&quot;: { &quot;async&quot;: &quot;https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1&quot; },
-    &quot;scripts&quot;: { &quot;script:test&quot;: &quot;https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0/scripts/test&quot; }
-}</code></pre>
-<figcaption>
-        <p><span class="label">Listing 3:</span> Subset of the JSON npm representation N3 version 0.10.0.</p>
-      </figcaption>
-</figure>
+    <p>Another tag where we changed the content is the <em>scripts</em> tag.
+Since there is a fixed set of scripts that <a href="https://docs.npmjs.com/misc/scripts">npm supports</a>,
+being able to easily query those can be helpful for automated systems.
+To that end we converted the actual script tags to specific predicates,
+such as <code>&lt;https://linkedsoftwaredependencies.org/scripts/npm/test&gt;</code> for the test script.
+These predicates have as object a new URI that links to actual content of that script,
+meaning the execution script is found by accessing that URI.</p>
 
   </section>
 
   <section id="describing-components">
     <h2>Describing components and their configuration</h2>
 
-    <p>In this section, we introduce a vocabulary for describing software components and how they can be instantiated.
+    <p>In this section, we introduce the <em>Object-Oriented Components</em> ontology for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.</p>
 
     <p class="todo">Be mentally prepared for needing to remove these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)</p>
 
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
-    <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>object-oriented components vocabulary</em></a>,
+    <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components ontology</em></a>,
 we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-7">[7]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.
-<a href="#voc-oo-diagram">Fig. 2</a> shows an overview of all the classes and predicates in the components vocabulary.</p>
+<a href="#voc-oo-diagram">Fig. 2</a> shows an overview of all the classes and predicates in the ontology.</p>
 
     <figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-oriented components vocabulary diagram]" />
+<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> vocabulary.</p>
+        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology.</p>
       </figcaption>
 </figure>
 
@@ -503,10 +481,10 @@ An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code
 <code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
-    <p><a href="#module-n3">Listing 4</a> shows an example of the N3.js npm module using the components vocabulary.
+    <p><a href="#module-n3">Listing 2</a> shows an example of the N3.js npm module using the components ontology.
 It exposes several components such as <em>Parser</em> and <em>Lexer</em>.
 Each of these components can take several different parameters.
-<a href="#config-n3">Listing 5</a> illustrates how instances can be created of these component types.</p>
+<a href="#config-n3">Listing 3</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3" class="listing">
 <pre><code>ex:n3 a oo:Module; oo:hasComponents n3:Parser, n3:Lexer.
@@ -523,7 +501,7 @@ n3:lineMode            a oo:Parameter; rdfs:range xsd:boolean.
 n3:n3                  a oo:Parameter; rdfs:range xsd:boolean.
 n3:comments            a oo:Parameter; rdfs:range xsd:boolean.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 4:</span> The N3.js module contains a parser, lexer and util component.
+        <p><span class="label">Listing 2:</span> The N3.js module contains a parser, lexer and util component.
 The parser and lexer are a constructable components.
 The parser has a parameter that takes another component, a lexer, as input.
 The util component already is an instance, for which it needs no parameters.</p>
@@ -538,7 +516,7 @@ ex:myParser a n3:Parser;
     n3:format &quot;application/trig&quot;;
     n3:lexer ex:myLexer.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 5:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
+        <p><span class="label">Listing 3:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
 <code>ex:myParser</code> is a parser that accepts the TriG format and uses <code>ex:myLexer</code> for lexing.</p>
       </figcaption>
 </figure>
@@ -552,18 +530,18 @@ While this is sufficient to describe component instantiations on a semantic leve
 it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
 which is the case for most popular OOP languages.</p>
 
-    <p>We introduce a new vocabulary for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name <a href="http://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>object mapping vocabulary</em></a>.
-<a href="#voc-om-diagram">Fig. 3</a> shows an overview of all the classes and predicates in the components vocabulary.</p>
+    <p>We introduce a new ontology for describing the mapping between the pure semantic parameters
+to arguments in method calls in OOP languages like JavaScript, hence the name <a href="http://linkedsoftwaredependencies.org/vocabularies/object-mapping">_Object Mapping ontology</a>.
+<a href="#voc-om-diagram">Fig. 3</a> shows an overview of all the classes and predicates in the ontology.</p>
 
     <figure id="voc-om-diagram">
-<img src="voc-om-diagram.svg" alt="[Object mapping vocabulary diagram]" />
+<img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>object mapping</em> vocabulary.</p>
+        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology.</p>
       </figcaption>
 </figure>
 
-    <p>Our vocabulary introduces the <em>object map</em> and the <em>array map</em>, the latter is a subclass of the former.
+    <p>The ontology introduces the <em>object map</em> and the <em>array map</em>, the latter is a subclass of the former.
 An object map can have several <em>object map entries</em>, where each entry has a field name and a field value.
 An array map can have several <em>array map entries</em>, each entry only has a value.</p>
 
@@ -574,7 +552,7 @@ An <code>om:fieldValue</code> can also refer to another object map, which will b
 <code>om:collectsEntriesFrom</code> can refer to a predicate that points to entities with certain predicates.
 Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
 Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.
-<a href="#om-collects-module">Listing 6</a>, <a href="#om-collects-data">Listing 7</a> and <a href="#om-collects-result">Listing 8</a> show an example of this entry collection process.</p>
+<a href="#om-collects-module">Listing 4</a>, <a href="#om-collects-data">Listing 5</a> and <a href="#om-collects-result">Listing 6</a> show an example of this entry collection process.</p>
     <figure id="om-collects-module" class="listing">
 <pre><code>:myOm om:hasField [
     om:fieldName foaf:name;
@@ -589,7 +567,7 @@ Each entity predicate refered to by <code>om:fieldValue</code> will have its val
 <pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
   &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
 <figcaption>
-        <p><span class="label">Listing 6:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
+        <p><span class="label">Listing 4:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
 with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.</p>
       </figcaption>
 </figure>
@@ -600,20 +578,20 @@ with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.<
 :bob foaf:name &quot;Bob&quot;;
     foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 7:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
+        <p><span class="label">Listing 5:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
       </figcaption>
 </figure>
     <figure id="om-collects-result" class="listing">
 <pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
   &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
 <figcaption>
-        <p><span class="label">Listing 8:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 7</a>
-using the object mapping from <a href="#om-collects-module">Listing 6</a>.</p>
+        <p><span class="label">Listing 6:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 5</a>
+using the object mapping from <a href="#om-collects-module">Listing 4</a>.</p>
       </figcaption>
 </figure>
 
-    <p><a href="#module-n3-mapped">Listing 9</a> shows the mapping of the N3.js component parameters to the constructor implementations.
-This description enchances the component definitions from <a href="#module-n3">Listing 4</a>
+    <p><a href="#module-n3-mapped">Listing 7</a> shows the mapping of the N3.js component parameters to the constructor implementations.
+This description enchances the component definitions from <a href="#module-n3">Listing 2</a>
 as it provides a lower level (implementation) view on the component constructors.</p>
 
     <figure id="module-n3-mapped" class="listing">
@@ -651,7 +629,7 @@ n3:Lexer oo:constructorMapping ([
     ].
 ]).</code></pre>
 <figcaption>
-        <p><span class="label">Listing 9:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
+        <p><span class="label">Listing 7:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
 These objects are the single arguments of respectively the parser and lexer constructor.
 The field value in this case is always a parameter.</p>
       </figcaption>
@@ -675,7 +653,7 @@ It is able to construct component instances based on declarative component const
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
-    <p><a href="#components.js">Listing 10</a> illustrates how components can be instantiated using Components.js.
+    <p><a href="#components.js">Listing 8</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
 This <code>Loader</code> provides <em>constructor injection</em>:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
@@ -689,7 +667,7 @@ loader.registerModuleResourcesUrl(&#39;http://example.org/module-n3.ttl&#39;)
 loader.registerConfigUrl(&#39;http://example.org/config-n3.ttl&#39;)
 var myParser = loader.instantiate(&#39;http://example.org/config-n3.ttl#myParser&#39;);</code></pre>
 <figcaption>
-        <p><span class="label">Listing 10:</span> First, a new component loader is created
+        <p><span class="label">Listing 8:</span> First, a new component loader is created
 after which module and component definitions are registered.
 Finally, a declarative component instantiation is supplied by providing the component URI
 and the location at which the resource can be found.</p>
