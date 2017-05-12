@@ -32,3 +32,4 @@ The ISWC2014 LDF experiment can be described by the following steps:
 0. We recorded the CPU time, RAM usage of each client,
    the CPU time and RAM usage of the server,
    and we measured the ingoing and outgoing bandwidth of the cache.
+0. We published the [results](http://data.linkeddatafragments.org/benchmark) online.
