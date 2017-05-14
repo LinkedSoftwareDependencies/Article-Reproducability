@@ -58,11 +58,11 @@ captures the low-level wiring between components,
 enabling researchers to swap individual algorithms
 or component settings.
 
-The executed workflow which corresponds to the abstract experiment workflow
-generates entities based on each activity as performed by various agents.
-Essentially the resulting observations of the experiment is among other equally
-valueable immutable provenance level data which plays a vital role in
-reproducing and verifying the steps which led to the outcome.
+The *executed* workflow which corresponds to the *abstract*
+experiment workflow generates entities based on each activity as performed by
+various agents. Essentially the resulting observations of the experiment is
+among other valuable immutable provenance level data which plays a vital role in
+verifying and reproducing the steps which led to the outcome.
 
 For example, based on the above description,
 the exact same experiment can be performed
