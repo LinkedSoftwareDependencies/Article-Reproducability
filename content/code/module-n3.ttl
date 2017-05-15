@@ -1,7 +1,0 @@
-ex:n3       a oo:Module; oo:hasComponents n3:Parser, n3:Lexer.
-n3:Parser   a oo:Class oo:hasParameter n3:format, n3:lexer.
-n3:Lexer    a oo:Class oo:hasParameter n3:lineMode, n3:comments.
-n3:format   a oo:Parameter; rdfs:range xsd:string.
-n3:lexer    a oo:Parameter; rdfs:range n3:Lexer.
-n3:lineMode a oo:Parameter; rdfs:range xsd:boolean.
-n3:comments a oo:Parameter; rdfs:range xsd:boolean.

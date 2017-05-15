@@ -33,9 +33,9 @@ through the regular `rdf:type` predicate.
 For instance,
 a software module representing a parser
 can be described as
-`n3:Parser a oo:Class.`,
+`ldfs:Datasource/Hdt a oo:Class.`,
 and a concrete instance is
-`:myParser a n3:Parser`.
+`:myHdtDatasource a ldfs:Datasource/Hdt`.
 
 
 Several `oo:Component` subclasses are defined.
@@ -54,29 +54,28 @@ upon instantiation ([](#instantiating)),
 a closed world will be assumed.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
-[](#module-n3) shows an example of the N3.js npm module using the components ontology.
-It exposes several components such as _Parser_ and _Lexer_,
+[](#module-ldf) shows a simplified example of the LDF server npm module using the components ontology.
+It exposes several components such as an HDT and SPARQL datasource and a QPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
 For example,
-[](#config-n3) illustrates how instances can be created of these component types.
+[](#config-ldf) illustrates how instances can be created of these component types.
 
-<figure id="module-n3" class="listing">
-````/code/module-n3.ttl````
+<figure id="module-ldf" class="listing">
+````/code/module-ldf.ttl````
 <figcaption markdown="block">
-The N3.js module contains a parser, lexer and util component.
-The parser and lexer are a constructable components.
-The parser has a parameter that takes another component, a lexer, as input.
-The util component already is an instance, for which it needs no parameters.
+The LDF server module contains, amonst others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
+The HDT datasource takes an HDT file as parameter.
+The SPARQL datasource takes a SPARQL endpoint URI as parameter.
 </figcaption>
 </figure>
 
-<figure id="config-n3" class="listing">
-````/code/config-n3.ttl````
+<figure id="config-ldf" class="listing">
+````/code/config-ldf.ttl````
 <figcaption markdown="block">
-`ex:myLexer` is a lexer that accepts comments.
-`ex:myParser` is a parser that accepts the TriG format and uses `ex:myLexer` for lexing.
+`ex:myServer` is a TPF server which will be loaded with a HDT and SPARQL-based datasource.
 </figcaption>
 </figure>
 
@@ -108,14 +107,16 @@ An `om:fieldValue` can also refer to another object map, which will be mapped to
 Each entity predicate that is refered to by `om:fieldName` will have its values mapped to keys of the object.
 Each entity predicate refered to by `om:fieldValue` will have its values mapped to values.
 
-[](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
-This description enchances the component definitions from [](#module-n3)
+[](#module-ldf-mapped) shows the mapping of the LDF component parameters to the constructor implementations.
+This description enchances the component definitions from [](#module-ldf)
 as it provides a lower level (implementation) view on the component constructors.
 
-<figure id="module-n3-mapped" class="listing">
-````/code/module-n3-mapped.ttl````
+<figure id="module-ldf-mapped" class="listing">
+````/code/module-ldf-mapped.ttl````
 <figcaption markdown="block">
-The parser and lexer implementation both require a single object as argument for the constructor.
+The HDT and SPARQL-based datasource constructors both take require a single object as argument for the constructor.
 The entries of this object are mapped from the parameter values using this mapping.
+The TPF server constructor similarly requires a single object,
+where the `datasources` entry points to an object that is a mapping from datasource title to datasource.
 </figcaption>
 </figure>

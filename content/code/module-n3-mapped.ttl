@@ -1,8 +1,0 @@
-n3:Parser oo:constructorArguments ([ om:field
-  [ om:fieldName "format"; om:fieldValue: n3:format ],
-  [ om:fieldName "lexer"; om:fieldValue: n3:lexer ].
-]).
-n3:Lexer oo:constructorArguments ([ om:field
-  [ om:fieldName "lineMode"; om:fieldValue: n3:lineMode ],
-  [ om:fieldName "comments"; om:fieldValue: n3:comments ].
-]).
