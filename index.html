@@ -6,7 +6,7 @@
   <link rel="stylesheet" media="screen" href="styles/screen.css">
   <link rel="stylesheet" media="print"  href="styles/print.css">
 </head>
-<body>
+<body prefix="cc: https://creativecommons.org/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# opmw: http://www.opmw.org/ontology/">
   <header>
   <h1 id="reproduceable-software-experiments-through-semanticconfigurations">Reproduceable software experiments through semantic configurations</h1>
 
@@ -633,7 +633,7 @@ Instead of the former domain-specific <a href="https://github.com/LinkedDataFrag
 the <a href="https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json">semantic configuration</a> is Linked Data
 and can be instantiated automatically by Components.js.</p>
 
-    <p>The ISWC2014 LDF experiment can be described by the following steps:</p>
+    <p>The ISWC2014 LDF experiment can be described using the following <a about="#ldf-2014-qdwha-experiment-workflow" content="LDF 2014 experiment workflow" href="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:</p>
 
     <!-- TODO:
   Define (elsewhere) and reuse an actual URI Template for the workflow and steps
@@ -644,7 +644,7 @@ and can be instantiated automatically by Components.js.</p>
 
 -->
 
-    <ol prefix="opmw: http://www.opmw.org/ontology/ rdfs: http://www.w3.org/2000/01/rdf-schema#" property="schema:hasPart" resource="#ldf-2014-qdwha-experiment-workflow" typeof="opmw:WorkflowTemplate">
+    <ol id="ldf-2014-qdwha-experiment-workflow" property="schema:hasPart" resource="#ldf-2014-qdwha-experiment-workflow" typeof="opmw:WorkflowTemplate">
     <li id="ldf-2014-qdwha-experiment-create-vm-for-server" about="#ldf-2014-qdwha-experiment-create-vm-for-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for the server.</li>
     <li id="ldf-2014-qdwha-experiment-create-vm-for-cache" about="#ldf-2014-qdwha-experiment-create-for-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for a cache.</li>
     <li id="ldf-2014-qdwha-experiment-create-60-vm-for-clients" about="#ldf-2014-qdwha-experiment-create-60-vm-for-clients" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 60 virtual machines for clients.</li>
