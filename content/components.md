@@ -87,6 +87,8 @@ While this is sufficient to describe component instantiations on a semantic leve
 it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
 which is the case for most popular OOP languages.
 
+FIRST INTRODUCE DEFAULT SOLUTION
+
 We introduce a new ontology for describing the mapping between the pure semantic parameters
 to arguments in method calls in OOP languages like JavaScript, hence the name [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping).
 [](#voc-om-diagram) shows an overview of all the classes and predicates in the ontology.
