@@ -1,18 +1,18 @@
 ex:ldf-server a oo:Module;
-    oo:component ldfs:Server/Qpf, ldfs:Datasource/Hdt, ldfs:Datasource/Sparql.
-ldfs:Server/Tpf a oo:Class;
+    oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
+ldfs:Server:Tpf a oo:Class;
     oo:parameter ldfs:datasource, ldfs:port.
 ldfs:Datasource a oo:AbstractClass;
-    oo:parameter ldfs:Datasource/title.
-ldfs:Datasource/Hdt a oo:Class;
+    oo:parameter ldfs:Datasource:title.
+ldfs:Datasource:Hdt a oo:Class;
     rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource/Hdt/file.
-ldfs:Datasource/Sparql a oo:Class;
+    oo:parameter ldfs:Datasource:Hdt:file.
+ldfs:Datasource:Sparql a oo:Class;
     rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource/Sparql/endpoint.
+    oo:parameter ldfs:Datasource:Sparql:endpoint.
 
 ldfs:datasource                 a oo:Parameter; rdfs:range ldfs:Datasource.
 ldfs:port                       a oo:Parameter; rdfs:range xsd:integer.
-ldfs:Datasource/title           a oo:Parameter; rdfs:range xsd:string.
-ldfs:Datasource/Hdt/file        a oo:Parameter; rdfs:range ldfs:HdtFile.
-ldfs:Datasource/Sparql/endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.
+ldfs:Datasource:title           a oo:Parameter; rdfs:range xsd:string.
+ldfs:Datasource:Hdt:file        a oo:Parameter; rdfs:range ldfs:HdtFile.
+ldfs:Datasource:Sparql:endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.

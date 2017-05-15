@@ -31,9 +31,9 @@ through the regular `rdf:type` predicate.
 For instance,
 a software module representing a parser
 can be described as
-`ldfs:Datasource/Hdt a oo:Class.`,
+`ldfs:Datasource:Hdt a oo:Class.`,
 and a concrete instance is
-`:myHdtDatasource a ldfs:Datasource/Hdt`.
+`:myHdtDatasource a ldfs:Datasource:Hdt`.
 
 
 Several `oo:Component` subclasses are defined.
