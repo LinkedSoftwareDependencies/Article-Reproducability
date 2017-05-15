@@ -65,12 +65,12 @@ we start by adding our context,
 <https://linkedsoftwaredependencies.org/contexts/npm>{:#iri-link},
 which already maps many of the npm tags to corresponding RDF predicates.
 This allows these tags to remain the same in the JSON-LD representation.
-Due to the limitations of context mapping,
-some other changes were needed,
-with the most important one relating to the specific versions of the bundle.
+The limitations of context mapping necessitated
+some other changes,
+the most important one relating to the specific versions of the bundle.
 This can be seen by retrieving <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:#iri-link} with an `Accept: application/ld+json` header.
 There the bundle now contains links to its corresponding modules,
-providing semantic links between them.
+providing semantic connections between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
 
 Since JSON-LD is an RDF representation, it can easily be converted to other syntaxes,
