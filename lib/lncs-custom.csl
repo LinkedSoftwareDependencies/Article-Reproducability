@@ -64,16 +64,19 @@
     </layout>
   </citation>
   <bibliography entry-spacing="0" second-field-align="flush">
-    <layout suffix=".">
+    <layout>
       <text variable="citation-number" suffix="."/>
       <text macro="author" suffix=": "/>
       <choose>
         <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
           <group delimiter=" ">
             <text macro="title" suffix="."/>
-            <text macro="publisher"/>
+            <group delimiter=", ">
+              <text macro="publisher"/>
+              <text variable="URL"/>
+            </group>
             <date variable="issued">
-              <date-part name="year" prefix="(" suffix=")"/>
+              <date-part name="year" prefix="(" suffix=")."/>
             </date>
           </group>
         </if>
@@ -84,7 +87,7 @@
             <text variable="volume" suffix=","/>
             <text variable="page"/>
             <date variable="issued">
-              <date-part name="year" prefix="(" suffix=")"/>
+              <date-part name="year" prefix="(" suffix=")."/>
             </date>
           </group>
         </else-if>
@@ -112,11 +115,11 @@
               </else>
             </choose>
             <date variable="issued">
-              <date-part name="year" prefix="(" suffix=")"/>
+              <date-part name="year" prefix="(" suffix=")."/>
             </date>
           </group>
         </else-if>
-        <else-if type="webpage">
+        <else-if type="webpage online">
           <group delimiter=", ">
             <text macro="title"/>
             <text variable="URL"/>
@@ -128,16 +131,25 @@
             <text variable="event" suffix="."/>
             <text variable="event-place" prefix=", "/>
             <date variable="issued">
-              <date-part name="year" prefix="(" suffix=")"/>
+              <date-part name="year" prefix="(" suffix=")."/>
+            </date>
+          </group>
+        </else-if>
+        <else-if variable="URL">
+          <group delimiter=" ">
+            <text macro="title" suffix="."/>
+            <text variable="URL"/>
+            <date variable="issued">
+              <date-part name="year" prefix="(" suffix=")."/>
             </date>
           </group>
         </else-if>
         <else>
-          <group delimiter=", ">
+          <group delimiter=" ">
             <text macro="title"/>
             <text variable="URL"/>
             <date variable="issued">
-              <date-part name="year" prefix="(" suffix=")"/>
+              <date-part name="year" prefix="(" suffix=")."/>
             </date>
           </group>
         </else>
