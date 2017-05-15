@@ -35,7 +35,8 @@ This corresponds to the metadata, added by the package developer in a [`package.
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
-we converted the JSON metadata provided by the npm registry to RDF.
+we converted the JSON metadata provided by the npm registry to RDF,
+for which we set up a [server](https://github.com/LinkedSoftwareDependencies/npm-extraction-server).
 
 ### JSON-LD
 Since our input data is JSON,
@@ -50,10 +51,6 @@ or if an entity has a specific type.
 For the data where we could not reach the format using just the JSON-LD context,
 such as concatenating values to create a URI,
 we modified some of the input JSON before exporting it to JSON-LD.
-
-{:.todo}
-Decrease tags in examples for pages.
-Probably also drop either JSON-LD or turtle
 
 ### Bundles
 A bundle represents the general npm package.
