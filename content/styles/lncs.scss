@@ -405,13 +405,24 @@ header {
 }
 
 dl.references {
+  counter-reset: reference;
+
   dt {
-    float: left;
-    clear: left;
+    display: none;
   }
 
   dd {
-    margin: 0 0 0 1.75em;
+    $number-width: 1.6em;
+    margin: 0 0 0 $number-width;
+    text-indent: -$number-width;
+    counter-increment: reference;
+
+    &:before {
+      content: counter(reference) ". ";
+      display: inline-block;
+      width: $number-width;
+      text-align: right;
+    }
   }
 }
 
