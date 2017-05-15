@@ -9,5 +9,4 @@ npm:n3 a doap:Project;
   doap:name "n3";
   owl:sameAs "https://www.npmjs.com/package/n3";
   foaf:maker users:rubenverborgh.
-users:rubenverborgh foaf:mbox "ruben.verborgh@gmail.com";
-  foaf:name "Ruben Verborgh".
+users:rubenverborgh foaf:name "Ruben Verborgh".
