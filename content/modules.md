@@ -67,7 +67,7 @@ with changes required.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling <https://linkedsoftwaredependencies.org/bundles/npm/n3> with the `"Accept: application/ld+json"` header..
+This can be seen by calling <https://linkedsoftwaredependencies.org/bundles/npm/n3> with the `"Accept: application/ld+json"` header.
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
@@ -123,6 +123,13 @@ To that end we converted the actual script tags to specific predicates,
 such as `<https://linkedsoftwaredependencies.org/scripts/npm/test>` for the test script.
 These predicates have as object a new URI that links to actual content of that script,
 meaning the execution script is found by accessing that URI.
+
+Additionally, to support in description which modules are being used on a machine,
+we created a [tool](https://github.com/LinkedSoftwareDependencies/node-dependency-parser){:.mandatory}
+that outputs the actual dependencies
+used by a specific package installation in RDF.
+This way the exact installation that was used can be described,
+without having to rely on the interpretation of semantic versions which can change over time.
 
 ### Publication
 475,000 npm packages correspond to 150,000,000+ triples when we collect the information from all packages.
