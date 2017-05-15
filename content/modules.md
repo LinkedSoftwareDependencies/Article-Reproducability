@@ -29,9 +29,9 @@ while a specific version of such a package would be a module.
 The package contains the description of the project together with all its versions,
 while a version contains the specific dependencies and a link to the actual implementation.
 
-All this npm data is stored in a [CouchDB](http://couchdb.apache.org/) 
-[instance](https://registry.npmjs.org/) with one entry per bundle.
-This corresponds to the metadata, added by the package developer in a [`package.json`](https://docs.npmjs.com/files/package.json) file,
+All this npm data is stored in a [CouchDB](http://couchdb.apache.org/){:.mandatory} 
+[instance](https://registry.npmjs.org/){:.mandatory} with one entry per bundle.
+This corresponds to the metadata, added by the package developer in a [`package.json`](https://docs.npmjs.com/files/package.json){:.mandatory} file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
@@ -39,7 +39,7 @@ we converted the JSON metadata provided by the npm registry to RDF.
 
 ### JSON-LD
 Since our input data is JSON,
-it made sense to convert to [JSON-LD](http://json-ld.org/),
+it made sense to convert to [JSON-LD](http://json-ld.org/){:.mandatory},
 a format specifically made for adding semantics to JSON.
 JSON-LD achieves this by adding a so-called *context* to the JSON data.
 This context describes how the JSON tags should be interpreted.
@@ -113,14 +113,14 @@ with `%5E` being the url-encoded `^`.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
 Additionaly, the body of the redirect contains the relevant metadata describing this,
-which in this case results in the following triple:
+which in this case results in the following triple (prefixed for brevity):
 
 ```
-<https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1> <https://linkedsoftwaredependencies.org/vocabularies/npm#maxSatisfying> <https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0>.
+async:\%5E2.0.1 npm:maxSatisfying async:2.4.0.
 ```
 
 Another tag where we changed the content is the *scripts* tag.
-Since there is a fixed set of scripts that [npm supports](https://docs.npmjs.com/misc/scripts),
+Since there is a fixed set of scripts that [npm supports](https://docs.npmjs.com/misc/scripts){:.mandatory},
 being able to easily query those can be helpful for automated systems.
 To that end we converted the actual script tags to specific predicates,
 such as `<https://linkedsoftwaredependencies.org/scripts/npm/test>` for the test script.
