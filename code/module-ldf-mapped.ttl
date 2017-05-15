@@ -1,0 +1,13 @@
+ldfs:Server/Tpf oo:constructorArguments ([ om:field
+  [ om:fieldName "datasources"; om:fieldValue
+      [ om:fieldName ldfs:Datasource/title, om:fieldValue rdf:object ] ],
+  [ om:fieldName "port"; om:fieldValue: ldfs:port ].
+]).
+ldfs:Datasource/Hdt oo:constructorArguments ([ om:field
+  [ om:fieldName "title"; om:fieldValue: ldfs:Datasource/title ],
+  [ om:fieldName "file";  om:fieldValue: ldfs:Datasource/Hdt/file ].
+]).
+ldfs:Datasource/Sparql oo:constructorArguments ([ om:field
+  [ om:fieldName "title";    om:fieldValue: ldfs:Datasource/title ],
+  [ om:fieldName "endpoint"; om:fieldValue: ldfs:Datasource/Sparql/endpoint ].
+]).

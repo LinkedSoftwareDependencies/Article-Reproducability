@@ -425,9 +425,9 @@ through the regular <code>rdf:type</code> predicate.
 For instance,
 a software module representing a parser
 can be described as
-<code>n3:Parser a oo:Class.</code>,
+<code>ldfs:Datasource/Hdt a oo:Class.</code>,
 and a concrete instance is
-<code>:myParser a n3:Parser</code>.</p>
+<code>:myHdtDatasource a ldfs:Datasource/Hdt</code>.</p>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
@@ -445,40 +445,52 @@ upon instantiation (<a href="#instantiating">Section 5</a>),
 a closed world will be assumed.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
-    <p><a href="#module-n3">Listing 2</a> shows an example of the N3.js npm module using the components ontology.
-It exposes several components such as <em>Parser</em> and <em>Lexer</em>,
+    <p><a href="#module-ldf">Listing 2</a> shows a simplified example of the LDF server npm module using the components ontology.
+It exposes several components such as an HDT and SPARQL datasource and a QPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
 For example,
-<a href="#config-n3">Listing 3</a> illustrates how instances can be created of these component types.</p>
+<a href="#config-ldf">Listing 3</a> illustrates how instances can be created of these component types.</p>
 
-    <figure id="module-n3" class="listing">
-<pre><code>ex:n3       a oo:Module; oo:hasComponents n3:Parser, n3:Lexer.
-n3:Parser   a oo:Class oo:hasParameter n3:format, n3:lexer.
-n3:Lexer    a oo:Class oo:hasParameter n3:lineMode, n3:comments.
-n3:format   a oo:Parameter; rdfs:range xsd:string.
-n3:lexer    a oo:Parameter; rdfs:range n3:Lexer.
-n3:lineMode a oo:Parameter; rdfs:range xsd:boolean.
-n3:comments a oo:Parameter; rdfs:range xsd:boolean.</code></pre>
+    <figure id="module-ldf" class="listing">
+<pre><code>ex:ldf-server a oo:Module;
+    oo:component ldfs:Server/Qpf, ldfs:Datasource/Hdt, ldfs:Datasource/Sparql.
+ldfs:Server/Tpf a oo:Class;
+    oo:parameter ldfs:datasource, ldfs:port.
+ldfs:Datasource a oo:AbstractClass;
+    oo:parameter ldfs:Datasource/title.
+ldfs:Datasource/Hdt a oo:Class;
+    rdfs:subClassOf ldfs:Datasource;
+    oo:parameter ldfs:Datasource/Hdt/file.
+ldfs:Datasource/Sparql a oo:Class;
+    rdfs:subClassOf ldfs:Datasource;
+    oo:parameter ldfs:Datasource/Sparql/endpoint.
+
+ldfs:datasource                 a oo:Parameter; rdfs:range ldfs:Datasource.
+ldfs:port                       a oo:Parameter; rdfs:range xsd:integer.
+ldfs:Datasource/title           a oo:Parameter; rdfs:range xsd:string.
+ldfs:Datasource/Hdt/file        a oo:Parameter; rdfs:range ldfs:HdtFile.
+ldfs:Datasource/Sparql/endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 2:</span> The N3.js module contains a parser, lexer and util component.
-The parser and lexer are a constructable components.
-The parser has a parameter that takes another component, a lexer, as input.
-The util component already is an instance, for which it needs no parameters.</p>
+        <p><span class="label">Listing 2:</span> The LDF server module contains, amonst others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
+The HDT datasource takes an HDT file as parameter.
+The SPARQL datasource takes a SPARQL endpoint URI as parameter.</p>
       </figcaption>
 </figure>
 
-    <figure id="config-n3" class="listing">
-<pre><code>ex:myLexer a n3:Lexer;
-    n3:comments true.
-ex:myParser a n3:Parser;
-    n3:format &quot;application/trig&quot;;
-    n3:lexer ex:myLexer.
-</code></pre>
+    <figure id="config-ldf" class="listing">
+<pre><code>ex:myServer a ldfs:Server/Qpf;
+    ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
+ex:myHdtDatasource a ldfs:Datasource/Hdt;
+    ldfs:Datasource/title &quot;A DBpedia 2016 datasource&quot;;
+    ldfs:Datasource/Hdt/file &lt;http://example.org/dbpedia-2016.hdt&gt;.
+ex:mySparqlDatasource a ldfs:Datasource/Sparql;
+    ldfs:Datasource/title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
+    ldfs:Datasource/Sparql/endpoint &lt;http://example.org/sparql/dbpedia-2016&gt;.</code></pre>
 <figcaption>
-        <p><span class="label">Listing 3:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
-<code>ex:myParser</code> is a parser that accepts the TriG format and uses <code>ex:myLexer</code> for lexing.</p>
+        <p><span class="label">Listing 3:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
       </figcaption>
 </figure>
 
@@ -510,22 +522,29 @@ An <code>om:fieldValue</code> can also refer to another object map, which will b
 Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
 Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.</p>
 
-    <p><a href="#module-n3-mapped">Listing 4</a> shows the mapping of the N3.js component parameters to the constructor implementations.
-This description enchances the component definitions from <a href="#module-n3">Listing 2</a>
+    <p><a href="#module-ldf-mapped">Listing 4</a> shows the mapping of the LDF component parameters to the constructor implementations.
+This description enchances the component definitions from <a href="#module-ldf">Listing 2</a>
 as it provides a lower level (implementation) view on the component constructors.</p>
 
-    <figure id="module-n3-mapped" class="listing">
-<pre><code>n3:Parser oo:constructorArguments ([ om:field
-  [ om:fieldName &quot;format&quot;; om:fieldValue: n3:format ],
-  [ om:fieldName &quot;lexer&quot;; om:fieldValue: n3:lexer ].
+    <figure id="module-ldf-mapped" class="listing">
+<pre><code>ldfs:Server/Tpf oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;datasources&quot;; om:fieldValue
+      [ om:fieldName ldfs:Datasource/title, om:fieldValue rdf:object ] ],
+  [ om:fieldName &quot;port&quot;; om:fieldValue: ldfs:port ].
 ]).
-n3:Lexer oo:constructorArguments ([ om:field
-  [ om:fieldName &quot;lineMode&quot;; om:fieldValue: n3:lineMode ],
-  [ om:fieldName &quot;comments&quot;; om:fieldValue: n3:comments ].
+ldfs:Datasource/Hdt oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;title&quot;; om:fieldValue: ldfs:Datasource/title ],
+  [ om:fieldName &quot;file&quot;;  om:fieldValue: ldfs:Datasource/Hdt/file ].
+]).
+ldfs:Datasource/Sparql oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;title&quot;;    om:fieldValue: ldfs:Datasource/title ],
+  [ om:fieldName &quot;endpoint&quot;; om:fieldValue: ldfs:Datasource/Sparql/endpoint ].
 ]).</code></pre>
 <figcaption>
-        <p><span class="label">Listing 4:</span> The parser and lexer implementation both require a single object as argument for the constructor.
-The entries of this object are mapped from the parameter values using this mapping.</p>
+        <p><span class="label">Listing 4:</span> The HDT and SPARQL-based datasource constructors both take require a single object as argument for the constructor.
+The entries of this object are mapped from the parameter values using this mapping.
+The TPF server constructor similarly requires a single object,
+where the <code>datasources</code> entry points to an object that is a mapping from datasource title to datasource.</p>
       </figcaption>
 </figure>
 
@@ -555,9 +574,9 @@ are in place for developers that want to use the dependency injector directly wi
 
     <figure id="components.js" class="listing">
 <pre><code>const loader = new require(&#39;lsd-components&#39;).Loader();
-loader.registerModule(&#39;http://example.org/module-n3&#39;);
-loader.registerConfig(&#39;http://example.org/config-n3&#39;);
-let myParser = loader.instantiate(&#39;http://example.org/config-n3#myParser&#39;);</code></pre>
+loader.registerModule(&#39;http://example.org/module-ldf&#39;);
+loader.registerConfig(&#39;http://example.org/config-ldf&#39;);
+let myParser = loader.instantiate(&#39;http://example.org/config-ldf#myServer&#39;);</code></pre>
 <figcaption>
         <p><span class="label">Listing 5:</span> First, a new component loader is created
 after which module and component definitions are registered.
