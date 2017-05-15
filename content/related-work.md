@@ -71,7 +71,7 @@ that exactly capture the used modules and dependencies
 ([](#describing-modules)).
 The resulting description can then be published on the Web as Linked Data,
 for instance, as part of the description of an experimental evaluation
-([](#overview)).
+([](#use-case)).
 Furthermore, we implemented a framework
 that can instantiate such software descriptions
 directly from the Web

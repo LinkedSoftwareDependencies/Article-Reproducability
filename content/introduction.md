@@ -68,7 +68,6 @@ Our contributions are the following:
 
 This article is structured as follows.
 In [](#related-work), we discuss related work.
-In [](#overview), we present an overview of the required steps to describe software experimentations.
 [](#describing-modules) introduces the semantic description of software modules.
 Next, [](#describing-components) discusses a semantic description of software components and configurations,
 followed by the introduction of a dependency injection framework that can instantiate these in [](#instantiating).
