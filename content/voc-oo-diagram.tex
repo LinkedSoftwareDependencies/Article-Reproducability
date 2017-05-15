@@ -37,7 +37,7 @@
     
     \node[concept, below right=of class] (parameter)     {oo:Parameter};
     \node[concept, below left=of parameter] (boolean)    {xsd:boolean};
-    \node[concept, below right=of parameter] (blank)     {\ };
+    \node[concept, below right=of parameter] (defaultValue)     {owl:Thing};
     
     % Concept relations
     \draw[->,thick,relation,text width=10em] (module) -- (component) node [left,midway,align=center] {oo:component};
@@ -49,7 +49,7 @@
     \draw[->,thick,relation] (class) -- (parameter) node [right,midway,align=right] {oo:parameter};
     \draw[->,thick,relation,text width=17em] (class) -- (args) node [left,midway,align=left] {oo:constructorArguments};
     
-    \draw[->,thick,relation] (parameter) -- (blank) node [right,midway,align=right] {oo:defaultValue};
+    \draw[->,thick,relation] (parameter) -- (defaultValue) node [right,midway,align=right] {oo:defaultValue};
     \draw[->,thick,relation] (parameter) -- (boolean) node [left,midway,align=left] {oo:uniqueValue};
 
 \end{tikzpicture}
