@@ -436,8 +436,6 @@ meaning the execution script is found by accessing that URI.</p>
     <p>In this section, we introduce the <em>Object-Oriented Components</em> ontology for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.</p>
 
-    <p class="todo">Be mentally prepared for needing to remove these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)</p>
-
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
     <p>Within the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components ontology</em></a>,
@@ -466,6 +464,8 @@ requiring only the fundamental concepts of RDF classes and properties.</p>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
+Each component can refer to its path within a module using the <code>oo:componentPath</code> predicate,
+which can for instance be the package name in Java.
 All instantiations of <code>oo:Class</code> instances are an <code>oo:Instance</code>.
 It can also be an <code>oo:Instance</code>, meaning that it can directly be used within other components and needs no further instantiation.
 An <code>oo:Class</code> can also be <code>oo:AbstractClass</code>, which does not allow directly instantiating this component type.
@@ -528,9 +528,9 @@ to arguments in method calls in OOP languages like JavaScript, hence the name <a
       </figcaption>
 </figure>
 
-    <p>The ontology introduces the <em>object map</em> and the <em>array map</em>, the latter is a subclass of the former.
-An object map can have several <em>object map entries</em>, where each entry has a field name and a field value.
-An array map can have several <em>array map entries</em>, where each entry only has a value.</p>
+    <p>The ontology introduces the <em>object mapping</em> and the <em>array mapping</em>, the latter is a subclass of the former.
+An object map can have several <em>object mapping entries</em>, where each entry has a field name and a field value.
+An array map can have several <em>array mapping entries</em>, where each entry only has a value.</p>
 
     <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
 An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
