@@ -88,6 +88,7 @@ Prefixes omitted for brevity.
 </figure>
 
 ### Modules
+{:#modules}
 A module is a specific version of a package.
 Continuing with the examples shown above,
 the JSON metadata of version 0.10.0 of the N3 bundle can be found at
