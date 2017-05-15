@@ -1,4 +1,4 @@
 const loader = new require('lsd-components').Loader();
-loader.registerModuleResourcesUrl('http://example.org/module-n3.ttl')
-loader.registerConfigUrl('http://example.org/config-n3.ttl')
-var myParser = loader.instantiate('http://example.org/config-n3.ttl#myParser');
+loader.registerModule('http://example.org/module-n3');
+loader.registerConfig('http://example.org/config-n3');
+let myParser = loader.instantiate('http://example.org/config-n3#myParser');

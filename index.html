@@ -440,7 +440,7 @@ We provide an example of the application of this vocabulary to object-oriented s
 
     <h3 id="object-oriented-components">Object-oriented components</h3>
 
-    <p>Within the <a href="http://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components ontology</em></a>,
+    <p>Within the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components ontology</em></a>,
 we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-7">[7]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
@@ -451,7 +451,7 @@ In this section, we assume OOP in the broad sense of the word, which only requir
     <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology.</p>
+        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#"><code>oo</code></a>.</p>
       </figcaption>
 </figure>
 
@@ -483,19 +483,13 @@ Each of these components can take several different parameters.
 <a href="#config-n3">Listing 3</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3" class="listing">
-<pre><code>ex:n3 a oo:Module; oo:hasComponents n3:Parser, n3:Lexer.
-n3:Parser a oo:Class oo:hasParameter
-    n3:format, n3:blankNodePrefix, n3:lexer, n3:explicitQuantifiers.
-n3:Lexer  a oo:Class oo:hasParameter
-    n3:lineMode, n3:n3, n3:comments;
-
-n3:format              a oo:Parameter; rdfs:range xsd:string.
-n3:blankNodePrefix     a oo:Parameter; rdfs:range xsd:string.
-n3:lexer               a oo:Parameter; rdfs:range n3:Lexer.
-n3:explicitQuantifiers a oo:Parameter; rdfs:range xsd:boolean.
-n3:lineMode            a oo:Parameter; rdfs:range xsd:boolean.
-n3:n3                  a oo:Parameter; rdfs:range xsd:boolean.
-n3:comments            a oo:Parameter; rdfs:range xsd:boolean.</code></pre>
+<pre><code>ex:n3       a oo:Module; oo:hasComponents n3:Parser, n3:Lexer.
+n3:Parser   a oo:Class oo:hasParameter n3:format, n3:lexer.
+n3:Lexer    a oo:Class oo:hasParameter n3:lineMode, n3:comments.
+n3:format   a oo:Parameter; rdfs:range xsd:string.
+n3:lexer    a oo:Parameter; rdfs:range n3:Lexer.
+n3:lineMode a oo:Parameter; rdfs:range xsd:boolean.
+n3:comments a oo:Parameter; rdfs:range xsd:boolean.</code></pre>
 <figcaption>
         <p><span class="label">Listing 2:</span> The N3.js module contains a parser, lexer and util component.
 The parser and lexer are a constructable components.
@@ -507,7 +501,6 @@ The util component already is an instance, for which it needs no parameters.</p>
     <figure id="config-n3" class="listing">
 <pre><code>ex:myLexer a n3:Lexer;
     n3:comments &quot;true&quot;^^xsd:boolean.
-
 ex:myParser a n3:Parser;
     n3:format &quot;application/trig&quot;;
     n3:lexer ex:myLexer.</code></pre>
@@ -517,8 +510,6 @@ ex:myParser a n3:Parser;
       </figcaption>
 </figure>
 
-    <p class="todo">mention reasoning for checking things like valid parameter range</p>
-
     <h3 id="object-mapping">Object mapping</h3>
 
     <p>A consequence of using RDF to instantiate components is that the parameters have no fixed order.
@@ -527,107 +518,42 @@ it is insufficient for mapping parameter values to arguments in method and const
 which is the case for most popular OOP languages.</p>
 
     <p>We introduce a new ontology for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name <a href="http://linkedsoftwaredependencies.org/vocabularies/object-mapping">_Object Mapping ontology</a>.
+to arguments in method calls in OOP languages like JavaScript, hence the name <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>Object Mapping ontology</em></a>.
 <a href="#voc-om-diagram">Fig. 3</a> shows an overview of all the classes and predicates in the ontology.</p>
 
     <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology.</p>
+        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping#"><code>om</code></a>.</p>
       </figcaption>
 </figure>
 
     <p>The ontology introduces the <em>object map</em> and the <em>array map</em>, the latter is a subclass of the former.
 An object map can have several <em>object map entries</em>, where each entry has a field name and a field value.
-An array map can have several <em>array map entries</em>, each entry only has a value.</p>
-
-    <p class="todo">Consider dropping all listings in this section, we’ll need to keep the explanation conceptual there. People will need to understand <em>why</em> mappings are needed, understand high-level <em>what</em> they do, but the <em>how</em> might not be possible to explain.</p>
+An array map can have several <em>array map entries</em>, where each entry only has a value.</p>
 
     <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
 An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
 <code>om:collectsEntriesFrom</code> can refer to a predicate that points to entities with certain predicates.
 Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
-Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.
-<a href="#om-collects-module">Listing 4</a>, <a href="#om-collects-data">Listing 5</a> and <a href="#om-collects-result">Listing 6</a> show an example of this entry collection process.</p>
-    <figure id="om-collects-module" class="listing">
-<pre><code>:myOm om:hasField [
-    om:fieldName foaf:name;
-    om:fieldValue: foaf:mbox.
-    om:collectsEntriesFrom foaf:knows.
-].</code></pre>
-<pre><code>:me foaf:knows :alice, :bob.
-:alice foaf:name &quot;Alice&quot;;
-    foaf:mbox &quot;alice@gmail.com&quot;.
-:bob foaf:name &quot;Bob&quot;;
-    foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
-<pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
-  &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
-<figcaption>
-        <p><span class="label">Listing 4:</span> An object mapping for mapping all <code>foaf:knows</code> resources to an object
-with as key the <code>foaf:name</code> and as value the <code>foaf:mbox</code>.</p>
-      </figcaption>
-</figure>
-    <figure id="om-collects-data" class="listing">
-<pre><code>:me foaf:knows :alice, :bob.
-:alice foaf:name &quot;Alice&quot;;
-    foaf:mbox &quot;alice@gmail.com&quot;.
-:bob foaf:name &quot;Bob&quot;;
-    foaf:mbox &quot;bob@ugent.be&quot;.</code></pre>
-<figcaption>
-        <p><span class="label">Listing 5:</span> All the people <code>:me</code> knows using the <a href="http://xmlns.com/foaf/spec/">FOAF vocabulary</a>.</p>
-      </figcaption>
-</figure>
-    <figure id="om-collects-result" class="listing">
-<pre><code>{ &quot;alice&quot;: &quot;alice@gmail.com&quot;,
-  &quot;bob&quot;: &quot;bob@ugent.be&quot; }</code></pre>
-<figcaption>
-        <p><span class="label">Listing 6:</span> The resulting object when mapping the people <code>:me</code> knows from <a href="#om-collects-data">Listing 5</a>
-using the object mapping from <a href="#om-collects-module">Listing 4</a>.</p>
-      </figcaption>
-</figure>
+Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.</p>
 
-    <p><a href="#module-n3-mapped">Listing 7</a> shows the mapping of the N3.js component parameters to the constructor implementations.
+    <p><a href="#module-n3-mapped">Listing 4</a> shows the mapping of the N3.js component parameters to the constructor implementations.
 This description enchances the component definitions from <a href="#module-n3">Listing 2</a>
 as it provides a lower level (implementation) view on the component constructors.</p>
 
     <figure id="module-n3-mapped" class="listing">
-<pre><code>n3:Parser oo:constructorMapping ([
-    om:hasField [
-        om:fieldName &quot;format&quot;;
-        om:fieldValue: n3:format.
-    ],
-    [
-        om:fieldName &quot;blankNodePrefix&quot;;
-        om:fieldValue: n3:blankNodePrefix.
-    ],
-    [
-        om:fieldName &quot;lexer&quot;;
-        om:fieldValue: n3:lexer.
-    ],
-    [
-        om:fieldName &quot;explicitQuantifiers&quot;;
-        om:fieldValue: n3:explicitQuantifiers.
-    ].
+<pre><code>n3:Parser oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;format&quot;; om:fieldValue: n3:format ],
+  [ om:fieldName &quot;lexer&quot;; om:fieldValue: n3:lexer ].
 ]).
-
-n3:Lexer oo:constructorMapping ([
-    om:hasField [
-        om:fieldName &quot;lineMode&quot;;
-        om:fieldValue: n3:lineMode.
-    ],
-    [
-        om:fieldName &quot;n3&quot;;
-        om:fieldValue: n3:n3.
-    ],
-    [
-        om:fieldName &quot;comments&quot;;
-        om:fieldValue: n3:comments.
-    ].
+n3:Lexer oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;lineMode&quot;; om:fieldValue: n3:lineMode ],
+  [ om:fieldName &quot;comments&quot;; om:fieldValue: n3:comments ].
 ]).</code></pre>
 <figcaption>
-        <p><span class="label">Listing 7:</span> Both the parameters of the parser and lexer component are respectively mapped to an object.
-These objects are the single arguments of respectively the parser and lexer constructor.
-The field value in this case is always a parameter.</p>
+        <p><span class="label">Listing 4:</span> The parser and lexer implementation both require a single object as argument for the constructor.
+The entries of this object are mapped from the parameter values using this mapping.</p>
       </figcaption>
 </figure>
 
@@ -649,7 +575,7 @@ It is able to construct component instances based on declarative component const
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
-    <p><a href="#components.js">Listing 8</a> illustrates how components can be instantiated using Components.js.
+    <p><a href="#components.js">Listing 5</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler when instantiated.
 This <code>Loader</code> provides <em>constructor injection</em>:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
@@ -659,11 +585,11 @@ are in place for developers that want to use the dependency injector directly wi
 
     <figure id="components.js" class="listing">
 <pre><code>const loader = new require(&#39;lsd-components&#39;).Loader();
-loader.registerModuleResourcesUrl(&#39;http://example.org/module-n3.ttl&#39;)
-loader.registerConfigUrl(&#39;http://example.org/config-n3.ttl&#39;)
-var myParser = loader.instantiate(&#39;http://example.org/config-n3.ttl#myParser&#39;);</code></pre>
+loader.registerModule(&#39;http://example.org/module-n3&#39;);
+loader.registerConfig(&#39;http://example.org/config-n3&#39;);
+let myParser = loader.instantiate(&#39;http://example.org/config-n3#myParser&#39;);</code></pre>
 <figcaption>
-        <p><span class="label">Listing 8:</span> First, a new component loader is created
+        <p><span class="label">Listing 5:</span> First, a new component loader is created
 after which module and component definitions are registered.
 Finally, a declarative component instantiation is supplied by providing the component URI
 and the location at which the resource can be found.</p>
@@ -758,6 +684,8 @@ by minimally altering the declarative experiment description.</p>
     <h2>Conclusion</h2>
 
     <p class="todo">Mention autogeneration of component files in future work</p>
+
+    <p class="todo">Mention reasoning for checking things like valid parameter range</p>
 
     <p class="todo">Mention something about building sustainable research platforms.
 For example, the Linked Data Fragments client and server
