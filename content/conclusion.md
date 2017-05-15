@@ -4,6 +4,9 @@
 Mention autogeneration of component files in future work
 {:.todo}
 
+Mention reasoning for checking things like valid parameter range
+{:.todo}
+
 Mention something about building sustainable research platforms.
 For example, the Linked Data Fragments client and server
 can be compatible with multiple APIs, have multiple algorithms, etc.

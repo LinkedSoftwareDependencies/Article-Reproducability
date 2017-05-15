@@ -9,7 +9,7 @@ Be mentally prepared for needing to remove these figures. Idea would be to inclu
 
 ### Object-oriented components
 
-Within the [_Object-Oriented Components ontology_](http://linkedsoftwaredependencies.org/vocabularies/object-oriented),
+Within the [_Object-Oriented Components ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented),
 we reuse Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
@@ -20,7 +20,7 @@ In this section, we assume OOP in the broad sense of the word, which only requir
 <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _object-oriented components_ ontology.
+Overview of the classes and properties in the _object-oriented components_ ontology, with as prefix [`oo`](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#).
 </figcaption>
 </figure>
 
@@ -69,9 +69,6 @@ The util component already is an instance, for which it needs no parameters.
 </figcaption>
 </figure>
 
-{:.todo}
-mention reasoning for checking things like valid parameter range
-
 ### Object mapping
 
 A consequence of using RDF to instantiate components is that the parameters have no fixed order.
@@ -80,13 +77,13 @@ it is insufficient for mapping parameter values to arguments in method and const
 which is the case for most popular OOP languages.
 
 We introduce a new ontology for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name [_Object Mapping ontology](http://linkedsoftwaredependencies.org/vocabularies/object-mapping).
+to arguments in method calls in OOP languages like JavaScript, hence the name [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping).
 [](#voc-om-diagram) shows an overview of all the classes and predicates in the ontology.
 
 <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _Object Mapping_ ontology.
+Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#).
 </figcaption>
 </figure>
 
