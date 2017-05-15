@@ -611,24 +611,30 @@ where the <code>datasources</code> entry points to an object that is a mapping f
   <section id="use-case">
     <h2>Use case: describing a Linked Data Fragments experiment</h2>
 
-    <p>In this section, we will provide a semantic description
-of the experiment performed in <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">a previous ISWC2014 article</a> <a class="reference" href="#ref-12">[12]</a>,
-which involves specific software configurations
-of a Linked Data Fragments (LDF) client and server.
-This description serves as a guiding example
+    <p>In this section, we provide a semantic description
+of the experiment performed in a previous research article,
+as a guiding example
 on how to create such descriptions for other evaluations.
 The intention is that future research articles
 directly describe their experimental setup this way,
 either through HTML with embedded RDFa
 or as a reference to an IRI of an RDF document.</p>
 
-    <p>For this use case,
-we have semantically described the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a> module and its 32 components.
+    <p>This experiment we will describe
+originates from <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">an ISWC2014 article</a> <a class="reference" href="#ref-12">[12]</a>
+and involves specific software configurations
+of a Linked Data Fragments (LDF) client and server.
+We have semantically described the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a> module and its 32 components.
 Instead of the former domain-specific <a href="https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json">JSON configuration file</a>,
 the <a href="https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json">semantic configuration</a> is Linked Data
 and can be instantiated automatically by Components.js.
-Furthermore, we provide a semantic description of all the used dependency bundles for both the LDF client and server
-to improve the reproducibility of the experiment.</p>
+Furthermore, we provide an automatically generated semantic description
+of all concrete installed dependency versions
+for both the LDF client and server.
+This is necessary because,
+as discussed in <a href="#modules">Subsection 3.4</a>,
+modules indicate a compatibility range
+instead of a concrete version.</p>
 
     <p>The ISWC2014 LDF experiment can be described using the following <a about="#ldf-2014-qdwha-experiment-workflow" content="LDF 2014 experiment workflow" href="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:</p>
 
@@ -645,7 +651,7 @@ to improve the reproducibility of the experiment.</p>
 <li id="ldf-2014-qdwha-experiment-create-vm-for-server" about="#ldf-2014-qdwha-experiment-create-vm-for-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for the server.</li>
 <li id="ldf-2014-qdwha-experiment-create-vm-for-cache" about="#ldf-2014-qdwha-experiment-create-for-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for a cache.</li>
 <li id="ldf-2014-qdwha-experiment-create-60-vm-for-clients" about="#ldf-2014-qdwha-experiment-create-60-vm-for-clients" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 60 virtual machines for clients.</li>
-<li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy generated <a href="#">Berlin SPARQL benchmark dataset</a> to the server.</li>
+<li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy a generated <a href="http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/Dataset/index.html">Berlin SPARQL benchmark dataset</a> to the server.</li>
 <li id="ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" about="#ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">
         <p>Install <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​raw/​ldf-​availability-​experiment-​config.jsonld">the server software configuration</a>, implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/" class="mandatory" data-link-text="https:/​/​www.hydra-​cg.com/​spec/​latest/​triple-​pattern-​fragments/​">TPF specification</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl">dependencies</a> on the server.</p>
       </li>
@@ -657,27 +663,31 @@ to improve the reproducibility of the experiment.</p>
 <li id="ldf-2014-qdwha-experiment-publish-results" about="#ldf-2014-qdwha-experiment-publish-results" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Publish <a href="http://data.linkeddatafragments.org/benchmark">results</a> online.</li>
 </ol>
 
-    <p>Note how in the description of the experiment above,
+    <p>An <em>executed</em> workflow corresponding to the <em>abstract</em> experiment workflow above
+generates entities based on each activity as performed by various agents.
+Essentially the resulting observations of the experiment are
+among other valuable immutable provenance level data which plays a vital role in
+verifying and reproducing the steps which led to the outcome.
+Concretely, the conclusions in the article
+have the resulting data as provenance,
+which in turn was generated by applying the steps above.</p>
+
+    <p>Crucially, in the description above,
 we refer to the exact software configurations by their IRI,
 their specific dependency versions,
 and the specifications they implement.
-Based on these IRIs,
+These serve as further documentation of the provenance.
+Additionally, based on these IRIs,
 other researchers can immediately instantiate the same configuration,
 or derive their own similar configurations
 to create comparative experiments.
-While software container solutions, such as <a href="https://www.docker.com/">Docker</a>,
+While software container solutions (such as <a href="https://www.docker.com/">Docker</a>)
 could also provide immediate instantiation,
 their configuration is on a much higher level.
 Instead, the Object-Oriented Components ontology
 captures the low-level wiring between components,
 enabling researchers to swap individual algorithms
 or component settings.</p>
-
-    <p>The <em>executed</em> workflow which corresponds to the <em>abstract</em>
-experiment workflow generates entities based on each activity as performed by
-various agents. Essentially the resulting observations of the experiment is
-among other valuable immutable provenance level data which plays a vital role in
-verifying and reproducing the steps which led to the outcome.</p>
 
     <p>For example, based on the above description,
 the exact same experiment can be performed
@@ -688,11 +698,14 @@ as done in the aforementioned works <a class="reference" href="#ref-16">[16]</a
 is to implement modifications in separate code repository branches.
 Unfortunately,
 such branches typically diverge from the main code tree,
-and hence cannot be easily evaluated afterwards
+and hence cannot easily be evaluated afterwards
 with later versions of other components.
 By implementing them as independent modules instead,
 they can be plugged in automatically
-by minimally altering the declarative experiment description.</p>
+by minimally altering the declarative experiment description.
+This simultaneously records their provenance,
+enables their automated instantiation,
+and ensures their sustainability.</p>
 
   </section>
 
