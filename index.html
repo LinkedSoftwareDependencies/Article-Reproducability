@@ -5,6 +5,7 @@
   <title>Reproduceable software experiments through semantic configurations</title>
   <link rel="stylesheet" media="screen" href="styles/screen.css">
   <link rel="stylesheet" media="print"  href="styles/print.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet">
 </head>
 <body prefix="cc: https://creativecommons.org/ns# rdfs: http://www.w3.org/2000/01/rdf-schema# opmw: http://www.opmw.org/ontology/">
   <header>
@@ -242,84 +243,83 @@ directly from the Web
 
     <p>There are several levels of granularity on which software can be described,
 going from a high-level package overview to a low-level description of the actual code.
-In our descriptions we make use of several of these layers,
+In descriptions, we can use several of these layers,
 depending on the context and the requirements.
 Drilling down from the top to the bottom, we have the following layers:</p>
 
     <ul>
-      <li>a <em>bundle</em> is a container. It describes what the software is expected to do. 
- An example of this would be the <em>N3.js</em> library.</li>
-      <li>a <em>module</em> is a software package implementing a specific bundle. 
- This is also known as a version of a bundle.
- <em>N3.js 0.10.0</em> is a module.</li>
-      <li>a <em>component</em> is a specific part of a module 
+      <li>a <strong>bundle</strong> is a container
+ with metadata about the software and its functionality
+ across different points in time.
+ An example is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">the <em>N3.js</em> library</a>.</li>
+      <li>a <strong>module</strong> or <em>version</em> is a concrete software package
+ and an implementation of a bundle.
+ <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0"><em>N3.js 0.10.0</em></a> is a module.</li>
+      <li>a <strong>component</strong> is a specific part of a module 
  that can be called in a certain way with a certain set of parameters.
- The <em>N3.js 0.10.0 Parser</em> is a component.</li>
+ The <a href="https://github.com/RubenVerborgh/N3.js/blob/v0.10.0/lib/N3Parser.js"><em>N3.js 0.10.0 Parser</em></a> is a component.</li>
     </ul>
 
-    <p>Within this section we will focus on bundles and modules,
-while components are described more in-depth in the following sections.</p>
+    <p>Within this section, we will focus on bundles and modules,
+while components are described more in-depth in <a href="#describing-components">Section 4</a>.</p>
 
     <h3 id="node-package-manager-npm">Node Package Manager (npm)</h3>
     <p>An example of a large collection of bundles and modules is the npm library.
-It contains over 475,000 Node.js libraries,
+It contains over 480,000 JavaScript libraries,
 all with their own features and requirements.
 Using our terminology,
-an npm package would be a bundle,
-while a specific version of such a package would be a module.
-The package contains the description of the project together with all its versions,
-while a version contains the specific dependencies and a link to the actual implementation.</p>
+an npm package is a bundle,
+while a specific version of such a package is a module.
+The bundle contains the description of the project together with all its versions,
+while a module contains the specific dependencies and a link to the actual implementation.</p>
 
-    <p>All this npm data is stored in a <a href="http://couchdb.apache.org/" class="mandatory">CouchDB</a> 
-<a href="https://registry.npmjs.org/" class="mandatory">instance</a> with one entry per bundle.
-This corresponds to the metadata, added by the package developer in a <a href="https://docs.npmjs.com/files/package.json" class="mandatory"><code>package.json</code></a> file,
+    <p>All this npm data is stored in a <a href="http://couchdb.apache.org/">CouchDB</a>
+<a href="https://registry.npmjs.org/">instance</a> with one entry per bundle.
+This corresponds to the metadata, added by the package developer in a <a href="https://docs.npmjs.com/files/package.json"><code>package.json</code></a> file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
 we converted the JSON metadata provided by the npm registry to RDF,
-for which we set up a <a href="https://github.com/LinkedSoftwareDependencies/npm-extraction-server">server</a>.</p>
+for which we set up a <a href="https://github.com/LinkedSoftwareDependencies/npm-extraction-server" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​npm-​extraction-​server">server</a>.</p>
 
-    <h3 id="json-ld">JSON-LD</h3>
-    <p>Since our input data is JSON,
-it made sense to convert to <a href="http://json-ld.org/" class="mandatory">JSON-LD</a>,
-a format specifically made for adding semantics to JSON.
-JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data.
-This context describes how the JSON tags should be interpreted.
+    <h3 id="interpreting-packagejson-using-json-ld">Interpreting package.json using JSON-LD</h3>
+    <p>Since the input data is JSON,
+we opted to convert it to <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://www.w3.org/TR/json-ld/">JSON-LD</a> <a class="reference" href="#ref-11">[11]</a>,
+an RDF syntax specifically designed for adding semantics to JSON.
+JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data,
+which describes how the JSON tags should be interpreted.
 E.g., having <code>"name": "foaf:name"</code> in your context implies
 that all name tags should be interpreted as the predicate <code>foaf:name</code>.
-Other JSON-LD keywords can be used to identify if certain values are URIs,
-or if an entity has a specific type.
+Other JSON-LD keywords can be used to identify whether certain values are URIs,
+or whether an entity has a specific type.
 For the data where we could not reach the format using just the JSON-LD context,
 such as concatenating values to create a URI,
 we modified some of the input JSON before exporting it to JSON-LD.</p>
 
     <h3 id="bundles">Bundles</h3>
     <p>A bundle represents the general npm package.
-An example of a JSON representation of an npm bundle can be found at <a href="https://registry.npmjs.org/n3/">https://registry.npmjs.org/n3/</a>.
+An example of a JSON representation of an npm bundle can be found at <a href="https://registry.npmjs.org/n3/" id="iri-link">https:/​/​registry.npmjs.org/n3/</a>.
 This contains all the general descriptions that apply to all bundles in this module,
 such as the name, homepage and description.</p>
 
     <p>To adapt this JSON to RDF,
 we start by adding our context,
-<a href="https://linkedsoftwaredependencies.org/contexts/npm">https://linkedsoftwaredependencies.org/contexts/npm</a>,
+<a href="https://linkedsoftwaredependencies.org/contexts/npm" id="iri-link">https:/​/​linkedsoftwaredependencies.org/contexts/npm</a>,
 which already maps many of the npm tags to corresponding RDF predicates.
-This allows these tags to stay the same in the JSON-LD representation,
-with changes required.
+This allows these tags to remain the same in the JSON-LD representation.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a> with the <code>"Accept: application/ld+json"</code> header.
+This can be seen by retrieving <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a> with an <code>Accept: application/ld+json</code> header.
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.</p>
 
-    <p>Since JSON-LD is an RDF representation it can easily be converted to other formats,
+    <p>Since JSON-LD is an RDF representation, it can easily be converted to other syntaxes,
 of which several are supported by our server,
-such as turtle and n-triples.
-These can be retrieved by sending the corresponding Accept headers.
+such as Turtle and N-Triples.
+These can be retrieved by sending the corresponding <code>Accept</code> headers.
 An example of some of the data generated this way can be seen in <a href="#n3.ttl">Listing 1</a>.</p>
-
-    <p class="todo">Bit weird to link to the listing at the end, might have to change the story up a bit somehow.</p>
 
     <figure id="n3.ttl" class="listing">
 <pre><code>npm:n3 a doap:Project;
@@ -333,11 +333,10 @@ An example of some of the data generated this way can be seen in <a href="#n3.tt
   doap:name &quot;n3&quot;;
   owl:sameAs &quot;https://www.npmjs.com/package/n3&quot;;
   foaf:maker users:rubenverborgh.
-users:rubenverborgh foaf:mbox &quot;ruben.verborgh@gmail.com&quot;;
-  foaf:name &quot;Ruben Verborgh&quot;.
+users:rubenverborgh foaf:name &quot;Ruben Verborgh&quot;.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 1:</span> Partial turtle representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a>.
+        <p><span class="label">Listing 1:</span> Partial Turtle representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a>.
 Prefix definitions omitted for brevity.</p>
       </figcaption>
 </figure>
@@ -346,55 +345,47 @@ Prefix definitions omitted for brevity.</p>
     <p>A module is a specific version of a package.
 Continuing with the examples shown above,
 the JSON metadata of version 0.10.0 of the N3 bundle can be found at
-<a href="https://registry.npmjs.org/n3/0.10.0">https://registry.npmjs.org/n3/0.10.0</a>,
-while the URI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0">https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
-Here also, many of the tags are mapped by the context,
-while other tags had to be modified to provide more interesting data.</p>
+<a href="https://registry.npmjs.org/n3/0.10.0" id="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
+while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
+Similarly, many of the tags are mapped by the context,
+while other tags had to be modified to provide more relevant triples.</p>
 
     <p>An important part of an npm package description are the dependencies
 and their semantic versions.
-E.g., N3 0.10.0 has a dependency on <code>async ^2.0.1</code>.
+For example, N3 0.10.0 has a dependency on <code>async ^2.0.1</code>.
 <code>^2.0.1</code> is a semantic version and corresponds to any version number
-of async that starts with a 2.
+of async that has a major version of <code>2</code>.
 As can be seen in the JSON-LD,
-this async dependency gets converted to
-<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1">https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1</a>,
-with <code>%5E</code> being the url-encoded <code>^</code>.
+this async dependency is converted to
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1</a>,
+with <code>%5E</code> being the URL-encoded <code>^</code>.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
-Additionaly, the body of the redirect contains the relevant metadata describing this,
-which in this case results in the following triple (prefixed for brevity):</p>
+Additionally, the body of the redirect contains the relevant metadata describing this,
+which in this case results in the following triple (prefixed for clarity):</p>
 
     <p><code>
 async:\%5E2.0.1 npm:maxSatisfying async:2.4.0.
 </code></p>
 
-    <p>Another tag where we changed the content is the <em>scripts</em> tag.
-Since there is a fixed set of scripts that <a href="https://docs.npmjs.com/misc/scripts" class="mandatory">npm supports</a>,
-being able to easily query those can be helpful for automated systems.
-To that end we converted the actual script tags to specific predicates,
-such as <code>&lt;https://linkedsoftwaredependencies.org/scripts/npm/test&gt;</code> for the test script.
-These predicates have as object a new URI that links to actual content of that script,
-meaning the execution script is found by accessing that URI.</p>
-
     <p>Additionally, to support in description which modules are being used on a machine,
-we created a <a href="https://github.com/LinkedSoftwareDependencies/node-dependency-parser" class="mandatory">tool</a>
+we created a <a href="https://github.com/LinkedSoftwareDependencies/node-dependency-parser" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​node-​dependency-​parser">tool</a>
 that outputs the actual dependencies
 used by a specific package installation in RDF.
 This way the exact installation that was used can be described,
 without having to rely on the interpretation of semantic versions which can change over time.</p>
 
     <h3 id="publication">Publication</h3>
-    <p>475,000 npm packages correspond to 174,000,000+ triples when we collect the information from all packages.
+    <p>480,000 npm packages correspond to 174,000,000+ triples when we collect the information from all packages.
 Next to the subject pages for each bundle, module and user,
-we also publish <a href="https://linkedsoftwaredependencies.org" class="mandatory">all of this data</a> through a <a property="http://purl.org/spar/cito/cites" href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a> <a class="reference" href="#ref-11">[11]</a> interface
-and as <a property="http://purl.org/spar/cito/cites" href="http://www.imap.websemanticsjournal.org/preprints/index.php/ps/article/viewFile/328/333">HDT</a> <a class="reference" href="#ref-12">[12]</a> and <a property="http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/turtle/">Turtle</a> <a class="reference" href="#ref-13">[13]</a> dumps.
-This data is republished every day to stay up-to-date with the available information on npm.
+we also publish <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">all of this data</a> through a <a property="http://purl.org/spar/cito/cites" href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a> <a class="reference" href="#ref-12">[12]</a> interface
+and as <a property="http://purl.org/spar/cito/cites" href="http://www.imap.websemanticsjournal.org/preprints/index.php/ps/article/viewFile/328/333">HDT</a> <a class="reference" href="#ref-13">[13]</a> and <a property="http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/turtle/">Turtle</a> <a class="reference" href="#ref-14">[14]</a> dumps.
+This data is republished daily to stay up-to-date with the available information on npm.
 Every day, we collect all triples that are generated by our system in a Turtle file.
-After that, we convert this Turtle file to a HDT file.
+After that, we convert this Turtle file to an HDT file.
 Finally, this HDT file is loaded into a <a href="https://github.com/LinkedDataFragments/Server.js">TPF server</a> instance,
 which allows us to publish this data through a low-cost interface that still enables querying.
-Using TPF, we allow several <a href="https://query.linkedsoftwaredependencies.org/" class="mandatory">queries</a> to be evaluated over this dataset,
+Using TPF, <a href="https://query.linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​query.linkedsoftwaredependencies.org/​">custom SPARQL queries</a> to be evaluated over this dataset,
 such as retrieving all dependencies of a bundle and finding the author of a bundle.</p>
 
   </section>
@@ -418,7 +409,7 @@ In this section, we assume OOP in the broad sense of the word, which only requir
     <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory"><code>oo</code></a>.</p>
+        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​oriented#"><code>oo</code></a>.</p>
       </figcaption>
 </figure>
 
@@ -493,7 +484,7 @@ to arguments in method calls in OOP languages like JavaScript, hence the name <a
     <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping#" class="mandatory"><code>om</code></a>.</p>
+        <p><span class="label">Fig. 3:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​mapping#"><code>om</code></a>.</p>
       </figcaption>
 </figure>
 
@@ -536,7 +527,7 @@ In this section, we introduce a dependency injection framework based on these co
 With this, we take semantic software component descriptions to the next level,
 we don’t only <em>describe</em> components, but also allow them to be <em>instantiated</em>.</p>
 
-    <p>We have implemented <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory">Components.js</a>,
+    <p>We have implemented <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​Components.js">Components.js</a>,
 an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
 It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 4</a>.
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
@@ -573,7 +564,7 @@ We have to assume that all the arguments that are available to the loader is eve
     <h2>Use case: describing a Linked Data Fragments experiment</h2>
 
     <p>In this section, we will provide a semantic description
-of the experiment performed in <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">a previous ISWC2014 article</a> <a class="reference" href="#ref-11">[11]</a>,
+of the experiment performed in <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">a previous ISWC2014 article</a> <a class="reference" href="#ref-12">[12]</a>,
 which involves specific software configurations
 of a Linked Data Fragments (LDF) client and server.
 This description serves as a guiding example
@@ -608,12 +599,12 @@ to improve the reproducibility of the experiment.</p>
 <li id="ldf-2014-qdwha-experiment-create-60-vm-for-clients" about="#ldf-2014-qdwha-experiment-create-60-vm-for-clients" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 60 virtual machines for clients.</li>
 <li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy generated <a href="#">Berlin SPARQL benchmark dataset</a> to the server.</li>
 <li id="ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" about="#ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">
-        <p>Install <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld" class="mandatory">the server software configuration</a>, implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/" class="mandatory">TPF specification</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl">dependencies</a> on the server.</p>
+        <p>Install <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​raw/​ldf-​availability-​experiment-​config.jsonld">the server software configuration</a>, implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/" class="mandatory" data-link-text="https:/​/​www.hydra-​cg.com/​spec/​latest/​triple-​pattern-​fragments/​">TPF specification</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl">dependencies</a> on the server.</p>
       </li>
 <li id="ldf-2014-qdwha-experiment-install-client-software-config-with-sparql" about="#ldf-2014-qdwha-experiment-client-software-config-with-sparql" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">
-        <p>Install <a href="https://github.com/LinkedDataFragments/Client.js" class="mandatory">the client software configuration</a>, implementing the <a href="https://www.w3.org/TR/sparql11-protocol">SPARQL 1.1 protocol</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl" class="mandatory">dependencies</a> on each client.</p>
+        <p>Install <a href="https://github.com/LinkedDataFragments/Client.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedDataFragments/​Client.js">the client software configuration</a>, implementing the <a href="https://www.w3.org/TR/sparql11-protocol">SPARQL 1.1 protocol</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​raw/​ldf-​availability-​experiment-​client.ttl">dependencies</a> on each client.</p>
       </li>
-<li id="ldf-2014-qdwha-experiment-execute-bsbm-per-client" about="#ldf-2014-qdwha-experiment-bsbm-per-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Execute four processes of the <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-14">[14]</a> with the client software for each client machine</li>
+<li id="ldf-2014-qdwha-experiment-execute-bsbm-per-client" about="#ldf-2014-qdwha-experiment-bsbm-per-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Execute four processes of the <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-15">[15]</a> with the client software for each client machine</li>
 <li id="ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" about="#ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Record CPU time, RAM usage of each client, the CPU time and RAM usage of the server, and measure the ingoing and outgoing bandwidth of the cache.</li>
 <li id="ldf-2014-qdwha-experiment-publish-results" about="#ldf-2014-qdwha-experiment-publish-results" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Publish <a href="http://data.linkeddatafragments.org/benchmark">results</a> online.</li>
 </ol>
@@ -642,10 +633,10 @@ verifying and reproducing the steps which led to the outcome.</p>
 
     <p>For example, based on the above description,
 the exact same experiment can be performed
-with <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="http://linkeddatafragments.org/publications/eswc2015.pdf">different client-side algorithms</a> <a class="reference" href="#ref-15">[15]</a>
-or <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="https://arxiv.org/pdf/1608.08148.pdf">different server-side interfaces</a> <a class="reference" href="#ref-16">[16]</a>.
+with <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="http://linkeddatafragments.org/publications/eswc2015.pdf">different client-side algorithms</a> <a class="reference" href="#ref-16">[16]</a>
+or <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="https://arxiv.org/pdf/1608.08148.pdf">different server-side interfaces</a> <a class="reference" href="#ref-17">[17]</a>.
 A common practice to achieve this currently,
-as done in the aforementioned works <a class="reference" href="#ref-15">[15]</a><a class="reference" href="#ref-16">[16]</a>,
+as done in the aforementioned works <a class="reference" href="#ref-16">[16]</a><a class="reference" href="#ref-17">[17]</a>,
 is to implement modifications in separate code repository branches.
 Unfortunately,
 such branches typically diverge from the main code tree,
@@ -707,9 +698,9 @@ and wire its dependent components together automatically, thereby leveraging the
   <dt id="ref-1">[1]</dt>
   <dd>Buckheit, J.B., Donoho, D.L.: WaveLab and Reproducible Research. Stanford University (1995).</dd>
   <dt id="ref-2">[2]</dt>
-  <dd>Berners-Lee, T.: Linked Data, <a href="https://www.w3.org/DesignIssues/LinkedData.html,">https://www.w3.org/DesignIssues/LinkedData.html,</a> (2009).</dd>
+  <dd>Berners-Lee, T.: Linked Data, <a href="https://www.w3.org/DesignIssues/LinkedData.html,">https:/​/​www.w3.org/DesignIssues/LinkedData.html,</a> (2009).</dd>
   <dt id="ref-3">[3]</dt>
-  <dd>Berners-Lee, T.: Information Management: A Proposal, <a href="https://www.w3.org/History/1989/proposal.html,">https://www.w3.org/History/1989/proposal.html,</a> (1989).</dd>
+  <dd>Berners-Lee, T.: Information Management: A Proposal, <a href="https://www.w3.org/History/1989/proposal.html,">https:/​/​www.w3.org/History/1989/proposal.html,</a> (1989).</dd>
   <dt id="ref-4">[4]</dt>
   <dd>Banati, A., Kacsuk, P., Kozlovszky, M.: Four level provenance support to achieve portable reproducibility of scientific workflows. In: 2015 38th International Convention on Information and Communication Technology,  Electronics and Microelectronics (MIPRO). IEEE (2015).</dd>
   <dt id="ref-5">[5]</dt>
@@ -719,22 +710,24 @@ and wire its dependent components together automatically, thereby leveraging the
   <dt id="ref-7">[7]</dt>
   <dd>Mens, T., Wermelinger, M.: Separation of Concerns for Software Evolution. Journal of Software Maintenance. 14, (2002).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https://martinfowler.com/articles/injection.html,</a> (2004).</dd>
+  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https:/​/​martinfowler.com/articles/injection.html,</a> (2004).</dd>
   <dt id="ref-9">[9]</dt>
-  <dd>Fowler, M.: Inversion Of Control, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https://martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Fowler, M.: Inversion Of Control, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https:/​/​martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
   <dt id="ref-10">[10]</dt>
   <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, (1988).</dd>
   <dt id="ref-11">[11]</dt>
-  <dd>Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Walle, R. Van de: Querying Datasets on the Web with High Availability. In: Proceedings of the 13th International Semantic Web Conference. Springer (2014).</dd>
+  <dd>Sporny, M., Longley, D., Kellogg, G., Lanthaler, M., Lindström, N.: JSON-LD 1.0. World Wide Web Consortium (2014).</dd>
   <dt id="ref-12">[12]</dt>
-  <dd>Fernández, J.D., Martı́nez-Prieto Miguel A, Gutiérrez, C., Polleres, A., Arias, M.: Binary RDF representation for publication and exchange (HDT). Web Semantics: Science, Services and Agents on the World Wide Web. 19, (2013).</dd>
+  <dd>Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Walle, R. Van de: Querying Datasets on the Web with High Availability. In: Proceedings of the 13th International Semantic Web Conference. Springer (2014).</dd>
   <dt id="ref-13">[13]</dt>
-  <dd>Beckett, D., Berners-Lee, T., Prud’hommeaux, E.: Turtle-terse RDF triple language. W3C Team Submission. 14, (2008).</dd>
+  <dd>Fernández, J.D., Martı́nez-Prieto Miguel A, Gutiérrez, C., Polleres, A., Arias, M.: Binary RDF representation for publication and exchange (HDT). Web Semantics: Science, Services and Agents on the World Wide Web. 19, (2013).</dd>
   <dt id="ref-14">[14]</dt>
-  <dd>Bizer, C., Schultz, A.: The Berlin SPARQL benchmark. International journal on Semantic Web and information systems. 5, (2009).</dd>
+  <dd>Beckett, D., Berners-Lee, T., Prud’hommeaux, E.: Turtle-terse RDF triple language. W3C Team Submission. 14, (2008).</dd>
   <dt id="ref-15">[15]</dt>
-  <dd>Van Herwegen, J., Verborgh, R., Mannens, E., Walle, R. Van de: Query Execution Optimization for Clients of Triple Pattern Fragments. In: The Semantic Web. Latest Advances and New Domains (2015).</dd>
+  <dd>Bizer, C., Schultz, A.: The Berlin SPARQL benchmark. International journal on Semantic Web and information systems. 5, (2009).</dd>
   <dt id="ref-16">[16]</dt>
+  <dd>Van Herwegen, J., Verborgh, R., Mannens, E., Walle, R. Van de: Query Execution Optimization for Clients of Triple Pattern Fragments. In: The Semantic Web. Latest Advances and New Domains (2015).</dd>
+  <dt id="ref-17">[17]</dt>
   <dd>Hartig, O., Buil-Aranda, C.: Bindings-Restricted Triple Pattern Fragments. In: Proceedings of the 15th International Conference on Ontologies, DataBases, and Applications of Semantics. Springer (2016).</dd>
 </dl>
 </section>
