@@ -562,9 +562,7 @@ The entries of this object are mapped from the parameter values using this mappi
   <section id="instantiating">
     <h2>Instantiating component configurations</h2>
 
-    <p class="todo">mention closing of the world</p>
-
-    <p>In the previous section, we introduced a vocabulary for describing software components and how they can be instantiated.
+    <p>In the previous section, we introduced vocabularies for describing software components and how they can be instantiated.
 In this section, we introduce a dependency injection framework based on these component descriptions.
 With this, we take semantic software component descriptions to the next level,
 we don’t only <em>describe</em> components, but also allow them to be <em>instantiated</em>.</p>
@@ -595,6 +593,10 @@ Finally, a declarative component instantiation is supplied by providing the comp
 and the location at which the resource can be found.</p>
       </figcaption>
 </figure>
+
+    <p>While Linked Data is based on the open-world assumption, our dependency injector will <em>close the world</em> when we enter the realm of OOP.
+This is because a close-world assumption is required when instantiating a component with certain arguments.
+We have to assume that all the arguments that are available to the loader is everything there is.</p>
 
   </section>
 
