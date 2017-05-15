@@ -82,7 +82,7 @@ and can be reused across dependents.
 <figcaption markdown="block">
 The HDT and SPARQL-based datasource constructors both take a custom object as argument for the constructor.
 The entries of this object are mapped from the parameter values using this mapping.
-The TPF server constructor similarly requires a single object,
-where the `datasources` entry points to an object that is a mapping from datasource title to datasource.
+The TPF server constructor similarly requires a custom object,
+where the `datasources` entry points to an object that is a mapping from titles to datasources.
 </figcaption>
 </figure>
