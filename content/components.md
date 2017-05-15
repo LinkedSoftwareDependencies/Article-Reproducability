@@ -1,7 +1,7 @@
 ## Describing components and their configuration
 {:#describing-components}
 
-In this section, we introduce the _Object-Oriented Components_ ontology for describing software components and how they can be instantiated.
+In this section, we introduce the _Object-Oriented Components_ ontology for describing software components and their instantiation in a certain configuration.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
 ### Object-oriented components
@@ -12,42 +12,54 @@ The purpose of a component is to provide operations that can be used by other co
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 In this section, we assume OOP in the broad sense of the word, which only requires _classes_, _objects_ and _constructor parameters_.
-[](#voc-oo-diagram) shows an overview of all the classes and predicates in the ontology.
+[](#voc-oo-diagram) shows an overview of the ontology.
 
 <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _object-oriented components_ ontology, with as prefix [`oo`](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#){:.mandatory}.
+Classes and properties in the [_Object-Oriented Components_ ontology](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#){:.mandatory},
+with as prefix `oo`.
 </figcaption>
 </figure>
 
-We define a _module_ as a collection of components.
+Following [](#describing-modules), we have defined a _module_ as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
-which can contain a multitude of functionalities, i.e., components.
+which can contain a multitude of components.
 
 We define component as a _subclass_ of `rdfs:Class`.
 The parameters to construct a component can therefore be defined as an `rdfs:Property` on a component.
-This class structure enables convenient semantic descriptions of components instantiations,
-requiring only the fundamental concepts of RDF classes and properties.
+This class structure enables convenient semantic descriptions of components instantiations
+through the regular `rdf:type` predicate.
+For instance,
+a software module representing a parser
+can be described as
+`n3:Parser a oo:Class.`,
+and a concrete instance is
+`:myParser a n3:Parser`.
+
 
 Several `oo:Component` subclasses are defined.
 An `oo:Component` can be an `oo:Class`, which means that it can be instantiated based on parameters.
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
 which can for instance be the package name in Java.
 All instantiations of `oo:Class` instances are an `oo:Instance`.
-It can also be an `oo:Instance`, meaning that it can directly be used within other components and needs no further instantiation.
 An `oo:Class` can also be `oo:AbstractClass`, which does not allow directly instantiating this component type.
 Abstract components can be used to define a set of shared parameters in a common ancestor.
 Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the `rdfs:subClassOf` predicate.
 
 The parameters that are used to instantiate an `oo:Class` to an `oo:Instance` are of type `oo:Parameter`.
 An `oo:Parameter` is a _subclass_ of `rdfs:Property`, which simplifies its usage as an RDF property.
-`oo:defaultValue` allows parameters to have a default value when no other values have been provided.
+`oo:defaultValue` allows parameters to have a default value when no other values have been provided:
+upon instantiation ([](#instantiating)),
+a closed world will be assumed.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
 [](#module-n3) shows an example of the N3.js npm module using the components ontology.
-It exposes several components such as _Parser_ and _Lexer_.
-Each of these components can take several different parameters.
+It exposes several components such as _Parser_ and _Lexer_,
+each of which can take multiple parameters.
+These are provided with a unique identifier and definition,
+such that the software configuration can receive a semantic interpretation.
+For example,
 [](#config-n3) illustrates how instances can be created of these component types.
 
 <figure id="module-n3" class="listing">
