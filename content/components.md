@@ -89,39 +89,13 @@ Overview of the classes and properties in the _Object Mapping_ ontology, with as
 
 The ontology introduces the _object map_ and the _array map_, the latter is a subclass of the former.
 An object map can have several _object map entries_, where each entry has a field name and a field value.
-An array map can have several _array map entries_, each entry only has a value.
-
-{:.todo}
-Consider dropping all listings in this section, we’ll need to keep the explanation conceptual there. People will need to understand _why_ mappings are needed, understand high-level _what_ they do, but the _how_ might not be possible to explain.
+An array map can have several _array map entries_, where each entry only has a value.
 
 If the value of `om:fieldName` or `om:fieldValue` is a literal, the literal value will be mapped to the object field name or value.
 An `om:fieldValue` can also refer to another object map, which will be mapped to the resulting object.
 `om:collectsEntriesFrom` can refer to a predicate that points to entities with certain predicates.
 Each entity predicate that is refered to by `om:fieldName` will have its values mapped to keys of the object.
 Each entity predicate refered to by `om:fieldValue` will have its values mapped to values.
-[](#om-collects-module), [](#om-collects-data) and [](#om-collects-result) show an example of this entry collection process.
-<figure id="om-collects-module" class="listing">
-````/code/collects-module.ttl````
-````/code/collects-data.ttl````
-````/code/collects-result.txt````
-<figcaption markdown="block">
-An object mapping for mapping all `foaf:knows` resources to an object
-with as key the `foaf:name` and as value the `foaf:mbox`.
-</figcaption>
-</figure>
-<figure id="om-collects-data" class="listing">
-````/code/collects-data.ttl````
-<figcaption markdown="block">
-All the people `:me` knows using the [FOAF vocabulary](http://xmlns.com/foaf/spec/).
-</figcaption>
-</figure>
-<figure id="om-collects-result" class="listing">
-````/code/collects-result.txt````
-<figcaption markdown="block">
-The resulting object when mapping the people `:me` knows from [](#om-collects-data)
-using the object mapping from [](#om-collects-module).
-</figcaption>
-</figure>
 
 [](#module-n3-mapped) shows the mapping of the N3.js component parameters to the constructor implementations.
 This description enchances the component definitions from [](#module-n3)
@@ -130,8 +104,7 @@ as it provides a lower level (implementation) view on the component constructors
 <figure id="module-n3-mapped" class="listing">
 ````/code/module-n3-mapped.ttl````
 <figcaption markdown="block">
-Both the parameters of the parser and lexer component are respectively mapped to an object.
-These objects are the single arguments of respectively the parser and lexer constructor.
-The field value in this case is always a parameter.
+The parser and lexer implementation both require a single object as argument for the constructor.
+The entries of this object are mapped from the parameter values using this mapping.
 </figcaption>
 </figure>
