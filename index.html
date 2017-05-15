@@ -144,13 +144,12 @@ in scientific articles.</li>
 
     <p>This article is structured as follows.
 In <a href="#related-work">Section 2</a>, we discuss related work.
-In <a href="#overview">Section 3</a>, we present an overview of the required steps to describe software experimentations.
-<a href="#describing-modules">Section 4</a> introduces the semantic description of software modules.
-Next, <a href="#describing-components">Section 5</a> discusses a semantic description of software components and configurations,
-followed by the introduction of a dependency injection framework that can instantiate these in <a href="#instantiating">Section 6</a>.
-<a href="#use-case">Section 7</a>, describes a use case where we apply software descriptions
+<a href="#describing-modules">Section 3</a> introduces the semantic description of software modules.
+Next, <a href="#describing-components">Section 4</a> discusses a semantic description of software components and configurations,
+followed by the introduction of a dependency injection framework that can instantiate these in <a href="#instantiating">Section 5</a>.
+<a href="#use-case">Section 6</a>, describes a use case where we apply software descriptions
 to an experimental evaluation.
-Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 8</a>.</p>
+Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 7</a>.</p>
 
   </section>
 
@@ -221,73 +220,16 @@ and they cannot easily be combined into a detailed description
 of the exact software used.</p>
 
     <p>To that end, we introduce RDF-based software dependency configurations
-(<a href="#describing-components">Section 5</a>)
+(<a href="#describing-components">Section 4</a>)
 that exactly capture the used modules and dependencies
-(<a href="#describing-modules">Section 4</a>).
+(<a href="#describing-modules">Section 3</a>).
 The resulting description can then be published on the Web as Linked Data,
 for instance, as part of the description of an experimental evaluation
-(<a href="#overview">Section 3</a>).
+(<a href="#use-case">Section 6</a>).
 Furthermore, we implemented a framework
 that can instantiate such software descriptions
 directly from the Web
-(<a href="#instantiating">Section 6</a>).</p>
-
-  </section>
-
-  <section id="overview">
-    <h2>Overview of software experiment descriptions</h2>
-
-    <p>The correct description of experimental evaluations has many aspects.
-In this article, we focus on those aspects related to the description of software,
-of which we provide an overview in <a href="#software-aspects">Subsection 3.1</a>.
-We then describe in <a href="#workflow">Subsection 3.2</a> how these aspects fit
-into a generic workflow of describing experimental setups.</p>
-
-    <h3 id="software-aspects">Aspects of software-based research</h3>
-
-    <p class="todo">This section will shortly introduce each of the blocks in the diagram.
-Ruben V. will write the basis.</p>
-
-    <p class="todo">Mention somewhere here that we will use JSON-LD syntax for the examples in this paper.</p>
-
-    <h4 id="specification">Specification</h4>
-    <p class="todo">Write</p>
-
-    <h4 id="module">Module</h4>
-    <p class="todo">Write</p>
-
-    <p class="todo">A module consists of <em>components</em></p>
-
-    <h4 id="configuration">Configuration</h4>
-    <p class="todo">Write</p>
-
-    <h4 id="experiment">Experiment</h4>
-    <p class="todo">Write</p>
-
-    <h4 id="results">Results</h4>
-    <p class="todo">Write</p>
-
-    <h4 id="article">Article</h4>
-    <p class="todo">Write</p>
-
-    <h3 id="workflow">Workflow to describe experimental setups</h3>
-
-    <p>A possible workflow for describing experimental setups is as follows:</p>
-
-    <ol>
-      <li>Design experiment execution and workflow (DIO, OPMW, P-Plan)</li>
-      <li>Environment setup</li>
-      <li>Retrieve software module and RDFise</li>
-      <li>RDFise software configuration</li>
-      <li>?</li>
-      <li>Create dataset structure (RDF Data Cube, SKOS)</li>
-      <li>?</li>
-      <li>Run experiment</li>
-      <li>Catch and store results data (RDF Data Cube)</li>
-      <li>Create visualisation and analysis</li>
-    </ol>
-
-    <p>Activities, entities and actors are defined and captured at each workflow step using PROV-O.</p>
+(<a href="#instantiating">Section 5</a>).</p>
 
   </section>
 
@@ -592,7 +534,7 @@ we don’t only <em>describe</em> components, but also allow them to be <em>inst
 
     <p>We have implemented <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory">Components.js</a>,
 an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
-It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 5</a>.
+It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 4</a>.
 It accepts raw triple streams or URL’s to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
