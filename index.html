@@ -51,8 +51,8 @@ and explains with a use case
 how to publish experiments and their software configurations on the Web.
 <!-- Findings     -->
 In order to enable semantic interlinking between configurations and modules,
-we published the metadata of all 475,000+ JavaScript libraries on npm
-as 150,000,000+ RDF triples.
+we published the metadata of all 480,000+ JavaScript libraries on npm
+as 174,000,000+ RDF triples.
 <!-- Conclusion   -->
 Through our work,
 research articles can refer by URL
@@ -79,10 +79,10 @@ and reasoning or querying over software configuration metadata.</p>
 but many of them refer to that software only by name or version number.
 This information is insufficient for readers
 to understand which <em>exact</em> version of the software,
-which exact versions of its <em>dependencies</em>,
+which versions of its <em>dependencies</em>,
 and which detailed <em>configuration</em> of the software’s components
 has obtained the reported results.
-Therefore, potential users cannot necessarily obtain the correct software installation
+Therefore, potential users do not necessarily obtain the correct software installation
 that will behave according to the article’s conclusions.
 Moreover, other researchers might fail
 in reproducing the same results
@@ -114,7 +114,7 @@ and the experiment that generates it,
 as well as all aspects surrounding that experiment.</p>
 
     <figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]" />
+<img src="description-diagram.svg" alt="[description diagram]" class="tall" />
 <figcaption>
         <p><span class="label">Fig. 1:</span> A <em>research article</em> is based on <em>result data</em>,
 which are the outcomes of an <em>experiment</em>.
@@ -127,16 +127,14 @@ and this article focuses on <em>software configurations</em> and <em>software mo
 we focus on the description of <em>software configurations</em> and <em>software modules</em>,
 such that an evaluated software setup
 can be referred to unambiguously by an IRI.
-We thereby avoid the inherent vagueness
-of referring to software by name or version only.
 We further facilitate the reproduction of experiments
-through a mechanisms that automatically <em>instantiates</em> the software configuration
+through a mechanism that automatically <em>instantiates</em> the software configuration
 based on its Linked Data description.
 Our contributions are the following:</p>
 
     <ul>
       <li>the RDF-based description of <strong>software modules</strong>,
-applied to the 475,000+ bundles of <a href="https://www.npmjs.com/">npm</a> (Node.js);</li>
+applied to the 480,000+ bundles of <a href="https://www.npmjs.com/">npm</a> (Node.js);</li>
       <li>the RDF-based description of <strong>available components</strong> within software modules;</li>
       <li>the RDF-based description of a <strong>precise configuration</strong> of software modules;</li>
       <li>the <strong>automated instantiation</strong> of such a configuration;</li>
@@ -146,11 +144,11 @@ in scientific articles.</li>
 
     <p>This article is structured as follows.
 In <a href="#related-work">Section 2</a>, we discuss related work.
-Next, in <a href="#overview">Section 3</a> we present an overview of the required steps for software experimentations that will be discussed in this paper.
+In <a href="#overview">Section 3</a>, we present an overview of the required steps to describe software experimentations.
 <a href="#describing-modules">Section 4</a> introduces the semantic description of software modules.
-Next, <a href="#describing-components">Section 5</a> discusses a semantic description of software components,
-followed by the introduction of a dependency injection framework that can instantiate these described components in <a href="#instantiating">Section 6</a>.
-In <a href="#use-case">Section 7</a>, we present a use case where we apply software descriptions
+Next, <a href="#describing-components">Section 5</a> discusses a semantic description of software components and configurations,
+followed by the introduction of a dependency injection framework that can instantiate these in <a href="#instantiating">Section 6</a>.
+<a href="#use-case">Section 7</a>, describes a use case where we apply software descriptions
 to an experimental evaluation.
 Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 8</a>.</p>
 
