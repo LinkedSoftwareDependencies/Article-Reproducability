@@ -298,19 +298,19 @@ we modified some of the input JSON before exporting it to JSON-LD.</p>
 
     <h3 id="bundles">Bundles</h3>
     <p>A bundle represents the general npm package.
-An example of a JSON representation of an npm bundle can be found at <a href="https://registry.npmjs.org/n3/" id="iri-link">https:/​/​registry.npmjs.org/n3/</a>.
+An example of a JSON representation of an npm bundle can be found at <a href="https://registry.npmjs.org/n3/" class="iri-link">https:/​/​registry.npmjs.org/n3/</a>.
 This contains all the general descriptions that apply to all bundles in this module,
 such as the name, homepage and description.</p>
 
     <p>To adapt this JSON to RDF,
 we start by adding our context,
-<a href="https://linkedsoftwaredependencies.org/contexts/npm" id="iri-link">https:/​/​linkedsoftwaredependencies.org/contexts/npm</a>,
+<a href="https://linkedsoftwaredependencies.org/contexts/npm" class="iri-link">https:/​/​linkedsoftwaredependencies.org/contexts/npm</a>,
 which already maps many of the npm tags to corresponding RDF predicates.
 This allows these tags to remain the same in the JSON-LD representation.
 The limitations of context mapping necessitated
 some other changes,
 the most important one relating to the specific versions of the bundle.
-This can be seen by retrieving <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a> with an <code>Accept: application/ld+json</code> header.
+This can be seen by retrieving <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a> with an <code>Accept: application/ld+json</code> header.
 There the bundle now contains links to its corresponding modules,
 providing semantic connections between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.</p>
@@ -336,7 +336,7 @@ An example of some of the data generated this way can be seen in <a href="#n3.tt
 users:rubenverborgh foaf:name &quot;Ruben Verborgh&quot;.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 1:</span> This listing shows a partial representation in the Turtle syntax of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a>.
+        <p><span class="label">Listing 1:</span> This listing shows a partial representation in the Turtle syntax of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a>.
 Prefixes omitted for brevity.</p>
       </figcaption>
 </figure>
@@ -345,8 +345,8 @@ Prefixes omitted for brevity.</p>
     <p>A module is a specific version of a package.
 Continuing with the examples shown above,
 the JSON metadata of version 0.10.0 of the N3 bundle can be found at
-<a href="https://registry.npmjs.org/n3/0.10.0" id="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
-while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
+<a href="https://registry.npmjs.org/n3/0.10.0" class="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
+while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
 Similarly, many of the tags are mapped by the context,
 while other tags had to be modified to provide more relevant triples.</p>
 
@@ -357,7 +357,7 @@ For example, N3 0.10.0 has a dependency on <code>async ^2.0.1</code>.
 of async that has a major version of <code>2</code>.
 As can be seen in the JSON-LD,
 this async dependency is converted to
-<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1" id="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1</a>,
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1</a>,
 with <code>%5E</code> being the URL-encoded <code>^</code>.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
