@@ -1,5 +1,5 @@
 ex:myLexer a n3:Lexer;
-    n3:comments "true"^^xsd:boolean.
+    n3:comments true.
 ex:myParser a n3:Parser;
     n3:format "application/trig";
     n3:lexer ex:myLexer.

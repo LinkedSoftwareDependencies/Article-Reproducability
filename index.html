@@ -393,7 +393,7 @@ such as retrieving all dependencies of a bundle and finding the author of a bund
   <section id="describing-components">
     <h2>Describing components and their configuration</h2>
 
-    <p>In this section, we introduce the <em>Object-Oriented Components</em> ontology for describing software components and how they can be instantiated.
+    <p>In this section, we introduce the <em>Object-Oriented Components</em> ontology for describing software components and their instantiation in a certain configuration.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.</p>
 
     <h3 id="object-oriented-components">Object-oriented components</h3>
@@ -404,42 +404,53 @@ The purpose of a component is to provide operations that can be used by other co
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
 In this section, we assume OOP in the broad sense of the word, which only requires <em>classes</em>, <em>objects</em> and <em>constructor parameters</em>.
-<a href="#voc-oo-diagram">Fig. 2</a> shows an overview of all the classes and predicates in the ontology.</p>
+<a href="#voc-oo-diagram">Fig. 2</a> shows an overview of the ontology.</p>
 
     <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]" />
 <figcaption>
-        <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>object-oriented components</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​oriented#"><code>oo</code></a>.</p>
+        <p><span class="label">Fig. 2:</span> Classes and properties in the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​oriented#"><em>Object-Oriented Components</em> ontology</a>,
+with as prefix <code>oo</code>.</p>
       </figcaption>
 </figure>
 
-    <p>We define a <em>module</em> as a collection of components.
+    <p>Following <a href="#describing-modules">Section 3</a>, we have defined a <em>module</em> as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
-which can contain a multitude of functionalities, i.e., components.</p>
+which can contain a multitude of components.</p>
 
     <p>We define component as a <em>subclass</em> of <code>rdfs:Class</code>.
 The parameters to construct a component can therefore be defined as an <code>rdfs:Property</code> on a component.
-This class structure enables convenient semantic descriptions of components instantiations,
-requiring only the fundamental concepts of RDF classes and properties.</p>
+This class structure enables convenient semantic descriptions of components instantiations
+through the regular <code>rdf:type</code> predicate.
+For instance,
+a software module representing a parser
+can be described as
+<code>n3:Parser a oo:Class.</code>,
+and a concrete instance is
+<code>:myParser a n3:Parser</code>.</p>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
 Each component can refer to its path within a module using the <code>oo:componentPath</code> predicate,
 which can for instance be the package name in Java.
 All instantiations of <code>oo:Class</code> instances are an <code>oo:Instance</code>.
-It can also be an <code>oo:Instance</code>, meaning that it can directly be used within other components and needs no further instantiation.
 An <code>oo:Class</code> can also be <code>oo:AbstractClass</code>, which does not allow directly instantiating this component type.
 Abstract components can be used to define a set of shared parameters in a common ancestor.
 Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the <code>rdfs:subClassOf</code> predicate.</p>
 
     <p>The parameters that are used to instantiate an <code>oo:Class</code> to an <code>oo:Instance</code> are of type <code>oo:Parameter</code>.
 An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
-<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided.
+<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
+upon instantiation (<a href="#instantiating">Section 5</a>),
+a closed world will be assumed.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
     <p><a href="#module-n3">Listing 2</a> shows an example of the N3.js npm module using the components ontology.
-It exposes several components such as <em>Parser</em> and <em>Lexer</em>.
-Each of these components can take several different parameters.
+It exposes several components such as <em>Parser</em> and <em>Lexer</em>,
+each of which can take multiple parameters.
+These are provided with a unique identifier and definition,
+such that the software configuration can receive a semantic interpretation.
+For example,
 <a href="#config-n3">Listing 3</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-n3" class="listing">
@@ -460,10 +471,11 @@ The util component already is an instance, for which it needs no parameters.</p>
 
     <figure id="config-n3" class="listing">
 <pre><code>ex:myLexer a n3:Lexer;
-    n3:comments &quot;true&quot;^^xsd:boolean.
+    n3:comments true.
 ex:myParser a n3:Parser;
     n3:format &quot;application/trig&quot;;
-    n3:lexer ex:myLexer.</code></pre>
+    n3:lexer ex:myLexer.
+</code></pre>
 <figcaption>
         <p><span class="label">Listing 3:</span> <code>ex:myLexer</code> is a lexer that accepts comments.
 <code>ex:myParser</code> is a parser that accepts the TriG format and uses <code>ex:myLexer</code> for lexing.</p>
