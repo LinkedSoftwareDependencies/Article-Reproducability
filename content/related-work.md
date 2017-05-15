@@ -1,20 +1,18 @@
 ## Related Work
 {:#related-work}
 
-In this section, we discuss the related work on the reproducibility of scientific experiments in scholarly articles,
+In this section, we discuss related work on the reproducibility of scientific experiments in scholarly articles,
 ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
 
-### Scholarly publishing and reproducibility
-In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realised on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.
+### Reproducibility of software experiments
+In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realized on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.
 
 With the goal of improving the way dataset-based software evaluations are performed in the Semantic Web,
 [LOD Lab](cite:cites LODLab) was introduced.
-They introduced a service to simplify software evaluation
-against [a large amount of Linked Datasets](cite:cites LODLaundromat).
-This was done because (Semantic Web) experiments are typically done using only a few datasets.
-This is because handling Linked Datasets can require a lot of manual labour
-because they are mostly disseminated as datadumps,
-which can introduce problems such as syntax errors and the harmonization of various formats.
+It offers a service to simplify software evaluation
+against a large amount of Linked Datasets.
+This was done because (Semantic Web) experiments are typically done using only a few datasets,
+since handling them requires significant manual labor.
 This service not only makes it easier for researchers to _develop_ experiments,
 it also makes it easier for others to _reproduce_ these experiments,
 because the manual phase of dataset setup is simplified or even removed.
@@ -46,8 +44,6 @@ In that case, the developed software module defines the flow of control.
 In contrast, with [_Inversion of Control_](cite:cites InversionOfControl,DesigningReusableClasses),
 an external component framework defines this flow:
 programmers write code such that it can be called by the framework.
-This concept is also known as the [_Hollywood Principle_](cite:cites HollywoodPrinciple):
-<q>Don't call us, we'll call you</q>.
 [Dependency Injection](cite:cites DependencyInjection) is a form of Inversion of Control where components
 are injected into other components by an _Assembler_.
 Experimental software benefits from this paradigm,
