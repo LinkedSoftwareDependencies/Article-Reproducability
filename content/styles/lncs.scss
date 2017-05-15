@@ -348,10 +348,10 @@ main {
 
   // Links
   a {
-    // Display URL of mandatory links
-    &.mandatory {
+    // Display link text
+    &[data-link-text] {
       &:after {
-        content: ' (' attr(href) ')';
+        content: ' (' attr(data-link-text) ')';
         font-style: italic;
       }
     }

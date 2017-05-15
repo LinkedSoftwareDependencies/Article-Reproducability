@@ -4,6 +4,8 @@ class MarkupFilter < Nanoc::Filter
   def run(content, params = {})
     content = content.dup
 
+    hyphenate_iris content
+
     include_code_blocks content
 
     labels = create_labels content
@@ -15,6 +17,23 @@ class MarkupFilter < Nanoc::Filter
     move_heading_ids_to_section content
 
     content
+  end
+
+  # Hyphenate long IRIs
+  def hyphenate_iris content
+    # Replace in-text URLs
+    content.gsub! %r{>https?://[^>]+?} do |match|
+      hyphenate(match)
+    end
+    # Replace mandatory links
+    content.gsub! %r{<a href="([^"]+)"[^>]*\s+class="mandatory"} do |match|
+      %{#{match} data-link-text="#{hyphenate $1}"}
+    end
+  end
+
+  # Add zero-width space after slashes and hyphens to allow hyphenation
+  def hyphenate text
+    text.gsub %r{(?<=/|-)}, "\u200B"
   end
 
   # Moves IDs on headings to their parent section
