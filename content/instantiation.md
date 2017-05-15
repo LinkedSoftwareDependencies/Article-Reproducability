@@ -17,7 +17,7 @@ It provides a `Loader` class that acts as an assembler when instantiated.
 This `Loader` provides _constructor injection_:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
 If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
-Additionally, [simplified mechanisms](https://github.com/LinkedSoftwareDependencies/Components.js#component-configuration-unnamed)
+Additionally, [simplified mechanisms](https://github.com/LinkedSoftwareDependencies/Components.js#configuring-a-component-unnamed)
 are in place for developers that want to use the dependency injector directly without having to semantically describe the component.
 
 <figure id="components.js" class="listing">
