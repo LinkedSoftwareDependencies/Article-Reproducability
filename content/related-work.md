@@ -7,10 +7,17 @@ ontologies for describing these experiments, and dependency injection as a desig
 ### Scholarly publishing and reproducibility
 In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realised on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.
 
-We should cite [LOD Lab](cite:cites LODLab),
-as they brought a major new angle to reproducibility within the Semantic Web.
-Should also look at their argumentation.
-{:.todo}
+With the goal of improving the way dataset-based software evaluations are performed in the Semantic Web,
+[LOD Lab](cite:cites LODLab) was introduced.
+They introduced a service to simplify software evaluation
+against [a large amount of Linked Datasets](cite:cites LODLaundromat).
+This was done because (Semantic Web) experiments are typically done using only a few datasets.
+This is because handling Linked Datasets can require a lot of manual labour
+because they are mostly disseminated as datadumps,
+which can introduce problems such as syntax errors and the harmonization of various formats.
+This service not only makes it easier for researchers to _develop_ experiments,
+it also makes it easier for others to _reproduce_ these experiments,
+because the manual phase of dataset setup is simplified or even removed.
 
 ### Ontologies and vocabularies for describing experiments
 [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
