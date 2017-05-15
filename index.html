@@ -368,7 +368,7 @@ with changes required.
 Due to the limitations of context mapping,
 some other changes were needed,
 with the most important one relating to the specific versions of the bundle.
-This can be seen by calling <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a> with the <code>"Accept: application/ld+json"</code> header..
+This can be seen by calling <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a> with the <code>"Accept: application/ld+json"</code> header.
 There the bundle now contains links to its corresponding modules,
 providing semantic links between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.</p>
@@ -383,17 +383,18 @@ An example of some of the data generated this way can be seen in <a href="#n3.tt
 
     <figure id="n3.ttl" class="listing">
 <pre><code>npm:n3 a doap:Project;
-    dcterms:abstract &quot;Lightning fast, asynchronous, streaming...&quot;;
-    dcterms:subject &quot;turtle&quot;, &quot;rdf&quot;, &quot;n3&quot;, &quot;streaming&quot;, &quot;asynchronous&quot;;
-    spdx:licenseDeclared &lt;https://spdx.org/licenses/MIT.html&gt;;
-    doap:release &lt;http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&gt;;
-    doap:bug-database &lt;https://github.com/RubenVerborgh/N3.js/issues&gt;;
-    doap:homepage &lt;https://github.com/RubenVerborgh/N3.js#readme&gt;;
-    doap:name &quot;n3&quot;;
-    owl:sameAs &quot;https://www.npmjs.com/package/n3&quot;;
-    foaf:maker users:rubenverborgh.
+  dcterms:abstract &quot;Lightning fast, asynchronous, streaming...&quot;;
+  dcterms:subject &quot;turtle&quot;, &quot;rdf&quot;, &quot;n3&quot;, &quot;streaming&quot;, &quot;asynchronous&quot;;
+  spdx:licenseDeclared &lt;https://spdx.org/licenses/MIT.html&gt;;
+  doap:release 
+    &lt;http://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&gt;;
+  doap:bug-database &lt;https://github.com/RubenVerborgh/N3.js/issues&gt;;
+  doap:homepage &lt;https://github.com/RubenVerborgh/N3.js#readme&gt;;
+  doap:name &quot;n3&quot;;
+  owl:sameAs &quot;https://www.npmjs.com/package/n3&quot;;
+  foaf:maker users:rubenverborgh.
 users:rubenverborgh foaf:mbox &quot;ruben.verborgh@gmail.com&quot;;
-    foaf:name &quot;Ruben Verborgh&quot;.
+  foaf:name &quot;Ruben Verborgh&quot;.
 </code></pre>
 <figcaption>
         <p><span class="label">Listing 1:</span> Partial turtle representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3">https://linkedsoftwaredependencies.org/bundles/npm/n3</a>.
@@ -435,6 +436,13 @@ To that end we converted the actual script tags to specific predicates,
 such as <code>&lt;https://linkedsoftwaredependencies.org/scripts/npm/test&gt;</code> for the test script.
 These predicates have as object a new URI that links to actual content of that script,
 meaning the execution script is found by accessing that URI.</p>
+
+    <p>Additionally, to support in description which modules are being used on a machine,
+we created a <a href="https://github.com/LinkedSoftwareDependencies/node-dependency-parser" class="mandatory">tool</a>
+that outputs the actual dependencies
+used by a specific package installation in RDF.
+This way the exact installation that was used can be described,
+without having to rely on the interpretation of semantic versions which can change over time.</p>
 
     <h3 id="publication">Publication</h3>
     <p>475,000 npm packages correspond to 150,000,000+ triples when we collect the information from all packages.
