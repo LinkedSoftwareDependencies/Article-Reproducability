@@ -4,9 +4,6 @@
 In this section, we introduce the _Object-Oriented Components_ ontology for describing software components and how they can be instantiated.
 We provide an example of the application of this vocabulary to object-oriented software components using JavaScript.
 
-{:.todo}
-Be mentally prepared for needing to remove these figures. Idea would be to include them in the ontology, and change our ontology application so it also shows images. (That would be nice actually.)
-
 ### Object-oriented components
 
 Within the [_Object-Oriented Components ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented),
@@ -35,6 +32,8 @@ requiring only the fundamental concepts of RDF classes and properties.
 
 Several `oo:Component` subclasses are defined.
 An `oo:Component` can be an `oo:Class`, which means that it can be instantiated based on parameters.
+Each component can refer to its path within a module using the `oo:componentPath` predicate,
+which can for instance be the package name in Java.
 All instantiations of `oo:Class` instances are an `oo:Instance`.
 It can also be an `oo:Instance`, meaning that it can directly be used within other components and needs no further instantiation.
 An `oo:Class` can also be `oo:AbstractClass`, which does not allow directly instantiating this component type.
@@ -87,9 +86,9 @@ Overview of the classes and properties in the _Object Mapping_ ontology, with as
 </figcaption>
 </figure>
 
-The ontology introduces the _object map_ and the _array map_, the latter is a subclass of the former.
-An object map can have several _object map entries_, where each entry has a field name and a field value.
-An array map can have several _array map entries_, where each entry only has a value.
+The ontology introduces the _object mapping_ and the _array mapping_, the latter is a subclass of the former.
+An object map can have several _object mapping entries_, where each entry has a field name and a field value.
+An array map can have several _array mapping entries_, where each entry only has a value.
 
 If the value of `om:fieldName` or `om:fieldValue` is a literal, the literal value will be mapped to the object field name or value.
 An `om:fieldValue` can also refer to another object map, which will be mapped to the resulting object.
