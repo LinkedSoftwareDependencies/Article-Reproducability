@@ -1,6 +1,7 @@
 require 'erb'
-
 include ERB::Util
+
+CSL::Style.root = File.dirname(__FILE__)
 
 def section id
   item = @items["/#{id.to_s}.*"]

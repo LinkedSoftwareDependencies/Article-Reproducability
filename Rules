@@ -3,7 +3,7 @@
 compile '/index.*' do
   filter :erb
   filter :bibmarkdown, bibfile: items['/references.bib'],
-                       style: 'springer-lecture-notes-in-computer-science'
+                       style: 'lncs-custom'
   filter :kramdown
   filter :markupfilter
   filter :rubypants
