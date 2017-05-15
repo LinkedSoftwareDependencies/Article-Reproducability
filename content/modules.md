@@ -56,19 +56,19 @@ we modified some of the input JSON before exporting it to JSON-LD.
 
 ### Bundles
 A bundle represents the general npm package.
-An example of a JSON representation of an npm bundle can be found at <https://registry.npmjs.org/n3/>{:#iri-link}.
+An example of a JSON representation of an npm bundle can be found at <https://registry.npmjs.org/n3/>{:.iri-link}.
 This contains all the general descriptions that apply to all bundles in this module,
 such as the name, homepage and description.
 
 To adapt this JSON to RDF,
 we start by adding our context,
-<https://linkedsoftwaredependencies.org/contexts/npm>{:#iri-link},
+<https://linkedsoftwaredependencies.org/contexts/npm>{:.iri-link},
 which already maps many of the npm tags to corresponding RDF predicates.
 This allows these tags to remain the same in the JSON-LD representation.
 The limitations of context mapping necessitated
 some other changes,
 the most important one relating to the specific versions of the bundle.
-This can be seen by retrieving <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:#iri-link} with an `Accept: application/ld+json` header.
+This can be seen by retrieving <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link} with an `Accept: application/ld+json` header.
 There the bundle now contains links to its corresponding modules,
 providing semantic connections between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
@@ -82,7 +82,7 @@ An example of some of the data generated this way can be seen in [](#n3.ttl).
 <figure id="n3.ttl" class="listing">
 ````/code/n3.ttl````
 <figcaption markdown="block">
-This listing shows a partial representation in the Turtle syntax of <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:#iri-link}.
+This listing shows a partial representation in the Turtle syntax of <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link}.
 Prefixes omitted for brevity.
 </figcaption>
 </figure>
@@ -91,8 +91,8 @@ Prefixes omitted for brevity.
 A module is a specific version of a package.
 Continuing with the examples shown above,
 the JSON metadata of version 0.10.0 of the N3 bundle can be found at
-<https://registry.npmjs.org/n3/0.10.0>{:#iri-link},
-while the IRI in our namespace is <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>{:#iri-link}.
+<https://registry.npmjs.org/n3/0.10.0>{:.iri-link},
+while the IRI in our namespace is <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>{:.iri-link}.
 Similarly, many of the tags are mapped by the context,
 while other tags had to be modified to provide more relevant triples.
 
@@ -103,7 +103,7 @@ For example, N3 0.10.0 has a dependency on `async ^2.0.1`.
 of async that has a major version of `2`.
 As can be seen in the JSON-LD,
 this async dependency is converted to 
-<https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1>{:#iri-link},
+<https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1>{:.iri-link},
 with `%5E` being the URL-encoded `^`.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
