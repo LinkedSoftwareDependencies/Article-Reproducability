@@ -40,7 +40,7 @@ and the experiment that generates it,
 as well as all aspects surrounding that experiment.
 
 <figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]" class="tall">
+<img src="description-diagram.svg" alt="[description diagram]">
 <figcaption markdown="block">
 A _research article_ is based on _result data_,
 which are the outcomes of an _experiment_.
