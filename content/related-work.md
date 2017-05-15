@@ -24,6 +24,8 @@ While reusability of datasets is one aspect of experiment reproducibility,
 our work focuses on reusability of software within experiments, and replication of the environment.
 
 ### Ontologies and vocabularies for describing experiments
+[PROV-O: The PROV Ontology](https://www.w3.org/TR/prov-o/) is a domain independent ontology to capture provenance information about entities, activities, and agents involved in producing data. [The OPMW-PROV Ontology](http://www.opmw.org/model/OPMW/) is an ontology for describing abstract and executable workflows. It extends PROV-O and [The P-PLAN Ontology](http://vocab.linkeddata.es/p-plan/) which is designed to represent scientific processes. [The RDF Data Cube Vocabulary](https://www.w3.org/TR/vocab-data-cube/) enables defining and publishing multi-dimensional data structures and observations. [DDI-RDF Discovery Vocabulary](http://rdf-vocabulary.ddialliance.org/discovery.html) is a vocabulary for publishing metadata about research and survey data.
+
 [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
 Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
