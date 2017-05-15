@@ -19,3 +19,6 @@ the injection framework will build everything together.
 Something about standing on the shoulders of giants,
 about how we can reuse each other's software more easily.
 {:.todo}
+
+Mention license errors/issues/inconsistencies/abnormalities/poo (eg., license/rights conflict) as future work. [query](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Fbundle%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-3.0.html%3E.%0A%20%20%3Fbundle%20npm%3Adependency%20%3Fdependency.%0A%20%20%3Fdependency%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-2.0.html%3E.%0A%7D)
+{:.todo}
