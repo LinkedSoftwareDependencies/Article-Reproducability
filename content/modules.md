@@ -132,7 +132,7 @@ This way the exact installation that was used can be described,
 without having to rely on the interpretation of semantic versions which can change over time.
 
 ### Publication
-475,000 npm packages correspond to 150,000,000+ triples when we collect the information from all packages.
+475,000 npm packages correspond to 174,000,000+ triples when we collect the information from all packages.
 Next to the subject pages for each bundle, module and user,
 we also publish [all of this data](https://linkedsoftwaredependencies.org){:.mandatory} through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2014) interface
 and as [HDT](cite:cites hdt) and [Turtle](cite:cites turtle) dumps.
