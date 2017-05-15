@@ -52,6 +52,11 @@ upon instantiation ([](#instantiating)),
 a closed world will be assumed.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
+The resulting description can be included in the module
+(for instance, as a JSON-LD file),
+or can be created and referred to externally.
+Afterwards, it can be reused by multiple dependents.
+
 [](#module-ldf) shows a simplified example of the LDF server npm module using the components ontology.
 It exposes several components such as an HDT and SPARQL datasource and a QPF server,
 each of which can take multiple parameters.
@@ -63,10 +68,10 @@ For example,
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````
 <figcaption markdown="block">
-The LDF server module contains, amonst others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
 The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
 The HDT datasource takes an HDT file as parameter.
-The SPARQL datasource takes a SPARQL endpoint URI as parameter.
+The SPARQL datasource takes a SPARQL endpoint IRI as parameter.
 </figcaption>
 </figure>
 

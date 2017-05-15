@@ -49,7 +49,7 @@ In contrast, with [_Inversion of Control_](cite:cites InversionOfControl,Designi
 an external component framework defines this flow:
 programmers write code such that it can be called by the framework.
 [Dependency Injection](cite:cites DependencyInjection) is a form of Inversion of Control where components
-are injected into other components by an _Assembler_.
+are injected into other components by an _assembler_.
 Experimental software benefits from this paradigm,
 because it allows different components to be defined and injected independently.
 

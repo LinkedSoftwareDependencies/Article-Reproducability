@@ -1,4 +1,4 @@
-ex:ldf-server a oo:Module;
+npmd:ldf-server a oo:Module;
     oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
 ldfs:Server:Tpf a oo:Class;
     oo:parameter ldfs:datasource, ldfs:port.

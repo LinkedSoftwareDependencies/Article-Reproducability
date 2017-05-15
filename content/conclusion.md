@@ -32,7 +32,7 @@ The LDF server (and client) can be compatible with multiple APIs, have multiple 
 Up until now, these different variants were made available as different software branches, which complicates their usage.
 Through this work, only one "core version" exists, and many different configurations can exist,
 where support for different APIs and algorithms are simply pluggable components that are refered to within a configuration.
-As components and configurations are identified by a URI,
+As components and configurations are identified by a IRI,
 they can exist anywhere on the Web.
-Based on a URI, the injection framework can therefore instantiate software,
+Based on a IRI, the injection framework can therefore instantiate software,
 and wire its dependent components together automatically, thereby leveraging the power of the Web to simplify the method of reproducibility.

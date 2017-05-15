@@ -48,10 +48,10 @@ JSON-LD achieves this by adding a so-called *context* to the JSON data,
 which describes how the JSON tags should be interpreted.
 E.g., having `"name": "foaf:name"` in your context implies
 that all name tags should be interpreted as the predicate `foaf:name`.
-Other JSON-LD keywords can be used to identify whether certain values are URIs,
+Other JSON-LD keywords can be used to identify whether certain values are IRIs,
 or whether an entity has a specific type.
 For the data where we could not reach the format using just the JSON-LD context,
-such as concatenating values to create a URI,
+such as concatenating values to create a IRI,
 we modified some of the input JSON before exporting it to JSON-LD.
 
 ### Bundles

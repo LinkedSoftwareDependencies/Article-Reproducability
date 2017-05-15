@@ -23,7 +23,7 @@ to improve the reproducibility of the experiment.
 The ISWC2014 LDF experiment can be described using the following <a about="#ldf-2014-qdwha-experiment-workflow" content="LDF 2014 experiment workflow" href="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:
 
 <!-- TODO:
-  Define (elsewhere) and reuse an actual URI Template for the workflow and steps
+  Define (elsewhere) and reuse an actual IRI Template for the workflow and steps
   i.e., preferrably not relative to this document.
   Change "#ldf-2014-qdwha-" to something else that is machine-generated and
   determinstic. More specific to the operation and independent to the article it
