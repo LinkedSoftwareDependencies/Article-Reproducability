@@ -180,9 +180,10 @@ While reusability of datasets is one aspect of experiment reproducibility,
 our work focuses on reusability of software within experiments, and replication of the environment.</p>
 
     <h3 id="ontologies-and-vocabularies-for-describing-experiments">Ontologies and vocabularies for describing experiments</h3>
-    <p>The <a property="http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> <a class="reference" href="#ref-6">[6]</a> is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://www.opmw.org/model/OPMW/">The OPMW-PROV Ontology</a> <a class="reference" href="#ref-7">[7]</a> is an ontology for describing abstract and executable workflows. It extends PROV-O and the <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://vocab.linkeddata.es/p-plan/">P-PLAN Ontology</a> <a class="reference" href="#ref-8">[8]</a> which is designed to represent scientific processes. The <a property="http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/vocab-data-cube/">RDF Data Cube Vocabulary</a> <a class="reference" href="#ref-9">[9]</a> enables defining and publishing multi-dimensional data structures and observations.</p>
+    <p>The <a property="http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> <a class="reference" href="#ref-6">[6]</a> is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://www.opmw.org/model/OPMW/">The OPMW-PROV Ontology</a> <a class="reference" href="#ref-7">[7]</a> is an ontology for describing abstract and executable workflows. It extends PROV-O and the <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://vocab.linkeddata.es/p-plan/">P-PLAN Ontology</a> <a class="reference" href="#ref-8">[8]</a> which is designed to represent scientific processes. The <a property="http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/vocab-data-cube/">RDF Data Cube Vocabulary</a> <a class="reference" href="#ref-9">[9]</a> enables defining and publishing multi-dimensional data structures and observations.
+<a property="http://purl.org/spar/cito/citesAsAuthority" href="http://rdf-vocabulary.ddialliance.org/discovery.html">DDI-RDF Discovery Vocabulary</a> <a class="reference" href="#ref-10">[10]</a> is a vocabulary for publishing metadata about research and survey data</p>
 
-    <p><a property="http://purl.org/spar/cito/cites" href="http://svn.aksw.org/papers/2015/SEMANTICS_LDWPO/public.pdf">LODFlow</a> <a class="reference" href="#ref-10">[10]</a> proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
+    <p><a property="http://purl.org/spar/cito/cites" href="http://svn.aksw.org/papers/2015/SEMANTICS_LDWPO/public.pdf">LODFlow</a> <a class="reference" href="#ref-11">[11]</a> proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
 Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
@@ -190,9 +191,9 @@ Consequently, this makes it possible to accurately describe and instantiate soft
 
     <h3 id="related-work-dependency-injection">Dependency injection</h3>
 
-    <p><a property="http://purl.org/spar/cito/cites" href="http://dx.doi.org/10.1002/smr.257"><em>Separation of concerns</em></a> <a class="reference" href="#ref-11">[11]</a> is a software design principle in which software is
+    <p><a property="http://purl.org/spar/cito/cites" href="http://dx.doi.org/10.1002/smr.257"><em>Separation of concerns</em></a> <a class="reference" href="#ref-12">[12]</a> is a software design principle in which software is
 split into separate components, each having their own separate task.
-Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-12">[12]</a> as
+Fowler defines a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-13">[13]</a> as
 <q>a glob of software that’s intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
 This design principle is especially useful for experimental software,
 because it improves the flexibility to, for instance,
@@ -202,10 +203,10 @@ by plugging them into a larger piece of software.</p>
     <p>Programmers traditionally interact with a library of components
 by calling its functionality from within their own code.
 In that case, the developed software module defines the flow of control.
-In contrast, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html"><em>Inversion of Control</em></a> <a class="reference" href="#ref-13">[13]</a><a class="reference" href="#ref-14">[14]</a>,
+In contrast, with <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/bliki/InversionOfControl.html"><em>Inversion of Control</em></a> <a class="reference" href="#ref-14">[14]</a><a class="reference" href="#ref-15">[15]</a>,
 an external component framework defines this flow:
 programmers write code such that it can be called by the framework.
-<a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-12">[12]</a> is a form of Inversion of Control where components
+<a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-13">[13]</a> is a form of Inversion of Control where components
 are injected into other components by an <em>assembler</em>.
 Experimental software benefits from this paradigm,
 because it allows different components to be defined and injected independently.</p>
@@ -286,7 +287,7 @@ for which we set up a <a href="https://github.com/LinkedSoftwareDependencies/npm
 
     <h3 id="interpreting-packagejson-using-json-ld">Interpreting package.json using JSON-LD</h3>
     <p>Since the input data is JSON,
-we opted to convert it to <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://www.w3.org/TR/json-ld/">JSON-LD</a> <a class="reference" href="#ref-15">[15]</a>,
+we opted to convert it to <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://www.w3.org/TR/json-ld/">JSON-LD</a> <a class="reference" href="#ref-16">[16]</a>,
 an RDF syntax specifically designed for adding semantics to JSON.
 JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data,
 which describes how the JSON tags should be interpreted.
@@ -380,8 +381,8 @@ without having to rely on the interpretation of semantic versions which can chan
     <h3 id="publication">Publication</h3>
     <p>480,000 npm packages correspond to 174,000,000+ triples when we collect the information from all packages.
 Next to the subject pages for each bundle, module and user,
-we also publish <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">all of this data</a> through a <a property="http://purl.org/spar/cito/cites" href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a> <a class="reference" href="#ref-16">[16]</a> interface
-and as <a property="http://purl.org/spar/cito/cites" href="http://www.imap.websemanticsjournal.org/preprints/index.php/ps/article/viewFile/328/333">HDT</a> <a class="reference" href="#ref-17">[17]</a> and <a property="http://purl.org/spar/cito/cites" href="http://www.w3.org/TR/turtle/">Turtle</a> <a class="reference" href="#ref-18">[18]</a> dumps.
+we also publish <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">all of this data</a> through a <a property="http://purl.org/spar/cito/cites" href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a> <a class="reference" href="#ref-17">[17]</a> interface
+and as <a property="http://purl.org/spar/cito/cites" href="http://www.imap.websemanticsjournal.org/preprints/index.php/ps/article/viewFile/328/333">HDT</a> <a class="reference" href="#ref-18">[18]</a> and <a property="http://purl.org/spar/cito/cites" href="http://www.w3.org/TR/turtle/">Turtle</a> <a class="reference" href="#ref-19">[19]</a> dumps.
 This data is republished daily to stay up-to-date with the available information on npm.
 Every day, we collect all triples that are generated by our system in a Turtle file.
 After that, we convert this Turtle file to an HDT file.
@@ -399,7 +400,7 @@ such as retrieving all dependencies of a bundle and finding the author of a bund
 for describing software components and their instantiation in a certain configuration,
 and provide an example of its application to JavaScript.
 Within this ontology,
-we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-12">[12]</a> as a “glob” of software.
+we reuse Fowler’s definition of a <a property="http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a class="reference" href="#ref-13">[13]</a> as a “glob” of software.
 The purpose of a component is to provide operations that can be used by other components.
 The instantiation of a component can require certain parameters,
 just like object-oriented programming (OOP) languages allow constructors to have certain arguments.
@@ -623,7 +624,7 @@ either through HTML with embedded RDFa
 or as a reference to an IRI of an RDF document.</p>
 
     <p>This experiment we will describe
-originates from <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">an ISWC2014 article</a> <a class="reference" href="#ref-16">[16]</a>
+originates from <a property="http://purl.org/spar/cito/citesAsAuthority" href="http://linkeddatafragments.org/publications/iswc2014.pdf">an ISWC2014 article</a> <a class="reference" href="#ref-17">[17]</a>
 and involves specific software configurations
 of a Linked Data Fragments (LDF) client and server.
 We have semantically described the <a href="https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd">LDF server</a> module and its 32 components.
@@ -653,14 +654,14 @@ instead of a concrete version.</p>
 <li id="ldf-2014-qdwha-experiment-create-vm-for-server" about="#ldf-2014-qdwha-experiment-create-vm-for-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for the server.</li>
 <li id="ldf-2014-qdwha-experiment-create-vm-for-cache" about="#ldf-2014-qdwha-experiment-create-for-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 1 virtual machine for a cache.</li>
 <li id="ldf-2014-qdwha-experiment-create-60-vm-for-clients" about="#ldf-2014-qdwha-experiment-create-60-vm-for-clients" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Create 60 virtual machines for clients.</li>
-<li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy a generated <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-19">[19]</a> <a href="http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/Dataset/index.html">dataset</a> to the server.</li>
+<li id="ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" about="#ldf-2014-qdwha-experiment-copy-generated-bsbm-dataset-to-server" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Copy a generated <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-20">[20]</a> <a href="http://wifo5-03.informatik.uni-mannheim.de/bizer/berlinsparqlbenchmark/spec/Dataset/index.html">dataset</a> to the server.</li>
 <li id="ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" about="#ldf-2014-qdwha-experiment-install-server-software-config-with-tpf-spec" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">
         <p>Install <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-config.jsonld" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​raw/​ldf-​availability-​experiment-​config.jsonld">the server software configuration</a>, implementing the <a href="https://www.hydra-cg.com/spec/latest/triple-pattern-fragments/" class="mandatory" data-link-text="https:/​/​www.hydra-​cg.com/​spec/​latest/​triple-​pattern-​fragments/​">TPF specification</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-setup.ttl">dependencies</a> on the server.</p>
       </li>
 <li id="ldf-2014-qdwha-experiment-install-client-software-config-with-sparql" about="#ldf-2014-qdwha-experiment-client-software-config-with-sparql" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">
         <p>Install <a href="https://github.com/LinkedDataFragments/Client.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedDataFragments/​Client.js">the client software configuration</a>, implementing the <a href="https://www.w3.org/TR/sparql11-protocol">SPARQL 1.1 protocol</a>, with its <a href="https://linkedsoftwaredependencies.org/raw/ldf-availability-experiment-client.ttl" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​raw/​ldf-​availability-​experiment-​client.ttl">dependencies</a> on each client.</p>
       </li>
-<li id="ldf-2014-qdwha-experiment-execute-bsbm-per-client" about="#ldf-2014-qdwha-experiment-bsbm-per-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Execute four processes of the <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-19">[19]</a> with the client software for each client machine</li>
+<li id="ldf-2014-qdwha-experiment-execute-bsbm-per-client" about="#ldf-2014-qdwha-experiment-bsbm-per-client" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Execute four processes of the <a property="http://purl.org/spar/cito/cites" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.161.8030&amp;rep=rep1&amp;type=pdf">Berlin SPARQL benchmark</a> <a class="reference" href="#ref-20">[20]</a> with the client software for each client machine</li>
 <li id="ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" about="#ldf-2014-qdwha-experiment-record-cpu-ram-client-server-io-cache" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Record CPU time, RAM usage of each client, the CPU time and RAM usage of the server, and measure the ingoing and outgoing bandwidth of the cache.</li>
 <li id="ldf-2014-qdwha-experiment-publish-results" about="#ldf-2014-qdwha-experiment-publish-results" typeof="opmw:WorkflowTemplateProcess" rel="opmw:isStepOfTemplate" resource="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label">Publish <a href="http://data.linkeddatafragments.org/benchmark">results</a> online.</li>
 </ol>
@@ -693,10 +694,10 @@ or component settings.</p>
 
     <p>For example, based on the above description,
 the exact same experiment can be performed
-with <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="http://linkeddatafragments.org/publications/eswc2015.pdf">different client-side algorithms</a> <a class="reference" href="#ref-20">[20]</a>
-or <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="https://arxiv.org/pdf/1608.08148.pdf">different server-side interfaces</a> <a class="reference" href="#ref-21">[21]</a>.
+with <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="http://linkeddatafragments.org/publications/eswc2015.pdf">different client-side algorithms</a> <a class="reference" href="#ref-21">[21]</a>
+or <a property="http://purl.org/spar/cito/obtainsBackgroundFrom" href="https://arxiv.org/pdf/1608.08148.pdf">different server-side interfaces</a> <a class="reference" href="#ref-22">[22]</a>.
 A common practice to achieve this currently,
-as done in the aforementioned works <a class="reference" href="#ref-20">[20]</a><a class="reference" href="#ref-21">[21]</a>,
+as done in the aforementioned works <a class="reference" href="#ref-21">[21]</a><a class="reference" href="#ref-22">[22]</a>,
 is to implement modifications in separate code repository branches.
 Unfortunately,
 such branches typically diverge from the main code tree,
@@ -768,7 +769,7 @@ and the creation of new ones.</p>
   <dt id="ref-4">[4]</dt>
   <dd>Banati, A., Kacsuk, P., Kozlovszky, M.: Four level provenance support to achieve portable reproducibility of scientific workflows. In: 38th International Convention on Information and Communication Technology,  Electronics and Microelectronics (MIPRO). IEEE (2015).</dd>
   <dt id="ref-5">[5]</dt>
-  <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Proceedings of the 14th International Semantic Web Conference. Springer (2015).</dd>
+  <dd>Rietveld, L., Beek, W., Schlobach, S.: LOD Lab: Experiments at LOD Scale. In: Arenas, M., Corcho, O., Simperl, E., Strohmaier, M., d’Aquin, M., Srinivas, K., Groth, P., Dumontier, M., Heflin, J., Thirunarayan, K., and Staab, S. (eds.) Proceedings of the 14th International Semantic Web Conference. pp. 339–355. Springer (2015).</dd>
   <dt id="ref-6">[6]</dt>
   <dd>Lebo, T., Sahoo, S., McGuinness, D.: Prov-O: The PROV Ontology. W3C (2013).</dd>
   <dt id="ref-7">[7]</dt>
@@ -778,29 +779,31 @@ and the creation of new ones.</p>
   <dt id="ref-9">[9]</dt>
   <dd>Lebo, T., Sahoo, S., McGuinness, D.: The RDF Data Cube Vocabulary. W3C (2014).</dd>
   <dt id="ref-10">[10]</dt>
-  <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. ACM, New York, NY, USA (2015).</dd>
+  <dd>Bosch, T., Cyganiak, R., Wackerow, J., Zapilko, B.: DDI-RDF Discovery Vocabulary. (2015).</dd>
   <dt id="ref-11">[11]</dt>
-  <dd>Mens, T., Wermelinger, M.: Separation of Concerns for Software Evolution. Journal of Software Maintenance. 14, (2002).</dd>
+  <dd>Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
   <dt id="ref-12">[12]</dt>
-  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https:/​/​martinfowler.com/articles/injection.html,</a> (2004).</dd>
+  <dd>Mens, T., Wermelinger, M.: Separation of Concerns for Software Evolution. Journal of Software Maintenance. 14, 311–315 (2002).</dd>
   <dt id="ref-13">[13]</dt>
-  <dd>Fowler, M.: Inversion Of Control, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https:/​/​martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
+  <dd>Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern, <a href="https://martinfowler.com/articles/injection.html,">https:/​/​martinfowler.com/articles/injection.html,</a> (2004).</dd>
   <dt id="ref-14">[14]</dt>
-  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, (1988).</dd>
+  <dd>Fowler, M.: Inversion Of Control, <a href="https://martinfowler.com/bliki/InversionOfControl.html,">https:/​/​martinfowler.com/bliki/InversionOfControl.html,</a> (2005).</dd>
   <dt id="ref-15">[15]</dt>
-  <dd>Sporny, M., Longley, D., Kellogg, G., Lanthaler, M., Lindström, N.: JSON-LD 1.0. World Wide Web Consortium (2014).</dd>
+  <dd>Johnson, R.E., Foote, B.: Designing reusable classes. Journal of object-oriented programming. 1, 22–35 (1988).</dd>
   <dt id="ref-16">[16]</dt>
-  <dd>Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Walle, R. Van de: Querying Datasets on the Web with High Availability. In: Proceedings of the 13th International Semantic Web Conference. Springer (2014).</dd>
+  <dd>Sporny, M., Longley, D., Kellogg, G., Lanthaler, M., Lindström, N.: JSON-LD 1.0. World Wide Web Consortium (2014).</dd>
   <dt id="ref-17">[17]</dt>
-  <dd>Fernández, J.D., Martínez-Prieto, M.A., Gutiérrez, C., Polleres, A., Arias, M.: Binary RDF representation for publication and exchange (HDT). Web Semantics: Science, Services and Agents on the World Wide Web. 19, (2013).</dd>
+  <dd>Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Walle, R. Van de: Querying Datasets on the Web with High Availability. In: Mika, P., Tudorache, T., Bernstein, A., Welty, C., Knoblock, C., Vrandečić, D., Groth, P., Noy, N., Janowicz, K., and Goble, C. (eds.) Proceedings of the 13th International Semantic Web Conference. pp. 180–196. Springer (2014).</dd>
   <dt id="ref-18">[18]</dt>
-  <dd>Beckett, D., Berners-Lee, T., Prud’hommeaux, E., Carothers, G.: RDF 1.1 Turtle. W3C (2014).</dd>
+  <dd>Fernández, J.D., Martínez-Prieto, M.A., Gutiérrez, C., Polleres, A., Arias, M.: Binary RDF representation for publication and exchange (HDT). Web Semantics: Science, Services and Agents on the World Wide Web. 19, 22–41 (2013).</dd>
   <dt id="ref-19">[19]</dt>
-  <dd>Bizer, C., Schultz, A.: The Berlin SPARQL benchmark. International journal on Semantic Web and information systems. 5, (2009).</dd>
+  <dd>Beckett, D., Berners-Lee, T., Prud’hommeaux, E., Carothers, G.: RDF 1.1 Turtle. W3C (2014).</dd>
   <dt id="ref-20">[20]</dt>
-  <dd>Van Herwegen, J., Verborgh, R., Mannens, E., Walle, R. Van de: Query Execution Optimization for Clients of Triple Pattern Fragments. In: The Semantic Web. Latest Advances and New Domains (2015).</dd>
+  <dd>Bizer, C., Schultz, A.: The Berlin SPARQL benchmark. International journal on Semantic Web and information systems. 5, 1–24 (2009).</dd>
   <dt id="ref-21">[21]</dt>
-  <dd>Hartig, O., Buil-Aranda, C.: Bindings-Restricted Triple Pattern Fragments. In: Proceedings of the 15th International Conference on Ontologies, DataBases, and Applications of Semantics. Springer (2016).</dd>
+  <dd>Van Herwegen, J., Verborgh, R., Mannens, E., Walle, R. Van de: Query Execution Optimization for Clients of Triple Pattern Fragments. In: Gandon, F., Sabou, M., Sack, H., d’Amato, C., Cudré-Mauroux, P., and Zimmermann, A. (eds.) The Semantic Web. Latest Advances and New Domains. pp. 302–318 (2015).</dd>
+  <dt id="ref-22">[22]</dt>
+  <dd>Hartig, O., Buil-Aranda, C.: Bindings-Restricted Triple Pattern Fragments. In: Debruyne, C., Panetto, H., Meersman, R., Dillon, T., Kühn, eva, O’Sullivan, D., and Ardagna, C.A. (eds.) Proceedings of the 15th International Conference on Ontologies, DataBases, and Applications of Semantics. pp. 762–779. Springer (2016).</dd>
 </dl>
 </section>
 </footer>
