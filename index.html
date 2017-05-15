@@ -204,7 +204,7 @@ In contrast, with <a property="http://purl.org/spar/cito/cites" href="https://ma
 an external component framework defines this flow:
 programmers write code such that it can be called by the framework.
 <a property="http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a class="reference" href="#ref-8">[8]</a> is a form of Inversion of Control where components
-are injected into other components by an <em>Assembler</em>.
+are injected into other components by an <em>assembler</em>.
 Experimental software benefits from this paradigm,
 because it allows different components to be defined and injected independently.</p>
 
@@ -290,10 +290,10 @@ JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data,
 which describes how the JSON tags should be interpreted.
 E.g., having <code>"name": "foaf:name"</code> in your context implies
 that all name tags should be interpreted as the predicate <code>foaf:name</code>.
-Other JSON-LD keywords can be used to identify whether certain values are URIs,
+Other JSON-LD keywords can be used to identify whether certain values are IRIs,
 or whether an entity has a specific type.
 For the data where we could not reach the format using just the JSON-LD context,
-such as concatenating values to create a URI,
+such as concatenating values to create a IRI,
 we modified some of the input JSON before exporting it to JSON-LD.</p>
 
     <h3 id="bundles">Bundles</h3>
@@ -443,6 +443,11 @@ upon instantiation (<a href="#instantiating">Section 5</a>),
 a closed world will be assumed.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
+    <p>The resulting description can be included in the module
+(for instance, as a JSON-LD file),
+or can be created and referred to externally.
+Afterwards, it can be reused by multiple dependents.</p>
+
     <p><a href="#module-ldf">Listing 2</a> shows a simplified example of the LDF server npm module using the components ontology.
 It exposes several components such as an HDT and SPARQL datasource and a QPF server,
 each of which can take multiple parameters.
@@ -452,7 +457,7 @@ For example,
 <a href="#config-ldf">Listing 3</a> illustrates how instances can be created of these component types.</p>
 
     <figure id="module-ldf" class="listing">
-<pre><code>ex:ldf-server a oo:Module;
+<pre><code>npmd:ldf-server a oo:Module;
     oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
 ldfs:Server:Tpf a oo:Class;
     oo:parameter ldfs:datasource, ldfs:port.
@@ -472,10 +477,10 @@ ldfs:Datasource:Hdt:file        a oo:Parameter; rdfs:range ldfs:HdtFile.
 ldfs:Datasource:Sparql:endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 2:</span> The LDF server module contains, amonst others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+        <p><span class="label">Listing 2:</span> The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
 The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
 The HDT datasource takes an HDT file as parameter.
-The SPARQL datasource takes a SPARQL endpoint URI as parameter.</p>
+The SPARQL datasource takes a SPARQL endpoint IRI as parameter.</p>
       </figcaption>
 </figure>
 
@@ -508,43 +513,54 @@ we don’t only <em>describe</em> components, but also allow them to be <em>inst
     <p>We have implemented <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​Components.js">Components.js</a>,
 an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
 It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 4</a>.
-It accepts raw triple streams or URL’s to RDF documents containing these declarations.
-At the time of writing, the parser accepts RDF documents serialized in either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
+It accepts raw triple streams or URLs to RDF documents containing these declarations.
+At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
     <p><a href="#components.js">Listing 4</a> illustrates how components can be instantiated using Components.js.
-It provides a <code>Loader</code> class that acts as an assembler when instantiated.
+It provides a <code>Loader</code> class that acts as an assembler.
 This <code>Loader</code> provides <em>constructor injection</em>:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
-If a constructor mapping is detected, the parameter values will be mapped to constructor arguments as configured by the mapping.
 Additionally, <a href="https://github.com/LinkedSoftwareDependencies/Components.js#configuring-a-component-unnamed">simplified mechanisms</a>
 are in place for developers that want to use the dependency injector directly without having to semantically describe the component.</p>
 
     <figure id="components.js" class="listing">
 <pre><code>const loader = new require(&#39;lsd-components&#39;).Loader();
-loader.registerModule(&#39;http://example.org/module-ldf&#39;);
-loader.registerConfig(&#39;http://example.org/config-ldf&#39;);
-let myParser = loader.instantiate(&#39;http://example.org/config-ldf#myServer&#39;);</code></pre>
+loader.registerConfig(&#39;http://example.org/my-ldf-server&#39;);
+let myParser = loader.instantiate(&#39;http://example.org/config-ldf#myServer&#39;);
+</code></pre>
 <figcaption>
         <p><span class="label">Listing 4:</span> First, a new component loader is created
-after which module and component definitions are registered.
-Finally, a declarative component instantiation is supplied by providing the component URI
+after which the component definitions are registered.
+Finally, a declarative component instantiation is supplied by providing the component IRI
 and the location at which the resource can be found.</p>
       </figcaption>
 </figure>
 
-    <p>While Linked Data is based on the open-world assumption, our dependency injector will <em>close the world</em> when we enter the realm of OOP.
-This is because a close-world assumption is required when instantiating a component with certain arguments.
-We have to assume that all the arguments that are available to the loader is everything there is.</p>
+    <p>While Linked Data is based on the open-world assumption, our dependency injector will close the world when we enter the realm of OOP.
+This is because a close-world assumption is required for features such as default arguments:
+we have to assume that all the arguments that are available to the loader is everything there is.</p>
 
     <h3 id="defining-object-mappings">Defining object mappings</h3>
-    <p>A consequence of using RDF to instantiate components is that the parameters have no fixed order.
-While this is sufficient to describe component instantiations on a semantic level,
-it is insufficient for mapping parameter values to arguments in method and constructor calls that are based on a fixed ordering for parameters,
-which is the case for most popular OOP languages.</p>
+    <p>The constructor injection described above works out of the box
+with single-argument constructors that accept a map,
+as is quite common in JavaScript.
+Components.js then creates a map with key/value pairs
+with the property IRIs and corresponding objects
+of all triples with the instance as subject.
+This map is then passed to the constructor,
+which reads its settings from the map.
+Depending on a flag,
+the keys and values are either full IRIs
+or abbreviated JSON-LD strings.</p>
 
-    <p>We introduce a new ontology for describing the mapping between the pure semantic parameters
-to arguments in method calls in OOP languages like JavaScript, hence the name <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>Object Mapping ontology</em></a>.
-<a href="#voc-om-diagram">Fig. 3</a> shows an overview of all the classes and predicates in the ontology.</p>
+    <p>New libraries that use Components.js
+can be designed for such single-parameter constructors.
+For all other types constructors,
+a mapping mechanism is needed
+between the RDF properties
+and the concrete parameter order of the constructor.
+To this end, we introduce the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>Object Mapping ontology</em></a>.
+<a href="#voc-om-diagram">Fig. 3</a> shows an overview of all its classes and predicates.</p>
 
     <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]" />
@@ -553,36 +569,37 @@ to arguments in method calls in OOP languages like JavaScript, hence the name <a
       </figcaption>
 </figure>
 
-    <p>The ontology introduces the <em>object mapping</em> and the <em>array mapping</em>, the latter is a subclass of the former.
+    <p>The ontology introduces the <em>object mapping</em> and the <em>array mapping</em>.
 An object map can have several <em>object mapping entries</em>, where each entry has a field name and a field value.
-An array map can have several <em>array mapping entries</em>, where each entry only has a value.</p>
+An array map can have several <em>array mapping entries</em>, where each entry only has a value.
+Together, they can express all ways
+in which the flat object from the RDF description
+maps to an ordered list of simple or complex constructor parameters.</p>
 
-    <p>If the value of <code>om:fieldName</code> or <code>om:fieldValue</code> is a literal, the literal value will be mapped to the object field name or value.
-An <code>om:fieldValue</code> can also refer to another object map, which will be mapped to the resulting object.
-<code>om:collectsEntriesFrom</code> can refer to a predicate that points to entities with certain predicates.
-Each entity predicate that is refered to by <code>om:fieldName</code> will have its values mapped to keys of the object.
-Each entity predicate refered to by <code>om:fieldValue</code> will have its values mapped to values.</p>
-
-    <p><a href="#module-ldf-mapped">Listing 5</a> shows the mapping of the LDF component parameters to the constructor implementations.
-This description enchances the component definitions from <a href="#module-ldf">Listing 2</a>
-as it provides a lower level (implementation) view on the component constructors.</p>
+    <p><a href="#module-ldf-mapped">Listing 5</a> shows the mapping of the LDF component parameters to the constructor implementation.
+This description complements the component definitions from <a href="#module-ldf">Listing 2</a>
+as it provides an implementation view on the component constructors.
+Like the component definitions,
+a mapping is only necessary once per module
+and can be reused across dependents.</p>
 
     <figure id="module-ldf-mapped" class="listing">
-<pre><code>ldfs:Server/Tpf oo:constructorArguments ([ om:field
+<pre><code>ldfs:Server:Tpf oo:constructorArguments ([ om:field
   [ om:fieldName &quot;datasources&quot;; om:fieldValue
-      [ om:fieldName ldfs:Datasource/title, om:fieldValue rdf:object ] ],
+      [ om:fieldName ldfs:Datasource:title, om:fieldValue rdf:object ] ],
   [ om:fieldName &quot;port&quot;; om:fieldValue: ldfs:port ].
 ]).
-ldfs:Datasource/Hdt oo:constructorArguments ([ om:field
-  [ om:fieldName &quot;title&quot;; om:fieldValue: ldfs:Datasource/title ],
-  [ om:fieldName &quot;file&quot;;  om:fieldValue: ldfs:Datasource/Hdt/file ].
+ldfs:Datasource:Hdt oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;title&quot;; om:fieldValue: ldfs:Datasource:title ],
+  [ om:fieldName &quot;file&quot;;  om:fieldValue: ldfs:Datasource:Hdt:file ].
 ]).
-ldfs:Datasource/Sparql oo:constructorArguments ([ om:field
-  [ om:fieldName &quot;title&quot;;    om:fieldValue: ldfs:Datasource/title ],
-  [ om:fieldName &quot;endpoint&quot;; om:fieldValue: ldfs:Datasource/Sparql/endpoint ].
-]).</code></pre>
+ldfs:Datasource:Sparql oo:constructorArguments ([ om:field
+  [ om:fieldName &quot;title&quot;;    om:fieldValue: ldfs:Datasource:title ],
+  [ om:fieldName &quot;endpoint&quot;; om:fieldValue: ldfs:Datasource:Sparql:endpoint ].
+]).
+</code></pre>
 <figcaption>
-        <p><span class="label">Listing 5:</span> The HDT and SPARQL-based datasource constructors both take require a single object as argument for the constructor.
+        <p><span class="label">Listing 5:</span> The HDT and SPARQL-based datasource constructors both take a custom object as argument for the constructor.
 The entries of this object are mapped from the parameter values using this mapping.
 The TPF server constructor similarly requires a single object,
 where the <code>datasources</code> entry points to an object that is a mapping from datasource title to datasource.</p>
@@ -616,7 +633,7 @@ to improve the reproducibility of the experiment.</p>
     <p>The ISWC2014 LDF experiment can be described using the following <a about="#ldf-2014-qdwha-experiment-workflow" content="LDF 2014 experiment workflow" href="#ldf-2014-qdwha-experiment-workflow" property="rdfs:label" rel="cc:license" resource="https://creativecommons.org/licenses/by/4.0/">workflow</a>:</p>
 
     <!-- TODO:
-  Define (elsewhere) and reuse an actual URI Template for the workflow and steps
+  Define (elsewhere) and reuse an actual IRI Template for the workflow and steps
   i.e., preferrably not relative to this document.
   Change "#ldf-2014-qdwha-" to something else that is machine-generated and
   determinstic. More specific to the operation and independent to the article it
@@ -713,9 +730,9 @@ The LDF server (and client) can be compatible with multiple APIs, have multiple 
 Up until now, these different variants were made available as different software branches, which complicates their usage.
 Through this work, only one “core version” exists, and many different configurations can exist,
 where support for different APIs and algorithms are simply pluggable components that are refered to within a configuration.
-As components and configurations are identified by a URI,
+As components and configurations are identified by a IRI,
 they can exist anywhere on the Web.
-Based on a URI, the injection framework can therefore instantiate software,
+Based on a IRI, the injection framework can therefore instantiate software,
 and wire its dependent components together automatically, thereby leveraging the power of the Web to simplify the method of reproducibility.</p>
 
   </section>
