@@ -320,9 +320,9 @@ while a specific version of such a package would be a module.
 The package contains the description of the project together with all its versions,
 while a version contains the specific dependencies and a link to the actual implementation.</p>
 
-    <p>All this npm data is stored in a <a href="http://couchdb.apache.org/">CouchDB</a> 
-<a href="https://registry.npmjs.org/">instance</a> with one entry per bundle.
-This corresponds to the metadata, added by the package developer in a <a href="https://docs.npmjs.com/files/package.json"><code>package.json</code></a> file,
+    <p>All this npm data is stored in a <a href="http://couchdb.apache.org/" class="mandatory">CouchDB</a> 
+<a href="https://registry.npmjs.org/" class="mandatory">instance</a> with one entry per bundle.
+This corresponds to the metadata, added by the package developer in a <a href="https://docs.npmjs.com/files/package.json" class="mandatory"><code>package.json</code></a> file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
 more importantly, interlink software components,
@@ -330,7 +330,7 @@ we converted the JSON metadata provided by the npm registry to RDF.</p>
 
     <h3 id="json-ld">JSON-LD</h3>
     <p>Since our input data is JSON,
-it made sense to convert to <a href="http://json-ld.org/">JSON-LD</a>,
+it made sense to convert to <a href="http://json-ld.org/" class="mandatory">JSON-LD</a>,
 a format specifically made for adding semantics to JSON.
 JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data.
 This context describes how the JSON tags should be interpreted.
@@ -414,14 +414,14 @@ with <code>%5E</code> being the url-encoded <code>^</code>.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
 Additionaly, the body of the redirect contains the relevant metadata describing this,
-which in this case results in the following triple:</p>
+which in this case results in the following triple (prefixed for brevity):</p>
 
     <p><code>
-&lt;https://linkedsoftwaredependencies.org/bundles/npm/async/^2.0.1&gt; &lt;https://linkedsoftwaredependencies.org/vocabularies/npm#maxSatisfying&gt; &lt;https://linkedsoftwaredependencies.org/bundles/npm/async/2.4.0&gt;.
+async:\%5E2.0.1 npm:maxSatisfying async:2.4.0.
 </code></p>
 
     <p>Another tag where we changed the content is the <em>scripts</em> tag.
-Since there is a fixed set of scripts that <a href="https://docs.npmjs.com/misc/scripts">npm supports</a>,
+Since there is a fixed set of scripts that <a href="https://docs.npmjs.com/misc/scripts" class="mandatory">npm supports</a>,
 being able to easily query those can be helpful for automated systems.
 To that end we converted the actual script tags to specific predicates,
 such as <code>&lt;https://linkedsoftwaredependencies.org/scripts/npm/test&gt;</code> for the test script.
