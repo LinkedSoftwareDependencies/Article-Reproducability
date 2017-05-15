@@ -18,6 +18,8 @@ which can introduce problems such as syntax errors and the harmonization of vari
 This service not only makes it easier for researchers to _develop_ experiments,
 it also makes it easier for others to _reproduce_ these experiments,
 because the manual phase of dataset setup is simplified or even removed.
+While reusability of datasets is one aspect of experiment reproducibility,
+our work focuses on reusability of software within experiments, and replication of the environment.
 
 ### Ontologies and vocabularies for describing experiments
 [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
