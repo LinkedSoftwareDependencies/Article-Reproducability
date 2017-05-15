@@ -82,8 +82,8 @@ An example of some of the data generated this way can be seen in [](#n3.ttl).
 <figure id="n3.ttl" class="listing">
 ````/code/n3.ttl````
 <figcaption markdown="block">
-Partial Turtle representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3>.
-Prefix definitions omitted for brevity.
+This listing shows a partial representation in the Turtle syntax of <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:#iri-link}.
+Prefixes omitted for brevity.
 </figcaption>
 </figure>
 
