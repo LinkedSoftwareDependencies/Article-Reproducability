@@ -17,7 +17,7 @@ In this section, we assume OOP in the broad sense of the word, which only requir
 <figure id="voc-oo-diagram">
 <img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _object-oriented components_ ontology, with as prefix [`oo`](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#).
+Overview of the classes and properties in the _object-oriented components_ ontology, with as prefix [`oo`](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#){:.mandatory}.
 </figcaption>
 </figure>
 
@@ -82,7 +82,7 @@ to arguments in method calls in OOP languages like JavaScript, hence the name [_
 <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#).
+Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#){:.mandatory}.
 </figcaption>
 </figure>
 
