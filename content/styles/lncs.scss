@@ -125,10 +125,19 @@ width:100%;
 min-height:240px;
 }
 object[type="text/html"] { min-height:480px; }
-img { max-width:100%; height:auto; vertical-align:middle; }
 video, audio { display:block; max-width:60%; height:auto; margin:0 auto; }
 iframe { display:block; margin:0 auto; }
 
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+
+  &.tall {
+    height: 140px;
+    width: auto;
+  }
+}
 
 object.slides { display:none; }
 .block { display:block; }

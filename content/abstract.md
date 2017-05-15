@@ -23,8 +23,8 @@ and explains with a use case
 how to publish experiments and their software configurations on the Web.
 <!-- Findings     -->
 In order to enable semantic interlinking between configurations and modules,
-we published the metadata of all 475,000+ JavaScript libraries on npm
-as 150,000,000+ RDF triples.
+we published the metadata of all 480,000+ JavaScript libraries on npm
+as 174,000,000+ RDF triples.
 <!-- Conclusion   -->
 Through our work,
 research articles can refer by URL
