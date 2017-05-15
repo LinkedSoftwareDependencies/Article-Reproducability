@@ -21,7 +21,7 @@
     node distance = 2em, auto,
     font={\Large\itshape},
     concept/.style={text=colortext,font={\Large\bfseries},inner sep=10pt,align=center,rectangle,fill=colorbg,text width=15em},
-    relation/.style={text width=12em},
+    relation/.style={text width=13em},
 ]
 
     % Concepts
@@ -40,7 +40,7 @@
     \node[concept, below right=of parameter] (blank)     {\ };
     
     % Concept relations
-    \draw[->,thick,relation] (module) -- (component) node [left,midway,align=center] {oo:component};
+    \draw[->,thick,relation,text width=10em] (module) -- (component) node [left,midway,align=center] {oo:component};
     \draw[->,thick,relation] (component) -- (class) node [right,midway,align=right] {rdfs:subClassOf};
     \draw[->,thick,relation] (component) -- (instance) node [right,midway,align=right] {rdfs:subClassOf};
     \draw[->,thick,relation,text width=14em] (component) -- (string) node [right,midway,align=right] {oo:componentPath};
