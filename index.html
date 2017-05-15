@@ -423,9 +423,9 @@ through the regular <code>rdf:type</code> predicate.
 For instance,
 a software module representing a parser
 can be described as
-<code>ldfs:Datasource/Hdt a oo:Class.</code>,
+<code>ldfs:Datasource:Hdt a oo:Class.</code>,
 and a concrete instance is
-<code>:myHdtDatasource a ldfs:Datasource/Hdt</code>.</p>
+<code>:myHdtDatasource a ldfs:Datasource:Hdt</code>.</p>
 
     <p>Several <code>oo:Component</code> subclasses are defined.
 An <code>oo:Component</code> can be an <code>oo:Class</code>, which means that it can be instantiated based on parameters.
@@ -453,23 +453,24 @@ For example,
 
     <figure id="module-ldf" class="listing">
 <pre><code>ex:ldf-server a oo:Module;
-    oo:component ldfs:Server/Qpf, ldfs:Datasource/Hdt, ldfs:Datasource/Sparql.
-ldfs:Server/Tpf a oo:Class;
+    oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
+ldfs:Server:Tpf a oo:Class;
     oo:parameter ldfs:datasource, ldfs:port.
 ldfs:Datasource a oo:AbstractClass;
-    oo:parameter ldfs:Datasource/title.
-ldfs:Datasource/Hdt a oo:Class;
+    oo:parameter ldfs:Datasource:title.
+ldfs:Datasource:Hdt a oo:Class;
     rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource/Hdt/file.
-ldfs:Datasource/Sparql a oo:Class;
+    oo:parameter ldfs:Datasource:Hdt:file.
+ldfs:Datasource:Sparql a oo:Class;
     rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource/Sparql/endpoint.
+    oo:parameter ldfs:Datasource:Sparql:endpoint.
 
 ldfs:datasource                 a oo:Parameter; rdfs:range ldfs:Datasource.
 ldfs:port                       a oo:Parameter; rdfs:range xsd:integer.
-ldfs:Datasource/title           a oo:Parameter; rdfs:range xsd:string.
-ldfs:Datasource/Hdt/file        a oo:Parameter; rdfs:range ldfs:HdtFile.
-ldfs:Datasource/Sparql/endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.</code></pre>
+ldfs:Datasource:title           a oo:Parameter; rdfs:range xsd:string.
+ldfs:Datasource:Hdt:file        a oo:Parameter; rdfs:range ldfs:HdtFile.
+ldfs:Datasource:Sparql:endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.
+</code></pre>
 <figcaption>
         <p><span class="label">Listing 2:</span> The LDF server module contains, amonst others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
 The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
@@ -479,14 +480,15 @@ The SPARQL datasource takes a SPARQL endpoint URI as parameter.</p>
 </figure>
 
     <figure id="config-ldf" class="listing">
-<pre><code>ex:myServer a ldfs:Server/Qpf;
+<pre><code>ex:myServer a ldfs:Server:Qpf;
     ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
-ex:myHdtDatasource a ldfs:Datasource/Hdt;
-    ldfs:Datasource/title &quot;A DBpedia 2016 datasource&quot;;
-    ldfs:Datasource/Hdt/file &lt;http://example.org/dbpedia-2016.hdt&gt;.
-ex:mySparqlDatasource a ldfs:Datasource/Sparql;
-    ldfs:Datasource/title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
-    ldfs:Datasource/Sparql/endpoint &lt;http://example.org/sparql/dbpedia-2016&gt;.</code></pre>
+ex:myHdtDatasource a ldfs:Datasource:Hdt;
+    ldfs:Datasource:title &quot;A DBpedia 2016 datasource&quot;;
+    ldfs:Datasource:Hdt:file &lt;http://example.org/dbpedia-2016.hdt&gt;.
+ex:mySparqlDatasource a ldfs:Datasource:Sparql;
+    ldfs:Datasource:title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
+    ldfs:Datasource:Sparql:endpoint &lt;http://xample.org/sparql/dbpedia-2016&gt;.
+</code></pre>
 <figcaption>
         <p><span class="label">Listing 3:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
       </figcaption>
