@@ -1,10 +1,7 @@
 ## Instantiating component configurations
 {:#instantiating}
 
-mention closing of the world
-{:.todo}
-
-In the previous section, we introduced a vocabulary for describing software components and how they can be instantiated.
+In the previous section, we introduced vocabularies for describing software components and how they can be instantiated.
 In this section, we introduce a dependency injection framework based on these component descriptions.
 With this, we take semantic software component descriptions to the next level,
 we don't only _describe_ components, but also allow them to be _instantiated_.
@@ -32,3 +29,7 @@ Finally, a declarative component instantiation is supplied by providing the comp
 and the location at which the resource can be found.
 </figcaption>
 </figure>
+
+While Linked Data is based on the open-world assumption, our dependency injector will _close the world_ when we enter the realm of OOP.
+This is because a close-world assumption is required when instantiating a component with certain arguments.
+We have to assume that all the arguments that are available to the loader is everything there is.
