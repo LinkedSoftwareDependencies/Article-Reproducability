@@ -463,17 +463,17 @@ For example,
 
     <figure id="module-ldf" class="listing">
 <pre><code>npmd:ldf-server a oo:Module;
-    oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
+  oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.
 ldfs:Server:Tpf a oo:Class;
-    oo:parameter ldfs:datasource, ldfs:port.
+  oo:parameter ldfs:datasource, ldfs:port.
 ldfs:Datasource a oo:AbstractClass;
-    oo:parameter ldfs:Datasource:title.
+  oo:parameter ldfs:Datasource:title.
 ldfs:Datasource:Hdt a oo:Class;
-    rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource:Hdt:file.
+  rdfs:subClassOf ldfs:Datasource;
+  oo:parameter ldfs:Datasource:Hdt:file.
 ldfs:Datasource:Sparql a oo:Class;
-    rdfs:subClassOf ldfs:Datasource;
-    oo:parameter ldfs:Datasource:Sparql:endpoint.
+  rdfs:subClassOf ldfs:Datasource;
+  oo:parameter ldfs:Datasource:Sparql:endpoint.
 
 ldfs:datasource                 a oo:Parameter; rdfs:range ldfs:Datasource.
 ldfs:port                       a oo:Parameter; rdfs:range xsd:integer.
@@ -491,13 +491,13 @@ The SPARQL datasource takes a SPARQL endpoint IRI as parameter.</p>
 
     <figure id="config-ldf" class="listing">
 <pre><code>ex:myServer a ldfs:Server:Qpf;
-    ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
+  ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
 ex:myHdtDatasource a ldfs:Datasource:Hdt;
-    ldfs:Datasource:title &quot;A DBpedia 2016 datasource&quot;;
-    ldfs:Datasource:Hdt:file &lt;http://example.org/dbpedia-2016.hdt&gt;.
+  ldfs:Datasource:title &quot;A DBpedia 2016 datasource&quot;;
+  ldfs:Datasource:Hdt:file &lt;http://example.org/dbpedia-2016.hdt&gt;.
 ex:mySparqlDatasource a ldfs:Datasource:Sparql;
-    ldfs:Datasource:title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
-    ldfs:Datasource:Sparql:endpoint &lt;http://xample.org/sparql/dbpedia-2016&gt;.
+  ldfs:Datasource:title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
+  ldfs:Datasource:Sparql:endpoint &lt;http://xample.org/sparql/dbpedia-2016&gt;.
 </code></pre>
 <figcaption>
         <p><span class="label">Listing 3:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
@@ -590,7 +590,7 @@ and can be reused across dependents.</p>
     <figure id="module-ldf-mapped" class="listing">
 <pre><code>ldfs:Server:Tpf oo:constructorArguments ([ om:field
   [ om:fieldName &quot;datasources&quot;; om:fieldValue
-      [ om:fieldName ldfs:Datasource:title, om:fieldValue rdf:object ] ],
+    [ om:fieldName ldfs:Datasource:title, om:fieldValue rdf:object ] ],
   [ om:fieldName &quot;port&quot;; om:fieldValue: ldfs:port ].
 ]).
 ldfs:Datasource:Hdt oo:constructorArguments ([ om:field

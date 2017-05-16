@@ -1,8 +1,8 @@
 ex:myServer a ldfs:Server:Qpf;
-    ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
+  ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
 ex:myHdtDatasource a ldfs:Datasource:Hdt;
-    ldfs:Datasource:title "A DBpedia 2016 datasource";
-    ldfs:Datasource:Hdt:file <http://example.org/dbpedia-2016.hdt>.
+  ldfs:Datasource:title "A DBpedia 2016 datasource";
+  ldfs:Datasource:Hdt:file <http://example.org/dbpedia-2016.hdt>.
 ex:mySparqlDatasource a ldfs:Datasource:Sparql;
-    ldfs:Datasource:title "A SPARQL-based DBpedia 2016 datasource";
-    ldfs:Datasource:Sparql:endpoint <http://xample.org/sparql/dbpedia-2016>.
+  ldfs:Datasource:title "A SPARQL-based DBpedia 2016 datasource";
+  ldfs:Datasource:Sparql:endpoint <http://xample.org/sparql/dbpedia-2016>.
