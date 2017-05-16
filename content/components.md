@@ -24,7 +24,7 @@ Following [](#describing-modules), we have defined a _module_ as a collection of
 Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of components.
 
-We define component as a _subclass_ of `rdfs:Class`.
+We define `oo:Component` as a _subclass_ of `rdfs:Class`.
 The parameters to construct a component can therefore be defined as an `rdfs:Property` on a component.
 This class structure enables convenient semantic descriptions of components instantiations
 through the regular `rdf:type` predicate.
@@ -41,7 +41,7 @@ An `oo:Component` can be an `oo:Class`, which means that it can be instantiated 
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
 which can for instance be the package name in Java.
 All instantiations of `oo:Class` instances are an `oo:Instance`.
-An `oo:Class` can also be `oo:AbstractClass`, which does not allow directly instantiating this component type.
+An `oo:Class` can also be an `oo:AbstractClass`, which does not allow directly instantiating this component type.
 Abstract components can be used to define a set of shared parameters in a common ancestor.
 Conforming to the RDF semantics, components can have multiple ancestors, and are indicated using the `rdfs:subClassOf` predicate.
 
