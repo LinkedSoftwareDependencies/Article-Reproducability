@@ -69,7 +69,7 @@ The limitations of context mapping necessitated
 some other changes,
 the most important one relating to the specific versions of the bundle.
 This can be seen by retrieving <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link} with an `Accept: application/ld+json` header.
-There the bundle now contains links to its corresponding modules,
+In this case, the bundle contains links to its corresponding modules,
 providing semantic connections between them.
 Additionally, some tags were added to provide identifiers and link to the original repository.
 
@@ -82,7 +82,7 @@ An example of some of the data generated this way can be seen in [](#n3.ttl).
 <figure id="n3.ttl" class="listing">
 ````/code/n3.ttl````
 <figcaption markdown="block">
-This listing shows a partial representation in the Turtle syntax of <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link}.
+This listing shows a partial representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link} in the Turtle syntax.
 Prefixes omitted for brevity.
 </figcaption>
 </figure>
