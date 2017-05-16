@@ -62,7 +62,7 @@ such as the name, homepage and description.
 
 To adapt this JSON to RDF,
 we start by adding our context,
-<https://linkedsoftwaredependencies.org/contexts/npm>{:.iri-link},
+<https://linkedsoftwaredependencies.org/contexts/npm.jsonld>{:.iri-link},
 which already maps many of the npm tags to corresponding RDF predicates.
 This allows these tags to remain the same in the JSON-LD representation.
 The limitations of context mapping necessitated
