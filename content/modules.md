@@ -98,7 +98,7 @@ Similarly, many of the tags are mapped by the context,
 while other tags had to be modified to provide more relevant triples.
 An example of some of the data generated for this module can be seen in [](#n3-0.10.0.ttl).
 
-<figure id="n3.ttl" class="listing">
+<figure id="n3-0.10.0.ttl" class="listing">
 ````/code/n3-0.10.0.ttl````
 <figcaption markdown="block">
 This listing shows a partial representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>{:.iri-link} in the Turtle syntax.
