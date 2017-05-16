@@ -509,7 +509,7 @@ ex:mySparqlDatasource a ldfs:Datasource:Sparql;
   <section id="instantiating">
     <h2>Instantiating component configurations</h2>
 
-    <p>In the previous section, we introduced vocabularies for describing software components and how they can be instantiated.
+    <p>In the previous section, we introduced a vocabulary for describing software components and their instantiation.
 In this section, we introduce a dependency injection framework based on these component descriptions.
 With this, we take semantic software component descriptions to the next level,
 we don’t only <em>describe</em> components, but also allow them to be <em>instantiated</em>.</p>
@@ -536,8 +536,7 @@ let myParser = loader.instantiate(&#39;http://example.org/config-ldf#myServer&#3
 <figcaption>
         <p><span class="label">Listing 4:</span> First, a new component loader is created
 after which the component definitions are registered.
-Finally, a declarative component instantiation is supplied by providing the component IRI
-and the location at which the resource can be found.</p>
+Finally, a declarative component instantiation is supplied by providing the component IRI.</p>
       </figcaption>
 </figure>
 
