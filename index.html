@@ -324,7 +324,7 @@ Additionally, some tags were added to provide identifiers and link to the origin
 of which several are supported by our server,
 such as Turtle and N-Triples.
 These can be retrieved by sending the corresponding <code>Accept</code> headers.
-An example of some of the data generated this way can be seen in <a href="#n3.ttl">Listing 1</a>.</p>
+An example of some of the data generated this way can be seen in <a href="#n3.ttl">Listing 2</a>.</p>
 
     <figure id="n3.ttl" class="listing">
 <pre><code>npm:n3 a doap:Project;
@@ -341,7 +341,7 @@ An example of some of the data generated this way can be seen in <a href="#n3.tt
 users:rubenverborgh foaf:name &quot;Ruben Verborgh&quot;.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 1:</span> This listing shows a partial representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a> in the Turtle syntax.
+        <p><span class="label">Listing 2:</span> This listing shows a partial representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3</a> in the Turtle syntax.
 Prefixes omitted for brevity.</p>
       </figcaption>
 </figure>
@@ -353,7 +353,22 @@ the JSON metadata of version 0.10.0 of the N3 bundle can be found at
 <a href="https://registry.npmjs.org/n3/0.10.0" class="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
 while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
 Similarly, many of the tags are mapped by the context,
-while other tags had to be modified to provide more relevant triples.</p>
+while other tags had to be modified to provide more relevant triples.
+An example of some of the data generated for this module can be seen in <a href="#n3-0.10.0.ttl"></a>.</p>
+
+    <figure id="n3.ttl" class="listing">
+<pre><code>&lt;https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&gt; 
+  doap:revision &quot;0.10.0&quot;;
+  foaf:maker users:rubenverborgh;
+  npm:devDependency 
+    &lt;https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1&gt;;
+  npm:nodeVersion 
+    &lt;https://linkedsoftwaredependencies.org/engines/node/6.7.0&gt;.</code></pre>
+<figcaption>
+        <p><span class="label">Listing 2:</span> This listing shows a partial representation of <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a> in the Turtle syntax.
+Prefixes omitted for brevity.</p>
+      </figcaption>
+</figure>
 
     <p>An important part of an npm package description are the dependencies
 and their semantic versions.
@@ -453,13 +468,13 @@ The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate 
 or can be created and referred to externally.
 Afterwards, it can be reused by multiple dependents.</p>
 
-    <p><a href="#module-ldf">Listing 2</a> shows a simplified example of the Linked Data Fragments (LDF) server npm module using the components ontology.
+    <p><a href="#module-ldf">Listing 3</a> shows a simplified example of the Linked Data Fragments (LDF) server npm module using the components ontology.
 It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
 For example,
-<a href="#config-ldf">Listing 3</a> illustrates how instances of these component types can be declared.</p>
+<a href="#config-ldf">Listing 4</a> illustrates how instances of these component types can be declared.</p>
 
     <figure id="module-ldf" class="listing">
 <pre><code>npmd:ldf-server a oo:Module;
@@ -482,7 +497,7 @@ ldfs:Datasource:Hdt:file        a oo:Parameter; rdfs:range ldfs:HdtFile.
 ldfs:Datasource:Sparql:endpoint a oo:Parameter; rdfs:range ldfs:SparqlEndpoint.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 2:</span> The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+        <p><span class="label">Listing 3:</span> The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
 The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
 The HDT datasource takes an HDT file as parameter.
 The SPARQL datasource takes a SPARQL endpoint IRI as parameter.</p>
@@ -500,7 +515,7 @@ ex:mySparqlDatasource a ldfs:Datasource:Sparql;
   ldfs:Datasource:Sparql:endpoint &lt;http://xample.org/sparql/dbpedia-2016&gt;.
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 3:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
+        <p><span class="label">Listing 4:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
       </figcaption>
 </figure>
 
@@ -521,7 +536,7 @@ It is able to construct component instances based on declarative component const
 It accepts raw triple streams or URLs to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
-    <p><a href="#components.js">Listing 4</a> illustrates how components can be instantiated using Components.js.
+    <p><a href="#components.js">Listing 5</a> illustrates how components can be instantiated using Components.js.
 It provides a <code>Loader</code> class that acts as an assembler.
 This <code>Loader</code> provides <em>constructor injection</em>:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
@@ -534,7 +549,7 @@ loader.registerConfig(&#39;http://example.org/my-ldf-server&#39;);
 let myParser = loader.instantiate(&#39;http://example.org/config-ldf#myServer&#39;);
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 4:</span> First, a new component loader is created
+        <p><span class="label">Listing 5:</span> First, a new component loader is created
 after which the component definitions are registered.
 Finally, a declarative component instantiation is supplied by providing the component IRI.</p>
       </figcaption>
@@ -580,8 +595,8 @@ Together, they can express all ways
 in which the flat object from the RDF description
 maps to an ordered list of simple or complex constructor parameters.</p>
 
-    <p><a href="#module-ldf-mapped">Listing 5</a> shows the mapping of the LDF component parameters to the constructor implementation.
-This description complements the component definitions from <a href="#module-ldf">Listing 2</a>
+    <p><a href="#module-ldf-mapped">Listing 6</a> shows the mapping of the LDF component parameters to the constructor implementation.
+This description complements the component definitions from <a href="#module-ldf">Listing 3</a>
 as it provides an implementation view on the component constructors.
 Like the component definitions,
 a mapping is only necessary once per module
@@ -603,7 +618,7 @@ ldfs:Datasource:Sparql oo:constructorArguments ([ om:field
 ]).
 </code></pre>
 <figcaption>
-        <p><span class="label">Listing 5:</span> The HDT and SPARQL-based datasource constructors both take a custom object as argument for the constructor.
+        <p><span class="label">Listing 6:</span> The HDT and SPARQL-based datasource constructors both take a custom object as argument for the constructor.
 The entries of this object are mapped from the parameter values using this mapping.
 The TPF server constructor similarly requires a custom object,
 where the <code>datasources</code> entry points to an object that is a mapping from titles to datasources.</p>
