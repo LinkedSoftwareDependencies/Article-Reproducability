@@ -1,6 +1,6 @@
 ldfs:Server:Tpf oo:constructorArguments ([ om:field
   [ om:fieldName "datasources"; om:fieldValue
-      [ om:fieldName ldfs:Datasource:title, om:fieldValue rdf:object ] ],
+    [ om:fieldName ldfs:Datasource:title, om:fieldValue rdf:object ] ],
   [ om:fieldName "port"; om:fieldValue: ldfs:port ].
 ]).
 ldfs:Datasource:Hdt oo:constructorArguments ([ om:field
