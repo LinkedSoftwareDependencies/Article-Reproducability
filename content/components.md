@@ -57,8 +57,8 @@ The resulting description can be included in the module
 or can be created and referred to externally.
 Afterwards, it can be reused by multiple dependents.
 
-[](#module-ldf) shows a simplified example of the LDF server npm module using the components ontology.
-It exposes several components such as an HDT and SPARQL datasource and a QPF server,
+[](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server npm module using the components ontology.
+It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
