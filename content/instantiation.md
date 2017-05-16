@@ -1,7 +1,7 @@
 ## Instantiating component configurations
 {:#instantiating}
 
-In the previous section, we introduced vocabularies for describing software components and how they can be instantiated.
+In the previous section, we introduced a vocabulary for describing software components and their instantiation.
 In this section, we introduce a dependency injection framework based on these component descriptions.
 With this, we take semantic software component descriptions to the next level,
 we don't only _describe_ components, but also allow them to be _instantiated_.
