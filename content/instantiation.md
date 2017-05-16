@@ -30,7 +30,7 @@ Finally, a declarative component instantiation is supplied by providing the comp
 </figure>
 
 While Linked Data is based on the open-world assumption, our dependency injector will close the world when we enter the realm of OOP.
-This is because a close-world assumption is required for features such as default arguments:
+This is because a closed-world assumption is required for features such as default arguments:
 we have to assume that all the arguments that are available to the loader is everything there is.
 
 ### Defining object mappings
