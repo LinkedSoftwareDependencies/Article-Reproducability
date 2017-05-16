@@ -1,0 +1,7 @@
+<https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0> 
+  doap:revision "0.10.0";
+  foaf:maker users:rubenverborgh;
+  npm:devDependency 
+    <https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1>;
+  npm:nodeVersion 
+    <https://linkedsoftwaredependencies.org/engines/node/6.7.0>.
