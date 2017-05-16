@@ -36,7 +36,7 @@ All this npm data is stored in a [CouchDB](http://couchdb.apache.org/)
 This corresponds to the metadata, added by the package developer in a [`package.json`](https://docs.npmjs.com/files/package.json) file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
-more importantly, interlink software components,
+more importantly, interlink them,
 we converted the JSON metadata provided by the npm registry to RDF,
 for which we set up a [server](https://github.com/LinkedSoftwareDependencies/npm-extraction-server){:.mandatory}.
 
@@ -46,7 +46,7 @@ we opted to convert it to [JSON-LD](cito:citesAsAuthority JSONLD),
 an RDF syntax specifically designed for adding semantics to JSON.
 JSON-LD achieves this by adding a so-called *context* to the JSON data,
 which describes how the JSON tags should be interpreted.
-E.g., having `"name": "foaf:name"` in your context implies
+E.g., having `"name":"foaf:name"` in your context implies
 that all name tags should be interpreted as the predicate `foaf:name`.
 Other JSON-LD keywords can be used to identify whether certain values are IRIs,
 or whether an entity has a specific type.
