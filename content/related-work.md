@@ -5,11 +5,11 @@ In this section, we discuss related work on the reproducibility of scientific ex
 ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
 
 ### Reproducibility of software experiments
-In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realized on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science in particular to experiments using software from the <cite>node package manager</cite>.
+In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realized on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science, in particular to experiments using software from the <cite>node package manager</cite>.
 
 In [four-level provenance](cite:cites Banati2015), authors show that infrastructural, environmental, workflow and data provenance, are needed to achieve reproducibility of scientific workflows.
-The information captured at different levels and quality enables different levels of reproducibility or repeatability.
-While our work conceptually grounded on the same levels, we describe our concrete work on globally identifiable and semantic descriptions of software modules and configurations.
+The information captured at different levels of quality enables different levels of reproducibility or repeatability.
+While our work is conceptually grounded on the same levels, we describe our concrete work on globally identifiable and semantic descriptions of software modules and configurations.
 
 With the goal of improving the way dataset-based software evaluations are performed in the Semantic Web,
 [LOD Lab](cite:cites LODLab) was introduced.
