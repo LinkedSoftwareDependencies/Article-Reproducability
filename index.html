@@ -283,7 +283,7 @@ while a module contains the specific dependencies and a link to the actual imple
 This corresponds to the metadata, added by the package developer in a <a href="https://docs.npmjs.com/files/package.json"><code>package.json</code></a> file,
 with additional metadata automatically added by the npm publishing process.
 To be able to uniquely identify software components and,
-more importantly, interlink software components,
+more importantly, interlink them,
 we converted the JSON metadata provided by the npm registry to RDF,
 for which we set up a <a href="https://github.com/LinkedSoftwareDependencies/npm-extraction-server" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​npm-​extraction-​server">server</a>.</p>
 
@@ -293,7 +293,7 @@ we opted to convert it to <a property="http://purl.org/spar/cito/citesAsAuthorit
 an RDF syntax specifically designed for adding semantics to JSON.
 JSON-LD achieves this by adding a so-called <em>context</em> to the JSON data,
 which describes how the JSON tags should be interpreted.
-E.g., having <code>"name": "foaf:name"</code> in your context implies
+E.g., having <code>"name":"foaf:name"</code> in your context implies
 that all name tags should be interpreted as the predicate <code>foaf:name</code>.
 Other JSON-LD keywords can be used to identify whether certain values are IRIs,
 or whether an entity has a specific type.
