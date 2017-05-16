@@ -27,7 +27,7 @@ such as <q markdown="1">[Where is this module used?](https://query.linkedsoftwar
 
 Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
-Our Linked Data Fragments server, for instance, is a reusable research platform.
+The Linked Data Fragments server, for instance, is a reusable research platform.
 The LDF server and client can be compatible with multiple APIs, have multiple algorithms, etc.
 Through this work, only one "core version" is necessary, and many different configurations can co-exist,
 where support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
@@ -35,5 +35,5 @@ Since components and configurations are identified by a IRI,
 they can exist anywhere on the Web.
 Based on a IRI, the injection framework can therefore instantiate software,
 and wire its dependent components together automatically.
-We thereby leveraging the power of the Web to simplify the reproduction of existing experiments
+We thereby leverage the power of the Web to simplify the reproduction of existing experiments
 and the creation of new ones.
