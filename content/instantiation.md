@@ -25,8 +25,7 @@ are in place for developers that want to use the dependency injector directly wi
 <figcaption markdown="block">
 First, a new component loader is created
 after which the component definitions are registered.
-Finally, a declarative component instantiation is supplied by providing the component IRI
-and the location at which the resource can be found.
+Finally, a declarative component instantiation is supplied by providing the component IRI.
 </figcaption>
 </figure>
 
