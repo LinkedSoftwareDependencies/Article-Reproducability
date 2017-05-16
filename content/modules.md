@@ -105,7 +105,7 @@ of async that has a major version of `2`.
 As can be seen in the JSON-LD,
 this async dependency is converted to 
 <https://linkedsoftwaredependencies.org/bundles/npm/async/%5E2.0.1>{:.iri-link},
-with `%5E` being the URL-encoded `^`.
+with `%5E` being the URL-encoded character `^`.
 If accessed, the server detects the highest matching version number
 and redirects to that module.
 Additionally, the body of the redirect contains the relevant metadata describing this,
@@ -115,7 +115,7 @@ which in this case results in the following triple (prefixed for clarity):
 async:\%5E2.0.1 npm:maxSatisfying async:2.4.0.
 ```
 
-Additionally, to support in description which modules are being used on a machine,
+Additionally, to properly describe which modules are being used on a machine,
 we created a [tool](https://github.com/LinkedSoftwareDependencies/node-dependency-parser){:.mandatory}
 that outputs the actual dependencies
 used by a specific package installation in RDF.
