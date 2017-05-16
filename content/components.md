@@ -63,7 +63,7 @@ each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
 For example,
-[](#config-ldf) illustrates how instances can be created of these component types.
+[](#config-ldf) illustrates how instances of these component types can be declared.
 
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````
