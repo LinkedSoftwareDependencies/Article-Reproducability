@@ -42,8 +42,6 @@ article {
 }
 
 header {
-  margin-bottom: 2em;
-
   h1 {
     font-size: 2em;
     font-weight: bold;
@@ -91,6 +89,18 @@ header {
 
     h2 {
       display: none;
+    }
+  }
+
+  .actions {
+    text-align: right;
+    margin: 0 0 -1em 0;
+
+    li {
+      display: inline;
+      margin-left: 1em;
+      white-space: nowrap;
+      font-style: italic;
     }
   }
 }

@@ -358,6 +358,10 @@ left:-1.75em;
 
 header {
   text-align: center;
+
+  .actions {
+    display: none;
+  }
 }
 
 #authors {
