@@ -1,6 +1,8 @@
 ---
 title: Reproducible software experiments through semantic configurations
 ---
+<main>
+<article about="" typeof="schema:Article" markdown="1">
 <header markdown="1">
 # <%= @item[:title] %>
 
@@ -30,8 +32,7 @@ title: Reproducible software experiments through semantic configurations
   </dl>
 </header>
 
-<main>
-<article about="" typeof="schema:Article">
+<section id="main">
   <%= section 'introduction'  %>
   <%= section 'related-work'  %>
   <%= section 'modules'       %>
@@ -39,8 +40,9 @@ title: Reproducible software experiments through semantic configurations
   <%= section 'instantiation' %>
   <%= section 'use-case'      %>
   <%= section 'conclusion'    %>
-</article>
-</main>
+</section>
 
 <footer>
 </footer>
+</article>
+</main>

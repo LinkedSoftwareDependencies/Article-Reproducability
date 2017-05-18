@@ -9,6 +9,38 @@ body {
   max-width: 800px;
 }
 
+article {
+  section > p, ul, ol, dl {
+    hyphens: auto;
+  }
+
+  // Sections
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1.5em 0 .5em;
+  }
+
+  // Subsections
+  h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  // Titled paragraphs
+  h4 {
+    font-weight: bold;
+    margin: 0 1em 0 0;
+    float: left;
+    clear: left;
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: 1em;
+  }
+}
+
 header {
   margin-bottom: 2em;
 
@@ -63,19 +95,11 @@ header {
   }
 }
 
-main {
+#main  {
   counter-reset: section;
-
-  section > p, ul, ol, dl {
-    hyphens: auto;
-  }
 
   // Sections
   h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 1.5em 0 .5em;
-
     counter-reset: subsection;
 
     &::before {
@@ -86,26 +110,10 @@ main {
 
   // Subsections
   h3 {
-    font-size: 1.2em;
-    font-weight: bold;
-
     &::before {
       counter-increment: subsection;
       content: counter(section) "." counter(subsection) ". ";
     }
-  }
-
-  // Titled paragraphs
-  h4 {
-    font-weight: bold;
-    margin: 0 1em 0 0;
-    float: left;
-    clear: left;
-  }
-
-  // Paragraphs
-  p {
-    margin-bottom: 1em;
   }
 
   // Lists
@@ -169,14 +177,6 @@ main {
       color: #999;
       background: none;
     }
-  }
-}
-
-footer {
-  h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 1em 0 .5em;
   }
 }
 
