@@ -10,6 +10,8 @@ body {
 }
 
 article {
+  counter-reset: section;
+
   section > p, ul, ol, dl {
     hyphens: auto;
   }
@@ -38,92 +40,6 @@ article {
   // Paragraphs
   p {
     margin-bottom: 1em;
-  }
-}
-
-header {
-  h1 {
-    font-size: 2em;
-    font-weight: bold;
-    margin: 1em 0 .5em;
-  }
-
-  ul {
-    list-style: none;
-    margin: 1em 0;
-    padding: 0;
-  }
-
-  #authors {
-    li {
-      display: inline;
-      margin-right: 1.5em;
-      white-space: nowrap;
-    }
-
-    a {
-      &:not(:hover) {
-        background: none;
-      }
-      sup {
-        margin: 0 -.1em 0 .1em;
-      }
-    }
-  }
-
-  #affiliations {
-    list-style: none;
-    margin: 1em 0;
-    padding: 0;
-
-    font-size: .9em;
-
-    sup {
-      margin-right: .15em;
-    }
-  }
-
-  #abstract {
-    font-weight: bold;
-    hyphens: auto;
-
-    h2 {
-      display: none;
-    }
-  }
-
-  .actions {
-    text-align: right;
-    margin: 0 0 -1em 0;
-
-    li {
-      display: inline;
-      margin-left: 1em;
-      white-space: nowrap;
-      font-style: italic;
-    }
-  }
-}
-
-#main  {
-  counter-reset: section;
-
-  // Sections
-  h2 {
-    counter-reset: subsection;
-
-    &::before {
-      counter-increment: section;
-      content: counter(section) ". ";
-    }
-  }
-
-  // Subsections
-  h3 {
-    &::before {
-      counter-increment: subsection;
-      content: counter(section) "." counter(subsection) ". ";
-    }
   }
 
   // Lists
@@ -188,6 +104,143 @@ header {
       background: none;
     }
   }
+
+  // Title, abstract, authors, actions
+  header {
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 1em 0 .5em;
+    }
+
+    ul {
+      margin: 1em 0;
+      padding: 0;
+      li {
+        margin: 0;
+        &:before {
+          content: '';
+        }
+      }
+    }
+
+    #authors {
+      li {
+        display: inline;
+        margin-right: 1.5em;
+        white-space: nowrap;
+      }
+
+      a {
+        &:not(:hover) {
+          background: none;
+        }
+        sup {
+          margin: 0 -.1em 0 .1em;
+        }
+      }
+    }
+
+    #affiliations {
+      font-size: .9em;
+
+      sup {
+        margin-right: .15em;
+      }
+    }
+
+    #abstract {
+      font-weight: bold;
+      hyphens: auto;
+
+      h2 {
+        display: none;
+      }
+    }
+
+    .actions {
+      text-align: right;
+      margin: 0 0 -1em 0;
+
+      li {
+        display: inline;
+        margin-left: 1em;
+        white-space: nowrap;
+        font-style: italic;
+      }
+    }
+  }
+
+  // Main sections
+  > section, > section section {
+    // Section counter
+    h2 {
+      counter-reset: subsection;
+
+      &::before {
+        counter-increment: section;
+        content: counter(section) ". ";
+      }
+    }
+
+    // Subsection counter
+    h3 {
+      &::before {
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) ". ";
+      }
+    }
+  }
+
+  // Appendices
+  footer {
+    #references {
+      h2 {
+        &::before {
+          content: "";
+        }
+      }
+
+      dl {
+        font-size: .9em;
+
+        dt {
+          float: left;
+          clear: left;
+        }
+
+        dd {
+          margin: 0 0 .5em 2em;
+        }
+      }
+    }
+
+    #footnotes {
+      counter-reset: footnote;
+
+      ol {
+        font-size: .9em;
+        list-style: none;
+
+        li {
+          &:before {
+            counter-increment: footnote;
+            content: counter(footnote);
+            font-size: smaller;
+            margin: -.3em .1em 0 0;
+            float: left;
+          }
+        }
+      }
+    }
+
+    #document-interactions {
+      p.instructions {
+        margin-top: 1em;
+        font-style: italic;
+      }
+    }
+  }
 }
 
 a {
@@ -243,53 +296,6 @@ pre {
   code {
     font-size: .9em;
     letter-spacing: -.1pt;
-  }
-}
-
-#references {
-  h2 {
-    &::before {
-      content: "";
-    }
-  }
-
-  dl {
-    font-size: .9em;
-
-    dt {
-      float: left;
-      clear: left;
-    }
-
-    dd {
-      margin: 0 0 .5em 2em;
-    }
-  }
-}
-
-#footnotes {
-  counter-reset: footnote;
-
-  ol {
-    font-size: .9em;
-    list-style: none;
-
-    li {
-      &:before {
-        counter-increment: footnote;
-        content: counter(footnote);
-        font-size: smaller;
-        margin: -.3em .1em 0 0;
-        float: left;
-      }
-    }
-  }
-}
-
-#document-interactions {
-  p.instructions {
-    margin-top: 1em;
-    font-style: italic;
   }
 }
 

@@ -313,45 +313,45 @@ position:absolute;
 left:-1.75em;
 }
 
-#main {
-  counter-reset: section;
+article {
+  > section, > section section {
+    // Sections
+    h2 {
+      counter-reset: subsection;
 
-  // Sections
-  h2 {
-    counter-reset: subsection;
-
-    &::before {
-      counter-increment: section;
-      content: counter(section) ". ";
-    }
-  }
-
-  // Subsections
-  h3 {
-    &::before {
-      counter-increment: subsection;
-      content: counter(section) "." counter(subsection) ". ";
-    }
-  }
-
-  // Paragraphs
-  h4 {
-    margin: 0 1em 0 0;
-    float: left;
-    clear: left;
-  }
-
-  // Links
-  a {
-    // Display link text
-    &[data-link-text] {
-      &:after {
-        content: ' (' attr(data-link-text) ')';
-        font-style: italic;
+      &::before {
+        counter-increment: section;
+        content: counter(section) ". ";
       }
     }
-    &.iri-link {
-      font-style: italic;
+
+    // Subsections
+    h3 {
+      &::before {
+        counter-increment: subsection;
+        content: counter(section) "." counter(subsection) ". ";
+      }
+    }
+
+    // Paragraphs
+    h4 {
+      margin: 0 1em 0 0;
+      float: left;
+      clear: left;
+    }
+
+    // Links
+    a {
+      // Display link text
+      &[data-link-text] {
+        &:after {
+          content: ' (' attr(data-link-text) ')';
+          font-style: italic;
+        }
+      }
+      &.iri-link {
+        font-style: italic;
+      }
     }
   }
 }
@@ -761,7 +761,7 @@ body {
 counter-reset:0;
 }
 article {
-counter-reset:table 0;
+counter-reset:section table 0;
 }
 figure.equation {
 counter-increment:equation;
