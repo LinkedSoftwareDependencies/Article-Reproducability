@@ -18,6 +18,6 @@ def person name, website, profile
   elsif not profile
     %{<a href="#{h website}">#{h name}</a>}
   else
-    %{<a href="#{h website}" typeof="http://xmlns.com/foaf/0.1/Person" resource="#{profile}">#{h name}</a>}
+    %{<a href="#{h website}" rel="schema:author" typeof="http://xmlns.com/foaf/0.1/Person" resource="#{profile}">#{h name}</a>}
   end
 end
