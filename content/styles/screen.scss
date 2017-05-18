@@ -267,7 +267,6 @@ pre {
   }
 }
 
-
 #footnotes {
   counter-reset: footnote;
 
@@ -284,6 +283,13 @@ pre {
         float: left;
       }
     }
+  }
+}
+
+#document-interactions {
+  p.instructions {
+    margin-top: 1em;
+    font-style: italic;
   }
 }
 
