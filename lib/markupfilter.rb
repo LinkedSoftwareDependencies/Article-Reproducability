@@ -48,12 +48,12 @@ class MarkupFilter < Nanoc::Filter
     if container
       footnotes = $1
       content[container] = ''
-      content['</footer>'] =  <<-FOOTER
+      content['<footer>'] = <<-FOOTER
+      <footer>
         <section id="footnotes">
           <h2>Footnotes</h2>
           #{footnotes}
         </section>
-      </footer>
       FOOTER
     end
   end
@@ -63,7 +63,7 @@ class MarkupFilter < Nanoc::Filter
     references = content[%r{<h2 id="references">.*?</dl>}m]
     if references
       content[references] = ''
-      content['</footer>'] = "<section>\n" + references + "\n</section>\n</footer>"
+      content['<footer>'] = "<footer>\n<section>\n" + references + "\n</section>"
     end
   end
 
