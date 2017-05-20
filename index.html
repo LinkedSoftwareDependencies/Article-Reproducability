@@ -79,10 +79,21 @@ and reasoning or querying over software configuration metadata.</p>
 
       </section>
 
-      <ul class="actions">
-        <li><a href="https://linkedsoftwaredependencies.org/notifications/inbox/" rel="ldp:inbox">notification inbox</a></li>
-        <li><a href="https://linkedsoftwaredependencies.org/notifications/annotation/" rel="oa:annotationService">annotation service</a></li>
-      </ul>
+      <section class="actions">
+        <h2 id="notifications-and-annotations">Notifications and annotations</h2>
+        <ul>
+          <li><a href="https://linkedsoftwaredependencies.org/notifications/inbox/" rel="ldp:inbox">notification inbox</a></li>
+          <li><a href="https://linkedsoftwaredependencies.org/notifications/annotation/" rel="oa:annotationService">annotation service</a></li>
+        </ul>
+      </section>
+
+      <section class="context">
+        <h2 id="in-reply-to">In reply to</h2>
+        <ul>
+          <li><a href="https://linkedresearch.org/calls" rel="sioc:reply_of">Call for Linked Research</a></li>
+          <li><a href="http://iswc2017.semanticweb.org/calls/call-for-in-use-track-papers/" rel="sioc:reply_of">ISWC2017 call for in-use track</a></li>
+        </ul>
+      </section>
 
     </header>
 
@@ -157,13 +168,13 @@ in scientific articles.</li>
       </ul>
 
       <p>This article is structured as follows.
-In <a href="#related-work">Section 3</a>, we discuss related work.
-<a href="#describing-modules">Section 4</a> introduces the semantic description of software modules.
-Next, <a href="#describing-components">Section 5</a> discusses a semantic description of software components and configurations,
-followed by the introduction of a dependency injection framework that can instantiate these in <a href="#instantiating">Section 6</a>.
-<a href="#use-case">Section 7</a>, describes a use case where we apply software descriptions
+In <a href="#related-work">Section 5</a>, we discuss related work.
+<a href="#describing-modules">Section 6</a> introduces the semantic description of software modules.
+Next, <a href="#describing-components">Section 7</a> discusses a semantic description of software components and configurations,
+followed by the introduction of a dependency injection framework that can instantiate these in <a href="#instantiating">Section 8</a>.
+<a href="#use-case">Section 9</a>, describes a use case where we apply software descriptions
 to an experimental evaluation.
-Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 8</a>.</p>
+Finally, we discuss our conclusions and future work in <a href="#conclusion">Section 10</a>.</p>
 
     </section>
 
@@ -243,16 +254,16 @@ and they cannot easily be combined into a detailed description
 of the exact software used.</p>
 
       <p>To that end, we introduce RDF-based software dependency configurations
-(<a href="#describing-components">Section 5</a>)
+(<a href="#describing-components">Section 7</a>)
 that exactly capture the used modules and dependencies
-(<a href="#describing-modules">Section 4</a>).
+(<a href="#describing-modules">Section 6</a>).
 The resulting description can then be published on the Web as Linked Data,
 for instance, as part of the description of an experimental evaluation
-(<a href="#use-case">Section 7</a>).
+(<a href="#use-case">Section 9</a>).
 Furthermore, we implemented a framework
 that can instantiate such software descriptions
 directly from the Web
-(<a href="#instantiating">Section 6</a>).</p>
+(<a href="#instantiating">Section 8</a>).</p>
 
     </section>
 
@@ -279,7 +290,7 @@ Drilling down from the top to the bottom, we have the following layers:</p>
       </ul>
 
       <p>Within this section, we will focus on bundles and modules,
-while components are described more in-depth in <a href="#describing-components">Section 5</a>.</p>
+while components are described more in-depth in <a href="#describing-components">Section 7</a>.</p>
 
       <h3 id="node-package-manager-npm">Node Package Manager (npm)</h3>
       <p>An example of a large collection of bundles and modules is the npm library.
@@ -445,7 +456,7 @@ with as prefix <code>oo</code>.</p>
         </figcaption>
 </figure>
 
-      <p>Following <a href="#describing-modules">Section 4</a>, we have defined a <em>module</em> as a collection of components.
+      <p>Following <a href="#describing-modules">Section 6</a>, we have defined a <em>module</em> as a collection of components.
 Within OOP languages, this can correspond to for example a software library or an application,
 which can contain a multitude of components.</p>
 
@@ -472,7 +483,7 @@ Conforming to the RDF semantics, components can have multiple ancestors, and are
       <p>The parameters that are used to instantiate an <code>oo:Class</code> to an <code>oo:Instance</code> are of type <code>oo:Parameter</code>.
 An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
 <code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
-upon instantiation (<a href="#instantiating">Section 6</a>),
+upon instantiation (<a href="#instantiating">Section 8</a>),
 a closed world will be assumed.
 The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
@@ -546,7 +557,7 @@ we don’t only <em>describe</em> components, but also allow them to be <em>inst
       <h3 id="componentsjs-dependency-injection-framework">Components.js dependency injection framework</h3>
       <p>We have implemented <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​Components.js">Components.js</a>,
 an open-source dependency injection framework for JavaScript, and made it available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>.
-It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 5</a>.
+It is able to construct component instances based on declarative component constructions in RDF using the vocabulary introduced in <a href="#describing-components">Section 7</a>.
 It accepts raw triple streams or URLs to RDF documents containing these declarations.
 At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.</p>
 
@@ -665,7 +676,7 @@ Furthermore, we provide an automatically generated semantic description
 of all concrete installed dependency versions
 for both the LDF client and server.
 This is necessary because,
-as discussed in <a href="#modules">Subsection 4.4</a>,
+as discussed in <a href="#modules">Subsection 6.4</a>,
 modules indicate a compatibility range
 instead of a concrete version.</p>
 
