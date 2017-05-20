@@ -268,13 +268,13 @@ strong {
   font-weight: bold;
 }
 
-sup {
-  vertical-align: super;
+sup, sub {
   font-size: smaller;
+  line-height: 0;
+  vertical-align: super;
 }
 sub {
   vertical-align: sub;
-  font-size: smaller;
 }
 
 q {
