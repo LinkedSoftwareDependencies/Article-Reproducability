@@ -79,9 +79,14 @@ class MarkupFilter < Nanoc::Filter
   # Creates labels for referenceable elements
   def create_labels content
     @reference_counts = {}
-    main = content[%r{<main>.*</main>}m]
-    labels = main.scan(/<(\w+)([^>]*\s+id="([^"]+)"[^>]*)>/)
-                 .map do |tag, attribute_list, id|
+
+    # Use all <article> content without <header>
+    article = content[%r{<article.*</article>}m]
+    article.sub! %r{<header.*</header>}m, ''
+
+    # Loop through all elements with an ID attribute
+    labels = article.scan(/<(\w+)([^>]*\s+id="([^"]+)"[^>]*)>/)
+                    .map do |tag, attribute_list, id|
       type = label_type_for tag.downcase.to_sym, attribute_list
       number = number_for type
       [id, "#{type} #{number}"]
