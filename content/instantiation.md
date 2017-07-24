@@ -33,55 +33,9 @@ While Linked Data is based on the open-world assumption, our dependency injector
 This is because a closed-world assumption is required for features such as default arguments:
 we have to assume that all the arguments that are available to the loader is everything there is.
 
-### Defining object mappings
 The constructor injection described above works out of the box
 with single-argument constructors that accept a map,
 as is quite common in JavaScript.
-Components.js then creates a map with key/value pairs
-with the property IRIs and corresponding objects
-of all triples with the instance as subject.
-This map is then passed to the constructor,
-which reads its settings from the map.
-Depending on a flag,
-the keys and values are either full IRIs
-or abbreviated JSON-LD strings.
-
-New libraries that use Components.js
-can be designed for such single-parameter constructors.
-For all other types constructors,
-a mapping mechanism is needed
-between the RDF properties
-and the concrete parameter order of the constructor.
-To this end, we introduce the [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping).
-[](#voc-om-diagram) shows an overview of all its classes and predicates.
-
-<figure id="voc-om-diagram">
-<img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
-<figcaption markdown="block">
-Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#){:.mandatory}.
-</figcaption>
-</figure>
-
-The ontology introduces the _object mapping_ and the _array mapping_.
-An object map can have several _object mapping entries_, where each entry has a field name and a field value.
-An array map can have several _array mapping entries_, where each entry only has a value.
-Together, they can express all ways
-in which the flat object from the RDF description
-maps to an ordered list of simple or complex constructor parameters.
-
-[](#module-ldf-mapped) shows the mapping of the LDF component parameters to the constructor implementation.
-This description complements the component definitions from [](#module-ldf)
-as it provides an implementation view on the component constructors.
-Like the component definitions,
-a mapping is only necessary once per module
-and can be reused across dependents.
-
-<figure id="module-ldf-mapped" class="listing">
-````/code/module-ldf-mapped.ttl````
-<figcaption markdown="block">
-The HDT and SPARQL-based datasource constructors both take a custom object as argument for the constructor.
-The entries of this object are mapped from the parameter values using this mapping.
-The TPF server constructor similarly requires a custom object,
-where the `datasources` entry points to an object that is a mapping from titles to datasources.
-</figcaption>
-</figure>
+For constructors that require a different kind of parameters,
+we created the [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping),
+which can be used to describe non-map constructors.

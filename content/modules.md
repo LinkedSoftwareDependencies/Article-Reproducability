@@ -1,6 +1,9 @@
 ## Describing software modules
 {:#describing-modules}
 
+{:.todo}
+Drop most of this and merge into ontology section.
+
 There are several levels of granularity on which software can be described,
 going from a high-level package overview to a low-level description of the actual code.
 In descriptions, we can use several of these layers,

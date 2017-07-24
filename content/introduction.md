@@ -1,6 +1,9 @@
 ## Introduction
 {:#introduction}
 
+{:.todo}
+Probably shorten this.
+
 A large number of computer science articles describe experimental software evaluations,
 but many of them refer to that software only by name or version number.
 This information is insufficient for readers
@@ -68,8 +71,8 @@ Our contributions are the following:
 
 This article is structured as follows.
 In [](#related-work), we discuss related work.
-[](#describing-modules) introduces the semantic description of software modules.
-Next, [](#describing-components) discusses a semantic description of software components and configurations,
+[](#ontology) introduces the semantic description of software modules
+and discusses a semantic description of software components and configurations,
 followed by the introduction of a dependency injection framework that can instantiate these in [](#instantiating).
 [](#use-case), describes a use case where we apply software descriptions
 to an experimental evaluation.

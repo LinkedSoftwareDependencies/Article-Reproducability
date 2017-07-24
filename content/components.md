@@ -1,6 +1,9 @@
 ## Describing components and their configuration
 {:#describing-components}
 
+{:.todo}
+Drop non-essentials and merge into ontology section
+
 In this section, we introduce the [_Object-Oriented Components ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented)
 for describing software components and their instantiation in a certain configuration,
 and provide an example of its application to JavaScript.
