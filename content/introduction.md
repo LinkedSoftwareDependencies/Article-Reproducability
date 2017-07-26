@@ -39,9 +39,6 @@ In this article,
 we focus on the description of _software configurations_ and _software modules_,
 such that an evaluated software setup
 can be referred to unambiguously by an IRI.
-We further facilitate the reproduction of experiments
-through a mechanism that automatically _instantiates_ the software configuration
-based on its Linked Data description.
 
 This article is structured as follows.
 In [](#related-work), we discuss related work.

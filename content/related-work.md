@@ -1,8 +1,8 @@
 ## Related Work
 {:#related-work}
 
-In this section, we discuss related work on the reproducibility of scientific experiments in scholarly articles,
-ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
+In this section, we discuss related work on the reproducibility of scientific experiments in scholarly articles
+and ontologies for describing these experiments.
 
 ### Reproducibility of software experiments
 In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realized on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science, in particular to experiments using software from the <cite>node package manager</cite>.
@@ -33,4 +33,4 @@ The [PROV Ontology](cito:citesAsAuthority PROVO) is a domain-independent ontolog
 Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
-Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
+Consequently, this makes it possible to accurately describe software experiments that can be reused and compared with unambiguously.

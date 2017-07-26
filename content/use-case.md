@@ -16,8 +16,7 @@ and involves specific software configurations
 of a Linked Data Fragments (LDF) client and server.
 We have semantically described the [LDF server](https://github.com/LinkedDataFragments/Server.js/tree/feature-lsd) module and its 32 components.
 Instead of the former domain-specific [JSON configuration file](https://github.com/LinkedDataFragments/Server.js/blob/master/config/config-example.json),
-the [semantic configuration](https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json) is Linked Data
-and can be instantiated automatically by Components.js.
+the [semantic configuration](https://github.com/LinkedDataFragments/Server.js/blob/feature-lsd/config/config-example.json) is Linked Data.
 Furthermore, we provide an automatically generated semantic description
 of all concrete installed dependency versions
 for both the LDF client and server.
@@ -65,14 +64,7 @@ we refer to the exact software configurations by their IRI,
 their specific dependency versions,
 and the specifications they implement.
 These serve as further documentation of the provenance.
-Additionally, based on these IRIs,
-other researchers can immediately instantiate the same configuration,
-or derive their own similar configurations
-to create comparative experiments.
-While software container solutions (such as [Docker](https://www.docker.com/))
-could also provide immediate instantiation,
-their configuration is on a much higher level.
-Instead, the Object-Oriented Components ontology
+The Object-Oriented Components ontology
 captures the low-level wiring between components,
 enabling researchers to swap individual algorithms
 or component settings.
@@ -92,5 +84,4 @@ By implementing them as independent modules instead,
 they can be plugged in automatically
 by minimally altering the declarative experiment description.
 This simultaneously records their provenance,
-enables their automated instantiation,
 and ensures their sustainability.
