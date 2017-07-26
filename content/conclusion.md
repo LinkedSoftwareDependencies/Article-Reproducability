@@ -10,8 +10,6 @@ but the Web makes an ideal platform to _improve_ the scientific process as a who
 
 In this article, we introduce vocabularies for semantically describing software components and their configuration.
 Publishing this information alongside experimental results is beneficial for the reproduction of experiments.
-Furthermore, we introduce Components.js, a dependency injection framework that can _understand_ such configurations,
-and _instantiate_ software in the exact same way as originally described.
 
 Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
@@ -21,7 +19,9 @@ Through this work, only one "core version" is necessary, and many different conf
 where support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
 Since components and configurations are identified by a IRI,
 they can exist anywhere on the Web.
-Based on a IRI, the injection framework can therefore instantiate software,
+
+A possibility would then be to have an injection framework
+that can instantiate the software based on that IRI,
 and wire its dependent components together automatically.
-We thereby leverage the power of the Web to simplify the reproduction of existing experiments
+This would leverage the power of the Web to simplify the reproduction of existing experiments
 and the creation of new ones.

@@ -37,6 +37,16 @@ Drilling down from the top to the bottom, we have the following layers:
 Bundles and modules are described in the npm dataset.
 For describing components we will use our new ontology
 
+### Node Package Manager (npm)
+All npm data is stored in a [CouchDB](http://couchdb.apache.org/)
+[instance](https://registry.npmjs.org/) with one entry per bundle.
+This corresponds to the metadata, added by the package developer in a [`package.json`](https://docs.npmjs.com/files/package.json) file,
+with additional metadata automatically added by the npm publishing process.
+To be able to uniquely identify software components and,
+more importantly, interlink them,
+we converted the JSON metadata provided by the npm registry to RDF,
+for which we set up a [server](https://github.com/LinkedSoftwareDependencies/npm-extraction-server){:.mandatory}.
+
 ### Describing components and their configuration
 The [_Object-Oriented Components ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented)
 is an ontology for describing software components and their instantiation in a certain configuration.
