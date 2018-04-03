@@ -1,29 +1,39 @@
 ## Related Work
 {:#related-work}
 
-In this section, we discuss related work on the reproducibility of scientific experiments in scholarly articles,
-ontologies for describing these experiments, and dependency injection as a design principle in experimental software.
+{:todo}
+feest
 
-### Reproducibility of software experiments
-In order to better keep track of experiments and minimise information loss at CERN, [Information Management: A Proposal](cite:citesForInformation InformationManagementAProposal), recommends a system (WWW) to address questions like <q>Where is this module used? Who wrote this code? Which systems depend on this device?</q>. We contend that the vision to link information systems in the domain of scientific experiments and scholarly articles is not fully realized on the Web. Identifiable parts of experiments, workflows, as well as the articles which refer to them, still predominantly require human intervention and interpretation, and thereby leaving deterministic reproducibility an open problem on the Web. Our work focuses on improving the state of <q>black box</q> science, in particular to experiments using software from the <cite>node package manager</cite>.
+### Software description
 
-In [four-level provenance](cite:cites Banati2015), authors show that infrastructural, environmental, workflow and data provenance, are needed to achieve reproducibility of scientific workflows.
-The information captured at different levels of quality enables different levels of reproducibility or repeatability.
-While our work is conceptually grounded on the same levels, we describe our concrete work on globally identifiable and semantic descriptions of software modules and configurations.
+There are several levels of granularity on which software can be described,
+going from a high-level package overview to a low-level description of the actual code.
+In descriptions, we can use several of these layers,
+depending on the context and the requirements.
+Drilling down from the top to the bottom, we have the following layers:
+ 
+ - a **bundle** is a container
+ with metadata about the software and its functionality
+ across different points in time.
+ An example is [the *N3.js* library](https://linkedsoftwaredependencies.org/bundles/npm/n3).
+ - a **module** or *version* is a concrete software package
+ and an implementation of a bundle.
+ [*N3.js 0.10.0*](https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0) is a module.
+ - a **component** is a specific part of a module 
+ that can be called in a certain way with a certain set of parameters.
+ The [*N3.js 0.10.0 Parser*](https://github.com/RubenVerborgh/N3.js/blob/v0.10.0/lib/N3Parser.js) is a component.
 
-With the goal of improving the way dataset-based software evaluations are performed in the Semantic Web,
-[LOD Lab](cite:cites LODLab) was introduced.
-It offers a service to simplify software evaluation
-against a large amount of Linked Datasets.
-This was done because (Semantic Web) experiments are typically done using only a few datasets,
-since handling them requires significant manual labor.
-This service not only makes it easier for researchers to _develop_ experiments,
-it also makes it easier for others to _reproduce_ these experiments,
-because the manual phase of dataset setup is simplified or even removed.
-While reusability of datasets is one aspect of experiment reproducibility,
-our work focuses on reusability of software within experiments, and replication of the environment.
 
-### Ontologies and vocabularies for describing experiments
+Description of Packages, Modules, and components
+
+- Software ontology
+- DOAP
+- deps
+- Semantic Science Integrated Ontology
+- Software Process Control Model
+- Software Work Product Model
+- IT Service Management Ontology
+
 The [PROV Ontology](cito:citesAsAuthority PROVO) is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. [The OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV) is an ontology for describing abstract and executable workflows. It extends PROV-O and the [P-PLAN Ontology](cito:citesAsAuthority PPLAN) which is designed to represent scientific processes. The [RDF Data Cube Vocabulary](cito:citesAsAuthority DataCube) enables defining and publishing multi-dimensional data structures and observations.
 [DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF) is a vocabulary for publishing metadata about research and survey data.
 
@@ -35,53 +45,14 @@ Such descriptions are however interpretive in that any given tool is subject to 
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
 
-### Dependency injection
-{:#related-work-dependency-injection}
+### Dependency Injection frameworks
 
-[_Separation of concerns_](cite:cites SeparationOfConcerns) is a software design principle in which software is
-split into separate components, each having their own separate task.
-Fowler defines a [software component](cite:providesQuotationFor DependencyInjection) as
-<q>a glob of software that's intended to be used, without change, by an application that is out of the control of the writers of the component</q>.
-This design principle is especially useful for experimental software,
-because it improves the flexibility to, for instance,
-compare different implementations of an algorithm
-by plugging them into a larger piece of software.
+#### JavaScript
+Wirejs
 
-Programmers traditionally interact with a library of components
-by calling its functionality from within their own code.
-In that case, the developed software module defines the flow of control.
-In contrast, with [_Inversion of Control_](cite:cites InversionOfControl,DesigningReusableClasses),
-an external component framework defines this flow:
-programmers write code such that it can be called by the framework.
-[Dependency Injection](cite:cites DependencyInjection) is a form of Inversion of Control where components
-are injected into other components by an _assembler_.
-Experimental software benefits from this paradigm,
-because it allows different components to be defined and injected independently.
+#### Java
+Spring
+Tiger
+Google Duice & Dagger
 
-Dependency injection requires a _configuration phase_
-to describe how components need to be wired together,
-and an _injection phase_ to perform the actual instantiation.
-Frameworks such as [Spring](https://projects.spring.io/spring-framework/)
-facilitate configuration by specifying it declaratively in a configuration file.
-That way, a specific software configuration can be instantiated
-by merely describing it in XML or JSON.
-These configuration files, however,
-can not always be reused outside the scope of a particular project.
-Furthermore, different mechanisms are used
-to capture additional information needed for the instantiation,
-such as module dependencies and their version numbers.
-There is no interoperability between these configuration files,
-and they cannot easily be combined into a detailed description
-of the exact software used.
-
-To that end, we introduce RDF-based software dependency configurations
-([](#describing-components))
-that exactly capture the used modules and dependencies
-([](#describing-modules)).
-The resulting description can then be published on the Web as Linked Data,
-for instance, as part of the description of an experimental evaluation
-([](#use-case)).
-Furthermore, we implemented a framework
-that can instantiate such software descriptions
-directly from the Web
-([](#instantiating)).
+#### C++ 

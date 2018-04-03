@@ -1,76 +1,60 @@
 ## Introduction
 {:#introduction}
 
-A large number of computer science articles describe experimental software evaluations,
-but many of them refer to that software only by name or version number.
-This information is insufficient for readers
-to understand which _exact_ version of the software,
-which versions of its _dependencies_,
-and which detailed _configuration_ of the software's components
-has obtained the reported results.
-Therefore, potential users do not necessarily obtain the correct software installation
-that will behave according to the article's conclusions.
-Moreover, other researchers might fail
-in reproducing the same results
-because of differences in any such aspects.
+Among the broad range of research fields conveyed by the Semantic Web domain, 
+[Empirical Software Engineering](cite:citesAsAuthority shull2007guide,futureEmpirical) is undeniably prominent.
+This field attempts to relieve tension between the curiosity driven _science_ and the utility driven _engineering_,
+by concerning itself with [<q>empirical observation of software engineering artifacts and the empirical validation of software engineering theories
+and assumptions</q>](cite:citesAsAuthority monperrus2015introduction).
+Evidently,
+this includes developing software in a way that improves _reporting_, i.e., supporting a systematic, standardized presentation of empirical research in publications [](cite:citesAsAuthority jedlitschka2008reporting); 
+and conducting _controlled experiments_, i.e., testing hypotheses where one or more independent variables (treatment) are manipulated to measure their effect on one or more dependent variables (e.g., execution time, resource consumption, etc.) [](cite:citesAsAuthority easterbrook2008selecting).
+Experimental software therefore preferably supports the [exact replication of experimental procedures](cite:citesAsAuthority shull2008role), 
+which can be _dependent_---all the conditions of the experiment remain the same (or very similar),
+or _independent_---one or more major aspects of the conditions of the experiment are deliberately varied.
 
-As [Claerbout's Principle](cite:providesQuotationFor WaveLab) explains,
-<q>an article about computational science in a scientific publication
-is not the scholarship itself, it is merely **advertising** of the scholarship.
-The actual scholarship is the complete software development environment
-and the complete set of instructions which generated the figures.</q>
-This stresses the importance of reproducibility,
-and essentially mandates a detailed description
-of the executed experiment,
-all of the involved artefacts and actors,
-and the processing of the retrieved data.
+Rather than obscuring them in monolithic, non transparent software, which is often reported in an ambiguous way by only name or version number,
+different algorithms, or implementations thereof, need to be easily swappable in a transparent manner.
+The latter is embodied by the [Dependency Injection](cite:cites DependencyInjection) principle (e.g., implemented by the [Spring](https://projects.spring.io/spring-framework/) framework).
+where instead of custom code, a generic framework---the _assembler_---determines the flow of control and calls upon individual _software components_ when needed.
+Such components are
+<q>globs of software that are intended to be used, without change, by an application that is out of the control of the writers of the component</q> [](cite:providesQuotationFor DependencyInjection),
+and can be defined and injected independently.
+An external configuration (e.g., described in XML) specifies the wiring of these components during the _configuration phase_, 
+which is used by the assembler to perform the actual instantiation during the _injection phase_.
+With the Semantic Web in mind, however,
+these configurations could move beyond their local scope,
+and also improve in reporting to help finding the right experiment, understanding how it is conducted, and assess the validity of its results [](cite:citesAsAuthority jedlitschka2008reporting).
 
-Using [Linked Data](cite:citesAsAuthority LinkedData)
-to publish such descriptions provides two immediate benefits:
-the experimental setup and parts thereof can be _identified by IRIs_,
-and their details can be retrieved by _dereferencing those IRIs_.
-Therefore, if research articles complement their textual explanation of an experiment
-with the IRI of the full setup, reproducibility is strongly facilitated.
-Moreover, the IRIs of the entire experiment or its parts
-can be reused in other articles or experiments
-to unambiguously refer to the same conditions.
-[](#description-diagram) illustrates how this leads to a chain of provenance
-from the research article to the data
-and the experiment that generates it,
-as well as all aspects surrounding that experiment.
+To this extent, 
+we present _Components.js_, 
+a Semantic Dependency Injection framework for JavaScript that makes software configuration _addressable_ and _discoverable_, hence surpassing existing Dependency Injection frameworks.
+Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing).
+By publishing such descriptions,
+the composition of experimental software, and parts thereof, can be unambiguously identified by IRIs,
+and this configuration can be retrieved with _dereferencing_.
+Components.js automatically _instantiates_ such software configuration, including resolving the necessary dependencies, 
+and is fully compatible with the modular programming approach.
 
-<figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]">
-<figcaption markdown="block">
-A _research article_ is based on _result data_,
-which are the outcomes of an _experiment_.
-The experiment in turn also has (multiple) provenance chains,
-and this article focuses on _software configurations_ and _software modules_.
-</figcaption>
-</figure>
+Research articles can complement their textual reporting of experiments with an IRI and unambiguously refer to the same conditions.
+- something about swappable compo, replicate experiments better, 
+- good for static analysis
 
-In this article,
-we focus on the description of _software configurations_ and _software modules_,
-such that an evaluated software setup
-can be referred to unambiguously by an IRI.
-We further facilitate the reproduction of experiments
-through a mechanism that automatically _instantiates_ the software configuration
-based on its Linked Data description.
-Our contributions are the following:
 
-- the RDF-based description of **software modules**,
-  applied to the 480,000+ bundles of [npm](https://www.npmjs.com/) (Node.js);
-- the RDF-based description of **available components** within software modules;
-- the RDF-based description of a **precise configuration** of software modules;
-- the **automated instantiation** of such a configuration;
-- a **use case** explaining the usage of the resulting Linked Data
-  in scientific articles.
 
-This article is structured as follows.
-In [](#related-work), we discuss related work.
-[](#describing-modules) introduces the semantic description of software modules.
-Next, [](#describing-components) discusses a semantic description of software components and configurations,
-followed by the introduction of a dependency injection framework that can instantiate these in [](#instantiating).
-[](#use-case), describes a use case where we apply software descriptions
-to an experimental evaluation.
+Finally, we include a proof of concept based on the Node.js package manager [npm](https://www.npmjs.com/).
+An RDF-based description was generated for 480,000+ packages. Thereby, 
+we demonstrate 
+(i) the description of an existing application and its available components (available as modules);
+(ii) the automated instantiation of such a configuration; and
+(iii) the discoverability with a set of insightful queries.
+Note that, although this is a JavaScript implementation, the principles are generalizable, 
+can be implemented in other languages, or can improve cross-language replication of software.
+
+The remainder article is structured as follows.
+First, we discuss the semantic description of software and other Dependency Injection frameworks
+in [](#related-work).
+Then, [](#instantiating) introduces Components.js and shows how RDF-based software configurations can be instantiated directly from the Web.
+Next, 
+[](#proof-of-concept) describes the Proof of Concept and its generality is discussed in [](#discussion).
 Finally, we discuss our conclusions and future work in [](#conclusion).
