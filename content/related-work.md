@@ -4,7 +4,7 @@
 {:todo}
 feest
 
-### Software description
+### Semantic Software description
 
 There are several levels of granularity on which software can be described,
 going from a high-level package overview to a low-level description of the actual code.
@@ -33,6 +33,8 @@ Description of Packages, Modules, and components
 - Software Process Control Model
 - Software Work Product Model
 - IT Service Management Ontology
+- Core Software Ontology https://pdfs.semanticscholar.org/ffaf/4135ea2f43cf17fdf3dd6e879349f67a6c88.pdf
+- Software Engineering Ontology Network
 
 The [PROV Ontology](cito:citesAsAuthority PROVO) is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. [The OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV) is an ontology for describing abstract and executable workflows. It extends PROV-O and the [P-PLAN Ontology](cito:citesAsAuthority PPLAN) which is designed to represent scientific processes. The [RDF Data Cube Vocabulary](cito:citesAsAuthority DataCube) enables defining and publishing multi-dimensional data structures and observations.
 [DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF) is a vocabulary for publishing metadata about research and survey data.
