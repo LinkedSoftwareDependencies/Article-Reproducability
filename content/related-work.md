@@ -14,42 +14,35 @@ The [Software Ontology (SWO)](cite:cites malone2014software) and [Description of
 enabling the description of tools, resources, contributors and tasks. 
 At a slightly lower-level, SWO includes interfaces, algorithms, versions, and the associated provenance data, but does not reach the level of detail to describe operational code.
 
-Workflows
-- Semantic Science Integrated Ontology
-- Software Process Control Model
-- Software Work Product Model
-- IT Service Management Ontology
-
-
-
+Ontologies that describe software configuration from a research workflow perspective are [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882), [Workflow-Centric Research Objects](cite:cites Belhajjame2015) with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> and the [Ontologies for Describing the Context of Scientific Experiment Processes](cite:cites Mayer2014) with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> to compliment the Research Objects model. 
+From a more generic perspective, there exist the [PROV Ontology](cito:citesAsAuthority PROVO), [The OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV), and the [DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF).
+However, these efforts can only cover (parts of) the connection between research and software, which is insuffient for Dependency Injection.
+Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
+In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
+Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
 
 Much more low-level and exact is the [Core Software Ontology](cite:cites oberle2009ontology),
 which provides a foundational vocabulary that is designed for extensibility.
 This includes the distinctive concepts to describe software as code, software as object to computational hardware, and software as a running computational activity,
 but also Interfaces, Classes, Methods, the relationships between them, and workflow information on their invocation.
 Its extension, the Core Ontology of Software Components (COSC), moves closer to the topic of this article by describing interfaces and protocols of components.
-
-Similar in scope is the [Software Engineering Ontology Network (SEON)](cite:cites ruy2016seon)
-
-
-
+Similar in scope is the [Software Engineering Ontology Network (SEON)](cite:cites ruy2016seon), which consolidates multiple ontologies for the Software Engineering field.
+It includes a higher Core and Foundational layer, as well as multiple Domain-specific ontologies.
+Of particular interest is their Software Ontology (SwO) that captures the different artifacts in software.
 
 
+TODO: finish this paragraph
 
 
-- Software Engineering Ontology Network
 
-The [PROV Ontology](cito:citesAsAuthority PROVO) is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. [The OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV) is an ontology for describing abstract and executable workflows. It extends PROV-O and the [P-PLAN Ontology](cito:citesAsAuthority PPLAN) which is designed to represent scientific processes. The [RDF Data Cube Vocabulary](cito:citesAsAuthority DataCube) enables defining and publishing multi-dimensional data structures and observations.
-[DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF) is a vocabulary for publishing metadata about research and survey data.
 
-[Workflow-Centric Research Objects](cite:cites Belhajjame2015) realises a suite of ontologies with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> based on empirical analysis of workflow decay and repair in order to improve scientific workflow preservation requirements. 
-It has the means to aggregate or bundle resources like workflows, provenance of executions, publications and datasets. [Ontologies for Describing the Context of Scientific Experiment Processes](cite:cites Mayer2014) compliments the Research Objects model with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> by process preservation. Its <q>context can range from immediate and local aspects such as the software and hardware supporting the process, to aspects such as the organisation the process is executed in, the people involved, service providers, and even laws and regulations</q>.
 
-[LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
-Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
-Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
-In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
-Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
+
+
+
+
+
+
 
 ### Dependency Injection frameworks
 The main idea behind Dependency Injection is that every software component is independent,
