@@ -1,0 +1,6 @@
+SELECT * WHERE {
+  <https://linkedsoftwaredependencies.org/bundles/npm/n3> doap:maintainer ?iauthor.
+  ?author owl:sameAs ?iauthor.
+  ?author foaf:name ?name.
+  ?author foaf:mbox ?mail.
+}

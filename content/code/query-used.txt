@@ -1,0 +1,7 @@
+SELECT DISTINCT ?project ?projectName ?description WHERE {
+  <https://linkedsoftwaredependencies.org/bundles/npm/n3> doap:release ?version.
+  ?dependingversion npm:dependency ?version.
+  ?project doap:release ?dependingversion.
+  ?project doap:name ?projectName.
+  ?project dc:abstract ?description.
+}

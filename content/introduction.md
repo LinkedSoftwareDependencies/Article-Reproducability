@@ -29,8 +29,8 @@ and also improve in reporting to help finding the right experiment, understandin
 To this extent, 
 we present _Components.js_, 
 a Semantic Dependency Injection framework for JavaScript applications that makes software configuration _addressable_ and _discoverable_, hence surpassing existing Dependency Injection frameworks.
-The complete documentation can be found at [https://componentsjs.readthedocs.io](https://componentsjs.readthedocs.io).
-Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing).
+The framework is open-source, available on [npm](https://www.npmjs.com/package/lsd-components), and its complete documentation can be found at [https://componentsjs.readthedocs.io](https://componentsjs.readthedocs.io).
+Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing) and the introduced _Object Mapping ontology_.
 By publishing such descriptions,
 the composition of experimental software, and parts thereof, can be _unambiguously identified_ by IRIs and 
 retrieved with _dereferencing_.
@@ -55,7 +55,7 @@ can be implemented in other languages, or can improve cross-language replication
 The remainder article is structured as follows.
 First, we discuss the semantic description of software and other Dependency Injection frameworks
 in [](#related-work).
-Then, [](#instantiating) introduces Components.js and shows how RDF-based software configurations can be instantiated directly from the Web.
+Then, [](#semantic-dependency-injection) introduces Components.js and shows how RDF-based software configurations can be instantiated directly from the Web.
 Next, 
 [](#proof-of-concept) describes the Proof of Concept and its generality is discussed in [](#discussion).
 Finally, we discuss our conclusions and future work in [](#conclusion).

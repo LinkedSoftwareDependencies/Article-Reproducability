@@ -1,18 +1,22 @@
 ## Related Work
 {:#related-work}
 
-{:todo}
-feest
+In this section, we discuss existing description methods or ontologies to describe software, 
+and position them to the Object-Oriented Components ontology, which is described in the next section.
+In addition, we describe other Dependency Injection frameworks, both for JavaScript and other languages,
+and discuss their limitations compared to Components.js.
 
 ### Semantic Software description
 
-There are several levels of granularity on which software can be described,
+Software can be described on several levels of granularity,
 going from a high-level package overview to a low-level description of the actual code.
+Depending on the context and the requirements,
+
 In descriptions, we can use several of these layers,
-depending on the context and the requirements.
+.
 Drilling down from the top to the bottom, we have the following layers:
  
- - a **bundle** is a container
+- a **bundle** is a container
  with metadata about the software and its functionality
  across different points in time.
  An example is [the *N3.js* library](https://linkedsoftwaredependencies.org/bundles/npm/n3).

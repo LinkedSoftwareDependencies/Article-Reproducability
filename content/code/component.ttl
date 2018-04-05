@@ -1,0 +1,13 @@
+ex:MyModule> a oo:Module;
+  doap:name "my-module";
+  oo:component <http://example.org/MyModule/MyComponent>.
+
+ex:MyModule/MyComponent a oo:Class;
+  oo:componentPath "MyComponent";
+  oo:parameter <http://example.org/MyModule/MyComponent#name>;
+  oo:constructorArguments ( <http://example.org/MyModule/MyComponent#name> ).
+
+ex:MyModule/MyComponent#name a oo:Parameter;
+  rdfs:comment "A name";
+  rdfs:range "xsd:string";
+  oo:uniqueValue true.
