@@ -15,7 +15,7 @@ or _independent_---one or more major aspects of the conditions of the experiment
 
 Rather than obscuring them in monolithic, non transparent software, which is often reported in an ambiguous way by only name or version number,
 different algorithms, or implementations thereof, need to be easily swappable in a transparent manner.
-The latter is embodied by the [Dependency Injection](cite:cites DependencyInjection) principle (e.g., implemented by the [Spring](https://projects.spring.io/spring-framework/) framework).
+The latter is embodied by the [Dependency Injection](cite:cites DependencyInjection) principle (e.g., implemented by the [Spring](https://projects.spring.io/spring-framework/) framework),
 where instead of custom code, a generic framework---the _assembler_---determines the flow of control and calls upon individual _software components_ when needed.
 Such components are
 <q>globs of software that are intended to be used, without change, by an application that is out of the control of the writers of the component</q> [](cite:providesQuotationFor DependencyInjection),
