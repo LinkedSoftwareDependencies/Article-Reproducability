@@ -10,40 +10,40 @@ and discuss their limitations compared to Components.js.
 
 Software can be described on several levels of granularity,
 going from a high-level package overview to a low-level description of the actual code.
-Depending on the context and the requirements,
+The [Software Ontology (SWO)](cite:cites malone2014software) and [Description of a Project (DOAP)](cite:cites doap) ontology focus on the high-level management of software development,
+enabling the description of tools, resources, contributors and tasks. 
+At a slightly lower-level, SWO includes interfaces, algorithms, versions, and the associated provenance data, but does not reach the level of detail to describe operational code.
 
-In descriptions, we can use several of these layers,
-.
-Drilling down from the top to the bottom, we have the following layers:
- 
-- a **bundle** is a container
- with metadata about the software and its functionality
- across different points in time.
- An example is [the *N3.js* library](https://linkedsoftwaredependencies.org/bundles/npm/n3).
- - a **module** or *version* is a concrete software package
- and an implementation of a bundle.
- [*N3.js 0.10.0*](https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0) is a module.
- - a **component** is a specific part of a module 
- that can be called in a certain way with a certain set of parameters.
- The [*N3.js 0.10.0 Parser*](https://github.com/RubenVerborgh/N3.js/blob/v0.10.0/lib/N3Parser.js) is a component.
-
-
-Description of Packages, Modules, and components
-
-- Software ontology
-- DOAP
-- deps
+Workflows
 - Semantic Science Integrated Ontology
 - Software Process Control Model
 - Software Work Product Model
 - IT Service Management Ontology
-- Core Software Ontology https://pdfs.semanticscholar.org/ffaf/4135ea2f43cf17fdf3dd6e879349f67a6c88.pdf
+
+
+
+
+Much more low-level and exact is the [Core Software Ontology](cite:cites oberle2009ontology),
+which provides a foundational vocabulary that is designed for extensibility.
+This includes the distinctive concepts to describe software as code, software as object to computational hardware, and software as a running computational activity,
+but also Interfaces, Classes, Methods, the relationships between them, and workflow information on their invocation.
+Its extension, the Core Ontology of Software Components (COSC), moves closer to the topic of this article by describing interfaces and protocols of components.
+
+Similar in scope is the [Software Engineering Ontology Network (SEON)](cite:cites ruy2016seon)
+
+
+
+
+
+
+
 - Software Engineering Ontology Network
 
 The [PROV Ontology](cito:citesAsAuthority PROVO) is a domain-independent ontology to capture provenance information about entities, activities, and agents involved in producing data. [The OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV) is an ontology for describing abstract and executable workflows. It extends PROV-O and the [P-PLAN Ontology](cito:citesAsAuthority PPLAN) which is designed to represent scientific processes. The [RDF Data Cube Vocabulary](cito:citesAsAuthority DataCube) enables defining and publishing multi-dimensional data structures and observations.
 [DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF) is a vocabulary for publishing metadata about research and survey data.
 
-[Workflow-Centric Research Objects](cite:cites Belhajjame2015) realises a suite of ontologies with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> based on empirical analysis of workflow decay and repair in order to improve scientific workflow preservation requirements. It has the means to aggregate or bundle resources like workflows, provenance of executions, publications and datasets. [Ontologies for Describing the Context of Scientific Experiment Processes](cite:cites Mayer2014) compliments the Research Objects model with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> by process preservation. Its <q>context can range from immediate and local aspects such as the software and hardware supporting the process, to aspects such as the organisation the process is executed in, the people involved, service providers, and even laws and regulations</q>.
+[Workflow-Centric Research Objects](cite:cites Belhajjame2015) realises a suite of ontologies with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> based on empirical analysis of workflow decay and repair in order to improve scientific workflow preservation requirements. 
+It has the means to aggregate or bundle resources like workflows, provenance of executions, publications and datasets. [Ontologies for Describing the Context of Scientific Experiment Processes](cite:cites Mayer2014) compliments the Research Objects model with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> by process preservation. Its <q>context can range from immediate and local aspects such as the software and hardware supporting the process, to aspects such as the organisation the process is executed in, the people involved, service providers, and even laws and regulations</q>.
 
 [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882) proposes the <cite><a href="https://github.com/AKSW/ldwpo">Linked Data Workflow Project Ontology</a></cite> to describe and plan workflows, tool configurations, and reporting.
 Tool specifications and their configurations in LODFlow workflows are described declaratively by a human user without a prescribed schema.
@@ -57,7 +57,7 @@ and all other components they depend on should be provided by an external source
 The only thing a single component knows is how these dependencies can be used,
 but it has no idea where they came from and how they were created.
 
-There is a large spectrium of Dependency Injection frameworks available,
+There is a large spectrum of Dependency Injection frameworks available,
 which shows the demand for such systems.
 The lack of internal dependencies makes it much easier to test the separate components,
 since all the dependencies can easily be mocked.
