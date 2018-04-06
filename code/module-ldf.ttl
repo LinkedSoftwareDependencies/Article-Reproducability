@@ -1,6 +1,6 @@
-@prefix oo: <https://linkedsoftwaredependencies.org/vocabularies/object-oriented#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix ldfs: <https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/>.
+PREFIX oo: <https://linkedsoftwaredependencies.org/vocabularies/object-oriented#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ldfs: <https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/>
 
 <https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/2.2.2>
   a oo:Module;

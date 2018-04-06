@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Components.js: a Semantic Dependency Injection framework for addressable and discoverable software configurations</title>
+  <title>Components.js: a semantic dependency injection framework for addressable and discoverable software configurations</title>
   <link href="styles/screen.css" media="screen" rel="stylesheet" title="IDLab" />
   <link href="styles/print.css"  media="print"  rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono" rel="stylesheet" />
@@ -19,7 +19,7 @@
   <main>
 <article about="" typeof="schema:Article">
     <header>
-      <h1 id="componentsjs-a-semantic-dependency-injection-framework-for-addressable-and-discoverable-software-configurations">Components.js: a Semantic Dependency Injection framework for addressable and discoverable software configurations</h1>
+      <h1 id="componentsjs-a-semantic-dependency-injection-framework-for-addressable-and-discoverable-software-configurations">Components.js: a semantic dependency injection framework for addressable and discoverable software configurations</h1>
 
       <ul id="authors">
         <li><a href="http://www.rubensworks.net/" rel="schema:author" typeof="http://xmlns.com/foaf/0.1/Person" resource="http://www.rubensworks.net/#me">Ruben Taelman</a><a href="#idlab"><sup>1</sup></a></li>
@@ -40,26 +40,26 @@
       <section id="abstract">
         <h2>Abstract</h2>
         <!-- Context      -->
-        <p>In Empirical Software Engineering,
+        <p>In empirical software engineering,
 replications provide knowledge on what results hold under which conditions.
 Often, these ought to be exact: the experimental procedures and their accompanying software are matched as closely as possible.
 <!-- Need         -->
 Because different algorithms, or implementations thereof, need to be easily swappable in a transparent manner,
-a Dependency Injection (DI) design benefits experimental software.
+a dependency injection design benefits experimental software.
 Various wiring of independent components can be created, tested, and compared—even through means of static program analysis.
 Within the Semantic Web,
-the opportunity exists to move beyond the local scope of existing DI frameworks and 
+the opportunity exists to move beyond the local scope of existing dependency injection frameworks and 
 facilitate exact replication on the Web with addressable, dereferenceable, and unambiguous software configurations.
 <!-- Task         -->
 Therefore, 
-we introduce Components.js, a Semantic Dependency Injection framework for JavaScript,
-that (i) describes software components using a <em>Object-Oriented Components</em> and <em>Object Mapping</em> ontology, 
+we introduce Components.js, a semantic dependency injection framework for JavaScript,
+that (i) describes software components using a Object-Oriented Components and Object Mapping ontology, 
 (ii) automatically instantiates experimental configurations using linking and dereferencing, and
-(iii) is complementary to the <em>modular programming</em> of package managers.
+(iii) is complementary to the modular programming of package managers.
 <!-- Object       -->
 This article presents the framework, 
 its application, 
-and incorporates a proof-of-concept on discovery of experimental software configurations on the Web.
+and incorporates a proof of concept on discovery of experimental software configurations on the Web.
 <!-- Findings     -->
 All 600,000+ Node Package Manager libraries were described
 as more than 300 million RDF triples, which interlink different modules.
@@ -94,45 +94,44 @@ and facilitates the evaluation of new research contributions.</p>
       <h2>Introduction</h2>
 
       <p>Among the many fields conveyed by the Semantic Web domain, 
-Empirical Software Engineering <a href="#ref-1" class="reference">[1]</a><a href="#ref-2" class="reference">[2]</a> is undeniably prominent.
+empirical software engineering <a href="#ref-1" class="reference">[1]</a><a href="#ref-2" class="reference">[2]</a> is undeniably prominent.
 Here, research concerns itself with <q>empirical observation of software engineering artifacts and the empirical validation of software engineering theories
 and assumptions</q> <a href="#ref-3" class="reference">[3]</a>,
-thus relieving tension between the curiosity driven <em>science</em> and the utility driven <em>engineering</em>.
+thus relieving tension between the curiosity-driven <em>science</em> and the utility-driven <em>engineering</em>.
 Evidently,
-this includes developing software in a way that improves <em>reporting</em>, i.e., supporting a systematic, standardized presentation of empirical research in publications <a href="#ref-4" class="reference">[4]</a>,
+this includes developing software in a way that improves <em>reporting</em>, i.e., supporting a systematic, standardized presentation of empirical research in publications <a href="#ref-4" class="reference">[4]</a>,
 and conducting <em>controlled experiments</em>, i.e., testing hypotheses where one or more independent variables (treatment) are manipulated to measure their effect on one or more dependent variables (e.g., execution time, etc.) <a href="#ref-5" class="reference">[5]</a>.
 Experimental software therefore preferably supports the exact replication of experimental procedures <a href="#ref-6" class="reference">[6]</a>, 
 which keep the conditions of the experiment <em>dependent</em> (all remain the same or very similar),
 or <em>independent</em> (one or more major aspects are deliberately varied).</p>
 
-      <p>Rather than obscuring experimental software in monolithic, non-transparent packages, often referred to in an ambiguous way by only name or version number,
-different algorithms and implementations thereof need to be easily swappable in a transparent manner.
+      <p>Rather than obscuring experimental software in monolithic, non-transparent packages—often referred to in an ambiguous way by only name or version number—different algorithms and implementations thereof need to be easily swappable in a transparent manner.
 The latter is embodied by the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://martinfowler.com/articles/injection.html">Dependency Injection</a> <a href="#ref-7" class="reference">[7]</a> pattern,
 where instead of custom code, a generic framework—the <em>assembler</em>—determines the flow of control and calls upon individual <em>software components</em> when needed.
 Such components are
 <q>globs of software that are intended to be used, without change, by an application that is out of the control of the writers of the component</q> <a href="#ref-7" class="reference">[7]</a>,
 and can be defined and injected independently.
-An external configuration (e.g., described in XML) specifies the wiring of these components during the <em>configuration phase</em>, 
+An external configuration document specifies the wiring of these components during the <em>configuration phase</em>, 
 which is used by the assembler to perform the actual instantiation during the <em>injection phase</em>.
-With the Semantic Web in mind however,
+With the Semantic Web in mind,
 these configurations could move beyond their local scope,
 and also improve in reporting to help finding the right experiment, understanding how it is conducted, and assess the validity of its results <a href="#ref-4" class="reference">[4]</a>.</p>
 
       <p>To this end, 
 we present <em>Components.js</em>, 
-a Semantic Dependency Injection framework for JavaScript applications that makes software configuration <em>addressable</em> and <em>discoverable</em>, hence surpassing existing Dependency Injection frameworks.
-The framework is open-source, available on <a href="https://www.npmjs.com/package/lsd-components">npm</a>, and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io">https:/​/​componentsjs.readthedocs.io</a>.
+a semantic dependency Injection framework for JavaScript applications that makes software configuration <em>addressable</em> and <em>discoverable</em>, hence surpassing existing dependency injection frameworks.
+The framework is <a href="https://github.com/LinkedSoftwareDependencies/Components.js">open-source</a>, available on <a href="https://www.npmjs.com/package/componentsjs">npm</a>, and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/">https:/​/​componentsjs.readthedocs.io/</a>.
 Software configurations and modules are described as Linked Data using the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components ontology</em></a> <a href="#ref-8" class="reference">[8]</a> and the introduced <em>Object Mapping ontology</em>.
 By publishing such descriptions,
-the composition of experimental software, and parts thereof, can be <em>unambiguously identified</em> by IRIs and 
-retrieved with <em>dereferencing</em>.
+the composition of experimental software (and parts thereof) can be <em>unambiguously identified</em> by IRIs and 
+retrieved through <em>dereferencing</em>.
 Components.js automatically <em>instantiates</em> such software configurations, including resolving the necessary dependencies, 
 and is fully compatible with the modular programming approach.
 In total, this entails the following benefits:
 (i) extended reporting of experiments in research articles by IRI;
 (ii) improved transparency and replication of experimental software;
 (iii) facilitation of static program analysis through the use of external, semantic configuration files;
-(iv) a joined data space of research articles and experimental software, enabling discoverable and queryable links between research and implementations.</p>
+(iv) a joint data space of research articles and experimental software, enabling discoverable and queryable links between research and implementations.</p>
 
       <p>Finally, we include a proof of-concept based on the Node.js package manager <a href="https://www.npmjs.com/">npm</a>.
 An RDF-based description was generated for 600,000+ packages. Thereby, 
@@ -148,10 +147,10 @@ can be implemented in other languages, or can improve cross-language replication
 
       <p>In this section, we discuss existing description methods or ontologies to describe software, 
 and position them to the Object-Oriented Components ontology, which is described in the next section.
-In addition, we describe other Dependency Injection frameworks, both for JavaScript and other languages,
+In addition, we describe other dependency injection frameworks, both for JavaScript and other languages,
 and discuss their limitations compared to Components.js.</p>
 
-      <h3 id="semantic-software-description">Semantic Software description</h3>
+      <h3 id="semantic-software-description">Semantic software description</h3>
 
       <p>Software can be described on several levels of granularity,
 going from a high-level package overview to a low-level description of the actual code.
@@ -161,7 +160,7 @@ At a slightly lower level, SWO includes interfaces, algorithms, versions, and th
 
       <p>Ontologies that describe software configuration from a research workflow perspective are <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1145/2814864.2814882"><a href="http://svn.aksw.org/papers/2015/SEMANTICS_LDWPO/public.pdf">LODFlow</a></span> <a href="#ref-11" class="reference">[11]</a>, <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1016/j.websem.2015.01.003"><a href="https://doi.org/10.1016/j.websem.2015.01.003">Workflow-Centric Research Objects</a></span> <a href="#ref-12" class="reference">[12]</a> with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> and the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1109/escience.2014.47"><a href="http://www.ifs.tuwien.ac.at/%7Emayer/publications/pdf/may_escience14.pdf">Ontologies for Describing the Context of Scientific Experiment Processes</a></span> <a href="#ref-13" class="reference">[13]</a> with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> to compliment the Research Objects model. 
 From a more generic perspective, there exist the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> <a href="#ref-14" class="reference">[14]</a>, the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://www.opmw.org/model/OPMW/">OPMW-PROV Ontology</a> <a href="#ref-15" class="reference">[15]</a>, and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://rdf-vocabulary.ddialliance.org/discovery.html">DDI-RDF Discovery Vocabulary</a> <a href="#ref-16" class="reference">[16]</a>.
-However, these efforts can only cover (parts of) the connection between research and software, which is insufficient for Dependency Injection.
+However, these efforts can only cover (parts of) the connection between research and software, which is insufficient for dependency injection.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.</p>
@@ -177,9 +176,9 @@ Of particular interest is their Software Ontology (SwO) that captures the differ
 In general, both ontologies (or suites) view software from a <q>network of communicating concepts</q> perspective.
 This allows for exhaustive descriptions of complex software systems, but is not suited for describing class instances or aspects of modular programming (e.g., package dependencies).</p>
 
-      <h3 id="dependency-injection-frameworks">Dependency Injection frameworks</h3>
-      <p>The large spectrum of existing Dependency Injection frameworks indicates a high demand for such systems.
-Dependency Injection considers every software component as independent:
+      <h3 id="dependency-injection-frameworks">Dependency injection frameworks</h3>
+      <p>The large spectrum of existing dependency injection frameworks indicates a high demand for such systems.
+Dependency injection considers every software component as independent:
 a single component is only aware about how these dependencies can be used,
 but not about their whereabouts or how they were created.
 The absence of internal dependencies simplifies testing separate components,
@@ -187,20 +186,20 @@ because their dependencies can be easily mocked.
 Also, since there is no internal knowledge on a dependency’s origin,
 it is much easier to change the actual implementation and how the dependency fulfills the role of its interface.</p>
 
-      <p>Dependency Injection frameworks facilitate in the creation of objects
+      <p>Dependency injection frameworks facilitate in the creation of objects
 and provide them to the classes that require them.
 Hence, they provide the means to define how all the dependencies are linked together,
 allowing developers to “outsource” the actual linking.
-Java likely contains the largest collection of Dependency Injection frameworks.
+Java likely contains the largest collection of dependency injection frameworks.
 Much of this stems from the strict typing,
 which makes it difficult to create mock objects when required for testing
 if the dependencies are nested in the implementation.</p>
 
       <p>One of the biggest Java frameworks is <a href="https://spring.io/">Spring</a>,
-which amongst many things, also provides Dependency Injection.
+which amongst many things, also provides dependency injection.
 That is one of its advantages though:
 many projects already use Spring for other reasons,
-reducing the jump required to add the Dependency Injection framework.
+reducing the jump required to add the dependency injection framework.
 It supports two ways to do the injection.
 The first one is through an external XML configuration file
 which defines all the classes and how they are linked together.
@@ -210,18 +209,17 @@ Google’s <a href="https://github.com/google/guice">Guice</a> is a more lightwe
 <a href="https://github.com/google/dagger">Dagger</a> was created to be even more lightweight than Guice.</p>
 
       <p>In JavaScript, 
-Dependency Injection frameworks tend to be less common because of its flexible nature.
-Still, multiple frameworks are available, such as <a href="https://github.com/young-steveo/bottlejs">bottlejs</a>, <a href="https://github.com/cujojs/wire">wire</a>, and <a href="https://github.com/jaredhanson/electrolyte">electrolyte</a>, all backed by rather small communities.
+dependency injection frameworks tend to be less common because of its flexible nature.
+Still, multiple frameworks are available, such as <a href="https://github.com/young-steveo/bottlejs">BottleJS</a>, <a href="https://github.com/cujojs/wire">Wire</a>, and <a href="https://github.com/jaredhanson/electrolyte">Electrolyte</a>, all backed by rather small communities.
 One of the biggest ones, <a href="https://github.com/inversify/InversifyJS">InversifyJS</a>,
 uses annotations similar to Java frameworks to define possible injections.
 Unlike standard JavaScript,
 it requires you to define interfaces and types,
 thereby allowing it to make use of this extra information to correctly handle the linking.
-Therefore, it uses TypeScript.
-Additionally, just like Guice it also has a bindings file to link classes to interfaces.</p>
+Like Guice, it also has a bindings file to link classes to interfaces.</p>
 
-      <p>Components.js differs from most of the beforementioned frameworks
-by having the Dependency Injection metadata external of the code in RDF files,
+      <p>Components.js differs from most of the aforementioned frameworks
+by having the dependency injection metadata external to the code in RDF files,
 both for describing what the classes look like, and how they should be linked together.
 This provides the additional semantic benefits mentioned in this paper,
 such as identification, dereferencing, and discoverability.</p>
@@ -276,14 +274,15 @@ Note that we added a prefix <code>ex</code> to shorten the URIs.
 Additional metadata is added with the <a href="https://github.com/ewilderj/doap/wiki">Description of a Project (DOAP) vocabulary</a>, e.g., <code>doap:name</code>.</p>
 
       <figure id="module" class="listing">
-<pre><code>@prefix oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;.
-@prefix om: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-mapping#&gt;.
-@prefix doap: &lt;http://usefulinc.com/ns/doap#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix ex: &lt;http://example.org&gt;.
+<pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
+PREFIX om: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-mapping#&gt;
+PREFIX doap: &lt;http://usefulinc.com/ns/doap#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX ex: &lt;http://example.org&gt;
 
 ex:MyModule a oo:Module;
-            doap:name &quot;my-module&quot;.</code></pre>
+            doap:name &quot;my-module&quot;.
+</code></pre>
 <figcaption>
           <p><span class="label">Listing 1:</span> A description of a module <code>ex:MyModule</code>.</p>
         </figcaption>
@@ -347,9 +346,9 @@ A general context is defined for the Object-Oriented Components ontology, which 
 The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).</p>
 
       <figure id="module-ldf" class="listing">
-<pre><code>@prefix oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;.
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;.
-@prefix ldfs: &lt;https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/&gt;.
+<pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
+PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX ldfs: &lt;https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/&gt;
 
 &lt;https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/2.2.2&gt;
   a oo:Module;
@@ -445,7 +444,7 @@ where the <code>datasources</code> entry points to an object that is a mapping f
         </figcaption>
 </figure>
 
-      <h3 id="instantiating">Describing and instantiating a Component Configuration</h3>
+      <h3 id="instantiating">Describing and instantiating a component configuration</h3>
 
       <p>Once modules and components are described, 
 a component configuration can wire a JavaScript application by declaring specific instances.
@@ -455,12 +454,13 @@ All instantiations of <code>oo:Class</code> instances are also of type <code>oo:
 The parameters that were defined by the component, can now be used as keys in the configuration file.</p>
 
       <figure id="configuration" class="listing">
-<pre><code>@prefix ex: &lt;http://example.org&gt;.
+<pre><code>PREFIX ex: &lt;http://mymodule.org/&gt;
 
 ex:myInstance a ex:MyModule/MyComponent;
-  ex:MyModule/MyComponent#name &quot;John&quot;.</code></pre>
+  ex:MyModule/MyComponent#name &quot;John&quot;.
+</code></pre>
 <figcaption>
-          <p><span class="label">Listing 5:</span> A component configuration file that describes the instantiation of <code>ex:MyModule/MyComponent</code> with the parameter  <code>ex:MyModule/MyComponent#name</code> set to <q>John</q></p>
+          <p><span class="label">Listing 5:</span> A component configuration file that describes the instantiation of <code>ex:MyModule/MyComponent</code> with the parameter  <code>ex:MyModule/MyComponent#name</code> set to <q>John</q>.</p>
         </figcaption>
 </figure>
 
@@ -472,9 +472,8 @@ Conforming to the RDF semantics, components can have multiple ancestors, and are
 <pre><code>const Loader = require(&#39;componentsjs&#39;).Loader;
 
 const loader = new Loader();
-await loader.registerModuleResourcesUrl(&#39;http://example.org/my-ldf-server.ttl&#39;);
-const myServer = await loader.instantiateFromUrl(
-    &#39;http://example.org/myServer&#39;, &#39;http://example.org/config-ldf.ttl&#39;);</code></pre>
+const myServer = await loader.instantiate(&#39;http://example.org/config.ttl#myServer&#39;);
+</code></pre>
 <figcaption>
           <p><span class="label">Listing 6:</span> First, a new component loader is created
 after which the component definitions are registered.
@@ -486,24 +485,26 @@ Finally, a declarative component instantiation is supplied by providing the comp
 First, it provides a <code>Loader</code> class that acts as an assembler.
 This <code>Loader</code> provides <em>constructor injection</em>:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
-Then, a module description is registered, which can be retrieved by automatically scanning npm modules, 
+Behind the scenes, a module description is registered, which can be retrieved by automatically scanning npm modules, 
 parsing a downloaded RDF document via URL, or reading a raw triple stream.
 At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.
-In this example, the Linked Data Fragments module description from <a href="#module-ldf">Listing 3</a> is registered as <a href="">http:/​/​example.org/my-ldf-server.ttl</a>.
 Finally,
 the <code>Loader</code> instantiates one or more components by invoking a component configuration.
 <a href="#config-ldf">Listing 7</a> depicts the configuration file for a <a href="http://linkeddatafragments.org/software/#server">Linked Data Fragments server</a> application,
-which is identified by <a href="">http:/​/​example.org/config-ldf.ttl</a>.</p>
+which is identified by <code>http:/​/​example.org/config.ttl#myServer</code>.</p>
 
       <figure id="config-ldf" class="listing">
-<pre><code>ex:myServer a ldfs:Server:Qpf;
-  ldfs:datasource ex:myHdtDatasource, ex:mySparqlDatasource.
-ex:myHdtDatasource a ldfs:Datasource:Hdt;
+<pre><code>PREFIX : &lt;http://example.org/config.ttl#&gt;
+PREFIX ldfs: &lt;https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/&gt;
+
+:myServer a ldfs:Server:Qpf;
+  ldfs:datasource :myHdtDatasource, :mySparqlDatasource.
+:myHdtDatasource a ldfs:Datasource:Hdt;
   ldfs:Datasource:title &quot;A DBpedia 2016 datasource&quot;;
-  ldfs:Datasource:Hdt:file &lt;http://example.org/dbpedia-2016.hdt&gt;.
-ex:mySparqlDatasource a ldfs:Datasource:Sparql;
+  ldfs:Datasource:Hdt:file &lt;http://data.org/dbpedia-2016.hdt&gt;.
+:mySparqlDatasource a ldfs:Datasource:Sparql;
   ldfs:Datasource:title &quot;A SPARQL-based DBpedia 2016 datasource&quot;;
-  ldfs:Datasource:Sparql:endpoint &lt;http://xample.org/sparql/dbpedia-2016&gt;.
+  ldfs:Datasource:Sparql:endpoint &lt;http://data.org/sparql/dbpedia-2016&gt;.
 </code></pre>
 <figcaption>
           <p><span class="label">Listing 7:</span> <code>ex:myServer</code> is a TPF server which will be loaded with a HDT and SPARQL-based datasource.</p>
@@ -671,14 +672,12 @@ Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-
       <p>The scientific process preaches <em>standing on the shoulders of giants</em>.
 This entails continuing existing work to derive new work, but
 also, enabling others to build upon our work.
-An essential aspect of this process is reproducibility of experimental results.
+An essential aspect of this process is <em>reproducibility</em> of experimental results.
 This concept also applies to Web research,
-but the Web itself, is also an ideal platform to <em>improve</em> the scientific process.</p>
+but the Web itself, is also an ideal platform to improve the scientific process.</p>
 
-      <p>Components.js deliberately adds semantics and Linked Data to Dependency Injection in order to accurately refer to experimental software, 
-automatically discover component wiring, but also facilitate independently replacing and evaluating components.
-Therefore it supports improved replication of experimental software.
-A large number of computer science articles report software only by name or version number.
+      <p>Unfortunately,
+a large number of computer science articles report software only by name or version number.
 This information is insufficient for readers
 to understand which <em>exact</em> version of the software,
 which versions of its <em>dependencies</em>,
@@ -689,6 +688,13 @@ that will behave according to the article’s conclusions.
 Moreover, other researchers might fail
 in reproducing the same results
 because of differences in any such aspects.</p>
+
+      <p>Components.js deliberately adds semantics and Linked Data to dependency injection in order to accurately refer to exact software configurations used in an article, 
+and automatically instantiating that configuration,
+thereby improving replication of experimental software.
+Furthermore, 
+it facilitates independently replacing and evaluating components
+and publishing these configurations in turn.</p>
 
       <p><a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">Claerbout’s Principle</a> <a href="#ref-21" class="reference">[21]</a> explains that
 <q>an article about computational science in a scientific publication
@@ -710,7 +716,8 @@ as well as all aspects surrounding that experiment.</p>
           <p><span class="label">Fig. 3:</span> A <em>research article</em> is based on <em>result data</em>,
 which are the outcomes of an <em>experiment</em>.
 The experiment in turn also has (multiple) provenance chains,
-and this article focuses on <em>software configurations</em> and <em>software modules</em>.</p>
+and this article provides mechanisms
+to describe <em>software configurations</em> and <em>software modules</em>.</p>
         </figcaption>
 </figure>
 
@@ -732,7 +739,7 @@ and the creation of new ones.</p>
     <section id="conclusion">
       <h2>Conclusion</h2>
 
-      <p>In this article, we introduce Components.js, a dependency injection framework that
+      <p>In this article, we introduced Components.js, a dependency injection framework that
 (i) <em>interprets</em> semantically described software components and their configuration, and thereby
 (ii) automatically <em>instantiates</em> experimental JavaScript Applications.
 Semantic Dependency Injection brings the Linked Data merits to empirical software engineering,
