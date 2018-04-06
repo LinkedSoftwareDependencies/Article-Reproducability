@@ -33,7 +33,7 @@ the most important one relating to the specific versions of the package.
 This can be seen by retrieving <https://linkedsoftwaredependencies.org/bundles/npm/n3>{:.iri-link} with an `Accept: application/ld+json` header.
 In this case, the package contains links to its corresponding modules,
 providing semantic connections between them.
-Additionally, some tags were added to provide identifiers and link to the original repository.
+Additionally, some tags were added to provide identifiers and a link to the original repository.
 
 Since JSON-LD is an RDF representation, it can easily be converted to other syntaxes,
 of which several are supported by our server,
