@@ -1,3 +1,7 @@
+@prefix oo: <https://linkedsoftwaredependencies.org/vocabularies/object-oriented#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix ldfs: <https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/>.
+
 <https://linkedsoftwaredependencies.org/bundles/npm/ldf-server/2.2.2>
   a oo:Module;
   oo:component ldfs:Server:Qpf, ldfs:Datasource:Hdt, ldfs:Datasource:Sparql.

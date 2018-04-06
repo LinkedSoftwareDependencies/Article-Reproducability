@@ -1,0 +1,4 @@
+@prefix ex: <http://example.org>.
+
+ex:myInstance a ex:MyModule/MyComponent;
+  ex:MyModule/MyComponent#name "John".

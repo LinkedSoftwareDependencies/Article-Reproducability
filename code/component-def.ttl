@@ -1,0 +1,12 @@
+@prefix oo: <https://linkedsoftwaredependencies.org/vocabularies/object-oriented#>.
+@prefix om: <https://linkedsoftwaredependencies.org/vocabularies/object-mapping#>.
+@prefix doap: <http://usefulinc.com/ns/doap#>.
+
+<http://example.org/MyModule> a oo:Module;
+  doap:name "my-module";
+  oo:component <http://example.org/MyModule/MyComponent>.
+
+<http://example.org/MyModule/MyComponent> a oo:Class;
+  oo:componentPath "MyComponent";
+  oo:parameter <http://example.org/MyModule/MyComponent#name>;
+  oo:constructorArguments ( <http://example.org/MyModule/MyComponent#name> ).
