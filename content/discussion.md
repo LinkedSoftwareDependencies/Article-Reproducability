@@ -3,6 +3,14 @@
 
 - good for static analysis
 
+
+The core idea of the scientific process is _to stand on the shoulders of giants_.
+This means building further upon previous work to derive new work—but
+also, enabling others to build upon our work.
+Reproducibility, for instance, is an essential aspect of this process.
+Not only does this concept apply to Web research as well,
+but the Web makes an ideal platform to _improve_ the scientific process as a whole.
+
 A large number of computer science articles describe experimental software evaluations,
 but many of them refer to that software only by name or version number.
 This information is insufficient for readers
