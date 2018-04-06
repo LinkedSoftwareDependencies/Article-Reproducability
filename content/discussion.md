@@ -4,14 +4,12 @@
 The scientific process preaches _standing on the shoulders of giants_.
 This entails continuing existing work to derive new work, but
 also, enabling others to build upon our work.
-An essential aspect of this process is reproducibility of experimental results.
+An essential aspect of this process is _reproducibility_ of experimental results.
 This concept also applies to Web research,
-but the Web itself, is also an ideal platform to _improve_ the scientific process.
+but the Web itself, is also an ideal platform to improve the scientific process.
 
-Components.js deliberately adds semantics and Linked Data to Dependency Injection in order to accurately refer to experimental software, 
-automatically discover component wiring, but also facilitate independently replacing and evaluating components.
-Therefore it supports improved replication of experimental software.
-A large number of computer science articles report software only by name or version number.
+Unfortunately,
+a large number of computer science articles report software only by name or version number.
 This information is insufficient for readers
 to understand which _exact_ version of the software,
 which versions of its _dependencies_,
@@ -22,6 +20,13 @@ that will behave according to the article's conclusions.
 Moreover, other researchers might fail
 in reproducing the same results
 because of differences in any such aspects.
+
+Components.js deliberately adds semantics and Linked Data to dependency injection in order to accurately refer to exact software configurations used in an article, 
+and automatically instantiating that configuration,
+thereby improving replication of experimental software.
+Furthermore, 
+it facilitates independently replacing and evaluating components
+and publishing these configurations in turn.
 
 [Claerbout's Principle](cite:providesQuotationFor WaveLab) explains that
 <q>an article about computational science in a scientific publication
@@ -43,7 +48,8 @@ as well as all aspects surrounding that experiment.
 A _research article_ is based on _result data_,
 which are the outcomes of an _experiment_.
 The experiment in turn also has (multiple) provenance chains,
-and this article focuses on _software configurations_ and _software modules_.
+and this article provides mechanisms
+to describe _software configurations_ and _software modules_.
 </figcaption>
 </figure>
 

@@ -1,7 +1,7 @@
 ## Conclusion
 {:#conclusion}
 
-In this article, we introduce Components.js, a dependency injection framework that
+In this article, we introduced Components.js, a dependency injection framework that
 (i) _interprets_ semantically described software components and their configuration, and thereby
 (ii) automatically _instantiates_ experimental JavaScript Applications.
 Semantic Dependency Injection brings the Linked Data merits to empirical software engineering,

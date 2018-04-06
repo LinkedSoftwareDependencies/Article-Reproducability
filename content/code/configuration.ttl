@@ -1,4 +1,4 @@
-@prefix ex: <http://example.org>.
+PREFIX ex: <http://mymodule.org/>
 
 ex:myInstance a ex:MyModule/MyComponent;
   ex:MyModule/MyComponent#name "John".

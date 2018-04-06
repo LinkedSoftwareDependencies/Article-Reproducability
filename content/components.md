@@ -155,7 +155,7 @@ where the `datasources` entry points to an object that is a mapping from titles 
 </figcaption>
 </figure>
 
-### Describing and instantiating a Component Configuration
+### Describing and instantiating a component configuration
 {:#instantiating}
 
 Once modules and components are described, 
@@ -168,7 +168,7 @@ The parameters that were defined by the component, can now be used as keys in th
 <figure id="configuration" class="listing">
 ````/code/configuration.ttl````
 <figcaption markdown="block">
-A component configuration file that describes the instantiation of `ex:MyModule/MyComponent` with the parameter  `ex:MyModule/MyComponent#name` set to <q>John</q>
+A component configuration file that describes the instantiation of `ex:MyModule/MyComponent` with the parameter  `ex:MyModule/MyComponent#name` set to <q>John</q>.
 </figcaption>
 </figure>
 
@@ -189,14 +189,13 @@ The initial steps for using the framework are shown in [](#components.js).
 First, it provides a `Loader` class that acts as an assembler.
 This `Loader` provides _constructor injection_:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
-Then, a module description is registered, which can be retrieved by automatically scanning npm modules, 
+Behind the scenes, a module description is registered, which can be retrieved by automatically scanning npm modules, 
 parsing a downloaded RDF document via URL, or reading a raw triple stream.
 At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.
-In this example, the Linked Data Fragments module description from [](#module-ldf) is registered as [http://example.org/my-ldf-server.ttl]().
 Finally,
 the `Loader` instantiates one or more components by invoking a component configuration.
 [](#config-ldf) depicts the configuration file for a [Linked Data Fragments server](http://linkeddatafragments.org/software/#server) application,
-which is identified by [http://example.org/config-ldf.ttl](). 
+which is identified by `http://example.org/config.ttl#myServer`.
 
 <figure id="config-ldf" class="listing">
 ````/code/config-ldf.ttl````
