@@ -40,13 +40,6 @@ with as prefix `oo`.
 Note that we added a prefix `ex` to shorten the URIs.
 Additional metadata is added with the [Description of a Project (DOAP) vocabulary](https://github.com/ewilderj/doap/wiki), e.g., `doap:name`.
 
-<figure id="module" class="listing">
-````/code/module.ttl````
-<figcaption markdown="block">
-A description of a module `ex:MyModule`.
-</figcaption>
-</figure>
-
 A module is considered a collection of components.
 Within object-oriented languages, this can correspond to for example a software library or an application.
 A component is typed as `oo:Component`, which is a _subclass_ of `rdfs:Class`.
@@ -58,6 +51,20 @@ can be described as
 and a concrete instance is
 `:myHdtDatasource a ldfs:Datasource:Hdt`.
 
+<figure id="module" class="listing">
+````/code/module.ttl````
+<figcaption markdown="block">
+A description of a module `ex:MyModule`.
+</figcaption>
+</figure>
+
+<figure id="component" class="listing">
+````/code/component.ttl````
+<figcaption markdown="block">
+The component `ex:MyModule/MyComponent` is described as part of the module `ex:MyModule`.
+</figcaption>
+</figure>
+
 [](#component) extends `MyModule` with a component `ex:MyModule/MyComponent` by adding an `oo:component` predicate.
 The type `oo:Class` is one of the several defined subclasses of `oo:Component`,
 which indicates that it is instantiatable based on parameters.
@@ -68,10 +75,13 @@ The resulting description can be included in the module
 or can be created and referred to externally.
 Afterwards, it can be reused by multiple dependents.
 
-<figure id="component" class="listing">
-````/code/component.ttl````
+<figure id="module-ldf" class="listing">
+````/code/module-ldf.ttl````
 <figcaption markdown="block">
-The component `ex:MyModule/MyComponent` is described as part of the module `ex:MyModule`.
+The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
+The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
+The HDT datasource takes an HDT file as parameter.
+The SPARQL datasource takes a SPARQL endpoint IRI as parameter.
 </figcaption>
 </figure>
 
@@ -91,16 +101,6 @@ such that the software configuration can receive a semantic interpretation.
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components ontology, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
 The dereferencaable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
-
-<figure id="module-ldf" class="listing">
-````/code/module-ldf.ttl````
-<figcaption markdown="block">
-The LDF server module contains, among others, an HDT and SPARQL-based datasource component, which both extend from the abstract datasource component.
-The HDT and SPARQL datasource are a classes, which both inherit the title parameter from the abstract datasource.
-The HDT datasource takes an HDT file as parameter.
-The SPARQL datasource takes a SPARQL endpoint IRI as parameter.
-</figcaption>
-</figure>
 
 ### Describing object mappings
 The constructor injection described above works out of the box
