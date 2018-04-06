@@ -97,7 +97,7 @@ Wire actually seems outdated.
 Due to the flexible nature of JavaScript,
 Dependency Injection frameworks tend to be less common than in Java,
 but there still are multiple available.
-One of the biggest ones is InversifyJS.
+One of the biggest ones is [InversifyJS](https://github.com/inversify/InversifyJS).
 Similarly to the Java libraries,
 it makes use of annotations to define the possible injections.
 Unlike standard JavaScript,
@@ -105,3 +105,11 @@ it requires you to define interfaces and types,
 thereby allowing it to make use of this extra information to correctly handle the linking.
 For this it makes use of TypeScript.
 Additionally, just like Guice it also has a bindings file to link classes to interfaces.
+
+#### Comparison with Components.js
+Components.js differs from most of the beforementioned frameworks
+by having the Dependency Injection metadata external of the code in RDF files,
+both for describing what the classes look like, and how they should be linked together.
+This creates a bit more overhead when actually creating the classes,
+but does provide the additional semantic benefits mentioned in this paper,
+such as identification, dereferencing and discoverability.
