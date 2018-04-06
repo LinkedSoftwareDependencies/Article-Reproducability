@@ -33,40 +33,27 @@ In general, both ontologies (or suites) view software from a <q>network of commu
 This allows for exhaustive descriptions of complex software systems, but is not suited for describing class instances or aspects of modular programming (e.g., package dependencies).
 
 ### Dependency Injection frameworks
-The main idea behind Dependency Injection is that every software component is independent,
+The large spectrum of existing Dependency Injection frameworks indicates a high-demand for such systems.
+Dependency Injection considers every software component as independent,
 and all other components they depend on should be provided by an external source.
-The only thing a single component knows is how these dependencies can be used,
-but it has no idea where they came from and how they were created.
-
-There is a large spectrum of Dependency Injection frameworks available,
-which shows the demand for such systems.
-The lack of internal dependencies makes it much easier to test the separate components,
-since all the dependencies can easily be mocked.
-Since there is also no internal knowledge of where they came from,
+A single component is only aware about how these dependencies can be used,
+but not about their whereabouts or how they were created.
+The absence of internal dependencies simplifies testing separate components,
+because their dependencies can be easily mocked.
+Also, since there is no internal knowledge on a dependency's origin,
 it is much easier to change the actual implementation and how the dependency fulfills the role of its interface.
 
-One of the main problems is that something still has to create all these objects
+Dependency Injection frameworks facilitate in the creation of objects
 and provide them to the classes that require them.
-That is where the Dependency Injection frameworks come in.
-These frameworks provide the means to define how all the dependencies are linked together,
+Hence, they provide the means to define how all the dependencies are linked together,
 allowing developers to "outsource" the actual linking.
-
-{:.todo}
-Skipping C++ since there already seems to be a lot of stuff
-
-#### Java frameworks
-
-{:.todo}
-Keep links to frameworks in pdf?
-
-Java is probably the language with the largest collection of Dependency Injection frameworks.
-Much of this stems from the strict typings Java uses,
+Java likely contains the largest collection of Dependency Injection frameworks.
+Much of this stems from the strict typing,
 which makes it difficult to create mock objects when required for testing
 if the dependencies are nested in the implementation.
 
-One of the biggest Java frameworks is [Spring](https://spring.io/).
-While it does much more than Dependency Injection,
-that is the only part we are going to cover.
+One of the biggest Java frameworks is [Spring](https://spring.io/),
+which amongst many things, also provides Dependency Injection.
 That is one of its advantages though:
 many projects already use Spring for other reasons,
 reducing the jump required to add the Dependency Injection framework.
@@ -76,37 +63,27 @@ which defines all the classes and how they are linked together.
 The other one is with annotations in the actual code
 that define how the interlinking of classes should work.
 
-[Guice](https://github.com/google/guice) was designed by Google
-to be a more lightweight alternative to Spring.
+Google's [Guice](https://github.com/google/guice) is a more lightweight alternative to Spring.
 The main idea is that it makes use of bindings,
 mapping dependencies to corresponding classes that should be filled in for those dependencies.
-Besides that it also makes use of annotations
-
+Besides that it also makes use of annotations.
 [Dagger](https://github.com/google/dagger) was created to be even more lightweight than Guice.
 Originally developed by Square and later forked to Dagger 2.0 by Google.
 It focuses more on the actual performance,
 making it more interesting for mobile solutions.
 Just like the other systems it mainly uses annotations for this.
 
-#### JavaScript frameworks
-
-{:.todo}
-There actually seem to be a lot of frameworks: inversifyJS, bottlejs, wire, electrolyte etc.
-Wire actually seems outdated.
-
-Due to the flexible nature of JavaScript,
-Dependency Injection frameworks tend to be less common than in Java,
-but there still are multiple available.
-One of the biggest ones is [InversifyJS](https://github.com/inversify/InversifyJS).
-Similarly to the Java libraries,
-it makes use of annotations to define the possible injections.
+In JavaScript, 
+Dependency Injection frameworks tend to be less common because of its flexible nature.
+Still, multiple frameworks are available, such as [bottlejs](https://github.com/young-steveo/bottlejs), [wire](https://github.com/cujojs/wire), and [electrolyte](https://github.com/jaredhanson/electrolyte), all backed by rather small communities.
+One of the biggest ones, [InversifyJS](https://github.com/inversify/InversifyJS),
+uses annotations similar to Java frameworks to define possible injections.
 Unlike standard JavaScript,
 it requires you to define interfaces and types,
 thereby allowing it to make use of this extra information to correctly handle the linking.
-For this it makes use of TypeScript.
+Therefore, it uses TypeScript.
 Additionally, just like Guice it also has a bindings file to link classes to interfaces.
 
-#### Comparison with Components.js
 Components.js differs from most of the beforementioned frameworks
 by having the Dependency Injection metadata external of the code in RDF files,
 both for describing what the classes look like, and how they should be linked together.
