@@ -273,6 +273,17 @@ with as prefix <code>oo</code>.</p>
 Note that we added a prefix <code>ex</code> to shorten the URIs.
 Additional metadata is added with the <a href="https://github.com/ewilderj/doap/wiki">Description of a Project (DOAP) vocabulary</a>, e.g., <code>doap:name</code>.</p>
 
+      <p>A module is considered a collection of components.
+Within object-oriented languages, this can correspond to for example a software library or an application.
+A component is typed as <code>oo:Component</code>, which is a <em>subclass</em> of <code>rdfs:Class</code>.
+The parameters to construct the component can therefore be defined as an <code>rdfs:Property</code> on a component.
+For instance,
+a software module representing a parser
+can be described as
+<code>ldfs:Datasource:Hdt a oo:Class.</code>,
+and a concrete instance is
+<code>:myHdtDatasource a ldfs:Datasource:Hdt</code>.</p>
+
       <figure id="module" class="listing">
 <pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
 PREFIX om: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-mapping#&gt;
@@ -287,27 +298,6 @@ ex:MyModule a oo:Module;
           <p><span class="label">Listing 1:</span> A description of a module <code>ex:MyModule</code>.</p>
         </figcaption>
 </figure>
-
-      <p>A module is considered a collection of components.
-Within object-oriented languages, this can correspond to for example a software library or an application.
-A component is typed as <code>oo:Component</code>, which is a <em>subclass</em> of <code>rdfs:Class</code>.
-The parameters to construct the component can therefore be defined as an <code>rdfs:Property</code> on a component.
-For instance,
-a software module representing a parser
-can be described as
-<code>ldfs:Datasource:Hdt a oo:Class.</code>,
-and a concrete instance is
-<code>:myHdtDatasource a ldfs:Datasource:Hdt</code>.</p>
-
-      <p><a href="#component">Listing 2</a> extends <code>MyModule</code> with a component <code>ex:MyModule/MyComponent</code> by adding an <code>oo:component</code> predicate.
-The type <code>oo:Class</code> is one of the several defined subclasses of <code>oo:Component</code>,
-which indicates that it is instantiatable based on parameters.
-Each component can refer to its path within a module using the <code>oo:componentPath</code> predicate,
-which can for instance be the package name in npm.
-The resulting description can be included in the module
-(e.g., as a JSON-LD file),
-or can be created and referred to externally.
-Afterwards, it can be reused by multiple dependents.</p>
 
       <figure id="component" class="listing">
 <pre><code>ex:MyModule a oo:Module;
@@ -328,22 +318,15 @@ ex:MyModule/MyComponent#name a oo:Parameter;
         </figcaption>
 </figure>
 
-      <p>The parameters that are used to instantiate an <code>oo:Class</code> are of type <code>oo:Parameter</code>.
-An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
-<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
-upon instantiation (<a href="#instantiating">Subsection 3.3</a>),
-a closed world will be assumed.
-The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
-
-      <p><a href="#module-ldf">Listing 3</a> shows a simplified example of the Linked Data Fragments (LDF) server npm module.
-It exposes several components such as an HDT and SPARQL datasource and a TPF server,
-each of which can take multiple parameters.
-These are provided with a unique identifier and definition,
-such that the software configuration can receive a semantic interpretation.</p>
-
-      <p>Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
-A general context is defined for the Object-Oriented Components ontology, which is available at <a href="https://linkedsoftwaredependencies.org/contexts/components.jsonld">https:/​/​linkedsoftwaredependencies.org/contexts/components.jsonld</a>.
-The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).</p>
+      <p><a href="#component">Listing 2</a> extends <code>MyModule</code> with a component <code>ex:MyModule/MyComponent</code> by adding an <code>oo:component</code> predicate.
+The type <code>oo:Class</code> is one of the several defined subclasses of <code>oo:Component</code>,
+which indicates that it is instantiatable based on parameters.
+Each component can refer to its path within a module using the <code>oo:componentPath</code> predicate,
+which can for instance be the package name in npm.
+The resulting description can be included in the module
+(e.g., as a JSON-LD file),
+or can be created and referred to externally.
+Afterwards, it can be reused by multiple dependents.</p>
 
       <figure id="module-ldf" class="listing">
 <pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
@@ -377,6 +360,23 @@ The HDT datasource takes an HDT file as parameter.
 The SPARQL datasource takes a SPARQL endpoint IRI as parameter.</p>
         </figcaption>
 </figure>
+
+      <p>The parameters that are used to instantiate an <code>oo:Class</code> are of type <code>oo:Parameter</code>.
+An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
+<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
+upon instantiation (<a href="#instantiating">Subsection 3.3</a>),
+a closed world will be assumed.
+The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
+
+      <p><a href="#module-ldf">Listing 3</a> shows a simplified example of the Linked Data Fragments (LDF) server npm module.
+It exposes several components such as an HDT and SPARQL datasource and a TPF server,
+each of which can take multiple parameters.
+These are provided with a unique identifier and definition,
+such that the software configuration can receive a semantic interpretation.</p>
+
+      <p>Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
+A general context is defined for the Object-Oriented Components ontology, which is available at <a href="https://linkedsoftwaredependencies.org/contexts/components.jsonld">https:/​/​linkedsoftwaredependencies.org/contexts/components.jsonld</a>.
+The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).</p>
 
       <h3 id="describing-object-mappings">Describing object mappings</h3>
       <p>The constructor injection described above works out of the box
