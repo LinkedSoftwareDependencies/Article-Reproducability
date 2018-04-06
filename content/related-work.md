@@ -16,7 +16,7 @@ At a slightly lower level, SWO includes interfaces, algorithms, versions, and th
 
 Ontologies that describe software configuration from a research workflow perspective are [LODFlow](cite:cites Rautenberg:2015:LWM:2814864.2814882), [Workflow-Centric Research Objects](cite:cites Belhajjame2015) with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> and the [Ontologies for Describing the Context of Scientific Experiment Processes](cite:cites Mayer2014) with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> to compliment the Research Objects model. 
 From a more generic perspective, there exist the [PROV Ontology](cito:citesAsAuthority PROVO), the [OPMW-PROV Ontology](cito:citesAsAuthority OPMWPROV), and the [DDI-RDF Discovery Vocabulary](cito:citesAsAuthority DDIRDF).
-However, these efforts can only cover (parts of) the connection between research and software, which is insuffient for Dependency Injection.
+However, these efforts can only cover (parts of) the connection between research and software, which is insufficient for Dependency Injection.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
@@ -27,13 +27,13 @@ This includes the distinctive concepts to describe software as code, software as
 but also Interfaces, Classes, Methods, the relationships between them, and workflow information on their invocation.
 Its extension, the Core Ontology of Software Components (COSC), moves closer to the topic of this article by describing interfaces and protocols of components.
 Similar in scope is the [Software Engineering Ontology Network (SEON)](cite:cites ruy2016seon), which consolidates multiple ontologies for the Software Engineering field.
-It includes a higher Core and Foundational layer, as well as multiple Domain-specific ontologies.
+It includes a higher Core and Foundational layer, as well as multiple domain-specific ontologies.
 Of particular interest is their Software Ontology (SwO) that captures the different artifacts in software.
 In general, both ontologies (or suites) view software from a <q>network of communicating concepts</q> perspective.
 This allows for exhaustive descriptions of complex software systems, but is not suited for describing class instances or aspects of modular programming (e.g., package dependencies).
 
 ### Dependency Injection frameworks
-The large spectrum of existing Dependency Injection frameworks indicates a high-demand for such systems.
+The large spectrum of existing Dependency Injection frameworks indicates a high demand for such systems.
 Dependency Injection considers every software component as independent,
 and all other components they depend on should be provided by an external source.
 A single component is only aware about how these dependencies can be used,
