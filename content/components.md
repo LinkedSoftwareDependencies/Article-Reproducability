@@ -23,8 +23,8 @@ and how the framework can instantiate this file to compose a working application
 
 The Object-Oriented Components ontology reuses Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software, which 
 provides operations that can be used by other components.
-The instantiation of such component requires certain parameters,
-analog to constructors arguments in object-oriented programming.
+The instantiation of such components requires certain parameters,
+analog to constructor arguments in object-oriented programming.
 This is interpreted in the broad sense: only _classes_, _objects_ and _constructor parameters_ are considered.
 An overview is given in [](#voc-oo-diagram).
 
@@ -58,7 +58,7 @@ can be described as
 and a concrete instance is
 `:myHdtDatasource a ldfs:Datasource:Hdt`.
 
-[](#component) extends `MyModule` with a component `ex:MyModule/MyComponent` by adding a `oo:component` predicate.
+[](#component) extends `MyModule` with a component `ex:MyModule/MyComponent` by adding an `oo:component` predicate.
 The type `oo:Class` is one of the several defined subclasses of `oo:Component`,
 which indicates that it is instantiatable based on parameters.
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
@@ -117,7 +117,7 @@ or abbreviated JSON-LD strings.
 
 New libraries that use Components.js
 can be designed for such single-parameter constructors.
-For all other types constructors,
+For all other constructor types,
 a mapping mechanism is needed
 between the RDF properties
 and the concrete parameter order of the constructor.
