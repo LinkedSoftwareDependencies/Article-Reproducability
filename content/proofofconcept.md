@@ -2,7 +2,7 @@
 {:#proof-of-concept}
 
 To demonstrate the merits of a semantic Dependency Injection framework for JavaScript,
-we present a proof of concept using the Node Package Manager (npm) library.
+we present a proof of concept using the Node Package Manager (NPM) library.
 NPM is a large collection of modules with over 480,000 JavaScript libraries,
 all with their own features and requirements.
 Such package contains the description of the project together with all its versions.
@@ -10,18 +10,16 @@ Using the terminology from [](#semantic-dependency-injection),
 a specific version of a NPM package is considered a _module_,
 which contains the specific dependencies and a link to the actual implementation.
 
-### Describing NPM packages
-
 NPM stores the metadata of every package in a [CouchDB](http://couchdb.apache.org/)
 [instance](https://registry.npmjs.org/),
 which includes the information added by the package developer in the [`package.json`](https://docs.npmjs.com/files/package.json) file,
-and additional metadata added by the npm publishing process.
+and additional metadata added by the NPM publishing process.
 An example of a JSON representation of the N3.js NPM package can be found at <https://registry.npmjs.org/n3/>{:.iri-link},
 which contains all the general descriptions that apply to all packages in this module,
 such as the name, homepage and description.
 To uniquely identify software components and,
 more importantly, interlink them,
-we added a [JSON-LD](cito:citesAsAuthority JSONLD) context to the JSON metadata provided by the npm registry, 
+we added a [JSON-LD](cito:citesAsAuthority JSONLD) context to the JSON metadata provided by the NPM registry, 
 and published this RDF in a [server](https://github.com/LinkedSoftwareDependencies/npm-extraction-server){:.mandatory}.
 This context is available at <https://linkedsoftwaredependencies.org/contexts/npm.jsonld>{:.iri-link} and maps most of the npm tags to corresponding RDF predicates,
 leaving these tags unchanged in the JSON-LD representation.
@@ -68,7 +66,7 @@ Prefixes omitted for brevity.
 </figcaption>
 </figure>
 
-An important part of an npm package description are the dependencies
+An important part of an NPM package description are the dependencies
 and their semantic versions.
 For example, N3 0.10.0 has a dependency on `async ^2.0.1`.
 `^2.0.1` is a semantic version and corresponds to any version number
@@ -93,51 +91,28 @@ used by a specific package installation in RDF.
 This way the exact installation that was used can be described,
 without having to rely on the interpretation of semantic versions which can change over time.
 
-### Publication & Querying
-
 The semantic description of software metadata provides a useful platform for simplifying tasks that require a lot manual work,
 such as discovering license incompatibilities between projects, which are now possible using a [SPARQL query](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Fbundle%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-3.0.html%3E.%0A%20%20%3Fbundle%20npm%3Adependency%20%3Fdependency.%0A%20%20%3Fdependency%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-2.0.html%3E.%0A%7D).
-This even allows us to come up with SPARQL queries corresponding to some of the questions
-that [the Web was intended to give an answer for](cite:citesForInformation InformationManagementAProposal),
-such as <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
+All 480,000 NPM packages produced 300,000,000+ triples,
+which we publish through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2014) interface and as [HDT](cite:cites hdt) and [Turtle](cite:cites turtle) dumps.
+These are located at [https://linkedsoftwaredependencies.org](https://linkedsoftwaredependencies.org/){:.mandatory}, together with subject pages for each bundle, module and user.
+The triples are collected and republished daily to stay up-to-date with the available information on NPM.
 
-
-
-480,000 npm packages correspond to 300,000,000+ triples when we collect the information from all packages.
-Next to the subject pages for each bundle, module and user,
-we also publish [all of this data](https://linkedsoftwaredependencies.org/){:.mandatory} through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2014) interface
-and as [HDT](cite:cites hdt) and [Turtle](cite:cites turtle) dumps.
-This data is republished daily to stay up-to-date with the available information on npm.
-Every day, we collect all triples that are generated by our system in a Turtle file.
-After that, we convert this Turtle file to an HDT file.
-Finally, this HDT file is loaded into a [TPF server](https://github.com/LinkedDataFragments/Server.js) instance,
-which allows us to publish this data through a low-cost interface that still enables querying.
-
-[Custom SPARQL queries](https://query.linkedsoftwaredependencies.org/){:.mandatory} can be evaluated over this dataset to gain insights.
-
-
-<figure id="query-ld" class="listing">
-````/code/query-ld.txt````
-<figcaption markdown="block">
-Something Something darkside
-</figcaption>
-</figure>
-
-such as retrieving all dependencies of a bundle 
+Queries are executed using a [Triple Pattern Fragments browser client](https://query.linkedsoftwaredependencies.org), which can provide insights that [the Web was intended to give](cite:citesForInformation InformationManagementAProposal).
+Examples are given in [](#query-used) and [](#query-who), which answer the questions <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
 
 <figure id="query-used" class="listing">
 ````/code/query-used.txt````
 <figcaption markdown="block">
-Something Something darkside
+SPARQL query to discover all dependencies of a package.
 </figcaption>
 </figure>
-
-
-finding the author of a bundle.
 
 <figure id="query-who" class="listing">
 ````/code/query-who.txt````
 <figcaption markdown="block">
-Something Something darkside
+SPARQL query to discover the author of a package.
 </figcaption>
 </figure>
+
+As a complete example, the documentation of Components.js has been made self-instantiatable using its own framework and is available at [http://componentsjs.readthedocs.io/en/latest/example/](http://componentsjs.readthedocs.io/en/latest/example/).

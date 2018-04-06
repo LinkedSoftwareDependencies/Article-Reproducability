@@ -9,25 +9,23 @@ a Dependency Injection (DI) design benefits experimental software.
 Various wiring of independent components can be created, tested, and compared---even through means of static program analysis.
 Within Semantic Web,
 the opportunity exists to move beyond the local scope of existing DI frameworks and 
-facilitate exact replication on the Web with addressable, citable, dereferencable, unambiguous software configurations.
+facilitate exact replication on the Web with addressable, dereferencable, unambiguous software configurations.
 <!-- Task         -->
 Therefore, 
 we introduce Components.js, a Semantic Dependency Injection framework for JavaScript,
 that (i) describes software components using a _Object-Oriented Components_ and _Object Mapping_ ontology, 
 (ii) automatically instantiates experimental configurations using linking and dereferencing, and
-(iii) is complementary to the _modular programming_ common to package managers.
+(iii) is complementary to the _modular programming_ of package managers.
 <!-- Object       -->
-This article explains the framework, 
+This article presents the framework, 
 its application, 
 and incorporates a proof-of-concept on discovery of experimental software configurations on the Web.
 <!-- Findings     -->
 All 480,000+ Node Package Manager libraries were published in
 more than 3 million RDF triples that semantically describe configurations, which interlink different modules.
-Thereby, a set of queries provide insights such as what experiments use the same algorithm, 
-the author of certain code, and the different implementations of the same function.
+Thereby, a set of queries provide insights like what experiments use the same algorithm, 
+or the different implementations of the same function.
 <!-- Conclusion   -->
-Components.js enables research articles to refer to fine-grained, 
-instantiatable descriptions of experimental setups by URL,
-which completes the provenance chain of experimental results.
+Components.js enables research articles to complete the provenance chain of experimental results.
 This ultimately brings faster and more accurate reproductions of experiments,
 and facilitates the evaluation of new research contributions.

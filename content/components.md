@@ -62,7 +62,7 @@ and a concrete instance is
 The type `oo:Class` is one of the several defined subclasses of `oo:Component`,
 which indicates that it is instantiatable based on parameters.
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
-which can for instance be the package name in npm.
+which can for instance be the package name in NPM.
 The resulting description can be included in the module
 (e.g., as a JSON-LD file),
 or can be created and referred to externally.
@@ -82,7 +82,7 @@ upon instantiation ([](#instantiating)),
 a closed world will be assumed.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
-[](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server npm module.
+[](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server NPM module.
 It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
@@ -90,7 +90,7 @@ such that the software configuration can receive a semantic interpretation.
 
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components ontology, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
-The dereferencable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
+The dereferencable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in NPM's package.json file).
 
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````
@@ -208,5 +208,3 @@ which is identified by [http://example.org/config-ldf.ttl]().
 Note that, while Linked Data has an open-world assumption, our dependency injector operates in the closed-world environment of OOP.
 Hence, we assume that all the necessary constructor arguments are included in the configuration and are available to the loader,
 as this is required for features such as default arguments.
-
-As a complete example, the documentation of Components.js has been made self-instantiatable using its own framework and is available at [http://componentsjs.readthedocs.io/en/latest/example/](http://componentsjs.readthedocs.io/en/latest/example/).

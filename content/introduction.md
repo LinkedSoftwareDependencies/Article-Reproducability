@@ -1,17 +1,17 @@
 ## Introduction
 {:#introduction}
 
-Among the broad range of research fields conveyed by the Semantic Web domain, 
+Among the many fields conveyed by the Semantic Web domain, 
 [Empirical Software Engineering](cite:citesAsAuthority shull2007guide,futureEmpirical) is undeniably prominent.
-This field attempts to relieve tension between the curiosity driven _science_ and the utility driven _engineering_,
-by concerning itself with [<q>empirical observation of software engineering artifacts and the empirical validation of software engineering theories
-and assumptions</q>](cite:citesAsAuthority monperrus2015introduction).
+Here, research concerns itself with [<q>empirical observation of software engineering artifacts and the empirical validation of software engineering theories
+and assumptions</q>](cite:citesAsAuthority monperrus2015introduction),
+thus relieving tension between the curiosity driven _science_ and the utility driven _engineering_.
 Evidently,
-this includes developing software in a way that improves _reporting_, i.e., supporting a systematic, standardized presentation of empirical research in publications [](cite:citesAsAuthority jedlitschka2008reporting); 
-and conducting _controlled experiments_, i.e., testing hypotheses where one or more independent variables (treatment) are manipulated to measure their effect on one or more dependent variables (e.g., execution time, resource consumption, etc.) [](cite:citesAsAuthority easterbrook2008selecting).
+this includes developing software in a way that improves _reporting_, i.e., supporting a systematic, standardized presentation of empirical research in publications [](cite:citesAsAuthority jedlitschka2008reporting),
+and conducting _controlled experiments_, i.e., testing hypotheses where one or more independent variables (treatment) are manipulated to measure their effect on one or more dependent variables (e.g., execution time, etc.) [](cite:citesAsAuthority easterbrook2008selecting).
 Experimental software therefore preferably supports the [exact replication of experimental procedures](cite:citesAsAuthority shull2008role), 
-which can be _dependent_---all the conditions of the experiment remain the same (or very similar),
-or _independent_---one or more major aspects of the conditions of the experiment are deliberately varied.
+which keep the conditions of the experiment _dependent_---all remain the same (or very similar),
+or _independent_---one or more major aspects are deliberately varied.
 
 Rather than obscuring them in monolithic, non transparent software, which is often reported in an ambiguous way by only name or version number,
 different algorithms, or implementations thereof, need to be easily swappable in a transparent manner.
@@ -29,7 +29,7 @@ and also improve in reporting to help finding the right experiment, understandin
 To this extent, 
 we present _Components.js_, 
 a Semantic Dependency Injection framework for JavaScript applications that makes software configuration _addressable_ and _discoverable_, hence surpassing existing Dependency Injection frameworks.
-The framework is open-source, available on [npm](https://www.npmjs.com/package/lsd-components), and its complete documentation can be found at [https://componentsjs.readthedocs.io](https://componentsjs.readthedocs.io).
+The framework is open-source, available on [NPM](https://www.npmjs.com/package/lsd-components), and its complete documentation can be found at [https://componentsjs.readthedocs.io](https://componentsjs.readthedocs.io).
 Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing) and the introduced _Object Mapping ontology_.
 By publishing such descriptions,
 the composition of experimental software, and parts thereof, can be _unambiguously identified_ by IRIs and 
@@ -37,18 +37,15 @@ retrieved with _dereferencing_.
 Components.js automatically _instantiates_ such software configuration, including resolving the necessary dependencies, 
 and is fully compatible with the modular programming approach.
 In total, this entails the following benefits:
+(i) Extended reporting of experiments in research articles with an IRI (i.e., to facilitate recreating the same conditions);
+(ii) Improved transparency and replication of experimental software. Components and configurations can be analyzed in detail, easily replaced, and independently tested;
+(iii) Facilitation of static program analysis through the use of external, semantic configuration files;
+(iv) A joined data space of research articles and experimental software, enabling discoverable and queryable links between research effort and, for instance, applied algorithms or implementations.
 
-- Extended reporting of experiments in research articles with an IRI (i.e., to facilitate recreating the same conditions);
-- Improved transparency and replication of experimental software. Components and configurations can be analyzed in detail, easily replaced, and independently tested;
-- Facilitation of static program analysis through the use of external, semantic configuration files;
-- A joined data space of research articles and experimental software, enabling discoverable and queryable links between research effort and, for instance, applied algorithms or implementations.
-
-Finally, we include a proof of concept based on the Node.js package manager [npm](https://www.npmjs.com/).
+Finally, we include a proof of concept based on the Node.js package manager [NPM](https://www.npmjs.com/).
 An RDF-based description was generated for 480,000+ packages. Thereby, 
-we demonstrate 
-(i) the description of an existing application and its available components (available as modules);
-(ii) the automated instantiation of such a configuration; and
-(iii) the discoverability with a set of insightful queries.
+we demonstrate the description of an existing application and its available components (available as modules),
+the automated instantiation of such a configuration, and the discoverability with a set of insightful queries.
 Note that, although this is a JavaScript implementation, the principles are generalizable, 
 can be implemented in other languages, or can improve cross-language replication of software.
 
