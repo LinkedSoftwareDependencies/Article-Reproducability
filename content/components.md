@@ -6,7 +6,7 @@ These are semantic by default (i.e., described in RDF using a set of vocabularie
 
 In this respect, Components.js distinguishes between three main concepts:
 
-- **Module**: a software package containing zero or more components. This is equivalent to a Node module or NPM package.
+- **Module**: a software package containing zero or more components. This is equivalent to a Node module or npm package.
 
 - **Component**: a class that can be instantiated by creating a new instance of that type with zero or more parameter values. Parameters are defined by the class and its superclasses.
 
@@ -62,7 +62,7 @@ and a concrete instance is
 The type `oo:Class` is one of the several defined subclasses of `oo:Component`,
 which indicates that it is instantiatable based on parameters.
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
-which can for instance be the package name in NPM.
+which can for instance be the package name in npm.
 The resulting description can be included in the module
 (e.g., as a JSON-LD file),
 or can be created and referred to externally.
@@ -82,7 +82,7 @@ upon instantiation ([](#instantiating)),
 a closed world will be assumed.
 The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
-[](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server NPM module.
+[](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server npm module.
 It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
 These are provided with a unique identifier and definition,
@@ -90,7 +90,7 @@ such that the software configuration can receive a semantic interpretation.
 
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components ontology, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
-The dereferencable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in NPM's package.json file).
+The dereferencable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
 
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````
@@ -189,7 +189,7 @@ The initial steps for using the framework are shown in [](#components.js).
 First, it provides a `Loader` class that acts as an assembler.
 This `Loader` provides _constructor injection_:
 it dynamically calls the constructor of the component and passes the configured parameters in a single object argument.
-Then, a module description is registered, which can be retrieved by automatically scanning NPM modules, 
+Then, a module description is registered, which can be retrieved by automatically scanning npm modules, 
 parsing a downloaded RDF document via URL, or reading a raw triple stream.
 At the time of writing, the parser accepts RDF documents serialized as either JSON-LD, Turtle, TriG, N-Triples or N-Quads.
 In this example, the Linked Data Fragments module description from [](#module-ldf) is registered as [http://example.org/my-ldf-server.ttl]().

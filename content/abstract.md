@@ -7,9 +7,9 @@ Often, these ought to be _exact_: the experimental procedures and its accompanyi
 Because different algorithms, or implementations thereof, need to be easily swappable in a transparent manner,
 a Dependency Injection (DI) design benefits experimental software.
 Various wiring of independent components can be created, tested, and compared---even through means of static program analysis.
-Within Semantic Web,
+Within the Semantic Web,
 the opportunity exists to move beyond the local scope of existing DI frameworks and 
-facilitate exact replication on the Web with addressable, dereferencable, unambiguous software configurations.
+facilitate exact replication on the Web with addressable, dereferencable, and unambiguous software configurations.
 <!-- Task         -->
 Therefore, 
 we introduce Components.js, a Semantic Dependency Injection framework for JavaScript,
@@ -21,8 +21,8 @@ This article presents the framework,
 its application, 
 and incorporates a proof-of-concept on discovery of experimental software configurations on the Web.
 <!-- Findings     -->
-All 480,000+ Node Package Manager libraries were published in
-more than 3 million RDF triples that semantically describe configurations, which interlink different modules.
+All 600,000+ Node Package Manager libraries were published in
+more than 300 million RDF triples that semantically describe configurations, which interlink different modules.
 Thereby, a set of queries provide insights like what experiments use the same algorithm, 
 or the different implementations of the same function.
 <!-- Conclusion   -->
