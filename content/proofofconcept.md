@@ -19,13 +19,13 @@ which contains all the general descriptions that apply to all packages in this m
 such as the name, homepage and description.
 To uniquely identify software components and,
 more importantly, interlink them,
-we added a [JSON-LD](cito:citesAsAuthority JSONLD) context to the JSON metadata provided by the npm registry, 
+we added a JSON-LD context to the JSON metadata provided by the npm registry, 
 and published this RDF in a [server](https://github.com/LinkedSoftwareDependencies/npm-extraction-server){:.mandatory}.
 This context is available at <https://linkedsoftwaredependencies.org/contexts/npm.jsonld>{:.iri-link} and maps most of the npm tags to corresponding RDF predicates,
 leaving these tags unchanged in the JSON-LD representation.
 
 For data fields that could not be mapped by using just the JSON-LD context,
-such as concatenating values to create a IRI,
+such as concatenating values to create an IRI,
 we modified some of the input JSON before exporting it to JSON-LD.
 The limitations of context mapping necessitated
 some other changes,
@@ -94,7 +94,7 @@ without having to rely on the interpretation of semantic versions which can chan
 The semantic description of software metadata provides a useful platform for simplifying tasks that require a lot manual work,
 such as discovering license incompatibilities between projects, which are now possible using a [SPARQL query](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Fbundle%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-3.0.html%3E.%0A%20%20%3Fbundle%20npm%3Adependency%20%3Fdependency.%0A%20%20%3Fdependency%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-2.0.html%3E.%0A%7D).
 All 600,000 npm packages produced 300,000,000+ triples,
-which we publish through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2014) interface and as [HDT](cite:cites hdt) and [Turtle](cite:cites turtle) dumps.
+which we publish through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2014) interface.
 These are located at [https://linkedsoftwaredependencies.org](https://linkedsoftwaredependencies.org/){:.mandatory}, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.
 

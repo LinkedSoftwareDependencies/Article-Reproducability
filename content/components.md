@@ -90,7 +90,7 @@ such that the software configuration can receive a semantic interpretation.
 
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components ontology, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
-The dereferencable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
+The dereferencaable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
 
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````

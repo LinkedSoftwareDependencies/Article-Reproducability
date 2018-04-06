@@ -13,9 +13,9 @@ Experimental software therefore preferably supports the [exact replication of ex
 which keep the conditions of the experiment _dependent_ (all remain the same or very similar),
 or _independent_ (one or more major aspects are deliberately varied).
 
-Rather than obscuring them in monolithic, non transparent software, which is often reported in an ambiguous way by only name or version number,
-different algorithms, or implementations thereof, need to be easily swappable in a transparent manner.
-The latter is embodied by the [Dependency Injection](cite:cites DependencyInjection) principle (e.g., implemented by the [Spring](https://projects.spring.io/spring-framework/) framework),
+Rather than obscuring experimental software in monolithic, non-transparent packages, often referred to in an ambiguous way by only name or version number,
+different algorithms and implementations thereof need to be easily swappable in a transparent manner.
+The latter is embodied by the [Dependency Injection](cite:cites DependencyInjection) pattern,
 where instead of custom code, a generic framework---the _assembler_---determines the flow of control and calls upon individual _software components_ when needed.
 Such components are
 <q>globs of software that are intended to be used, without change, by an application that is out of the control of the writers of the component</q> [](cite:providesQuotationFor DependencyInjection),
@@ -26,7 +26,7 @@ With the Semantic Web in mind however,
 these configurations could move beyond their local scope,
 and also improve in reporting to help finding the right experiment, understanding how it is conducted, and assess the validity of its results [](cite:citesAsAuthority jedlitschka2008reporting).
 
-To this extent, 
+To this end, 
 we present _Components.js_, 
 a Semantic Dependency Injection framework for JavaScript applications that makes software configuration _addressable_ and _discoverable_, hence surpassing existing Dependency Injection frameworks.
 The framework is open-source, available on [npm](https://www.npmjs.com/package/lsd-components), and its complete documentation can be found at [https://componentsjs.readthedocs.io](https://componentsjs.readthedocs.io).
@@ -37,22 +37,14 @@ retrieved with _dereferencing_.
 Components.js automatically _instantiates_ such software configurations, including resolving the necessary dependencies, 
 and is fully compatible with the modular programming approach.
 In total, this entails the following benefits:
-(i) Extended reporting of experiments in research articles with an IRI (i.e., to facilitate recreating the same conditions);
-(ii) Improved transparency and replication of experimental software. Components and configurations can be analyzed in detail, easily replaced, and independently tested;
-(iii) Facilitation of static program analysis through the use of external, semantic configuration files;
-(iv) A joined data space of research articles and experimental software, enabling discoverable and queryable links between research effort and, for instance, applied algorithms or implementations.
+(i) extended reporting of experiments in research articles by IRI;
+(ii) improved transparency and replication of experimental software;
+(iii) facilitation of static program analysis through the use of external, semantic configuration files;
+(iv) a joined data space of research articles and experimental software, enabling discoverable and queryable links between research and implementations.
 
-Finally, we include a proof of concept based on the Node.js package manager [npm](https://www.npmjs.com/).
+Finally, we include a proof of-concept based on the Node.js package manager [npm](https://www.npmjs.com/).
 An RDF-based description was generated for 600,000+ packages. Thereby, 
 we demonstrate the description of an existing application and its available components (available as modules),
 the automated instantiation of such a configuration, and the discoverability with a set of insightful queries.
 Note that, although this is a JavaScript implementation, the principles are generalizable, 
 can be implemented in other languages, or can improve cross-language replication of software.
-
-The remainder of this article is structured as follows.
-First, we discuss the semantic description of software and other Dependency Injection frameworks
-in [](#related-work).
-Then, [](#semantic-dependency-injection) introduces Components.js and shows how RDF-based software configurations can be instantiated directly from the Web.
-Next, 
-[](#proof-of-concept) describes the Proof of Concept and its generality is discussed in [](#discussion).
-Finally, we discuss our conclusions and future work in [](#conclusion).

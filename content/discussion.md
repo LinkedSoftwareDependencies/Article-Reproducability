@@ -53,9 +53,9 @@ The Linked Data Fragments server, for instance, is a reusable research platform.
 The LDF server and client can be compatible with multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
 Components.js requires only one "core version" to exist, while many alternative configurations can co-exist.
 Support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
-Since components and configurations are identified by a IRI,
+Since components and configurations are identified by an IRI,
 they can exist anywhere on the Web.
-Based on a IRI, the injection framework can therefore instantiate software,
-and wire its dependent components together automatically.
-The power of the Web is thereby leveraged, which simplifies the replication of existing experiments
+Based on an IRI, the injection framework can therefore instantiate software,
+and wire its dependent components together.
+The power of the Web is thereby leveraged, simplifying the replication of existing experiments
 and the creation of new ones.

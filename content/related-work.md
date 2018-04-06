@@ -34,9 +34,8 @@ This allows for exhaustive descriptions of complex software systems, but is not 
 
 ### Dependency Injection frameworks
 The large spectrum of existing Dependency Injection frameworks indicates a high demand for such systems.
-Dependency Injection considers every software component as independent,
-and all other components they depend on should be provided by an external source.
-A single component is only aware about how these dependencies can be used,
+Dependency Injection considers every software component as independent:
+a single component is only aware about how these dependencies can be used,
 but not about their whereabouts or how they were created.
 The absence of internal dependencies simplifies testing separate components,
 because their dependencies can be easily mocked.
@@ -62,16 +61,8 @@ The first one is through an external XML configuration file
 which defines all the classes and how they are linked together.
 The other one is with annotations in the actual code
 that define how the interlinking of classes should work.
-
-Google's [Guice](https://github.com/google/guice) is a more lightweight alternative to Spring.
-The main idea is that it makes use of bindings,
-mapping dependencies to corresponding classes that should be filled in for those dependencies.
-Besides that it also makes use of annotations.
+Google's [Guice](https://github.com/google/guice) is a more lightweight alternative to Spring;
 [Dagger](https://github.com/google/dagger) was created to be even more lightweight than Guice.
-Originally developed by Square and later forked to Dagger 2.0 by Google.
-It focuses more on the actual performance,
-making it more interesting for mobile solutions.
-Just like the other systems it mainly uses annotations for this.
 
 In JavaScript, 
 Dependency Injection frameworks tend to be less common because of its flexible nature.
@@ -87,6 +78,5 @@ Additionally, just like Guice it also has a bindings file to link classes to int
 Components.js differs from most of the beforementioned frameworks
 by having the Dependency Injection metadata external of the code in RDF files,
 both for describing what the classes look like, and how they should be linked together.
-This creates a bit more overhead when actually creating the classes,
-but does provide the additional semantic benefits mentioned in this paper,
-such as identification, dereferencing and discoverability.
+This provides the additional semantic benefits mentioned in this paper,
+such as identification, dereferencing, and discoverability.

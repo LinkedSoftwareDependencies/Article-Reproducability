@@ -4,12 +4,9 @@
 In this article, we introduce Components.js, a dependency injection framework that
 (i) _interprets_ semantically described software components and their configuration, and thereby
 (ii) automatically _instantiates_ experimental JavaScript Applications.
-Semantic Dependency Injection brings some of the Linked Data merits to empirical software engineering,
-enabling experimental software to be more transparent, flexible, and unambiguously citable.
-In that context, we introduced the _Object-Oriented Components_ and _Object Mapping_ ontology, 
-along with the methods needed to apply them.
-Publishing this data alongside experimental results can aid the replication of experiments.
-This enables a joined discovery of experimental software and research articles by means of querying.
+Semantic Dependency Injection brings the Linked Data merits to empirical software engineering,
+enabling experimental software setups to be more transparent, flexible, and _unambiguously_ citable.
+This enables joint discovery of experimental software and research articles by means of querying.
 Furthermore, experiment reporting can be extended with an IRI to the software configuration.
 The use of semantic configuration files can also facilitate more advanced static program analysis.
 
