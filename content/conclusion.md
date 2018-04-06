@@ -25,15 +25,3 @@ This even allows us to come up with SPARQL queries corresponding to some of the 
 that [the Web was intended to give an answer for](cite:citesForInformation InformationManagementAProposal),
 such as <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
 
-Through this work, we make it easier to build sustainable research platforms,
-which helps pave the stairs to the shoulders of giants.
-The Linked Data Fragments server, for instance, is a reusable research platform.
-The LDF server and client can be compatible with multiple APIs, have multiple algorithms, etc.
-Through this work, only one "core version" is necessary, and many different configurations can co-exist,
-where support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
-Since components and configurations are identified by a IRI,
-they can exist anywhere on the Web.
-Based on a IRI, the injection framework can therefore instantiate software,
-and wire its dependent components together automatically.
-We thereby leverage the power of the Web to simplify the reproduction of existing experiments
-and the creation of new ones.

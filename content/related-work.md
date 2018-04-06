@@ -21,7 +21,7 @@ Such descriptions are however interpretive in that any given tool is subject to 
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.
 
-Much more low-level and exact is the [Core Software Ontology](cite:cites oberle2009ontology),
+Much more low-level and exact is the [Core Software Ontology (CSO)](cite:cites oberle2009ontology),
 which provides a foundational vocabulary that is designed for extensibility.
 This includes the distinctive concepts to describe software as code, software as object to computational hardware, and software as a running computational activity,
 but also Interfaces, Classes, Methods, the relationships between them, and workflow information on their invocation.
@@ -29,20 +29,8 @@ Its extension, the Core Ontology of Software Components (COSC), moves closer to 
 Similar in scope is the [Software Engineering Ontology Network (SEON)](cite:cites ruy2016seon), which consolidates multiple ontologies for the Software Engineering field.
 It includes a higher Core and Foundational layer, as well as multiple Domain-specific ontologies.
 Of particular interest is their Software Ontology (SwO) that captures the different artifacts in software.
-
-
-TODO: finish this paragraph
-
-
-
-
-
-
-
-
-
-
-
+In general, both ontologies (or suites) view software from a <q>network of communicating concepts</q> perspective.
+This allows for exhaustive descriptions of complex software systems, but is not suited for describing class instances or aspects of modular programming (e.g., package dependencies).
 
 ### Dependency Injection frameworks
 The main idea behind Dependency Injection is that every software component is independent,
