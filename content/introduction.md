@@ -49,7 +49,7 @@ In total, this entails the following benefits:
 (iv) a joint data space of research articles and experimental software, enabling discoverable and queryable links between research and implementations.
 
 Finally, we include a proof of-concept based on the Node.js package manager [npm](https://www.npmjs.com/).
-An RDF-based description was generated for 600,000+ packages. Thereby, 
+An RDF-based description was generated for 700,000+ packages. Thereby, 
 we demonstrate the description of an existing application and its available components (available as modules),
 the automated instantiation of such a configuration, and the discoverability with a set of insightful queries.
 Note that, although this is a JavaScript implementation, the principles are generalizable, 

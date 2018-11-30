@@ -21,7 +21,7 @@ This article presents the framework,
 its application, 
 and incorporates a proof of concept on discovery of experimental software configurations on the Web.
 <!-- Findings     -->
-All 600,000+ Node Package Manager libraries were described
+All 700,000+ Node Package Manager libraries were described
 as more than 300 million RDF triples, which interlink different modules.
 Thereby, a set of queries provide insights like what experiments use the same algorithm, 
 or the different implementations of the same function.
