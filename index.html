@@ -122,16 +122,13 @@ we present <em>Components.js</em>,
 a semantic dependency Injection framework for JavaScript applications that makes software configuration <em>addressable</em> and <em>discoverable</em>, hence surpassing existing dependency injection frameworks.
 The framework is <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​Components.js">open-source</a>,
 available on <a href="https://www.npmjs.com/package/componentsjs" class="mandatory" data-link-text="https:/​/​www.npmjs.com/​package/​componentsjs">npm</a>,
-and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/" class="mandatory" data-link-text="https:/​/​componentsjs.readthedocs.io/​">https:/​/​componentsjs.readthedocs.io/</a>
-(canonical citation: <a href="https://doi.org/10.5281/zenodo.1243988">https:/​/​doi.org/10.5281/zenodo.1243988</a>).
+and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/" class="mandatory" data-link-text="https:/​/​componentsjs.readthedocs.io/​">https:/​/​componentsjs.readthedocs.io/</a>.
 Furthermore, it is being actively used in tools such as
 the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Linked Data Fragments server</a></span> <a href="#ref-8" class="reference">[8]</a> and <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica</a> <a href="#ref-9" class="reference">[9]</a>.
 Within Components.js,
 software configurations and modules are described as Linked Data using
 the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components vocabulary</em></a> <a href="#ref-10" class="reference">[10]</a>
-(canonical citation: <a href="https://doi.org/10.5281/zenodo.1245660">https:/​/​doi.org/10.5281/zenodo.1245660</a>)
-and the introduced <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object Mapping vocabulary</em></a> <a href="#ref-10" class="reference">[10]</a>
-(canonical citation: <a href="https://doi.org/10.5281/zenodo.1245658">https:/​/​doi.org/10.5281/zenodo.1245658</a>).
+and the introduced <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object Mapping vocabulary</em></a> <a href="#ref-10" class="reference">[10]</a>.
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be <em>unambiguously identified</em> by IRIs and 
 retrieved through <em>dereferencing</em>.
@@ -286,13 +283,7 @@ Additional metadata is added with the <a href="https://github.com/ewilderj/doap/
       <p>A module is considered a collection of components.
 Within object-oriented languages, this can correspond to for example a software library or an application.
 A component is typed as <code>oo:Component</code>, which is a <em>subclass</em> of <code>rdfs:Class</code>.
-The parameters to construct the component can therefore be defined as an <code>rdfs:Property</code> on a component.
-For instance,
-a software module representing a type of datasource
-can be described as
-<code>ldfs:Datasource:Hdt a oo:Class.</code>,
-and a concrete instance is
-<code>:myHdtDatasource a ldfs:Datasource:Hdt</code>.</p>
+The parameters to construct the component can therefore be defined as an <code>rdfs:Property</code> on a component.</p>
 
       <figure id="module" class="listing">
 <pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
@@ -328,7 +319,8 @@ ex:MyModule/MyComponent#name a oo:Parameter;
         </figcaption>
 </figure>
 
-      <p><a href="#component">Listing 2</a> extends <code>MyModule</code> with a component <code>ex:MyModule/MyComponent</code> by adding an <code>oo:component</code> predicate.
+      <p>For example, <a href="#component">Listing 2</a> shows how to add the component <code>ex:MyModule/MyComponent</code>
+to the module <code>MyModule</code> via <code>oo:component</code>.
 The type <code>oo:Class</code> is one of the several defined subclasses of <code>oo:Component</code>,
 which indicates that it is instantiatable based on parameters.
 Each component can refer to its path within a module using the <code>oo:componentPath</code> predicate,
@@ -337,6 +329,13 @@ The resulting description can be included in the module
 (e.g., as a JSON-LD file),
 or can be created and referred to externally.
 Afterwards, it can be reused by multiple dependents.</p>
+
+      <p>The parameters that are used to instantiate an <code>oo:Class</code> are of type <code>oo:Parameter</code>.
+An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
+<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
+upon instantiation (<a href="#instantiating">Subsection 3.3</a>),
+a closed world will be assumed.
+The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
 
       <figure id="module-ldf" class="listing">
 <pre><code>PREFIX oo: &lt;https://linkedsoftwaredependencies.org/vocabularies/object-oriented#&gt;
@@ -371,13 +370,6 @@ The SPARQL datasource takes a SPARQL endpoint IRI as parameter.</p>
         </figcaption>
 </figure>
 
-      <p>The parameters that are used to instantiate an <code>oo:Class</code> are of type <code>oo:Parameter</code>.
-An <code>oo:Parameter</code> is a <em>subclass</em> of <code>rdfs:Property</code>, which simplifies its usage as an RDF property.
-<code>oo:defaultValue</code> allows parameters to have a default value when no other values have been provided:
-upon instantiation (<a href="#instantiating">Subsection 3.3</a>),
-a closed world will be assumed.
-The <code>oo:uniqueValue</code> predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.</p>
-
       <p><a href="#module-ldf">Listing 3</a> shows a simplified example of the Linked Data Fragments (LDF) server npm module.
 It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
@@ -386,9 +378,7 @@ such that the software configuration can receive a semantic interpretation.</p>
 
       <p>Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components vocabulary, which is available at <a href="https://linkedsoftwaredependencies.org/contexts/components.jsonld">https:/​/​linkedsoftwaredependencies.org/contexts/components.jsonld</a>.
-The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).
-Further documentation on how the Object-Oriented Components vocabulary can be used is available at
-<a href="https://componentsjs.readthedocs.io/en/latest/configuration/components/general/">https:/​/​componentsjs.readthedocs.io/en/latest/configuration/components/general/</a></p>
+The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).</p>
 
       <h3 id="describing-object-mappings">Describing object mappings</h3>
       <p>The constructor injection described above works out of the box
@@ -426,13 +416,6 @@ Together, they can express all ways
 in which the flat object from the RDF description
 maps to an ordered list of simple or complex constructor parameters.</p>
 
-      <p><a href="#module-ldf-mapped">Listing 4</a> shows the mapping of the LDF component parameters to the constructor implementation.
-This description complements the component definitions from <a href="#module-ldf">Listing 3</a>
-as it provides an implementation view on the component constructors.
-Like the component definitions,
-a mapping is only necessary once per module
-and can be reused across dependents.</p>
-
       <figure id="module-ldf-mapped" class="listing">
 <pre><code>ldfs:Server:Tpf oo:constructorArguments ([ om:field
   [ om:fieldName &quot;datasources&quot;; om:fieldValue
@@ -456,8 +439,12 @@ where the <code>datasources</code> entry points to an object that is a mapping f
         </figcaption>
 </figure>
 
-      <p>Further documentation on how the Object Mapping vocabulary can be used is available at
-<a href="http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/">http:/​/​componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/</a></p>
+      <p><a href="#module-ldf-mapped">Listing 4</a> shows the mapping of the LDF component parameters to the constructor implementation.
+This description complements the component definitions from <a href="#module-ldf">Listing 3</a>
+as it provides an implementation view on the component constructors.
+Like the component definitions,
+a mapping is only necessary once per module
+and can be reused across dependents.</p>
 
       <h3 id="instantiating">Describing and instantiating a component configuration</h3>
 
@@ -595,14 +582,6 @@ Prefixes omitted for brevity.</p>
         </figcaption>
 </figure>
 
-      <p>Continuing with the examples shown above,
-a module of version 0.10.0 of the N3 bundle can be found at
-<a href="https://registry.npmjs.org/n3/0.10.0" class="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
-while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
-Similarly, many of the tags are mapped by the context,
-while other tags had to be modified to provide more relevant triples.
-An example of some of the data generated for this module can be seen in <a href="#n3-0.10.0.ttl">Listing 9</a>.</p>
-
       <figure id="n3-0.10.0.ttl" class="listing">
 <pre><code>&lt;https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0&gt; 
   doap:revision &quot;0.10.0&quot;;
@@ -616,6 +595,14 @@ An example of some of the data generated for this module can be seen in <a href=
 Prefixes omitted for brevity.</p>
         </figcaption>
 </figure>
+
+      <p>Continuing with the examples shown above,
+a module of version 0.10.0 of the N3 bundle can be found at
+<a href="https://registry.npmjs.org/n3/0.10.0" class="iri-link">https:/​/​registry.npmjs.org/n3/0.10.0</a>,
+while the IRI in our namespace is <a href="https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0" class="iri-link">https:/​/​linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0</a>.
+Similarly, many of the tags are mapped by the context,
+while other tags had to be modified to provide more relevant triples.
+An example of some of the data generated for this module can be seen in <a href="#n3-0.10.0.ttl">Listing 9</a>.</p>
 
       <p>An important part of an npm package description are the dependencies
 and their semantic versions.
@@ -649,10 +636,6 @@ which we publish through a <span property="schema:citation http://purl.org/spar/
 These are located at <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">https:/​/​linkedsoftwaredependencies.org</a>, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.</p>
 
-      <p>Queries are executed using a <a href="https://query.linkedsoftwaredependencies.org" class="mandatory" data-link-text="https:/​/​query.linkedsoftwaredependencies.org">Triple Pattern Fragments browser client</a>,
-which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-21" class="reference">[21]</a>.
-Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-who">Listing 11</a>, which answer the questions <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D">Where is this module used?</a></q> and <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D">Who wrote this code?</a></q>.</p>
-
       <figure id="query-used" class="listing">
 <pre><code>SELECT DISTINCT ?project ?projectName ?description WHERE {
   &lt;https://linkedsoftwaredependencies.org/bundles/npm/n3&gt; doap:release ?version.
@@ -677,6 +660,10 @@ Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-
           <p><span class="label">Listing 11:</span> SPARQL query to discover the author of a package.</p>
         </figcaption>
 </figure>
+
+      <p>Queries are executed using a <a href="https://query.linkedsoftwaredependencies.org" class="mandatory" data-link-text="https:/​/​query.linkedsoftwaredependencies.org">Triple Pattern Fragments browser client</a>,
+which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-21" class="reference">[21]</a>.
+Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-who">Listing 11</a>, which answer the questions <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D">Where is this module used?</a></q> and <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D">Who wrote this code?</a></q>.</p>
 
       <p>As a complete example, the documentation of Components.js has been made self-instantiatable using its own framework and is available at <a href="http://componentsjs.readthedocs.io/en/latest/example/">http:/​/​componentsjs.readthedocs.io/en/latest/example/</a>.</p>
 
@@ -712,6 +699,17 @@ Furthermore,
 it facilitates independently replacing and evaluating components
 and publishing these configurations in turn.</p>
 
+      <figure id="description-diagram">
+<img src="description-diagram.svg" alt="[description diagram]" />
+<figcaption>
+          <p><span class="label">Fig. 3:</span> A <em>research article</em> is based on <em>result data</em>,
+which are the outcomes of an <em>experiment</em>.
+The experiment in turn also has (multiple) provenance chains,
+and this article provides mechanisms
+to describe <em>software configurations</em> and <em>software modules</em>.</p>
+        </figcaption>
+</figure>
+
       <p><a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">Claerbout’s Principle</a> <a href="#ref-22" class="reference">[22]</a> explains that
 <q>an article about computational science in a scientific publication
 is not the scholarship itself, it is merely <strong>advertising</strong> of the scholarship.
@@ -725,17 +723,6 @@ and the processing of the retrieved data.
 In essence, this entails the complete chain of provenance illustrated in <a href="#description-diagram">Fig. 3</a>,
 that links the research article to the data and the experiment that generates it,
 as well as all aspects surrounding that experiment.</p>
-
-      <figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]" />
-<figcaption>
-          <p><span class="label">Fig. 3:</span> A <em>research article</em> is based on <em>result data</em>,
-which are the outcomes of an <em>experiment</em>.
-The experiment in turn also has (multiple) provenance chains,
-and this article provides mechanisms
-to describe <em>software configurations</em> and <em>software modules</em>.</p>
-        </figcaption>
-</figure>
 
       <p>Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
@@ -808,7 +795,7 @@ or not different bundle versions will break certain component invocations.</p>
   <dt id="ref-12">[12]</dt>
   <dd resource="http://usefulinc.com/ns/doap" typeof="schema:CreativeWork">Wilder-James, E.: Description of a Project. <a href="http://usefulinc.com/ns/doap">http:/​/​usefulinc.com/ns/doap</a> (2017).</dd>
   <dt id="ref-13">[13]</dt>
-  <dd resource="https://dx.doi.org/10.1145/2814864.2814882" typeof="schema:Article">Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
+  <dd resource="https://dx.doi.org/10.1145/2814864.2814882" typeof="schema:Article">Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM (2015).</dd>
   <dt id="ref-14">[14]</dt>
   <dd resource="https://dx.doi.org/10.1016/j.websem.2015.01.003" typeof="schema:Article">Belhajjame, K., Zhao, J., Garijo, D., Gamble, M., Hettne, K., Palma, R., Mina, E., Corcho, O., Gómez-Pérez, J.M., Bechhofer, S., Klyne, G., Goble, C.: Using a suite of ontologies for preserving workflow-centric research objects. Web Semantics: Science,  Services and Agents on the World Wide Web. 32, 16–42 (2015).</dd>
   <dt id="ref-15">[15]</dt>
