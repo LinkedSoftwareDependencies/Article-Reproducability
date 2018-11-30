@@ -101,6 +101,8 @@ such that the software configuration can receive a semantic interpretation.
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components vocabulary, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
 The dereferencaable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
+Further documentation on how the Object-Oriented Components vocabulary can be used is available at
+[https://componentsjs.readthedocs.io/en/latest/configuration/components/general/](https://componentsjs.readthedocs.io/en/latest/configuration/components/general/)
 
 ### Describing object mappings
 The constructor injection described above works out of the box
@@ -154,6 +156,9 @@ The TPF server constructor similarly requires a custom object,
 where the `datasources` entry points to an object that is a mapping from titles to datasources.
 </figcaption>
 </figure>
+
+Further documentation on how the Object Mapping vocabulary can be used is available at
+[http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/](http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/)
 
 ### Describing and instantiating a component configuration
 {:#instantiating}
