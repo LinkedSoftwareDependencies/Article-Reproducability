@@ -124,10 +124,13 @@ The framework is <a href="https://github.com/LinkedSoftwareDependencies/Componen
 available on <a href="https://www.npmjs.com/package/componentsjs" class="mandatory" data-link-text="https:/​/​www.npmjs.com/​package/​componentsjs">npm</a>,
 and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/" class="mandatory" data-link-text="https:/​/​componentsjs.readthedocs.io/​">https:/​/​componentsjs.readthedocs.io/</a>
 (canonical citation: <a href="https://doi.org/10.5281/zenodo.1243988">https:/​/​doi.org/10.5281/zenodo.1243988</a>).
-Software configurations and modules are described as Linked Data using
-the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components vocabulary</em></a> <a href="#ref-8" class="reference">[8]</a>
+Furthermore, it is being actively used in tools such as
+the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Linked Data Fragments server</a></span> <a href="#ref-8" class="reference">[8]</a> and <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica</a> <a href="#ref-9" class="reference">[9]</a>.
+Within Components.js,
+software configurations and modules are described as Linked Data using
+the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components vocabulary</em></a> <a href="#ref-10" class="reference">[10]</a>
 (canonical citation: <a href="https://doi.org/10.5281/zenodo.1245660">https:/​/​doi.org/10.5281/zenodo.1245660</a>)
-and the introduced <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object Mapping vocabulary</em></a> <a href="#ref-8" class="reference">[8]</a>
+and the introduced <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object Mapping vocabulary</em></a> <a href="#ref-10" class="reference">[10]</a>
 (canonical citation: <a href="https://doi.org/10.5281/zenodo.1245658">https:/​/​doi.org/10.5281/zenodo.1245658</a>).
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be <em>unambiguously identified</em> by IRIs and 
@@ -161,23 +164,23 @@ and discuss their limitations compared to Components.js.</p>
 
       <p>Software can be described on several levels of granularity,
 going from a high-level package overview to a low-level description of the actual code.
-The Software Ontology (SWO) <a href="#ref-9" class="reference">[9]</a> and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://usefulinc.com/ns/doap">Description of a Project (DOAP)</a> <a href="#ref-10" class="reference">[10]</a> ontology focus on the high-level management of software development,
+The Software Ontology (SWO) <a href="#ref-11" class="reference">[11]</a> and <a property="schema:citation http://purl.org/spar/cito/cites" href="http://usefulinc.com/ns/doap">Description of a Project (DOAP)</a> <a href="#ref-12" class="reference">[12]</a> ontology focus on the high-level management of software development,
 enabling the description of tools, resources, contributors and tasks. 
 At a slightly lower level, SWO includes interfaces, algorithms, versions, and the associated provenance data, but does not reach the level of detail to describe operational code.</p>
 
-      <p>Ontologies that describe software configuration from a research workflow perspective are <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1145/2814864.2814882"><a href="http://svn.aksw.org/papers/2015/SEMANTICS_LDWPO/public.pdf">LODFlow</a></span> <a href="#ref-11" class="reference">[11]</a>, <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1016/j.websem.2015.01.003"><a href="https://doi.org/10.1016/j.websem.2015.01.003">Workflow-Centric Research Objects</a></span> <a href="#ref-12" class="reference">[12]</a> with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> and the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1109/escience.2014.47"><a href="http://www.ifs.tuwien.ac.at/%7Emayer/publications/pdf/may_escience14.pdf">Ontologies for Describing the Context of Scientific Experiment Processes</a></span> <a href="#ref-13" class="reference">[13]</a> with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> to compliment the Research Objects model. 
-From a more generic perspective, there exist the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> <a href="#ref-14" class="reference">[14]</a>, the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://www.opmw.org/model/OPMW/">OPMW-PROV Ontology</a> <a href="#ref-15" class="reference">[15]</a>, and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://rdf-vocabulary.ddialliance.org/discovery.html">DDI-RDF Discovery Vocabulary</a> <a href="#ref-16" class="reference">[16]</a>.
+      <p>Ontologies that describe software configuration from a research workflow perspective are <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1145/2814864.2814882"><a href="http://svn.aksw.org/papers/2015/SEMANTICS_LDWPO/public.pdf">LODFlow</a></span> <a href="#ref-13" class="reference">[13]</a>, <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1016/j.websem.2015.01.003"><a href="https://doi.org/10.1016/j.websem.2015.01.003">Workflow-Centric Research Objects</a></span> <a href="#ref-14" class="reference">[14]</a> with the <cite><a href="https://w3id.org/ro/">Wf4Ever Research Object Model</a></cite> and the <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1109/escience.2014.47"><a href="http://www.ifs.tuwien.ac.at/%7Emayer/publications/pdf/may_escience14.pdf">Ontologies for Describing the Context of Scientific Experiment Processes</a></span> <a href="#ref-15" class="reference">[15]</a> with the <cite><a href="http://www.timbusproject.net/portal/publications/ontologies/">TIMBUS Context Model</a></cite> to compliment the Research Objects model. 
+From a more generic perspective, there exist the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> <a href="#ref-16" class="reference">[16]</a>, the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://www.opmw.org/model/OPMW/">OPMW-PROV Ontology</a> <a href="#ref-17" class="reference">[17]</a>, and the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://rdf-vocabulary.ddialliance.org/discovery.html">DDI-RDF Discovery Vocabulary</a> <a href="#ref-18" class="reference">[18]</a>.
 However, these efforts can only cover (parts of) the connection between research and software, which is insufficient for dependency injection.
 Such descriptions are however interpretive in that any given tool is subject to having multiple descriptions by different users.
 In contrast to the human-driven descriptions, our work both enables and accelerates the generation of machine-driven Linked Data descriptions of software modules, their components, as well as their configurations to be uniformly created.
 Consequently, this makes it possible to accurately describe and instantiate software experiments that can be reused and compared with unambiguously.</p>
 
-      <p>Much more low-level and exact is the Core Software Ontology (CSO) <a href="#ref-17" class="reference">[17]</a>,
+      <p>Much more low-level and exact is the Core Software Ontology (CSO) <a href="#ref-19" class="reference">[19]</a>,
 which provides a foundational vocabulary that is designed for extensibility.
 This includes the distinctive concepts to describe software as code, software as object to computational hardware, and software as a running computational activity,
 but also Interfaces, Classes, Methods, the relationships between them, and workflow information on their invocation.
 Its extension, the Core Ontology of Software Components (COSC), moves closer to the topic of this article by describing interfaces and protocols of components.
-Similar in scope is the Software Engineering Ontology Network (SEON) <a href="#ref-18" class="reference">[18]</a>, which consolidates multiple ontologies for the Software Engineering field.
+Similar in scope is the Software Engineering Ontology Network (SEON) <a href="#ref-20" class="reference">[20]</a>, which consolidates multiple ontologies for the Software Engineering field.
 It includes a higher Core and Foundational layer, as well as multiple domain-specific ontologies.
 Of particular interest is their Software Ontology (SwO) that captures the different artifacts in software.
 In general, both ontologies (or suites) view software from a <q>network of communicating concepts</q> perspective.
@@ -253,7 +256,7 @@ These are semantic by default (i.e., described in RDF using a set of vocabularie
         </li>
       </ul>
 
-      <p>All concepts are described in the programming language independent <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components vocabulary (OO)</em></a> <a href="#ref-8" class="reference">[8]</a>.
+      <p>All concepts are described in the programming language independent <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components vocabulary (OO)</em></a> <a href="#ref-10" class="reference">[10]</a>.
 In the following, we first explain how to describe modules and components using this vocabulary.
 Then, we introduce an additional <em>Object Mapping vocabulary</em> to describe parameter order in constructors.
 Finally, we explain how component configuration files are created, which describe the application wiring, 
@@ -642,12 +645,12 @@ without having to rely on the interpretation of semantic versions which can chan
       <p>The semantic description of software metadata provides a useful platform for simplifying tasks that require a lot manual work,
 such as discovering license incompatibilities between projects, which are now possible using a <a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Fbundle%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-3.0.html%3E.%0A%20%20%3Fbundle%20npm%3Adependency%20%3Fdependency.%0A%20%20%3Fdependency%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-2.0.html%3E.%0A%7D">SPARQL query</a>.
 All 700,000 npm packages produced 300,000,000+ triples,
-which we publish through a <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a></span> <a href="#ref-19" class="reference">[19]</a> interface.
+which we publish through a <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a></span> <a href="#ref-8" class="reference">[8]</a> interface.
 These are located at <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">https:/​/​linkedsoftwaredependencies.org</a>, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.</p>
 
       <p>Queries are executed using a <a href="https://query.linkedsoftwaredependencies.org" class="mandatory" data-link-text="https:/​/​query.linkedsoftwaredependencies.org">Triple Pattern Fragments browser client</a>,
-which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-20" class="reference">[20]</a>.
+which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-21" class="reference">[21]</a>.
 Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-who">Listing 11</a>, which answer the questions <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D">Where is this module used?</a></q> and <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D">Who wrote this code?</a></q>.</p>
 
       <figure id="query-used" class="listing">
@@ -709,7 +712,7 @@ Furthermore,
 it facilitates independently replacing and evaluating components
 and publishing these configurations in turn.</p>
 
-      <p><a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">Claerbout’s Principle</a> <a href="#ref-21" class="reference">[21]</a> explains that
+      <p><a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">Claerbout’s Principle</a> <a href="#ref-22" class="reference">[22]</a> explains that
 <q>an article about computational science in a scientific publication
 is not the scholarship itself, it is merely <strong>advertising</strong> of the scholarship.
 The actual scholarship is the complete software development environment
@@ -736,9 +739,9 @@ to describe <em>software configurations</em> and <em>software modules</em>.</p>
 
       <p>Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
-The <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Linked Data Fragments server</a></span> <a href="#ref-19" class="reference">[19]</a>, for instance, is a reusable research platform
+The <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Linked Data Fragments server</a></span> <a href="#ref-8" class="reference">[8]</a>, for instance, is a reusable research platform
 that uses Components.js to achieve modularity.
-Furthermore, the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica</a> <a href="#ref-22" class="reference">[22]</a> research platform for Linked Data querying
+Furthermore, the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica</a> <a href="#ref-9" class="reference">[9]</a> research platform for Linked Data querying
 also extensively uses Components.js to achieve its high modularity and flexibility.
 Components.js enables tools such as the LDF server and Comunica to be compatible with
 multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
@@ -795,35 +798,35 @@ or not different bundle versions will break certain component invocations.</p>
   <dt id="ref-7">[7]</dt>
   <dd resource="https://martinfowler.com/articles/injection.html" typeof="schema:CreativeWork">Fowler, M.: Inversion of Control Containers and the Dependency Injection pattern. <a href="https://martinfowler.com/articles/injection.html">https:/​/​martinfowler.com/articles/injection.html</a> (2004).</dd>
   <dt id="ref-8">[8]</dt>
-  <dd resource="https://linkedsoftwaredependencies.org/articles/describing-experiments/" typeof="schema:Article">Van Herwegen, J., Taelman, R., Capadisli, S., Verborgh, R.: Describing configurations of software experiments as Linked Data. In: Proceedings of the 1st SemSci Workshop (2017).</dd>
-  <dt id="ref-9">[9]</dt>
-  <dd resource="#malone2014software" typeof="schema:Article">Malone, J., Brown, A., Lister, A.L., Ison, J., Hull, D., Parkinson, H., Stevens, R.: The Software Ontology (SWO): a resource for reproducibility in biomedical data analysis, curation and digital preservation. Journal of biomedical semantics. 5, 25 (2014).</dd>
-  <dt id="ref-10">[10]</dt>
-  <dd resource="http://usefulinc.com/ns/doap" typeof="schema:CreativeWork">Wilder-James, E.: Description of a Project. <a href="http://usefulinc.com/ns/doap">http:/​/​usefulinc.com/ns/doap</a> (2017).</dd>
-  <dt id="ref-11">[11]</dt>
-  <dd resource="https://dx.doi.org/10.1145/2814864.2814882" typeof="schema:Article">Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
-  <dt id="ref-12">[12]</dt>
-  <dd resource="https://dx.doi.org/10.1016/j.websem.2015.01.003" typeof="schema:Article">Belhajjame, K., Zhao, J., Garijo, D., Gamble, M., Hettne, K., Palma, R., Mina, E., Corcho, O., Gómez-Pérez, J.M., Bechhofer, S., Klyne, G., Goble, C.: Using a suite of ontologies for preserving workflow-centric research objects. Web Semantics: Science,  Services and Agents on the World Wide Web. 32, 16–42 (2015).</dd>
-  <dt id="ref-13">[13]</dt>
-  <dd resource="https://dx.doi.org/10.1109/escience.2014.47" typeof="schema:Article">Mayer, R., Miksa, T., Rauber, A.: Ontologies for Describing the Context of Scientific Experiment Processes. In: 10th International Conference on e-Science. IEEE (2014).</dd>
-  <dt id="ref-14">[14]</dt>
-  <dd resource="https://www.w3.org/TR/prov-o/" typeof="schema:CreativeWork">Lebo, T., Sahoo, S., McGuinness, D.: Prov-O: The PROV Ontology. W3C, <a href="https://www.w3.org/TR/prov-o/">https:/​/​www.w3.org/TR/prov-o/</a> (2013).</dd>
-  <dt id="ref-15">[15]</dt>
-  <dd resource="http://www.opmw.org/model/OPMW/" typeof="schema:CreativeWork">Garijo, D., Gil, Y.: OPMW-PROV Ontology. <a href="http://www.opmw.org/model/OPMW/">http:/​/​www.opmw.org/model/OPMW/</a> (2014).</dd>
-  <dt id="ref-16">[16]</dt>
-  <dd resource="http://rdf-vocabulary.ddialliance.org/discovery.html" typeof="schema:CreativeWork">Bosch, T., Cyganiak, R., Wackerow, J., Zapilko, B.: DDI-RDF Discovery Vocabulary. <a href="http://rdf-vocabulary.ddialliance.org/discovery.html">http:/​/​rdf-vocabulary.ddialliance.org/discovery.html</a> (2015).</dd>
-  <dt id="ref-17">[17]</dt>
-  <dd resource="#oberle2009ontology" typeof="schema:Chapter">Oberle, D., Grimm, S., Staab, S.: An ontology for software. In: Handbook on ontologies. pp. 383–402. Springer (2009).</dd>
-  <dt id="ref-18">[18]</dt>
-  <dd resource="#ruy2016seon" typeof="schema:Article">Ruy, F.B., de Almeida Falbo, R., Barcellos, M.P., Costa, S.D., Guizzardi, G.: SEON: A software engineering ontology network. In: European Knowledge Acquisition Workshop. pp. 527–542. Springer (2016).</dd>
-  <dt id="ref-19">[19]</dt>
   <dd resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12" typeof="schema:Article">Verborgh, R., Hartig, O., De Meester, B., Haesendonck, G., De Vocht, L., Vander Sande, M., Cyganiak, R., Colpaert, P., Mannens, E., Van de Walle, R.: Querying Datasets on the Web with High Availability. In: Proceedings of the 13th International Semantic Web Conference. pp. 180–196. Springer (2014).</dd>
-  <dt id="ref-20">[20]</dt>
-  <dd resource="https://www.w3.org/History/1989/proposal.html" typeof="schema:CreativeWork">Berners-Lee, T.: Information Management: A Proposal. <a href="https://www.w3.org/History/1989/proposal.html">https:/​/​www.w3.org/History/1989/proposal.html</a> (1989).</dd>
-  <dt id="ref-21">[21]</dt>
-  <dd resource="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf" typeof="schema:CreativeWork">Buckheit, J.B., Donoho, D.L.: WaveLab and Reproducible Research. Stanford University, <a href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">http:/​/​www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf</a> (1995).</dd>
-  <dt id="ref-22">[22]</dt>
+  <dt id="ref-9">[9]</dt>
   <dd resource="https://comunica.github.io/Article-ISWC2018-Resource/" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: a Modular SPARQL Query Engine for the Web. In: Proceedings of the 17th International Semantic Web Conference (2018).</dd>
+  <dt id="ref-10">[10]</dt>
+  <dd resource="https://linkedsoftwaredependencies.org/articles/describing-experiments/" typeof="schema:Article">Van Herwegen, J., Taelman, R., Capadisli, S., Verborgh, R.: Describing configurations of software experiments as Linked Data. In: Proceedings of the 1st SemSci Workshop (2017).</dd>
+  <dt id="ref-11">[11]</dt>
+  <dd resource="#malone2014software" typeof="schema:Article">Malone, J., Brown, A., Lister, A.L., Ison, J., Hull, D., Parkinson, H., Stevens, R.: The Software Ontology (SWO): a resource for reproducibility in biomedical data analysis, curation and digital preservation. Journal of biomedical semantics. 5, 25 (2014).</dd>
+  <dt id="ref-12">[12]</dt>
+  <dd resource="http://usefulinc.com/ns/doap" typeof="schema:CreativeWork">Wilder-James, E.: Description of a Project. <a href="http://usefulinc.com/ns/doap">http:/​/​usefulinc.com/ns/doap</a> (2017).</dd>
+  <dt id="ref-13">[13]</dt>
+  <dd resource="https://dx.doi.org/10.1145/2814864.2814882" typeof="schema:Article">Rautenberg, S., Ermilov, I., Marx, E., Auer, S., Ngonga Ngomo, A.-C.: LODFlow: A Workflow Management System for Linked Data Processing. In: Proceedings of the 11th International Conference on Semantic Systems. pp. 137–144. ACM, New York, NY, USA (2015).</dd>
+  <dt id="ref-14">[14]</dt>
+  <dd resource="https://dx.doi.org/10.1016/j.websem.2015.01.003" typeof="schema:Article">Belhajjame, K., Zhao, J., Garijo, D., Gamble, M., Hettne, K., Palma, R., Mina, E., Corcho, O., Gómez-Pérez, J.M., Bechhofer, S., Klyne, G., Goble, C.: Using a suite of ontologies for preserving workflow-centric research objects. Web Semantics: Science,  Services and Agents on the World Wide Web. 32, 16–42 (2015).</dd>
+  <dt id="ref-15">[15]</dt>
+  <dd resource="https://dx.doi.org/10.1109/escience.2014.47" typeof="schema:Article">Mayer, R., Miksa, T., Rauber, A.: Ontologies for Describing the Context of Scientific Experiment Processes. In: 10th International Conference on e-Science. IEEE (2014).</dd>
+  <dt id="ref-16">[16]</dt>
+  <dd resource="https://www.w3.org/TR/prov-o/" typeof="schema:CreativeWork">Lebo, T., Sahoo, S., McGuinness, D.: Prov-O: The PROV Ontology. W3C, <a href="https://www.w3.org/TR/prov-o/">https:/​/​www.w3.org/TR/prov-o/</a> (2013).</dd>
+  <dt id="ref-17">[17]</dt>
+  <dd resource="http://www.opmw.org/model/OPMW/" typeof="schema:CreativeWork">Garijo, D., Gil, Y.: OPMW-PROV Ontology. <a href="http://www.opmw.org/model/OPMW/">http:/​/​www.opmw.org/model/OPMW/</a> (2014).</dd>
+  <dt id="ref-18">[18]</dt>
+  <dd resource="http://rdf-vocabulary.ddialliance.org/discovery.html" typeof="schema:CreativeWork">Bosch, T., Cyganiak, R., Wackerow, J., Zapilko, B.: DDI-RDF Discovery Vocabulary. <a href="http://rdf-vocabulary.ddialliance.org/discovery.html">http:/​/​rdf-vocabulary.ddialliance.org/discovery.html</a> (2015).</dd>
+  <dt id="ref-19">[19]</dt>
+  <dd resource="#oberle2009ontology" typeof="schema:Chapter">Oberle, D., Grimm, S., Staab, S.: An ontology for software. In: Handbook on ontologies. pp. 383–402. Springer (2009).</dd>
+  <dt id="ref-20">[20]</dt>
+  <dd resource="#ruy2016seon" typeof="schema:Article">Ruy, F.B., de Almeida Falbo, R., Barcellos, M.P., Costa, S.D., Guizzardi, G.: SEON: A software engineering ontology network. In: European Knowledge Acquisition Workshop. pp. 527–542. Springer (2016).</dd>
+  <dt id="ref-21">[21]</dt>
+  <dd resource="https://www.w3.org/History/1989/proposal.html" typeof="schema:CreativeWork">Berners-Lee, T.: Information Management: A Proposal. <a href="https://www.w3.org/History/1989/proposal.html">https:/​/​www.w3.org/History/1989/proposal.html</a> (1989).</dd>
+  <dt id="ref-22">[22]</dt>
+  <dd resource="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf" typeof="schema:CreativeWork">Buckheit, J.B., Donoho, D.L.: WaveLab and Reproducible Research. Stanford University, <a href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">http:/​/​www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf</a> (1995).</dd>
 </dl>
 </section>
 <section id="document-interactions">
