@@ -69,3 +69,5 @@ Based on an IRI, the injection framework can therefore instantiate software,
 and wire its dependent components together.
 The power of the Web is thereby leveraged, simplifying the replication of existing experiments
 and the creation of new ones.
+For example, the following config file allows a Comunica query engine to be recreated:
+[https://linkedsoftwaredependencies.org/bundles/npm/%40comunica%2Factor-init-sparql/1.3.0/config/sets/sparql-queryoperators.json](https://linkedsoftwaredependencies.org/bundles/npm/%40comunica%2Factor-init-sparql/1.3.0/config/sets/sparql-queryoperators.json).
