@@ -55,9 +55,13 @@ to describe _software configurations_ and _software modules_.
 
 Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
-The Linked Data Fragments server, for instance, is a reusable research platform.
-The LDF server and client can be compatible with multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
-Components.js requires only one "core version" to exist, while many alternative configurations can co-exist.
+The [Linked Data Fragments server](cite:cites verborgh_iswc_2014), for instance, is a reusable research platform
+that uses Components.js to achieve modularity.
+Furthermore, the [Comunica](cite:cites comunica) research platform for Linked Data querying
+also extensively uses Components.js to achieve its high modularity and flexibility.
+Components.js enables tools such as the LDF server and Comunica to be compatible with
+multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
+Only one "core version" should exist, while many alternative configurations can co-exist.
 Support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
 Since components and configurations are identified by an IRI,
 they can exist anywhere on the Web.
