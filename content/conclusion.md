@@ -11,7 +11,7 @@ Furthermore, experiment reporting can be extended with an IRI to the software co
 The use of semantic configuration files can also facilitate more advanced static program analysis.
 
 In future work, we aim to make the creation of semantic component files more developer-friendly.
-A tool can automatically parse source code
+A smart editor can automatically parse source code
 and derive the appropriate semantic description on how components can be instantiated using which parameters.
 Additionally, these semantic component definition files provide an interesting platform for validating software dependency relations.
 Reasoning could for instance be done on parameter restrictions to check whether
