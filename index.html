@@ -53,7 +53,7 @@ facilitate exact replication on the Web with addressable, dereferenceable, and u
 <!-- Task         -->
 Therefore, 
 we introduce Components.js, a semantic dependency injection framework for JavaScript,
-that (i) describes software components using a Object-Oriented Components and Object Mapping ontology, 
+that (i) describes software components using a Object-Oriented Components and Object Mapping vocabulary, 
 (ii) automatically instantiates experimental configurations using linking and dereferencing, and
 (iii) is complementary to the modular programming of package managers.
 <!-- Object       -->
@@ -61,7 +61,7 @@ This article presents the framework,
 its application, 
 and incorporates a proof of concept on discovery of experimental software configurations on the Web.
 <!-- Findings     -->
-All 600,000+ Node Package Manager libraries were described
+All 700,000+ Node Package Manager libraries were described
 as more than 300 million RDF triples, which interlink different modules.
 Thereby, a set of queries provide insights like what experiments use the same algorithm, 
 or the different implementations of the same function.
@@ -120,8 +120,15 @@ and also improve in reporting to help finding the right experiment, understandin
       <p>To this end, 
 we present <em>Components.js</em>, 
 a semantic dependency Injection framework for JavaScript applications that makes software configuration <em>addressable</em> and <em>discoverable</em>, hence surpassing existing dependency injection frameworks.
-The framework is <a href="https://github.com/LinkedSoftwareDependencies/Components.js">open-source</a>, available on <a href="https://www.npmjs.com/package/componentsjs">npm</a>, and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/">https:/​/​componentsjs.readthedocs.io/</a>.
-Software configurations and modules are described as Linked Data using the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components ontology</em></a> <a href="#ref-8" class="reference">[8]</a> and the introduced <em>Object Mapping ontology</em>.
+The framework is <a href="https://github.com/LinkedSoftwareDependencies/Components.js" class="mandatory" data-link-text="https:/​/​github.com/​LinkedSoftwareDependencies/​Components.js">open-source</a>,
+available on <a href="https://www.npmjs.com/package/componentsjs" class="mandatory" data-link-text="https:/​/​www.npmjs.com/​package/​componentsjs">npm</a>,
+and its complete documentation can be found at <a href="https://componentsjs.readthedocs.io/" class="mandatory" data-link-text="https:/​/​componentsjs.readthedocs.io/​">https:/​/​componentsjs.readthedocs.io/</a>
+(canonical citation: <a href="https://doi.org/10.5281/zenodo.1243988">https:/​/​doi.org/10.5281/zenodo.1243988</a>).
+Software configurations and modules are described as Linked Data using
+the <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object-Oriented Components vocabulary</em></a> <a href="#ref-8" class="reference">[8]</a>
+(canonical citation: <a href="https://doi.org/10.5281/zenodo.1245660">https:/​/​doi.org/10.5281/zenodo.1245660</a>)
+and the introduced <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://linkedsoftwaredependencies.org/articles/describing-experiments/"><em>Object Mapping vocabulary</em></a> <a href="#ref-8" class="reference">[8]</a>
+(canonical citation: <a href="https://doi.org/10.5281/zenodo.1245658">https:/​/​doi.org/10.5281/zenodo.1245658</a>).
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be <em>unambiguously identified</em> by IRIs and 
 retrieved through <em>dereferencing</em>.
@@ -134,7 +141,7 @@ In total, this entails the following benefits:
 (iv) a joint data space of research articles and experimental software, enabling discoverable and queryable links between research and implementations.</p>
 
       <p>Finally, we include a proof of-concept based on the Node.js package manager <a href="https://www.npmjs.com/">npm</a>.
-An RDF-based description was generated for 600,000+ packages. Thereby, 
+An RDF-based description was generated for 700,000+ packages. Thereby, 
 we demonstrate the description of an existing application and its available components (available as modules),
 the automated instantiation of such a configuration, and the discoverability with a set of insightful queries.
 Note that, although this is a JavaScript implementation, the principles are generalizable, 
@@ -146,7 +153,7 @@ can be implemented in other languages, or can improve cross-language replication
       <h2>Related Work</h2>
 
       <p>In this section, we discuss existing description methods or ontologies to describe software, 
-and position them to the Object-Oriented Components ontology, which is described in the next section.
+and position them to the Object-Oriented Components vocabulary, which is described in the next section.
 In addition, we describe other dependency injection frameworks, both for JavaScript and other languages,
 and discuss their limitations compared to Components.js.</p>
 
@@ -246,15 +253,15 @@ These are semantic by default (i.e., described in RDF using a set of vocabularie
         </li>
       </ul>
 
-      <p>All concepts are described in the programming language independent <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components ontology (OO)</em></a> <a href="#ref-8" class="reference">[8]</a>.
-In the following, we first explain how to describe modules and components using this ontology.
-Then, we introduce an additional <em>Object Mapping ontology</em> to describe parameter order in constructors.
+      <p>All concepts are described in the programming language independent <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented"><em>Object-Oriented Components vocabulary (OO)</em></a> <a href="#ref-8" class="reference">[8]</a>.
+In the following, we first explain how to describe modules and components using this vocabulary.
+Then, we introduce an additional <em>Object Mapping vocabulary</em> to describe parameter order in constructors.
 Finally, we explain how component configuration files are created, which describe the application wiring, 
 and how the framework can instantiate this file to compose a working application.</p>
 
       <h3 id="describing-components">Describing modules and components</h3>
 
-      <p>The Object-Oriented Components ontology reuses Fowler’s definition of a <a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a href="#ref-7" class="reference">[7]</a> as a “glob” of software, which 
+      <p>The Object-Oriented Components vocabulary reuses Fowler’s definition of a <a property="schema:citation http://purl.org/spar/cito/providesQuotationFor" href="https://martinfowler.com/articles/injection.html">software component</a> <a href="#ref-7" class="reference">[7]</a> as a “glob” of software, which 
 provides operations that can be used by other components.
 The instantiation of such components requires certain parameters,
 analog to constructor arguments in object-oriented programming.
@@ -262,9 +269,9 @@ This is interpreted in the broad sense: only <em>classes</em>, <em>objects</em> 
 An overview is given in <a href="#voc-oo-diagram">Fig. 1</a>.</p>
 
       <figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]" />
+<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components vocabulary diagram]" />
 <figcaption>
-          <p><span class="label">Fig. 1:</span> Classes and properties in the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​oriented#"><em>Object-Oriented Components</em> ontology</a>,
+          <p><span class="label">Fig. 1:</span> Classes and properties in the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-oriented#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​oriented#"><em>Object-Oriented Components</em> vocabulary</a>,
 with as prefix <code>oo</code>.</p>
         </figcaption>
 </figure>
@@ -278,7 +285,7 @@ Within object-oriented languages, this can correspond to for example a software 
 A component is typed as <code>oo:Component</code>, which is a <em>subclass</em> of <code>rdfs:Class</code>.
 The parameters to construct the component can therefore be defined as an <code>rdfs:Property</code> on a component.
 For instance,
-a software module representing a parser
+a software module representing a type of datasource
 can be described as
 <code>ldfs:Datasource:Hdt a oo:Class.</code>,
 and a concrete instance is
@@ -375,8 +382,10 @@ These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.</p>
 
       <p>Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
-A general context is defined for the Object-Oriented Components ontology, which is available at <a href="https://linkedsoftwaredependencies.org/contexts/components.jsonld">https:/​/​linkedsoftwaredependencies.org/contexts/components.jsonld</a>.
-The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).</p>
+A general context is defined for the Object-Oriented Components vocabulary, which is available at <a href="https://linkedsoftwaredependencies.org/contexts/components.jsonld">https:/​/​linkedsoftwaredependencies.org/contexts/components.jsonld</a>.
+The dereferencaable URI of your module is defined by <code>@id</code>, and <code>requireName</code> refers to the package (as defined in npm’s package.json file).
+Further documentation on how the Object-Oriented Components vocabulary can be used is available at
+<a href="https://componentsjs.readthedocs.io/en/latest/configuration/components/general/">https:/​/​componentsjs.readthedocs.io/en/latest/configuration/components/general/</a></p>
 
       <h3 id="describing-object-mappings">Describing object mappings</h3>
       <p>The constructor injection described above works out of the box
@@ -397,17 +406,17 @@ For all other constructor types,
 a mapping mechanism is needed
 between the RDF properties
 and the concrete parameter order of the constructor.
-To this end, we introduce the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping"><em>Object Mapping ontology</em></a>.
+To this end, we introduce the <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​mapping"><em>Object Mapping vocabulary</em></a>.
 <a href="#voc-om-diagram">Fig. 2</a> shows an overview of all its classes and predicates.</p>
 
       <figure id="voc-om-diagram">
-<img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]" />
+<img src="voc-om-diagram.svg" alt="[Object Mapping vocabulary diagram]" />
 <figcaption>
-          <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>Object Mapping</em> ontology, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping#" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​vocabularies/​object-​mapping#"><code>om</code></a>.</p>
+          <p><span class="label">Fig. 2:</span> Overview of the classes and properties in the <em>Object Mapping</em> vocabulary, with as prefix <a href="https://linkedsoftwaredependencies.org/vocabularies/object-mapping#"><code>om</code></a>.</p>
         </figcaption>
 </figure>
 
-      <p>The ontology introduces the <em>object mapping</em> and the <em>array mapping</em>.
+      <p>The vocabulary introduces the <em>object mapping</em> and the <em>array mapping</em>.
 An object map can have several <em>object mapping entries</em>, where each entry has a field name and a field value.
 An array map can have several <em>array mapping entries</em>, where each entry only has a value.
 Together, they can express all ways
@@ -443,6 +452,9 @@ The TPF server constructor similarly requires a custom object,
 where the <code>datasources</code> entry points to an object that is a mapping from titles to datasources.</p>
         </figcaption>
 </figure>
+
+      <p>Further documentation on how the Object Mapping vocabulary can be used is available at
+<a href="http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/">http:/​/​componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/</a></p>
 
       <h3 id="instantiating">Describing and instantiating a component configuration</h3>
 
@@ -522,14 +534,14 @@ as this is required for features such as default arguments.</p>
 
       <p>To demonstrate the merits of a semantic Dependency Injection framework for JavaScript,
 we present a proof of concept using the Node Package Manager (npm) library.
-npm is a large collection of modules with over 600,000 JavaScript libraries,
+npm is a large collection of modules with over 700,000 JavaScript libraries,
 all with their own features and requirements.
 Such package contains the description of the project together with all its versions.
 Using the terminology from <a href="#semantic-dependency-injection">Section 3</a>,
 a specific version of a npm package is considered a <em>module</em>,
 which contains the specific dependencies and a link to the actual implementation.</p>
 
-      <p>npm stores the metadata of every package in a <a href="http://couchdb.apache.org/">CouchDB</a>
+      <p>npm stores the metadata of every package in a <a href="http://couchdb.apache.org/" class="mandatory" data-link-text="http:/​/​couchdb.apache.org/​">CouchDB</a>
 <a href="https://registry.npmjs.org/">instance</a>,
 which includes the information added by the package developer in the <a href="https://docs.npmjs.com/files/package.json"><code>package.json</code></a> file,
 and additional metadata added by the npm publishing process.
@@ -629,12 +641,13 @@ without having to rely on the interpretation of semantic versions which can chan
 
       <p>The semantic description of software metadata provides a useful platform for simplifying tasks that require a lot manual work,
 such as discovering license incompatibilities between projects, which are now possible using a <a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Fbundle%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-3.0.html%3E.%0A%20%20%3Fbundle%20npm%3Adependency%20%3Fdependency.%0A%20%20%3Fdependency%20spdx%3AlicenseDeclared%20%3Chttps%3A%2F%2Fspdx.org%2Flicenses%2FGPL-2.0.html%3E.%0A%7D">SPARQL query</a>.
-All 600,000 npm packages produced 300,000,000+ triples,
+All 700,000 npm packages produced 300,000,000+ triples,
 which we publish through a <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Triple Pattern Fragments</a></span> <a href="#ref-19" class="reference">[19]</a> interface.
 These are located at <a href="https://linkedsoftwaredependencies.org/" class="mandatory" data-link-text="https:/​/​linkedsoftwaredependencies.org/​">https:/​/​linkedsoftwaredependencies.org</a>, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.</p>
 
-      <p>Queries are executed using a <a href="https://query.linkedsoftwaredependencies.org">Triple Pattern Fragments browser client</a>, which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-20" class="reference">[20]</a>.
+      <p>Queries are executed using a <a href="https://query.linkedsoftwaredependencies.org" class="mandatory" data-link-text="https:/​/​query.linkedsoftwaredependencies.org">Triple Pattern Fragments browser client</a>,
+which can provide insights that <a property="schema:citation http://purl.org/spar/cito/citesForInformation" href="https://www.w3.org/History/1989/proposal.html">the Web was intended to give</a> <a href="#ref-20" class="reference">[20]</a>.
 Examples are given in <a href="#query-used">Listing 10</a> and <a href="#query-who">Listing 11</a>, which answer the questions <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D">Where is this module used?</a></q> and <q><a href="https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D">Who wrote this code?</a></q>.</p>
 
       <figure id="query-used" class="listing">
@@ -723,16 +736,22 @@ to describe <em>software configurations</em> and <em>software modules</em>.</p>
 
       <p>Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
-The Linked Data Fragments server, for instance, is a reusable research platform.
-The LDF server and client can be compatible with multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
-Components.js requires only one “core version” to exist, while many alternative configurations can co-exist.
+The <span property="schema:citation http://purl.org/spar/cito/cites" resource="https://dx.doi.org/10.1007/978-3-319-11964-9_12"><a href="http://linkeddatafragments.org/publications/iswc2014.pdf">Linked Data Fragments server</a></span> <a href="#ref-19" class="reference">[19]</a>, for instance, is a reusable research platform
+that uses Components.js to achieve modularity.
+Furthermore, the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica</a> <a href="#ref-22" class="reference">[22]</a> research platform for Linked Data querying
+also extensively uses Components.js to achieve its high modularity and flexibility.
+Components.js enables tools such as the LDF server and Comunica to be compatible with
+multiple APIs, support multiple features, and use multiple, interchangeable algorithms.
+Only one “core version” should exist, while many alternative configurations can co-exist.
 Support for different APIs and algorithms are simply pluggable components that are referred to within a configuration.
 Since components and configurations are identified by an IRI,
 they can exist anywhere on the Web.
 Based on an IRI, the injection framework can therefore instantiate software,
 and wire its dependent components together.
 The power of the Web is thereby leveraged, simplifying the replication of existing experiments
-and the creation of new ones.</p>
+and the creation of new ones.
+For example, the following config file allows a Comunica query engine to be recreated:
+<a href="https://linkedsoftwaredependencies.org/bundles/npm/%40comunica%2Factor-init-sparql/1.3.0/config/sets/sparql-queryoperators.json">https:/​/​linkedsoftwaredependencies.org/bundles/npm/%40comunica%2Factor-init-sparql/1.3.0/config/sets/sparql-queryoperators.json</a>.</p>
 
     </section>
 
@@ -749,7 +768,7 @@ Furthermore, experiment reporting can be extended with an IRI to the software co
 The use of semantic configuration files can also facilitate more advanced static program analysis.</p>
 
       <p>In future work, we aim to make the creation of semantic component files more developer-friendly.
-A tool can automatically parse source code
+A smart editor can automatically parse source code
 and derive the appropriate semantic description on how components can be instantiated using which parameters.
 Additionally, these semantic component definition files provide an interesting platform for validating software dependency relations.
 Reasoning could for instance be done on parameter restrictions to check whether
@@ -803,6 +822,8 @@ or not different bundle versions will break certain component invocations.</p>
   <dd resource="https://www.w3.org/History/1989/proposal.html" typeof="schema:CreativeWork">Berners-Lee, T.: Information Management: A Proposal. <a href="https://www.w3.org/History/1989/proposal.html">https:/​/​www.w3.org/History/1989/proposal.html</a> (1989).</dd>
   <dt id="ref-21">[21]</dt>
   <dd resource="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf" typeof="schema:CreativeWork">Buckheit, J.B., Donoho, D.L.: WaveLab and Reproducible Research. Stanford University, <a href="http://www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf">http:/​/​www-stat.stanford.edu/~donoho/Reports/1995/wavelab.pdf</a> (1995).</dd>
+  <dt id="ref-22">[22]</dt>
+  <dd resource="https://comunica.github.io/Article-ISWC2018-Resource/" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: a Modular SPARQL Query Engine for the Web. In: Proceedings of the 17th International Semantic Web Conference (2018).</dd>
 </dl>
 </section>
 <section id="document-interactions">
