@@ -45,7 +45,7 @@ Within object-oriented languages, this can correspond to for example a software 
 A component is typed as `oo:Component`, which is a _subclass_ of `rdfs:Class`.
 The parameters to construct the component can therefore be defined as an `rdfs:Property` on a component.
 For instance,
-a software module representing a parser
+a software module representing a type of datasource
 can be described as
 `ldfs:Datasource:Hdt a oo:Class.`,
 and a concrete instance is
