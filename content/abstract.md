@@ -13,7 +13,7 @@ facilitate exact replication on the Web with addressable, dereferenceable, and u
 <!-- Task         -->
 Therefore, 
 we introduce Components.js, a semantic dependency injection framework for JavaScript,
-that (i) describes software components using a Object-Oriented Components and Object Mapping ontology, 
+that (i) describes software components using a Object-Oriented Components and Object Mapping vocabulary, 
 (ii) automatically instantiates experimental configurations using linking and dereferencing, and
 (iii) is complementary to the modular programming of package managers.
 <!-- Object       -->

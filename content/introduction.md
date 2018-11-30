@@ -31,7 +31,7 @@ a semantic dependency Injection framework for JavaScript applications that makes
 The framework is [open-source](https://github.com/LinkedSoftwareDependencies/Components.js){:.mandatory},
 available on [npm](https://www.npmjs.com/package/componentsjs){:.mandatory},
 and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/){:.mandatory}.
-Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing) and the introduced _Object Mapping ontology_.
+Software configurations and modules are described as Linked Data using the [_Object-Oriented Components vocabulary_](cite:citesAsAuthority van2017describing) and the introduced _Object Mapping vocabulary_.
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be _unambiguously identified_ by IRIs and 
 retrieved through _dereferencing_.

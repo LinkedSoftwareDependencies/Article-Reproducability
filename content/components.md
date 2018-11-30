@@ -12,16 +12,16 @@ In this respect, Components.js distinguishes between three main concepts:
 
 - **Component Configuration**: a semantic representation of an instantiation of a component into an instance based on parameters.
 
-All concepts are described in the programming language independent [_Object-Oriented Components ontology (OO)_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented) [](cite:citesAsAuthority van2017describing).
-In the following, we first explain how to describe modules and components using this ontology.
-Then, we introduce an additional _Object Mapping ontology_ to describe parameter order in constructors.
+All concepts are described in the programming language independent [_Object-Oriented Components vocabulary (OO)_](https://linkedsoftwaredependencies.org/vocabularies/object-oriented) [](cite:citesAsAuthority van2017describing).
+In the following, we first explain how to describe modules and components using this vocabulary.
+Then, we introduce an additional _Object Mapping vocabulary_ to describe parameter order in constructors.
 Finally, we explain how component configuration files are created, which describe the application wiring, 
 and how the framework can instantiate this file to compose a working application.
 
 ### Describing modules and components
 {:#describing-components}
 
-The Object-Oriented Components ontology reuses Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software, which 
+The Object-Oriented Components vocabulary reuses Fowler's definition of a [software component](cito:providesQuotationFor DependencyInjection) as a "glob" of software, which 
 provides operations that can be used by other components.
 The instantiation of such components requires certain parameters,
 analog to constructor arguments in object-oriented programming.
@@ -29,9 +29,9 @@ This is interpreted in the broad sense: only _classes_, _objects_ and _construct
 An overview is given in [](#voc-oo-diagram).
 
 <figure id="voc-oo-diagram">
-<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components ontology diagram]">
+<img src="voc-oo-diagram.svg" alt="[Object-Oriented Components vocabulary diagram]">
 <figcaption markdown="block">
-Classes and properties in the [_Object-Oriented Components_ ontology](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#){:.mandatory},
+Classes and properties in the [_Object-Oriented Components_ vocabulary](https://linkedsoftwaredependencies.org/vocabularies/object-oriented#){:.mandatory},
 with as prefix `oo`.
 </figcaption>
 </figure>
@@ -99,7 +99,7 @@ These are provided with a unique identifier and definition,
 such that the software configuration can receive a semantic interpretation.
 
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
-A general context is defined for the Object-Oriented Components ontology, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
+A general context is defined for the Object-Oriented Components vocabulary, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
 The dereferencaable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
 
 ### Describing object mappings
@@ -121,17 +121,17 @@ For all other constructor types,
 a mapping mechanism is needed
 between the RDF properties
 and the concrete parameter order of the constructor.
-To this end, we introduce the [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping){:.mandatory}.
+To this end, we introduce the [_Object Mapping vocabulary_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping){:.mandatory}.
 [](#voc-om-diagram) shows an overview of all its classes and predicates.
 
 <figure id="voc-om-diagram">
-<img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
+<img src="voc-om-diagram.svg" alt="[Object Mapping vocabulary diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#).
+Overview of the classes and properties in the _Object Mapping_ vocabulary, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#).
 </figcaption>
 </figure>
 
-The ontology introduces the _object mapping_ and the _array mapping_.
+The vocabulary introduces the _object mapping_ and the _array mapping_.
 An object map can have several _object mapping entries_, where each entry has a field name and a field value.
 An array map can have several _array mapping entries_, where each entry only has a value.
 Together, they can express all ways

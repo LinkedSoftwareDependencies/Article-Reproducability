@@ -2,7 +2,7 @@
 {:#related-work}
 
 In this section, we discuss existing description methods or ontologies to describe software, 
-and position them to the Object-Oriented Components ontology, which is described in the next section.
+and position them to the Object-Oriented Components vocabulary, which is described in the next section.
 In addition, we describe other dependency injection frameworks, both for JavaScript and other languages,
 and discuss their limitations compared to Components.js.
 
