@@ -10,7 +10,7 @@ Using the terminology from [](#semantic-dependency-injection),
 a specific version of a npm package is considered a _module_,
 which contains the specific dependencies and a link to the actual implementation.
 
-npm stores the metadata of every package in a [CouchDB](http://couchdb.apache.org/)
+npm stores the metadata of every package in a [CouchDB](http://couchdb.apache.org/){:.mandatory}
 [instance](https://registry.npmjs.org/),
 which includes the information added by the package developer in the [`package.json`](https://docs.npmjs.com/files/package.json) file,
 and additional metadata added by the npm publishing process.
@@ -98,7 +98,8 @@ which we publish through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2
 These are located at [https://linkedsoftwaredependencies.org](https://linkedsoftwaredependencies.org/){:.mandatory}, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.
 
-Queries are executed using a [Triple Pattern Fragments browser client](https://query.linkedsoftwaredependencies.org), which can provide insights that [the Web was intended to give](cite:citesForInformation InformationManagementAProposal).
+Queries are executed using a [Triple Pattern Fragments browser client](https://query.linkedsoftwaredependencies.org){:.mandatory},
+which can provide insights that [the Web was intended to give](cite:citesForInformation InformationManagementAProposal).
 Examples are given in [](#query-used) and [](#query-who), which answer the questions <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
 
 <figure id="query-used" class="listing">

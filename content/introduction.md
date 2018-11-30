@@ -28,7 +28,9 @@ and also improve in reporting to help finding the right experiment, understandin
 To this end, 
 we present _Components.js_, 
 a semantic dependency Injection framework for JavaScript applications that makes software configuration _addressable_ and _discoverable_, hence surpassing existing dependency injection frameworks.
-The framework is [open-source](https://github.com/LinkedSoftwareDependencies/Components.js), available on [npm](https://www.npmjs.com/package/componentsjs), and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/).
+The framework is [open-source](https://github.com/LinkedSoftwareDependencies/Components.js){:.mandatory},
+available on [npm](https://www.npmjs.com/package/componentsjs){:.mandatory},
+and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/){:.mandatory}.
 Software configurations and modules are described as Linked Data using the [_Object-Oriented Components ontology_](cite:citesAsAuthority van2017describing) and the introduced _Object Mapping ontology_.
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be _unambiguously identified_ by IRIs and 

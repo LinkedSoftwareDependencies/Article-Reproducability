@@ -121,13 +121,13 @@ For all other constructor types,
 a mapping mechanism is needed
 between the RDF properties
 and the concrete parameter order of the constructor.
-To this end, we introduce the [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping).
+To this end, we introduce the [_Object Mapping ontology_](https://linkedsoftwaredependencies.org/vocabularies/object-mapping){:.mandatory}.
 [](#voc-om-diagram) shows an overview of all its classes and predicates.
 
 <figure id="voc-om-diagram">
 <img src="voc-om-diagram.svg" alt="[Object Mapping ontology diagram]">
 <figcaption markdown="block">
-Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#){:.mandatory}.
+Overview of the classes and properties in the _Object Mapping_ ontology, with as prefix [`om`](https://linkedsoftwaredependencies.org/vocabularies/object-mapping#).
 </figcaption>
 </figure>
 
