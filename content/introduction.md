@@ -32,7 +32,10 @@ The framework is [open-source](https://github.com/LinkedSoftwareDependencies/Com
 available on [npm](https://www.npmjs.com/package/componentsjs){:.mandatory},
 and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/){:.mandatory}
 (canonical citation: [https://doi.org/10.5281/zenodo.1243988](https://doi.org/10.5281/zenodo.1243988)).
-Software configurations and modules are described as Linked Data using
+Furthermore, it is being actively used in tools such as
+the [Linked Data Fragments server](cite:cites verborgh_iswc_2014) and [Comunica](cite:cites comunica).
+Within Components.js,
+software configurations and modules are described as Linked Data using
 the [_Object-Oriented Components vocabulary_](cite:citesAsAuthority van2017describing)
 (canonical citation: [https://doi.org/10.5281/zenodo.1245660](https://doi.org/10.5281/zenodo.1245660))
 and the introduced [_Object Mapping vocabulary_](cite:citesAsAuthority van2017describing)
