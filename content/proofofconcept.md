@@ -49,6 +49,13 @@ Prefixes omitted for brevity.
 </figcaption>
 </figure>
 
+<figure id="n3-0.10.0.ttl" class="listing">
+````/code/n3-0.10.0.ttl````
+<figcaption markdown="block">
+This listing shows a partial representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>{:.iri-link} in the Turtle syntax.
+Prefixes omitted for brevity.
+</figcaption>
+</figure>
 
 Continuing with the examples shown above,
 a module of version 0.10.0 of the N3 bundle can be found at
@@ -57,14 +64,6 @@ while the IRI in our namespace is <https://linkedsoftwaredependencies.org/bundle
 Similarly, many of the tags are mapped by the context,
 while other tags had to be modified to provide more relevant triples.
 An example of some of the data generated for this module can be seen in [](#n3-0.10.0.ttl).
-
-<figure id="n3-0.10.0.ttl" class="listing">
-````/code/n3-0.10.0.ttl````
-<figcaption markdown="block">
-This listing shows a partial representation of <https://linkedsoftwaredependencies.org/bundles/npm/n3/0.10.0>{:.iri-link} in the Turtle syntax.
-Prefixes omitted for brevity.
-</figcaption>
-</figure>
 
 An important part of an npm package description are the dependencies
 and their semantic versions.
@@ -98,10 +97,6 @@ which we publish through a [Triple Pattern Fragments](cite:cites verborgh_iswc_2
 These are located at [https://linkedsoftwaredependencies.org](https://linkedsoftwaredependencies.org/){:.mandatory}, together with subject pages for each bundle, module and user.
 The triples are collected and republished daily to stay up-to-date with the available information on npm.
 
-Queries are executed using a [Triple Pattern Fragments browser client](https://query.linkedsoftwaredependencies.org){:.mandatory},
-which can provide insights that [the Web was intended to give](cite:citesForInformation InformationManagementAProposal).
-Examples are given in [](#query-used) and [](#query-who), which answer the questions <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
-
 <figure id="query-used" class="listing">
 ````/code/query-used.txt````
 <figcaption markdown="block">
@@ -115,5 +110,9 @@ SPARQL query to discover all dependencies of a package.
 SPARQL query to discover the author of a package.
 </figcaption>
 </figure>
+
+Queries are executed using a [Triple Pattern Fragments browser client](https://query.linkedsoftwaredependencies.org){:.mandatory},
+which can provide insights that [the Web was intended to give](cite:citesForInformation InformationManagementAProposal).
+Examples are given in [](#query-used) and [](#query-who), which answer the questions <q markdown="1">[Where is this module used?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20DISTINCT%20%3Fproject%20%3FprojectName%20%3Fdescription%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Arelease%20%3Fversion.%0A%20%20%3Fdependingversion%20npm%3Adependency%20%3Fversion.%0A%20%20%3Fproject%20doap%3Arelease%20%3Fdependingversion.%0A%20%20%3Fproject%20doap%3Aname%20%3FprojectName.%0A%20%20%3Fproject%20dc%3Aabstract%20%3Fdescription.%0A%7D)</q> and <q markdown="1">[Who wrote this code?](https://query.linkedsoftwaredependencies.org/#query=SELECT%20*%20WHERE%20%7B%0A%20%20%3Chttps%3A%2F%2Flinkedsoftwaredependencies.org%2Fbundles%2Fnpm%2Fn3%3E%20doap%3Amaintainer%20%3Fauthor.%0A%20%20%3Fauthor%20foaf%3Aname%20%3Fname.%0A%20%20%3Fauthor%20foaf%3Ambox%20%3Fmail.%0A%7D)</q>.
 
 As a complete example, the documentation of Components.js has been made self-instantiatable using its own framework and is available at [http://componentsjs.readthedocs.io/en/latest/example/](http://componentsjs.readthedocs.io/en/latest/example/).

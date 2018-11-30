@@ -44,12 +44,6 @@ A module is considered a collection of components.
 Within object-oriented languages, this can correspond to for example a software library or an application.
 A component is typed as `oo:Component`, which is a _subclass_ of `rdfs:Class`.
 The parameters to construct the component can therefore be defined as an `rdfs:Property` on a component.
-For instance,
-a software module representing a type of datasource
-can be described as
-`ldfs:Datasource:Hdt a oo:Class.`,
-and a concrete instance is
-`:myHdtDatasource a ldfs:Datasource:Hdt`.
 
 <figure id="module" class="listing">
 ````/code/module.ttl````
@@ -65,7 +59,8 @@ The component `ex:MyModule/MyComponent` is described as part of the module `ex:M
 </figcaption>
 </figure>
 
-[](#component) extends `MyModule` with a component `ex:MyModule/MyComponent` by adding an `oo:component` predicate.
+For example, [](#component) shows how to add the component `ex:MyModule/MyComponent`
+to the module `MyModule` via `oo:component`.
 The type `oo:Class` is one of the several defined subclasses of `oo:Component`,
 which indicates that it is instantiatable based on parameters.
 Each component can refer to its path within a module using the `oo:componentPath` predicate,
@@ -74,6 +69,13 @@ The resulting description can be included in the module
 (e.g., as a JSON-LD file),
 or can be created and referred to externally.
 Afterwards, it can be reused by multiple dependents.
+
+The parameters that are used to instantiate an `oo:Class` are of type `oo:Parameter`.
+An `oo:Parameter` is a _subclass_ of `rdfs:Property`, which simplifies its usage as an RDF property.
+`oo:defaultValue` allows parameters to have a default value when no other values have been provided:
+upon instantiation ([](#instantiating)),
+a closed world will be assumed.
+The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
 
 <figure id="module-ldf" class="listing">
 ````/code/module-ldf.ttl````
@@ -85,13 +87,6 @@ The SPARQL datasource takes a SPARQL endpoint IRI as parameter.
 </figcaption>
 </figure>
 
-The parameters that are used to instantiate an `oo:Class` are of type `oo:Parameter`.
-An `oo:Parameter` is a _subclass_ of `rdfs:Property`, which simplifies its usage as an RDF property.
-`oo:defaultValue` allows parameters to have a default value when no other values have been provided:
-upon instantiation ([](#instantiating)),
-a closed world will be assumed.
-The `oo:uniqueValue` predicate is a flag that can be set to indicate whether or not the parameter can only have a single value.
-
 [](#module-ldf) shows a simplified example of the Linked Data Fragments (LDF) server npm module.
 It exposes several components such as an HDT and SPARQL datasource and a TPF server,
 each of which can take multiple parameters.
@@ -101,8 +96,6 @@ such that the software configuration can receive a semantic interpretation.
 Although the examples in this article are presented in Turtle syntax, Components.js encourages the use of JSON-LD for compatibility with JSON and the use of shortcuts.
 A general context is defined for the Object-Oriented Components vocabulary, which is available at [https://linkedsoftwaredependencies.org/contexts/components.jsonld](https://linkedsoftwaredependencies.org/contexts/components.jsonld).
 The dereferencaable URI of your module is defined by `@id`, and `requireName` refers to the package (as defined in npm's package.json file).
-Further documentation on how the Object-Oriented Components vocabulary can be used is available at
-[https://componentsjs.readthedocs.io/en/latest/configuration/components/general/](https://componentsjs.readthedocs.io/en/latest/configuration/components/general/)
 
 ### Describing object mappings
 The constructor injection described above works out of the box
@@ -140,13 +133,6 @@ Together, they can express all ways
 in which the flat object from the RDF description
 maps to an ordered list of simple or complex constructor parameters.
 
-[](#module-ldf-mapped) shows the mapping of the LDF component parameters to the constructor implementation.
-This description complements the component definitions from [](#module-ldf)
-as it provides an implementation view on the component constructors.
-Like the component definitions,
-a mapping is only necessary once per module
-and can be reused across dependents.
-
 <figure id="module-ldf-mapped" class="listing">
 ````/code/module-ldf-mapped.ttl````
 <figcaption markdown="block">
@@ -157,8 +143,12 @@ where the `datasources` entry points to an object that is a mapping from titles 
 </figcaption>
 </figure>
 
-Further documentation on how the Object Mapping vocabulary can be used is available at
-[http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/](http://componentsjs.readthedocs.io/en/latest/configuration/components/object_mapping/)
+[](#module-ldf-mapped) shows the mapping of the LDF component parameters to the constructor implementation.
+This description complements the component definitions from [](#module-ldf)
+as it provides an implementation view on the component constructors.
+Like the component definitions,
+a mapping is only necessary once per module
+and can be reused across dependents.
 
 ### Describing and instantiating a component configuration
 {:#instantiating}

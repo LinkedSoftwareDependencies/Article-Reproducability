@@ -30,16 +30,13 @@ we present _Components.js_,
 a semantic dependency Injection framework for JavaScript applications that makes software configuration _addressable_ and _discoverable_, hence surpassing existing dependency injection frameworks.
 The framework is [open-source](https://github.com/LinkedSoftwareDependencies/Components.js){:.mandatory},
 available on [npm](https://www.npmjs.com/package/componentsjs){:.mandatory},
-and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/){:.mandatory}
-(canonical citation: [https://doi.org/10.5281/zenodo.1243988](https://doi.org/10.5281/zenodo.1243988)).
+and its complete documentation can be found at [https://componentsjs.readthedocs.io/](https://componentsjs.readthedocs.io/){:.mandatory}.
 Furthermore, it is being actively used in tools such as
 the [Linked Data Fragments server](cite:cites verborgh_iswc_2014) and [Comunica](cite:cites comunica).
 Within Components.js,
 software configurations and modules are described as Linked Data using
 the [_Object-Oriented Components vocabulary_](cite:citesAsAuthority van2017describing)
-(canonical citation: [https://doi.org/10.5281/zenodo.1245660](https://doi.org/10.5281/zenodo.1245660))
-and the introduced [_Object Mapping vocabulary_](cite:citesAsAuthority van2017describing)
-(canonical citation: [https://doi.org/10.5281/zenodo.1245658](https://doi.org/10.5281/zenodo.1245658)).
+and the introduced [_Object Mapping vocabulary_](cite:citesAsAuthority van2017describing).
 By publishing such descriptions,
 the composition of experimental software (and parts thereof) can be _unambiguously identified_ by IRIs and 
 retrieved through _dereferencing_.

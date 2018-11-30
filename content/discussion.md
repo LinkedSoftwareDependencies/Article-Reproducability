@@ -28,6 +28,17 @@ Furthermore,
 it facilitates independently replacing and evaluating components
 and publishing these configurations in turn.
 
+<figure id="description-diagram">
+<img src="description-diagram.svg" alt="[description diagram]">
+<figcaption markdown="block">
+A _research article_ is based on _result data_,
+which are the outcomes of an _experiment_.
+The experiment in turn also has (multiple) provenance chains,
+and this article provides mechanisms
+to describe _software configurations_ and _software modules_.
+</figcaption>
+</figure>
+
 [Claerbout's Principle](cite:providesQuotationFor WaveLab) explains that
 <q>an article about computational science in a scientific publication
 is not the scholarship itself, it is merely **advertising** of the scholarship.
@@ -41,17 +52,6 @@ and the processing of the retrieved data.
 In essence, this entails the complete chain of provenance illustrated in [](#description-diagram),
 that links the research article to the data and the experiment that generates it,
 as well as all aspects surrounding that experiment.
-
-<figure id="description-diagram">
-<img src="description-diagram.svg" alt="[description diagram]">
-<figcaption markdown="block">
-A _research article_ is based on _result data_,
-which are the outcomes of an _experiment_.
-The experiment in turn also has (multiple) provenance chains,
-and this article provides mechanisms
-to describe _software configurations_ and _software modules_.
-</figcaption>
-</figure>
 
 Through this work, we make it easier to build sustainable research platforms,
 which helps pave the stairs to the shoulders of giants.
