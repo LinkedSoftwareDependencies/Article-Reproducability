@@ -29,3 +29,13 @@ or the different implementations of the same function.
 Components.js enables research articles to complete the provenance chain of experimental results.
 This ultimately brings faster and more accurate reproductions of experiments,
 and facilitates the evaluation of new research contributions.
+
+<span id="keywords" rel="schema:about"><span class="title">Keywords</span>
+<a href="https://en.wikipedia.org/wiki/Dependency_injection" resource="http://dbpedia.org/resource/Dependency_injection">Dependency injection</a>;
+<a href="https://en.wikipedia.org/wiki/Linked_Data" resource="http://dbpedia.org/resource/Linked_Data">Linked Data</a>;
+<a href="https://en.wikipedia.org/wiki/Semantic_Web" resource="http://dbpedia.org/resource/Semantic_Web">Semantic Web</a>;
+<a href="https://en.wikipedia.org/wiki/Resource_Description_Framework" resource="http://dbpedia.org/resource/Resource_Description_Framework">RDF</a>;
+<a href="https://en.wikipedia.org/wiki/JavaScript" resource="http://dbpedia.org/resource/JavaScript">JavaScript</a>;
+<a href="https://en.wikipedia.org/wiki/Reproducibility" resource="http://dbpedia.org/resource/Reproducibility">Reproducibility</a>;
+<a href="https://en.wikipedia.org/wiki/Artificial_intelligence" resource="http://dbpedia.org/resource/Artificial_intelligence">Artificial intelligence</a>
+</span>

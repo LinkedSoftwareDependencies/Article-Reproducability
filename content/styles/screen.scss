@@ -9,6 +9,14 @@ body {
   max-width: 800px;
 }
 
+#keywords {
+  font-weight: normal;
+  font-size: small;
+  .title {
+    font-style: italic;
+  }
+}
+
 article {
   counter-reset: section;
 
